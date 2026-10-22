@@ -1,5 +1,5 @@
 #!/bin/bash
-  # PreToolUse(Bash) guardrail — bloqueia operacoes git destrutivas/de-forca.
+  # PreToolUse(Bash) guardrail: bloqueia operacoes git destrutivas/de-forca.
   # Lista ESTREITA: so o que NINGUEM deveria fazer. NAO bloqueia commit/push normais.
   INPUT=$(cat)
   if command -v jq >/dev/null 2>&1; then
