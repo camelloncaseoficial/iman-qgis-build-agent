@@ -46,7 +46,7 @@ foreach ($r in $rows) {
 }
 if ($filled) {
   Write-LfFile $LockFile ($header + ($rows | ConvertTo-Csv -Delimiter "`t" -NoTypeInformation -UseQuotes Never))
-  Write-Step "$filled sha256 gravados no lock (commitar iman/build/osgeo4w.lock.tsv)"
+  Write-Step "$filled sha256 gravados em $LockFile (commitar)"
 }
 $total = ($rows | Measure-Object -Property Size -Sum).Sum
 Write-Step ("{0} pacotes conferidos ({1:N1} MB)" -f $rows.Count, ($total / 1MB))

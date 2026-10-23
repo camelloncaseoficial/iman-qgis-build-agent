@@ -12,7 +12,7 @@
   Retomada: sem -Clean, um build interrompido continua do ponto em que o ninja parou.
 #>
 [CmdletBinding()]
-param([string] $WorkRoot, [switch] $Clean, [switch] $SkipInstall, [int] $Jobs = 0)
+param([string] $WorkRoot, [switch] $Clean, [switch] $SkipInstall, [int] $Jobs = 0, [switch] $KeepGoing)
 . "$PSScriptRoot\Common.ps1"
 
 $o4w = $Paths.Osgeo4w
@@ -132,6 +132,8 @@ if ($LASTEXITCODE) { throw "flex/bison falhou (ver $log)" }
 Write-Step 'cmake --build'
 $buildArgs = @('--build', (M $bld), '--config', 'Release')
 if ($Jobs -gt 0) { $buildArgs += @('--parallel', "$Jobs") }
+# -KeepGoing: o ninja segue apos falha (-k 0), para medir tudo o que quebra de uma vez
+if ($KeepGoing) { $buildArgs += @('--', '-k', '0') }
 & $cmake @buildArgs *>&1 | Tee-Object -FilePath $log -Append | Select-String -Pattern 'error|FAILED|warning C4' -SimpleMatch:$false | Select-Object -Last 40
 $buildExit = $LASTEXITCODE
 $timings.buildSeconds = [int]((Get-Date) - $t0).TotalSeconds
