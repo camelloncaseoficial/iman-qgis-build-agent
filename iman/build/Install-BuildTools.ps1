@@ -28,6 +28,17 @@ foreach ($name in 'cmake', 'ninja', 'winflexbison') {
   Write-Step "$name $($t.Version) instalado em $dest"
 }
 
+$vswhere = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe"
+if (-not $SkipVs -and (Test-Path $vswhere)) {
+  # todos os componentes ja instalados: nada a fazer (e nenhum UAC)
+  $ready = & $vswhere -products * -version '[17.0,18.0)' -requires @VsComponents -property installationPath | Select-Object -First 1
+  if ($ready) {
+    $msvc = (Get-ChildItem (Join-Path $ready 'VC\Tools\MSVC') | Sort-Object Name | Select-Object -Last 1).Name
+    Write-Step "VS Build Tools ja completo em $ready (MSVC $msvc)"
+    $SkipVs = $true
+  }
+}
+
 if (-not $SkipVs) {
   $vs = Get-VsInstallPath
   $t = $Tools.vsbuildtools
