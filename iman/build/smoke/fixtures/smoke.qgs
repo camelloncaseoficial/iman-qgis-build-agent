@@ -1,0 +1,30 @@
+<!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
+<qgis projectname="smoke" version="3.44.13-Solothurn">
+  <title>smoke</title>
+  <projectCrs>
+    <spatialrefsys nativeFormat="Wkt">
+      <authid>EPSG:4326</authid>
+    </spatialrefsys>
+  </projectCrs>
+  <layer-tree-group>
+    <layer-tree-layer id="points_smoke" name="points" source="./points.geojson" providerKey="ogr" checked="Qt::Checked" expanded="1"/>
+  </layer-tree-group>
+  <projectlayers>
+    <maplayer type="vector" geometry="Point">
+      <id>points_smoke</id>
+      <datasource>./points.geojson</datasource>
+      <layername>points</layername>
+      <provider encoding="UTF-8">ogr</provider>
+      <srs>
+        <spatialrefsys nativeFormat="Wkt">
+          <authid>EPSG:4326</authid>
+        </spatialrefsys>
+      </srs>
+    </maplayer>
+  </projectlayers>
+  <properties>
+    <Paths>
+      <Absolute type="bool">false</Absolute>
+    </Paths>
+  </properties>
+</qgis>
