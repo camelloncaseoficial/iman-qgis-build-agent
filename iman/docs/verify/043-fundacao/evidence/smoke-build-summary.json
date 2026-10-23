@@ -1,0 +1,95 @@
+{
+  "target": "Build",
+  "app": "D:\\iman-terra-build-clean\\install\\apps\\qgis-ltr",
+  "run": "D:\\iman-terra-build-clean\\smoke\\build-20261023-115741",
+  "profiles": "D:\\iman-terra-build-clean\\smoke\\build-20261023-115741\\profiles",
+  "steps": {
+    "version": {
+      "ok": true,
+      "detail": {
+        "revision": "101ee62d48",
+        "lines": [
+          "QGIS 3.44.13-Solothurn 'Solothurn' (101ee62d48)",
+          "QGIS code revision 101ee62d48",
+          "Qt version 5.15.13"
+        ]
+      }
+    },
+    "providers": {
+      "ok": true,
+      "detail": {
+        "providers": [
+          "3d",
+          "gdal",
+          "model",
+          "native",
+          "pdal",
+          "qgis",
+          "script"
+        ],
+        "algorithms": 426.0
+      }
+    },
+    "plugins": {
+      "ok": true,
+      "detail": [
+        "grassprovider",
+        "processing"
+      ]
+    },
+    "native:buffer": {
+      "ok": true,
+      "detail": {
+        "exit": 0,
+        "features": 3,
+        "geometry": "Multi Polygon"
+      }
+    },
+    "gui+qgz": {
+      "ok": true,
+      "detail": {
+        "seconds": 24,
+        "exitedClean": true,
+        "exitCode": 0,
+        "title": "smoke \u2014 QGIS [iman-smoke]",
+        "layers": [
+          {
+            "name": "points",
+            "valid": true,
+            "features": 3,
+            "crs": "EPSG:4326"
+          }
+        ],
+        "capture": "gui.png"
+      }
+    },
+    "guard": {
+      "ok": true,
+      "detail": "GUARD OK: QGIS oficial, %APPDATA%\\QGIS e registro QGIS identicos ao retrato (37432 itens)"
+    }
+  },
+  "head": "101ee62d485352c307c8fa131dc853554181c6cc",
+  "corePluginFolders": [
+    "db_manager",
+    "grassprovider",
+    "MetaSearch",
+    "processing"
+  ],
+  "profileWrittenTo": [
+    "\\profiles\\profiles.ini",
+    "\\profiles\\default\\bookmarks.xml",
+    "\\profiles\\default\\qgis.db",
+    "\\profiles\\default\\symbology-style.db",
+    "\\profiles\\default\\python\\expressions\\__init__.py",
+    "\\profiles\\default\\python\\expressions\\__pycache__\\__init__.cpython-312.pyc",
+    "\\profiles\\default\\QGIS\\QGIS3.ini",
+    "\\profiles\\iman-smoke\\bookmarks.xml",
+    "\\profiles\\iman-smoke\\qgis-auth.db",
+    "\\profiles\\iman-smoke\\qgis.db",
+    "\\profiles\\iman-smoke\\symbology-style.db",
+    "\\profiles\\iman-smoke\\user-history.db",
+    "\\profiles\\iman-smoke\\python\\expressions\\__init__.py",
+    "\\profiles\\iman-smoke\\QGIS\\QGIS3.ini"
+  ],
+  "ok": true
+}

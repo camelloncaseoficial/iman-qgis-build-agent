@@ -1,0 +1,19 @@
+{
+  "version": "3.44.13-Solothurn",
+  "dev_version": "101ee62d48",
+  "project_read": true,
+  "layers": [
+    {
+      "name": "points",
+      "valid": true,
+      "features": 3,
+      "crs": "EPSG:4326"
+    }
+  ],
+  "window_visible": true,
+  "window_title": "smoke \u2014 QGIS [iman-smoke]",
+  "window_size": [
+    1005,
+    381
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "target": "Official",
+  "app": "C:\\Program Files\\QGIS 3.44.13\\apps\\qgis-ltr",
+  "run": "D:\\iman-terra-build\\smoke\\official-20261023-112118",
+  "profiles": "D:\\iman-terra-build\\smoke\\official-20261023-112118\\profiles",
+  "steps": {
+    "version": {
+      "ok": true,
+      "detail": {
+        "revision": "2c8a7782a96",
+        "lines": [
+          "QGIS 3.44.13-Solothurn 'Solothurn' (2c8a7782a96)",
+          "QGIS code revision 2c8a7782a96",
+          "Qt version 5.15.13"
+        ]
+      }
+    },
+    "providers": {
+      "ok": true,
+      "detail": {
+        "providers": [
+          "3d",
+          "gdal",
+          "model",
+          "native",
+          "pdal",
+          "qgis",
+          "script"
+        ],
+        "algorithms": 426.0
+      }
+    },
+    "plugins": {
+      "ok": true,
+      "detail": [
+        "grassprovider",
+        "processing"
+      ]
+    }
+  },
+  "corePluginFolders": [
+    "db_manager",
+    "grassprovider",
+    "MetaSearch",
+    "processing"
+  ],
+  "ok": true
+}

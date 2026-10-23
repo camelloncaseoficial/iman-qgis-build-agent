@@ -3,19 +3,20 @@ name: Stack do projeto
 description: Stack da Crew build do IMAN Terra (fork do QGIS compilado com a marca). Carregada pelo CLAUDE.md (@import). Itens "a confirmar" sao perguntados pelo proximo /start-session ou medidos pela fatia de fundacao.
 type: project
 captured_at: 2026-10-22
+updated_at: 2026-10-23 (fatia 043: build local, testes e gate proposto)
 ---
 
 | Item | Escolha | Fonte |
 |---|---|---|
 | Base | fork publico do `qgis/QGIS`, ramo `develop` nascido da tag `final-3_44_13` (Qt5) | D-IMAN-040 |
 | Repo | `camelloncaseoficial/iman-qgis-build-agent` (publico; cumpre a GPL pelo proprio repo) | D-IMAN-040 |
-| Build local | Windows, MSVC 2022 + CMake + dependencias do OSGeo4W; versoes a medir na fatia de fundacao | a confirmar |
+| Build local | Windows; VS 2022 Build Tools 17.14 (MSVC 14.44, SDK 10.0.26100), CMake 3.29.0, ninja 1.10.2, winflexbison 2.5.25; 156 pacotes OSGeo4W fixados nas versoes do 3.44.13 oficial (`iman/build/osgeo4w.lock.tsv`, com sha256); CMake manual com as flags da receita `qgis-ltr` (jef-n/OSGeo4W@b17db55); entrada `iman/build/Invoke-ImanBuild.ps1`; saida fora do repo em `D:\iman-terra-build` | medido na fatia 043 |
 | Build de release | GitHub Actions do fork, reproduzivel, ligado pelo sponsor numa fatia propria | D-IMAN-040 |
 | Linguagem | C++/Qt5 e CMake (core), Python (PyQGIS), PowerShell (scripts de build e testes) | D-IMAN-040 |
 | Instalador | a confirmar na fundacao (Inno Setup 7, como a distro e o D-IMAN-030, ou o empacotamento do proprio QGIS) | a confirmar |
-| Testes | a confirmar na fundacao (o QGIS compilado abre, roda um algoritmo nativo e carrega um projeto; testes da marca) | a confirmar |
+| Testes | `iman/build/Invoke-Smoke.ps1`: versao e revisao (BL-6), provedores do Processamento, plugins, `native:buffer` num fixture, janela + `.qgz`, guarda do QGIS oficial (BL-3); `Test-Patchset.ps1` (BL-5). Testes da marca entram com a fatia de marca | medido na fatia 043 |
 | Smoke | VM Windows limpa (BL-7) | D-IMAN-025 |
-| Gate | a confirmar | - |
+| Gate | proposto: `pwsh -NoProfile -File iman/build/Invoke-Gate.ps1` (patchset + build incremental offline + smoke); registro e do arquiteto | proposto na fatia 043 |
 | Branching | develop-based (base de PR = `develop`) | D-IMAN-012 |
 | Distribuicao | GitHub Releases deste repo | D-IMAN-040 |
 | Arquiteto | `../iman-product-architect` (briefings em `.memory/briefings/`) | D-IMAN-040 |

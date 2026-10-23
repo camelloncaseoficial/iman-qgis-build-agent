@@ -1,17 +1,27 @@
 ---
 name: reference_build_environment
-description: Bancada de build desta maquina, medida pelo arquiteto em 2026-10-22, antes da fatia de fundacao.
+description: Bancada de build desta maquina: o que a fatia 043 instalou (versoes), onde fica cada coisa, tempos e disco medidos em 2026-10-23.
 type: reference
 ---
 
-Medido em 2026-10-22, na criacao da Crew:
+Medido em 2026-10-22 (arquiteto) e atualizado pela fatia 043 em 2026-10-23. Laudo:
+`iman/docs/verify/043-fundacao/README.md`.
 
-- Windows 11 Pro, 24 processadores logicos, 32 GB de RAM.
-- Disco livre: C: 272 GB, D: 166 GB.
-- **Sem Visual Studio** (sem `vswhere`), **sem `cmake`, `ninja` nem `cl` no PATH**, sem `C:\OSGeo4W`.
-- Com `git`. Com o QGIS 3.44.13 oficial em `C:\Program Files\QGIS 3.44.13` (o do sponsor: so leitura, nunca
-  alterar) e o IMAN Terra 0.3.0 da distro em `%LOCALAPPDATA%\Programs\IMAN Terra` (congelado).
+- Windows 11 Pro, 24 processadores logicos, 32 GB de RAM. Localidade do Windows em espanhol (a UI do QGIS segue).
+- **Instalado pela fatia 043, com o "sim" do sponsor na sessao:** VS 2022 Build Tools 17.14.42 (MSVC 14.44.35207,
+  `cl` 19.44.35229, Windows SDK 10.0.26100, ATL) em `C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools`
+  (12,2 GB a menos no C:). Ferramentas portateis em `D:\iman-terra-build\tools`: CMake 3.29.0, ninja 1.10.2,
+  winflexbison 2.5.25. Nada em `C:\OSGeo4W`; sem Cygwin.
+- **Raiz de trabalho** `D:\iman-terra-build` (fora do repo): `cache\` (pacotes OSGeo4W do lock, 652 MB), `osgeo4w\`
+  (raiz isolada, 2,2 GB), `build\` (14,9 GB), `install\apps\qgis-ltr` (saida, 0,4 GB), `logs\`, `smoke\`, `guard\`.
+  Raizes extras da fatia 043: `D:\iman-terra-build-clean` (prova do clone limpo) e `D:\iman-terra-build-latest`
+  (matriz "OSGeo4W andou"); podem ser apagadas.
+- **Tempos:** do clone limpo ao binario com smoke 31 min; build limpo 22,5 min; incremental de um `.cpp` 26 s;
+  configure ~2,5 min; install ~2 min; smoke ~1 min.
+- Com o QGIS 3.44.13 oficial em `C:\Program Files\QGIS 3.44.13` (do sponsor: so leitura, nunca alterar; a guarda
+  `iman/build/Test-OfficialQgisUntouched.ps1` prova) e o IMAN Terra 0.3.0 da distro em
+  `%LOCALAPPDATA%\Programs\IMAN Terra` (congelado). Existe a chave vazia `HKCU\Software\QGIS\QGIS3`.
+- `C:\Windows\System32` nao recebe DLL do OSGeo4W: os postinstall `openssl.bat` e `opencl.bat` nao rodam.
 - Clone deste repo: parcial (`--filter=blob:none`), `core.longpaths=true`, `core.autocrlf=false`; remoto
   `upstream` = `qgis/QGIS` (nunca `git fetch --all`: baixa o QGIS inteiro).
-
-A fatia de fundacao atualiza este arquivo com o que instalar, as versoes e o tempo de build medido.
+- `gh` autenticado com escopo `repo`; o PR da fatia e contra `develop` deste fork.

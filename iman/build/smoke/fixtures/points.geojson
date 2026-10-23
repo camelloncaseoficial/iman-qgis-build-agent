@@ -1,0 +1,10 @@
+{
+  "type": "FeatureCollection",
+  "name": "points",
+  "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+  "features": [
+    { "type": "Feature", "properties": { "id": 1, "name": "a" }, "geometry": { "type": "Point", "coordinates": [ -46.633, -23.550 ] } },
+    { "type": "Feature", "properties": { "id": 2, "name": "b" }, "geometry": { "type": "Point", "coordinates": [ -46.640, -23.560 ] } },
+    { "type": "Feature", "properties": { "id": 3, "name": "c" }, "geometry": { "type": "Point", "coordinates": [ -46.620, -23.545 ] } }
+  ]
+}
