@@ -193,9 +193,12 @@ if ($g) {
   }
   Add-Result 'marca:enderecos' $urlOk $urls
 
+  # alem das chaves: o cache de rede do perfil descartavel nao pode ter resposta do feed de noticias do QGIS
   $s = $g.settings
-  Add-Result 'marca:noticias-versao' ($s.'core/httpsfeedqgisorg/disabled' -eq $true -and $s.'qgis/allowVersionCheck' -eq $false -and $s.'qgis/checkVersion' -eq $false -and $g.check_version_action_visible -eq $false) ([ordered]@{
-      feedDisabled = $s.'core/httpsfeedqgisorg/disabled'; allowVersionCheck = $s.'qgis/allowVersionCheck'; checkVersion = $s.'qgis/checkVersion'; checkVersionActionVisible = $g.check_version_action_visible })
+  $feedHits = @(Get-ChildItem (Join-Path $run 'cache') -Recurse -File -ErrorAction SilentlyContinue |
+    Select-String -Pattern 'feed.qgis.org' -SimpleMatch -List | ForEach-Object { $_.Path.Substring($run.Length) })
+  Add-Result 'marca:noticias-versao' ($s.'core/httpsfeedqgisorg/disabled' -eq $true -and $s.'qgis/allowVersionCheck' -eq $false -and $s.'qgis/checkVersion' -eq $false -and $g.check_version_action_visible -eq $false -and $feedHits.Count -eq 0) ([ordered]@{
+      feedDisabled = $s.'core/httpsfeedqgisorg/disabled'; allowVersionCheck = $s.'qgis/allowVersionCheck'; checkVersion = $s.'qgis/checkVersion'; checkVersionActionVisible = $g.check_version_action_visible; feedInNetworkCache = $feedHits })
 
   # o PDF tem atualizacao incremental (o GDAL reescreve os metadados depois do Qt): o dicionario Info que vale e o
   # ultimo; o XMP e um so
