@@ -1,6 +1,6 @@
 ---
 name: reference_build_environment
-description: Bancada de build desta maquina: o que a fatia 043 instalou (versoes), onde fica cada coisa, tempos e disco medidos em 2026-10-23.
+description: Bancada de build desta maquina: o que a fatia 043 instalou (versoes), onde fica cada coisa, tempos e disco medidos em 2026-10-23; achados de BL-3, build e captura da fatia 044 (2026-10-25).
 type: reference
 ---
 
@@ -25,3 +25,19 @@ Medido em 2026-10-22 (arquiteto) e atualizado pela fatia 043 em 2026-10-23. Laud
 - Clone deste repo: parcial (`--filter=blob:none`), `core.longpaths=true`, `core.autocrlf=false`; remoto
   `upstream` = `qgis/QGIS` (nunca `git fetch --all`: baixa o QGIS inteiro).
 - `gh` autenticado com escopo `repo`; o PR da fatia e contra `develop` deste fork.
+
+Medido na fatia 044 (2026-10-25), laudo `iman/docs/verify/044-marca-no-fonte/README.md`:
+
+- **Nome interno compartilhado com o QGIS oficial (BL-3):** sem `cache/directory` no perfil, o QGIS (build ou
+  oficial) grava o cache de rede em `%LOCALAPPDATA%\QGIS\QGIS3\cache`; o crash handler grava em
+  `%LOCALAPPDATA%\QGIS\QGIS3\crashes`; o WinToast valida a cada abertura `%APPDATA%\Microsoft\Windows\Start
+  Menu\Programs\QGIS3.lnk` (hoje do spike 016 da distro, 2026-09-06). O smoke semeia `[cache] directory` no perfil
+  descartavel (`New-DisposableProfile`) e a guarda vigia as tres coisas. Resolve de vez so com o nome interno
+  (fatia do instalador). Decisao do sponsor: mitigar e seguir.
+- **Ninja nao rastreia o `.ico` do `qgis_win32.rc`:** o `Build-Qgis.ps1` remove o `.res` mais velho que o `qgis.ico`.
+- **Build incremental depois de mudar so a marca:** build ~60 s, `cmake --install` ~330 a 370 s (o install domina).
+- **Python fixado com Pillow:** o `python3` da raiz OSGeo4W (3.12.13) tem Pillow 12.3.0 (do lock); e o que roda
+  `iman/brand/derive_assets.py`. Fora do `o4w_env` ele nao sobe.
+- **Captura de janela:** o pwsh 7 nasce com a consciencia de DPI fixada; `WindowCapture.ps1` usa DPI por thread.
+  Testar captura so com janela criada pelo proprio teste, nunca com app do usuario (o Bloco de Notas do Windows 11
+  restaura as abas da sessao do usuario).

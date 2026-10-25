@@ -3,7 +3,7 @@ name: Stack do projeto
 description: Stack da Crew build do IMAN Terra (fork do QGIS compilado com a marca). Carregada pelo CLAUDE.md (@import). Itens "a confirmar" sao perguntados pelo proximo /start-session ou medidos pela fatia de fundacao.
 type: project
 captured_at: 2026-10-22
-updated_at: 2026-10-23 (fatia 043: build local, testes e gate proposto)
+updated_at: 2026-10-25 (fatia 044: marca no fonte, checagens de marca no smoke, guarda por rodada)
 ---
 
 | Item | Escolha | Fonte |
@@ -14,7 +14,7 @@ updated_at: 2026-10-23 (fatia 043: build local, testes e gate proposto)
 | Build de release | GitHub Actions do fork, reproduzivel, ligado pelo sponsor numa fatia propria | D-IMAN-040 |
 | Linguagem | C++/Qt5 e CMake (core), Python (PyQGIS), PowerShell (scripts de build e testes) | D-IMAN-040 |
 | Instalador | a confirmar na fundacao (Inno Setup 7, como a distro e o D-IMAN-030, ou o empacotamento do proprio QGIS) | a confirmar |
-| Testes | `iman/build/Invoke-Smoke.ps1`: versao e revisao (BL-6), provedores do Processamento, plugins, `native:buffer` num fixture, janela + `.qgz`, guarda do QGIS oficial (BL-3); `Test-Patchset.ps1` (BL-5). Testes da marca entram com a fatia de marca | medido na fatia 043 |
+| Testes | `iman/build/Invoke-Smoke.ps1`: versao e revisao (BL-6), provedores do Processamento, plugins, `native:buffer` num fixture, janela + `.qgz`, guarda do QGIS oficial (BL-3); `Test-Patchset.ps1` (BL-5). Desde a 044: checagens `marca:*` no smoke (titulo, traducao, idioma, splash, icones, enderecos, noticias e versao, PDF), cada uma cai contra o oficial (`-Target Official`, veredito de controle); referencia de provedores, algoritmos e plugins em `smoke/expected/`; `Test-GuardRounds.ps1` (guarda); `Invoke-BrandCaptures.ps1` (capturas do laudo, fora do gate) | medido nas fatias 043 e 044 |
 | Smoke | VM Windows limpa (BL-7) | D-IMAN-025 |
 | Gate | proposto: `pwsh -NoProfile -File iman/build/Invoke-Gate.ps1` (patchset + build incremental offline + smoke); registro e do arquiteto | proposto na fatia 043 |
 | Branching | develop-based (base de PR = `develop`) | D-IMAN-012 |

@@ -1,0 +1,110 @@
+{
+  "version": "3.44.13-Solothurn",
+  "dev_version": "2c8a7782a96",
+  "window_title_at_start": "Proyecto sin título — QGIS [iman-smoke]",
+  "project_read": true,
+  "layers": [
+    {
+      "name": "points",
+      "valid": true,
+      "features": 3,
+      "crs": "EPSG:4326"
+    }
+  ],
+  "window_visible": true,
+  "window_title": "smoke — QGIS [iman-smoke]",
+  "window_size": [
+    1005,
+    381
+  ],
+  "translation": "es_ES",
+  "settings": {
+    "locale/userLocale": "es_ES",
+    "locale/overrideFlag": false,
+    "qgis/checkVersion": true,
+    "qgis/allowVersionCheck": true,
+    "core/httpsfeedqgisorg/disabled": false,
+    "cache/directory": "D:/iman-terra-build/smoke/official-20261025-173254/cache"
+  },
+  "translations": {
+    "QgisApp|QGIS": "QGIS",
+    "QgisApp|QGIS - %1 ('%2')": "QGIS - %1 ('%2')",
+    "QgisApp|QGIS Ready!": "¡QGIS preparado!",
+    "QgisApp|QGIS version": "Versión de QGIS",
+    "MainWindow|QGIS Home Page": "Página web de QGIS",
+    "MainWindow|Exit QGIS": "Salir de QGIS",
+    "MainWindow|Donate to QGIS": "Donar a QGIS",
+    "QgsAbout|About QGIS": "Acerca de QGIS"
+  },
+  "resources": {
+    ":/images/icons/qgis_icon.svg": "902702e1ca21f8fb9860c5f9bd5aea07c1940e4930cfe83ca74da840bb9d6dba",
+    ":/images/icons/qgis-icon-16x16.png": "071b04624ed63ead8fadfd07d961e3f571650dff22d3d720d67a94e18ea8dc9c",
+    ":/images/icons/qgis-icon-60x60.png": "f4fa5f67c2fc6a1f7c1843cc881cbbb08fea7cc4585c80b558a68fc23022f7f0",
+    ":/images/splash/splash.png": "400df0383ef1580fda1cab940e98b3128f82dc5ae7f44409a2d81ec1fb0c414b",
+    ":/images/themes/default/providerQgis.svg": "2991f2e5d98791ed6f6e7d49a0de5851e60b3c40816ca23a6a96210403072c43",
+    ":/images/icons/qgis-full.png": "3e5ebce122ca6d955535313210abbe37b9d1343a157c7f5b51af4ab368d94d5d"
+  },
+  "app_icon_path": "C:/PROGRA~1/QGIS34~1.13/apps/qgis-ltr/./images/icons/qgis-icon-60x60.png",
+  "app_icon_sha256": "f4fa5f67c2fc6a1f7c1843cc881cbbb08fea7cc4585c80b558a68fc23022f7f0",
+  "check_version_action_visible": true,
+  "help_actions": {
+    "mActionQgisHomePage": {
+      "text": "Página web de QGIS",
+      "urls": [
+        "https://qgis.org"
+      ]
+    },
+    "mActionReportaBug": {
+      "text": "Reportar un problema",
+      "urls": [
+        "https://qgis.org/resources/support/bug-reporting/"
+      ]
+    },
+    "mActionNeedSupport": {
+      "text": "¿Necesita soporte comercial?",
+      "urls": [
+        "https://qgis.org/resources/support/commercial-support/"
+      ]
+    },
+    "mActionDonate": {
+      "text": "Donar a QGIS",
+      "urls": [
+        "https://qgis.org/funding/donate/"
+      ]
+    },
+    "mActionGetInvolved": {
+      "text": "Involucrarse",
+      "urls": [
+        "https://qgis.org/community/involve/"
+      ]
+    },
+    "mActionSponsors": {
+      "text": "Miembros sustentadores de QGIS",
+      "urls": [
+        "https://qgis.org/funding/membership/members/"
+      ]
+    }
+  },
+  "pdf": {
+    "status": 0,
+    "file": "layout.pdf",
+    "creator": [
+      "",
+      "QGIS 3.44.13-Solothurn"
+    ],
+    "producer": [
+      "Qt 5.15.13",
+      "QGIS 3.44.13-Solothurn"
+    ],
+    "xmp_creator_tool": [
+      "QGIS 3.44.13-Solothurn"
+    ],
+    "xmp_producer": [
+      "QGIS 3.44.13-Solothurn"
+    ]
+  },
+  "saved_project": {
+    "written": true,
+    "qgis_version_attribute": "3.44.13-Solothurn"
+  }
+}

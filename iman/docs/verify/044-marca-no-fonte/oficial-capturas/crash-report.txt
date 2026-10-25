@@ -1,0 +1,22 @@
+**Crash ID**: [ID not generated due to missing information.
+
+ Your version of QGIS install might not have debug information included or we couldn't get crash information.](https://github.com/qgis/QGIS/search?q=ID not generated due to missing information.
+
+ Your version of QGIS install might not have debug information included or we couldnt get crash information.&type=Issues)
+
+
+**Stack Trace**
+No stack trace is available.
+
+
+**QGIS Info**
+QGIS Version: 3.44.13-Solothurn
+Relatorio sintetico do smoke da fatia 044
+
+
+
+**System Info**
+CPU Type: x86_64
+Kernel Type: winnt
+Kernel Version: 10.0.26200
+

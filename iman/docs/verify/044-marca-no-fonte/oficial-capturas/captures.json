@@ -1,0 +1,30 @@
+{
+  "title_at_start": "Projeto sem título — QGIS [iman-smoke]",
+  "title_after_load": "smoke — QGIS [iman-smoke]",
+  "main": "01-janela.png",
+  "splash_message": "QGIS pronto!",
+  "splash": "02-splash-mensagem-final.png",
+  "toolbox": "03-processamento.png",
+  "help_menu_items": [
+    "Conteúdo da Ajuda",
+    "Documentação de API do C++",
+    "Documentação de API do PyQGIS",
+    "Complementos",
+    "Reportar um problema",
+    "Doe para o QGIS",
+    "Envolva-se",
+    "Precisa de Suporte Comercial?",
+    "Membros de Suporte do QGIS",
+    "Página do QGIS",
+    "Verificar a versão do QGIS",
+    "Sobre"
+  ],
+  "help_menu": "04-menu-ajuda.png",
+  "about_title": "Sobre o QGIS — Sobre",
+  "about": "05-sobre.png",
+  "browser": "06-navegador-qgz.png",
+  "layer_properties": "07-propriedades-camada.png",
+  "layer_properties_title": "Layer Properties - points — Simbologia",
+  "options_providers": "08-opcoes-processamento-provedores.png",
+  "translation": "pt_BR"
+}

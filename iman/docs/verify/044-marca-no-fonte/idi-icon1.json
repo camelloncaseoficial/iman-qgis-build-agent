@@ -1,0 +1,149 @@
+[
+  {
+    "exe": "build\\apps\\qgis-ltr\\bin\\qgis.exe",
+    "group": "IDI_ICON1",
+    "matchApprovedIco": true,
+    "images": [
+      {
+        "w": 16,
+        "h": 16,
+        "bits": 32,
+        "sha256": "278ad22f537ed46f65e45fa53f9d54080e6ad476d092244672e7611f87cef4e2"
+      },
+      {
+        "w": 24,
+        "h": 24,
+        "bits": 32,
+        "sha256": "775850c71499fe60b9d373efa78f3f6818de363454ee8e7a70c9e26c76f4ba85"
+      },
+      {
+        "w": 32,
+        "h": 32,
+        "bits": 32,
+        "sha256": "5e4863d4ffe6d9f216a3e1610ee1b2a5135d01ff6cdfae3033c81059f5e5bebf"
+      },
+      {
+        "w": 48,
+        "h": 48,
+        "bits": 32,
+        "sha256": "0f85758bf19de5482b053bb8a2568c234c44cfb92fe2c14f67c7c99735283f8e"
+      },
+      {
+        "w": 64,
+        "h": 64,
+        "bits": 32,
+        "sha256": "d4b43d1da01847093300ff2548c01284903efcc88c2b0a571d7badf6fb45e895"
+      },
+      {
+        "w": 128,
+        "h": 128,
+        "bits": 32,
+        "sha256": "4c05018eb50b4d618d50ee85e7f7a94e9c7f3b252d988db064966b7b13715333"
+      },
+      {
+        "w": 256,
+        "h": 256,
+        "bits": 32,
+        "sha256": "4adec453e0304223f911451259a3af33f007a84d49a7dd4a33633a75af966ae5"
+      }
+    ]
+  },
+  {
+    "exe": "build\\apps\\qgis-ltr\\qgiscrashhandler.exe",
+    "group": "IDI_ICON1",
+    "matchApprovedIco": true,
+    "images": [
+      {
+        "w": 16,
+        "h": 16,
+        "bits": 32,
+        "sha256": "278ad22f537ed46f65e45fa53f9d54080e6ad476d092244672e7611f87cef4e2"
+      },
+      {
+        "w": 24,
+        "h": 24,
+        "bits": 32,
+        "sha256": "775850c71499fe60b9d373efa78f3f6818de363454ee8e7a70c9e26c76f4ba85"
+      },
+      {
+        "w": 32,
+        "h": 32,
+        "bits": 32,
+        "sha256": "5e4863d4ffe6d9f216a3e1610ee1b2a5135d01ff6cdfae3033c81059f5e5bebf"
+      },
+      {
+        "w": 48,
+        "h": 48,
+        "bits": 32,
+        "sha256": "0f85758bf19de5482b053bb8a2568c234c44cfb92fe2c14f67c7c99735283f8e"
+      },
+      {
+        "w": 64,
+        "h": 64,
+        "bits": 32,
+        "sha256": "d4b43d1da01847093300ff2548c01284903efcc88c2b0a571d7badf6fb45e895"
+      },
+      {
+        "w": 128,
+        "h": 128,
+        "bits": 32,
+        "sha256": "4c05018eb50b4d618d50ee85e7f7a94e9c7f3b252d988db064966b7b13715333"
+      },
+      {
+        "w": 256,
+        "h": 256,
+        "bits": 32,
+        "sha256": "4adec453e0304223f911451259a3af33f007a84d49a7dd4a33633a75af966ae5"
+      }
+    ]
+  },
+  {
+    "exe": "oficial\\bin\\qgis-ltr-bin.exe",
+    "group": "IDI_ICON1",
+    "matchApprovedIco": false,
+    "images": [
+      {
+        "w": 16,
+        "h": 16,
+        "bits": 32,
+        "sha256": "ef0772d8565dbc79531f4d6005a6bf91d399a9164145cb1de8bc4f15f10ed47d"
+      },
+      {
+        "w": 24,
+        "h": 24,
+        "bits": 32,
+        "sha256": "32008d1b9e5bae45497f3de4e3c1bbc6f8a6262e51653a1dee0e9e7dce6c2fd6"
+      },
+      {
+        "w": 32,
+        "h": 32,
+        "bits": 32,
+        "sha256": "ebf994e1e0e7003bae031ab955edfe3eb74f7d644acd0dcb0beafeb7f8a21132"
+      },
+      {
+        "w": 48,
+        "h": 48,
+        "bits": 32,
+        "sha256": "41c02b0013433df3a8abe0f4859a24454a54fcd829ebc5017c885d94334d22dd"
+      },
+      {
+        "w": 96,
+        "h": 96,
+        "bits": 32,
+        "sha256": "642adaefca84fe09f2a3be1a1d6ce41ec0717077e94806f2e59db3ff5a608408"
+      },
+      {
+        "w": 128,
+        "h": 128,
+        "bits": 32,
+        "sha256": "47affef6c55e11af7949c6eb1eaa69aadfef2a31a9bb6fe6912f87f1158c27bb"
+      },
+      {
+        "w": 256,
+        "h": 256,
+        "bits": 32,
+        "sha256": "3b63e64409a7124272d86c92d28771803209bfdedc0a735b3475bb1773958c1a"
+      }
+    ]
+  }
+]
