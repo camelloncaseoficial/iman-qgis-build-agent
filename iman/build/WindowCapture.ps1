@@ -35,7 +35,7 @@ public static class ImanWindowCapture
     }
     public static string Title(IntPtr h) { var s = new StringBuilder(512); GetWindowText(h, s, 512); return s.ToString(); }
     public static string ClassName(IntPtr h) { var s = new StringBuilder(256); GetClassName(h, s, 256); return s.ToString(); }
-    public static int[] Size(IntPtr h) { RECT r; GetWindowRect(h, out r); return new[] { r.Right - r.Left, r.Bottom - r.Top }; }
+    public static int[] Size(IntPtr h) { PhysicalCoordinates(); RECT r; GetWindowRect(h, out r); return new[] { r.Right - r.Left, r.Bottom - r.Top }; }
     [DllImport("user32.dll")] static extern IntPtr GetWindowDC(IntPtr hwnd);
     [DllImport("user32.dll")] static extern int ReleaseDC(IntPtr hwnd, IntPtr hdc);
     [DllImport("gdi32.dll")] static extern IntPtr CreateCompatibleDC(IntPtr hdc);
@@ -47,6 +47,7 @@ public static class ImanWindowCapture
     // PrintWindow num bitmap GDI; quem chama salva (System.Drawing) e libera com DeleteObject
     public static IntPtr Grab(IntPtr h)
     {
+        PhysicalCoordinates();
         RECT r; GetWindowRect(h, out r);
         int w = r.Right - r.Left, ht = r.Bottom - r.Top;
         if (w <= 0 || ht <= 0) return IntPtr.Zero;
@@ -61,14 +62,13 @@ public static class ImanWindowCapture
         if (!ok) { DeleteObject(bmp); return IntPtr.Zero; }
         return bmp;
     }
-    [DllImport("user32.dll")] public static extern bool SetProcessDPIAware();
+    [DllImport("user32.dll")] static extern IntPtr SetThreadDpiAwarenessContext(IntPtr ctx);
+    // coordenadas reais de tela (sem a escala do Windows): DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2
+    static void PhysicalCoordinates() { SetThreadDpiAwarenessContext(new IntPtr(-4)); }
     public static void Close(IntPtr h) { PostMessage(h, 0x0010, IntPtr.Zero, IntPtr.Zero); }
 }
 '@
 }
-
-# coordenadas reais de tela (sem a escala do Windows), para a captura nao sair cortada nem com borda
-[void][ImanWindowCapture]::SetProcessDPIAware()
 
 # Espera ate $TimeoutSeconds por uma janela visivel do processo que passe no filtro; devolve o handle ou $null.
 function Wait-ProcessWindow([int] $ProcessId, [scriptblock] $Filter, [int] $TimeoutSeconds = 60) {
