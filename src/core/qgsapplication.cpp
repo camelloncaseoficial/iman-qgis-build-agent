@@ -531,6 +531,12 @@ void QgsApplication::installTranslators()
     mQtBaseTranslator.reset( );
 
   }
+  // IMAN: remove a traducao sobreposta da marca instalada antes (D-IMAN-041)
+  for ( QTranslator *imanTranslator : findChildren<QTranslator *>( QStringLiteral( "imanTranslator" ), Qt::FindDirectChildrenOnly ) )
+  {
+    removeTranslator( imanTranslator );
+    delete imanTranslator;
+  }
 
   if ( *sTranslation() != QLatin1String( "C" ) )
   {
@@ -573,6 +579,19 @@ void QgsApplication::installTranslators()
     else
     {
       QgsDebugMsgLevel( QStringLiteral( "loading of qtbase translation failed %1/qt_%2" ).arg( qtTranslationsPath, *sTranslation() ), 2 );
+    }
+
+    // IMAN: traducao sobreposta da marca (iman_<idioma>.qm, gerada de iman/brand), instalada por ultimo para
+    // ter precedencia sobre a do QGIS (D-IMAN-041, regra 2)
+    QTranslator *imanTranslator = new QTranslator( this );
+    imanTranslator->setObjectName( QStringLiteral( "imanTranslator" ) );
+    if ( imanTranslator->load( QStringLiteral( "iman_" ) + *sTranslation(), i18nPath() ) )
+    {
+      installTranslator( imanTranslator );
+    }
+    else
+    {
+      delete imanTranslator;
     }
   }
 }

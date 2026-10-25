@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-  Configura, compila e instala o QGIS deste repo (sem mudanca no fonte) contra a raiz OSGeo4W fixada.
+  Configura, compila e instala o QGIS deste repo (com o patchset de iman/PATCHES.md) contra a raiz OSGeo4W fixada.
 
 .DESCRIPTION
   Flags de CMake: as de src/qgis-ltr/osgeo4w/package.sh do jef-n/OSGeo4W no commit fixado em
@@ -10,6 +10,10 @@
       do MSVC que a receita faz (o runtime embarcado e o msvcp140 14.38, mais velho que o compilador 14.44);
     - CMAKE_INSTALL_PREFIX em $WorkRoot\install\apps\qgis-ltr (mesmo layout de apps\qgis-ltr do oficial).
   Retomada: sem -Clean, um build interrompido continua do ponto em que o ninja parou.
+
+  Marca (BL-4): antes do configure, iman/brand/build_brand.py gera da fonte unica o iman_brand.h (na raiz do build,
+  que o QGIS ja poe no include path), a traducao sobreposta iman_<idioma>.ts (compilada pelo lrelease fixado) e o
+  qgis_global_settings.ini; depois do install, o .qm e o .ini vao para i18n e resources da instalacao.
 #>
 [CmdletBinding()]
 param([string] $WorkRoot, [switch] $Clean, [switch] $SkipInstall, [int] $Jobs = 0, [switch] $KeepGoing)
@@ -50,6 +54,15 @@ $bld = $Paths.Build
 $inst = Join-Path $Paths.Install 'apps\qgis-ltr'
 if ($Clean -and (Test-Path $bld)) { Write-Step "limpando $bld"; Remove-Item -Recurse -Force $bld }
 New-Item -ItemType Directory -Force $bld, "$bld\apps\qgis-ltr\pdb" | Out-Null
+
+# marca da fonte unica: cabecalho do C++, traducao sobreposta e configuracao global
+$brandOut = $Paths.Brand
+& "$o4w\bin\python3.exe" (Join-Path $RepoRoot 'iman\brand\build_brand.py') --out $brandOut --header "$bld\iman_brand.h"
+if ($LASTEXITCODE) { throw 'build_brand.py falhou' }
+$brandTs = Get-ChildItem "$brandOut\iman_*.ts" | Select-Object -First 1
+$brandQm = [IO.Path]::ChangeExtension($brandTs.FullName, '.qm')
+& "$o4w\apps\Qt5\bin\lrelease.exe" -silent $brandTs.FullName -qm $brandQm
+if ($LASTEXITCODE) { throw "lrelease falhou em $($brandTs.Name)" }
 
 function M([string] $p) { $p -replace '\\', '/' }
 $cmake = Join-Path $Paths.Tools 'cmake\bin\cmake.exe'
@@ -116,6 +129,12 @@ if (-not (Test-Path "$bld\build.ninja") -or -not (Test-Path $cfgStamp) -or (Get-
   $timings.configureSeconds = [int]((Get-Date) - $t0).TotalSeconds
 }
 
+# O ninja nao rastreia o .ico que o qgis_win32.rc embute (IDI_ICON1 do qgis.exe e do crash handler): sem isto, um
+# build incremental depois de trocar o icone mantem o icone antigo no executavel. Medido na fatia 044.
+$appIcon = Get-Item (Join-Path $src 'src\app\qgis.ico')
+Get-ChildItem $bld -Recurse -Filter 'qgis_win32.rc.res' | Where-Object { $_.LastWriteTime -lt $appIcon.LastWriteTime } |
+  ForEach-Object { Write-Step "recurso desatualizado, recompila: $($_.FullName)"; Remove-Item $_.FullName }
+
 $t0 = Get-Date
 # O win_flex usa um temporario de nome fixo em %TEMP% (~flex_out_main_N): dois flex em paralelo apagam o
 # arquivo um do outro ("error deleting file") ou, pior, misturam o conteudo e geram um .cpp corrompido que o
@@ -144,6 +163,9 @@ if (-not $SkipInstall) {
   Write-Step 'cmake --install'
   & $cmake --install (M $bld) --config Release *>&1 | Out-File -Append $log
   if ($LASTEXITCODE) { throw "install falhou (ver $log)" }
+  # o install repoe o .ini do QGIS: a marca vai por cima a cada install
+  Copy-Item $brandQm (Join-Path $inst 'i18n') -Force
+  Copy-Item (Join-Path $brandOut 'qgis_global_settings.ini') (Join-Path $inst 'resources\qgis_global_settings.ini') -Force
   $timings.installSeconds = [int]((Get-Date) - $t0).TotalSeconds
 }
 
