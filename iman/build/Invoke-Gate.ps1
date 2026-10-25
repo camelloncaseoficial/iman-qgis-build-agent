@@ -4,9 +4,11 @@
 
 .DESCRIPTION
   Um comando, tres verificacoes, na arvore commitada:
+    0. retrato do QGIS oficial no comeco da rodada (Test-OfficialQgisUntouched.ps1 -Baseline): a guarda do smoke
+       compara contra ele e prova que esta rodada nao tocou o oficial (ressalva R1 do gate 043);
     1. patchset: Test-Patchset.ps1 (todo arquivo do QGIS alterado esta em iman/PATCHES.md, e vice-versa);
     2. build incremental: Build-Qgis.ps1 sem -Clean, sem rede para dependencias (Get-Osgeo4wPackages -Offline);
-    3. smoke: Invoke-Smoke.ps1 (versao, provedores, plugins, native:buffer, janela + .qgz, guarda do QGIS oficial).
+    3. smoke: Invoke-Smoke.ps1 (versao, provedores, plugins, native:buffer, janela + .qgz, marca, guarda).
   Pre-requisito: a bancada ja montada uma vez por Invoke-ImanBuild.ps1. Sai com 0 so se as tres passarem.
 #>
 [CmdletBinding()]
@@ -18,6 +20,9 @@ $ErrorActionPreference = 'Continue'
 $dirty = & git -C $RepoRoot status --porcelain
 if ($dirty) { Write-Host 'GATE: arvore com mudanca nao commitada; o gate roda na arvore commitada'; $dirty; exit 1 }
 Write-Host "GATE qgis-build em $(& git -C $RepoRoot rev-parse --short HEAD)"
+
+& pwsh -NoProfile -File "$PSScriptRoot\Test-OfficialQgisUntouched.ps1" @wr -Baseline
+if ($LASTEXITCODE) { Write-Host 'GATE FALHOU: retrato da guarda'; exit 1 }
 
 & pwsh -NoProfile -File "$PSScriptRoot\Test-Patchset.ps1" @wr
 if ($LASTEXITCODE) { Write-Host 'GATE FALHOU: patchset'; exit 1 }
