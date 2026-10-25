@@ -17,6 +17,7 @@
 #include <memory>
 #include <iostream>
 #include <QFile>
+#include <QTranslator>
 
 #define _NO_CVCONST_H
 #define _CRT_STDIO_ISO_WIDE_SPECIFIERS
@@ -26,6 +27,7 @@
 #include "qgscrashdialog.h"
 #include "qgsstacktrace.h"
 #include "qgscrashreport.h"
+#include "iman_brand.h" // IMAN: marca da fonte unica, gerado no build a partir de iman/brand
 
 
 int main( int argc, char *argv[] )
@@ -41,6 +43,16 @@ int main( int argc, char *argv[] )
   QApplication::setQuitOnLastWindowClosed( true );
   QCoreApplication::setOrganizationName( "QGIS" );
   QCoreApplication::setApplicationName( "QGIS3" );
+
+  // IMAN: o crash handler fala o idioma padrao do produto, com a traducao do QGIS e a sobreposta da marca por
+  // cima (D-IMAN-041, regra 3); os .qm ficam em i18n, ao lado do executavel
+  const QString i18nPath = QCoreApplication::applicationDirPath() + QStringLiteral( "/i18n" );
+  for ( const char *prefix : { "qgis_", "iman_" } )
+  {
+    QTranslator *translator = new QTranslator( &app );
+    if ( translator->load( QString::fromLatin1( prefix ) + QString::fromUtf8( IMAN_DEFAULT_LOCALE ), i18nPath ) )
+      QCoreApplication::installTranslator( translator );
+  }
 
   QString extraInfoFile = QString( argv[1] );
   std::cout << "Extra Info File: " << extraInfoFile.toUtf8().constData() << std::endl;

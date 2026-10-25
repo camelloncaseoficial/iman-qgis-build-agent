@@ -42,7 +42,8 @@ const QString QgsCrashReport::toHtml() const
   QStringList reportData;
   const QString thisCrashID = crashID();
   if ( !thisCrashID.isEmpty() )
-    reportData.append( QStringLiteral( "<b>Crash ID</b>: <a href='https://github.com/qgis/QGIS/search?q=%1&type=Issues'>%1</a><br>" ).arg( thisCrashID ) );
+    // IMAN: o Crash ID fica como texto, sem link para a busca no GitHub do QGIS (D-IMAN-041, regra 3)
+    reportData.append( QStringLiteral( "<b>Crash ID</b>: %1<br>" ).arg( thisCrashID ) );
 
   if ( flags().testFlag( QgsCrashReport::Stack ) )
   {
