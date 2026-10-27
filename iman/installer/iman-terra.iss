@@ -96,19 +96,19 @@ Name: "{autodesktop}\{#ProductName}"; Filename: "{app}\bin\iman-terra.exe"; Work
 ; As chaves vazias saem na desinstalacao (uninsdeletekeyifempty), o valor e o ProgID saem sempre.
 Root: HKCU; Subkey: "Software\Classes\.qgs"; Flags: uninsdeletekeyifempty
 Root: HKCU; Subkey: "Software\Classes\.qgs\OpenWithProgids"; Flags: uninsdeletekeyifempty
-Root: HKCU; Subkey: "Software\Classes\.qgs\OpenWithProgids"; ValueType: none; ValueName: "IMANTerra.qgs"; Flags: uninsdeletevalue
+Root: HKCU; Subkey: "Software\Classes\.qgs\OpenWithProgids"; ValueType: string; ValueName: "IMANTerra.qgs"; ValueData: ""; Flags: uninsdeletevalue
 Root: HKCU; Subkey: "Software\Classes\IMANTerra.qgs"; ValueType: string; ValueName: ""; ValueData: "Projeto do {#ProductName}"; Flags: uninsdeletekey
 Root: HKCU; Subkey: "Software\Classes\IMANTerra.qgs\DefaultIcon"; ValueType: string; ValueName: ""; ValueData: "{app}\iman\icons\iman-terra-qgs.ico"
 Root: HKCU; Subkey: "Software\Classes\IMANTerra.qgs\shell\open\command"; ValueType: string; ValueName: ""; ValueData: """{app}\bin\iman-terra.exe"" ""%1"""
 Root: HKCU; Subkey: "Software\Classes\.qgz"; Flags: uninsdeletekeyifempty
 Root: HKCU; Subkey: "Software\Classes\.qgz\OpenWithProgids"; Flags: uninsdeletekeyifempty
-Root: HKCU; Subkey: "Software\Classes\.qgz\OpenWithProgids"; ValueType: none; ValueName: "IMANTerra.qgz"; Flags: uninsdeletevalue
+Root: HKCU; Subkey: "Software\Classes\.qgz\OpenWithProgids"; ValueType: string; ValueName: "IMANTerra.qgz"; ValueData: ""; Flags: uninsdeletevalue
 Root: HKCU; Subkey: "Software\Classes\IMANTerra.qgz"; ValueType: string; ValueName: ""; ValueData: "Projeto do {#ProductName}"; Flags: uninsdeletekey
 Root: HKCU; Subkey: "Software\Classes\IMANTerra.qgz\DefaultIcon"; ValueType: string; ValueName: ""; ValueData: "{app}\iman\icons\iman-terra-qgz.ico"
 Root: HKCU; Subkey: "Software\Classes\IMANTerra.qgz\shell\open\command"; ValueType: string; ValueName: ""; ValueData: """{app}\bin\iman-terra.exe"" ""%1"""
 Root: HKCU; Subkey: "Software\Classes\.qlr"; Flags: uninsdeletekeyifempty
 Root: HKCU; Subkey: "Software\Classes\.qlr\OpenWithProgids"; Flags: uninsdeletekeyifempty
-Root: HKCU; Subkey: "Software\Classes\.qlr\OpenWithProgids"; ValueType: none; ValueName: "IMANTerra.qlr"; Flags: uninsdeletevalue
+Root: HKCU; Subkey: "Software\Classes\.qlr\OpenWithProgids"; ValueType: string; ValueName: "IMANTerra.qlr"; ValueData: ""; Flags: uninsdeletevalue
 Root: HKCU; Subkey: "Software\Classes\IMANTerra.qlr"; ValueType: string; ValueName: ""; ValueData: "Definição de camada do {#ProductName}"; Flags: uninsdeletekey
 Root: HKCU; Subkey: "Software\Classes\IMANTerra.qlr\DefaultIcon"; ValueType: string; ValueName: ""; ValueData: "{app}\iman\icons\iman-terra-qlr.ico"
 Root: HKCU; Subkey: "Software\Classes\IMANTerra.qlr\shell\open\command"; ValueType: string; ValueName: ""; ValueData: """{app}\bin\iman-terra.exe"" ""%1"""

@@ -2,12 +2,15 @@
 # Espera a janela principal, coleta o nome interno e as pastas que o processo usa, o AUMI, o runtime do Visual C++
 # carregado e o resultado de uma notificacao do Windows; grava launch-facts.json em IMAN_FACTS_OUT e fecha o QGIS.
 # So coleta fatos: quem decide o que passa e o Test-Installed.ps1.
+# O PYQGIS_STARTUP roda logo depois do Py_Initialize, antes de o pacote qgis estar no sys.path: aqui so o PyQt5;
+# o qgis e importado dentro de collect(), com a janela ja aberta.
 import ctypes
 import json
 import os
+import traceback
 from ctypes import wintypes
 
-from qgis.PyQt.QtCore import QSettings, QStandardPaths, QTimer
+from PyQt5.QtCore import QSettings, QStandardPaths, QTimer
 
 out_dir = os.environ["IMAN_FACTS_OUT"]
 facts = {"pid": os.getpid()}
@@ -52,14 +55,32 @@ def process_aumi():
     return value
 
 
-def collect():
-    from qgis.core import QgsApplication
-    from qgis.gui import QgsGui, QgsNative
-    from qgis.utils import iface
+def write_facts():
+    with open(os.path.join(out_dir, "launch-facts.json"), "w", encoding="utf-8") as fh:
+        json.dump(facts, fh, ensure_ascii=False, indent=2)
 
+
+def collect():
+    try:
+        from qgis.utils import iface
+    except ImportError:
+        QTimer.singleShot(1000, collect)
+        return
     if iface is None or not iface.mainWindow().isVisible():
         QTimer.singleShot(1000, collect)
         return
+    try:
+        collect_facts(iface)
+    except Exception:
+        facts["error"] = traceback.format_exc()
+        write_facts()
+    QTimer.singleShot(4000, iface.actionExit().trigger)
+
+
+def collect_facts(iface):
+    from qgis.core import QgsApplication
+    from qgis.gui import QgsGui, QgsNative
+
     facts["organization"] = QgsApplication.organizationName()
     facts["organization_domain"] = QgsApplication.organizationDomain()
     facts["application"] = QgsApplication.applicationName()
@@ -76,9 +97,7 @@ def collect():
     settings.transient = True
     result = native.showDesktopNotification("IMAN Terra", "Notificacao de teste da fatia 047", settings)
     facts["notification_successful"] = bool(result.successful)
-    with open(os.path.join(out_dir, "launch-facts.json"), "w", encoding="utf-8") as fh:
-        json.dump(facts, fh, ensure_ascii=False, indent=2)
-    QTimer.singleShot(4000, iface.actionExit().trigger)
+    write_facts()
 
 
 QTimer.singleShot(2000, collect)

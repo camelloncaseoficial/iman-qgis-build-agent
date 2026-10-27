@@ -141,4 +141,8 @@ function Import-QgisRuntime([string] $Osgeo4wRoot, [string] $AppRoot, [string] $
   $env:QT_PLUGIN_PATH = "$AppRoot\qtplugins;$Osgeo4wRoot\apps\qt5\plugins"
   $env:PYTHONPATH = "$AppRoot\python;$env:PYTHONPATH"
   $env:QGIS_CUSTOM_CONFIG_PATH = $Profiles
+  # O WinToast cria ou regrava Start Menu\Programs\<QGIS_WIN_APP_NAME>.lnk a cada abertura (fatia 044: QGIS3.lnk;
+  # fatia 047: o build criou IMANTerra.lnk). Uma pasta que nao existe faz a criacao falhar: rodado por estes
+  # scripts, nenhum alvo grava atalho no Menu Iniciar (sem notificacao nativa, o que o smoke nao usa).
+  $env:QGIS_WIN_APP_NAME = 'iman-sem-atalho-no-menu\iman-sem-atalho'
 }

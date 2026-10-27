@@ -83,7 +83,7 @@ if ($Phase -eq 'Install') {
   $null = Invoke-Guard -Baseline
   $distroBefore = Get-ProfileHashes $distroProfile
   $distroBefore | Set-Content (Join-Path $Run 'perfil-distro-antes.sha256')
-  $entriesBefore = Get-UninstallEntries
+  $entriesBefore = @(Get-UninstallEntries)
   $treeBefore = @(Get-ChildItem $InstalledRoot -Force -ErrorAction SilentlyContinue | ForEach-Object Name)
   $result.before = [ordered]@{ distroProfileFiles = $distroBefore.Count; entries = $entriesBefore; appTop = $treeBefore; shortcuts = @(Get-ProductShortcuts) }
 
@@ -94,7 +94,7 @@ if ($Phase -eq 'Install') {
   $seconds = [int]((Get-Date) - $t0).TotalSeconds
   Add-Check 'A6:instalou' ($done -and $p.ExitCode -eq 0) ([ordered]@{ exitCode = $p.ExitCode; seconds = $seconds; installer = $Installer })
   $logText = if (Test-Path $log) { Get-Content $log -Raw } else { '' }
-  $modeLines = @($logText -split "`r?`n" | Where-Object { $_ -match 'Privileges required|Administrative install mode|Install mode|elevat' })
+  $modeLines = @($logText -split "`r?`n" | Where-Object { $_ -match '\s(Administrative install mode|Install mode root key|Privileges required)' })
   Add-Check 'A6:sem-elevacao' ($logText -match 'Administrative install mode: No' -and $logText -notmatch 'Administrative install mode: Yes') ([ordered]@{ log = $modeLines })
 
   $old = @('qgis', 'launcher', 'assets', 'demo', 'notices', 'profile-template', 'startup', 'BUILD_ID.txt', 'qgis-manifest.txt')
@@ -106,7 +106,7 @@ if ($Phase -eq 'Install') {
   }
   Add-Check 'A6:arvore-antiga-saiu' ($oldLeft.Count -eq 0) ([ordered]@{ before = $treeBefore; oldLeft = $oldLeft; after = @(Get-ChildItem $InstalledRoot -Force | ForEach-Object Name) })
   Add-Check 'A6:arvore-nova' ($new.exe -and $new.env -and $new.notices.Count -eq 3) $new
-  $entries = Get-UninstallEntries
+  $entries = @(Get-UninstallEntries)
   Add-Check 'A6:uma-entrada-0.4.0' ($entries.Count -eq 1 -and $entries[0].version -eq $brand.product_version -and $entries[0].key -eq $appId) ([ordered]@{ before = $entriesBefore; after = $entries })
   $distroAfter = Get-ProfileHashes $distroProfile
   $distroAfter | Set-Content (Join-Path $Run 'perfil-distro-depois-da-instalacao.sha256')
@@ -122,7 +122,7 @@ if ($Phase -eq 'Install') {
   $null = $p.WaitForExit($TimeoutSeconds * 1000)
   # o desinstalador do Inno se copia para %TEMP% e segue de la: espera a pasta e a entrada sumirem
   $deadline = (Get-Date).AddSeconds($TimeoutSeconds)
-  while ((Get-Date) -lt $deadline -and ((Test-Path $uninst) -or (Get-UninstallEntries).Count)) { Start-Sleep -Seconds 5 }
+  while ((Get-Date) -lt $deadline -and ((Test-Path $uninst) -or @(Get-UninstallEntries).Count)) { Start-Sleep -Seconds 5 }
   Add-Check 'A6:desinstalou' (-not (Test-Path $uninst)) ([ordered]@{ seconds = [int]((Get-Date) - $t0).TotalSeconds; leftover = @(Get-ChildItem $InstalledRoot -Recurse -Force -ErrorAction SilentlyContinue | Select-Object -First 20 | ForEach-Object FullName) })
   Add-Check 'A6:arvore-saiu' (-not (Test-Path $InstalledRoot)) ([ordered]@{ path = $InstalledRoot; exists = (Test-Path $InstalledRoot) })
   Add-Check 'A6:atalhos-sairam' (@(Get-ProductShortcuts).Count -eq 0) ([ordered]@{ left = @(Get-ProductShortcuts) })
@@ -134,7 +134,7 @@ if ($Phase -eq 'Install') {
   }
   if (Test-Path 'HKCU:\Software\Classes\Applications\iman-terra.exe') { $assocLeft += 'HKCU\Software\Classes\Applications\iman-terra.exe' }
   Add-Check 'A6:associacoes-sairam' ($assocLeft.Count -eq 0) ([ordered]@{ left = $assocLeft })
-  Add-Check 'A6:entrada-saiu' ((Get-UninstallEntries).Count -eq 0) ([ordered]@{ entries = (Get-UninstallEntries) })
+  Add-Check 'A6:entrada-saiu' (@(Get-UninstallEntries).Count -eq 0) ([ordered]@{ entries = @(Get-UninstallEntries) })
   Add-Check 'A6:perfil-do-produto-ficou' (Test-Path (Join-Path $productProfile 'profiles')) ([ordered]@{ profile = $productProfile })
   $distroAfter = Get-ProfileHashes $distroProfile
   $distroAfter | Set-Content (Join-Path $Run 'perfil-distro-depois-da-desinstalacao.sha256')

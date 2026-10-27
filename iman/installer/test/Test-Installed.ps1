@@ -29,6 +29,7 @@ param(
   [int] $TimeoutSeconds = 180
 )
 . "$PSScriptRoot\..\..\build\Common.ps1"
+. "$PSScriptRoot\..\..\build\WindowCapture.ps1"
 $pwshExe = (Get-Process -Id $PID).Path
 $run = Join-Path $WorkRoot ("verify\installed-{0}" -f (Get-Date -Format 'yyyyMMdd-HHmmss'))
 $guardDir = Join-Path $run 'guard'
@@ -137,7 +138,9 @@ $dummy = Start-Process -FilePath "$env:SystemRoot\System32\PING.EXE" -ArgumentLi
 $info = Join-Path $run 'crash-info.txt'
 Write-LfFile $info @("$($dummy.Id)", '0', '0', '', '', "`"$exePath`"", 'QGIS Version: 3.44.13-Solothurn', 'Relatorio sintetico do teste da fatia 047')
 $crash = Start-Process -FilePath (Join-Path $InstalledRoot 'apps\qgis-ltr\qgiscrashhandler.exe') -ArgumentList "`"$info`"" -PassThru
-Start-Sleep -Seconds 8
+# o relatorio e gravado quando a janela "Uh-oh" aparece (como no Invoke-BrandCaptures.ps1)
+$null = Wait-ProcessWindow $crash.Id { param($w) [ImanWindowCapture]::Title($w) -like 'Uh-oh*' } 60
+Start-Sleep -Seconds 2
 $created = @(if (Test-Path $crashRoot) { Get-ChildItem $crashRoot -Directory | Where-Object { $_.FullName -notin $before } })
 if (-not $crash.HasExited) { Stop-Process -Id $crash.Id -Force }
 Stop-Process -Id $dummy.Id -Force -ErrorAction SilentlyContinue
@@ -170,12 +173,19 @@ Add-Check 'A7:padrao-do-qgz-igual' ($qgzBefore.hkcr -eq $qgzAfter.hkcr -and $qgz
 
 # 6. creditos do QGIS
 $credits = [ordered]@{}
-foreach ($f in 'LICENSE', 'AUTHORS', 'CONTRIBUTORS', 'SPONSORS', 'DONORS', 'TRANSLATORS') {
+foreach ($f in 'AUTHORS', 'CONTRIBUTORS', 'SPONSORS', 'DONORS', 'TRANSLATORS') {
   $a = Join-Path $InstalledRoot "apps\qgis-ltr\doc\$f"; $b = Join-Path $OfficialRoot "apps\qgis-ltr\doc\$f"
   $ha = if (Test-Path $a) { (Get-FileHash -Algorithm SHA256 $a).Hash } else { 'ausente' }
   $hb = if (Test-Path $b) { (Get-FileHash -Algorithm SHA256 $b).Hash } else { 'ausente' }
   $credits[$f] = [ordered]@{ installed = $ha; official = $hb; equal = ($ha -eq $hb) }
 }
+# o LICENSE do oficial e composto pelo pacote OSGeo4W (a GPL do QGIS seguida dos termos de Oracle, SZIP, ECW e
+# MrSID, medido na fatia 047): a GPL do QGIS da arvore tem de estar inteira dentro dele
+$licA = Join-Path $InstalledRoot 'apps\qgis-ltr\doc\LICENSE'; $licB = Join-Path $OfficialRoot 'apps\qgis-ltr\doc\LICENSE'
+$textA = if (Test-Path $licA) { [IO.File]::ReadAllText($licA).Replace("`r", '').Trim() } else { '' }
+$textB = if (Test-Path $licB) { [IO.File]::ReadAllText($licB).Replace("`r", '') } else { '' }
+$credits['LICENSE'] = [ordered]@{ installedBytes = (Get-Item $licA -ErrorAction SilentlyContinue).Length; officialBytes = (Get-Item $licB -ErrorAction SilentlyContinue).Length
+  equal = ($textA -and $textB.Contains($textA)); rule = 'a GPL do QGIS da arvore contida no LICENSE composto do oficial' }
 Add-Check 'A9:creditos-iguais-ao-oficial' (@($credits.Values | Where-Object { -not $_.equal }).Count -eq 0) $credits
 
 # 7. guarda
