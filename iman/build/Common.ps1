@@ -22,6 +22,9 @@ $Paths = @{
 
 $Osgeo4wMirror = 'https://download.osgeo.org/osgeo4w/v2'
 $LockFile = Join-Path $PSScriptRoot 'osgeo4w.lock.tsv'
+# tar do Windows (bsdtar, le .tar.bz2) pelo caminho: chamado do Git Bash, o tar.exe do PATH e o GNU tar do Git, que
+# le "D:\..." como host remoto (medido na fatia 047)
+$TarExe = Join-Path $env:SystemRoot 'System32\tar.exe'
 
 # Ferramentas fixadas: versao, URL e sha256 (o do CMake confere com o cmake-3.29.0-SHA-256.txt oficial;
 # o do bootstrapper do VS e o que a Microsoft embute na URL de download).

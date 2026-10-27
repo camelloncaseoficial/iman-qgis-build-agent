@@ -63,7 +63,7 @@ New-Item -ItemType Directory -Force (Join-Path $root 'etc\setup') | Out-Null
 $db = [System.Collections.Generic.List[string]]::new(); $db.Add('INSTALLED.DB 2')
 foreach ($r in $rows) {
   $tar = Join-Path $pkgDir ($r.Url -replace '/', '\')
-  $list = & tar.exe -xjvf $tar -C $root 2>&1
+  $list = & $TarExe -xjvf $tar -C $root 2>&1
   if ($LASTEXITCODE) { throw "tar falhou em $($r.File): $list" }
   $db.Add("$($r.Package) $($r.File) 0")
 }
