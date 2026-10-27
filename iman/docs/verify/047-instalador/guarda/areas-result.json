@@ -1,0 +1,58 @@
+{
+  "ok": true,
+  "root": "D:\\iman-terra-build\\guard-areas\\20261027-155021",
+  "areas": {
+    "hkcr-associacoes-e-progids": "^REG HKCR\\\\",
+    "hkcu-software-classes": "^REG HKCU\\\\Software\\\\Classes\\\\",
+    "userchoice": "^REG HKCU\\\\Software\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Explorer\\\\FileExts\\\\",
+    "notificacoes": "^REG HKCU\\\\Software\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Notifications\\\\Settings",
+    "menu-iniciar-do-oficial": "^C:\\\\ProgramData\\\\Microsoft\\\\Windows\\\\Start Menu\\\\Programs\\\\QGIS 3\\.44\\.13",
+    "desinstalacao-do-msi-oficial": "^HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Uninstall\\\\\\{740D7A65-CBA3-1014-A0B5-B03A9B7608F5\\}"
+  },
+  "expected": {
+    "controle": 0,
+    "hkcr-associacoes-e-progids": 1,
+    "hkcu-software-classes": 1,
+    "userchoice": 1,
+    "notificacoes": 1,
+    "menu-iniciar-do-oficial": 1,
+    "desinstalacao-do-msi-oficial": 1
+  },
+  "steps": {
+    "controle": {
+      "exit": 0,
+      "last": "GUARD OK: QGIS oficial, C:\\Users\\Francisco\\AppData\\Roaming\\QGIS, C:\\Users\\Francisco\\AppData\\Local\\QGIS, C:\\Users\\Francisco\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\QGIS3.lnk, C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\QGIS 3.44.13, registro, associacoes e notificacoes do QGIS identicos ao retrato de 2026-10-27T15:50:23 (37473 itens)",
+      "line": ""
+    },
+    "hkcr-associacoes-e-progids": {
+      "exit": 1,
+      "last": "GUARD FALHOU: o QGIS oficial ou os dados dele mudaram desde o retrato de 2026-10-27T15:50:27 (2 diferencas)",
+      "line": "REG HKCR\\.qgs|(padrao)|String|QGIS Project"
+    },
+    "hkcu-software-classes": {
+      "exit": 1,
+      "last": "GUARD FALHOU: o QGIS oficial ou os dados dele mudaram desde o retrato de 2026-10-27T15:50:31 (2 diferencas)",
+      "line": "REG HKCU\\Software\\Classes\\.qgs|SEM-VALORES"
+    },
+    "userchoice": {
+      "exit": 1,
+      "last": "GUARD FALHOU: o QGIS oficial ou os dados dele mudaram desde o retrato de 2026-10-27T15:50:34 (2 diferencas)",
+      "line": "REG HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\FileExts\\.qgs\\UserChoice|SEM-VALORES"
+    },
+    "notificacoes": {
+      "exit": 1,
+      "last": "GUARD FALHOU: o QGIS oficial ou os dados dele mudaram desde o retrato de 2026-10-27T15:50:37 (2 diferencas)",
+      "line": "REG HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Notifications\\Settings|SEM-VALORES"
+    },
+    "menu-iniciar-do-oficial": {
+      "exit": 1,
+      "last": "GUARD FALHOU: o QGIS oficial ou os dados dele mudaram desde o retrato de 2026-10-27T15:50:40 (2 diferencas)",
+      "line": "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\QGIS 3.44.13\\GRASS GIS 8.5.0.lnk|1950|639279958184545249"
+    },
+    "desinstalacao-do-msi-oficial": {
+      "exit": 1,
+      "last": "GUARD FALHOU: o QGIS oficial ou os dados dele mudaram desde o retrato de 2026-10-27T15:50:44 (2 diferencas)",
+      "line": "HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\{740D7A65-CBA3-1014-A0B5-B03A9B7608F5}|82402C7C8104BDB94FB03AB757E3C6BD854ED2213D32BB1134144FF1D52C2EA4"
+    }
+  }
+}
