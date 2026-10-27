@@ -152,6 +152,7 @@ const QgsSettingsEntryInteger *QgsApplication::settingsConnectionPoolMaximumConc
 #endif
 
 #include "qgsconfig.h"
+#include "iman_brand.h" // IMAN: marca da fonte unica, gerado no build a partir de iman/brand
 
 #include <gdal.h>
 #include <ogr_api.h>
@@ -170,9 +171,11 @@ const QgsSettingsEntryInteger *QgsApplication::settingsConnectionPoolMaximumConc
 QObject *ABISYM( QgsApplication::mFileOpenEventReceiver ) = nullptr;
 bool ABISYM( QgsApplication::mInitialized ) = false;
 bool ABISYM( QgsApplication::mRunningFromBuildDir ) = false;
-const char *QgsApplication::QGIS_ORGANIZATION_NAME = "QGIS";
-const char *QgsApplication::QGIS_ORGANIZATION_DOMAIN = "qgis.org";
-const char *QgsApplication::QGIS_APPLICATION_NAME = "QGIS3";
+// IMAN: nome interno do produto da fonte unica (D-IMAN-043): perfil, cache, crashes e registro proprios, nunca os
+// do QGIS oficial (BL-3)
+const char *QgsApplication::QGIS_ORGANIZATION_NAME = IMAN_INTERNAL_ORGANIZATION_NAME;
+const char *QgsApplication::QGIS_ORGANIZATION_DOMAIN = IMAN_INTERNAL_ORGANIZATION_DOMAIN;
+const char *QgsApplication::QGIS_APPLICATION_NAME = IMAN_INTERNAL_APPLICATION_NAME;
 QgsApplication::ApplicationMembers *QgsApplication::sApplicationMembers = nullptr;
 QgsAuthManager *QgsApplication::sAuthManager = nullptr;
 int ABISYM( QgsApplication::sMaxThreads ) = -1;

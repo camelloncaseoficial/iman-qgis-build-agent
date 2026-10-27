@@ -154,10 +154,14 @@ def write_header(path, brand):
         ("IMAN_PRODUCT_URL", brand["product_url"]),
         ("IMAN_ENGINE_LABEL", brand["engine_label"]),
         ("IMAN_DEFAULT_LOCALE", brand["default_locale"]),
+        # nome interno (D-IMAN-043): perfil, cache, crashes, registro e AUMI; nao e texto de exibicao
+        ("IMAN_INTERNAL_ORGANIZATION_NAME", brand["internal_organization_name"]),
+        ("IMAN_INTERNAL_ORGANIZATION_DOMAIN", brand["internal_organization_domain"]),
+        ("IMAN_INTERNAL_APPLICATION_NAME", brand["internal_application_name"]),
     ]
     text = "\n".join(
         ["// Gerado por iman/brand/build_brand.py a partir de iman/brand/brand.json. Nao editar.",
-         "// Textos de marca do produto para o C++ (UTF-8; use QString::fromUtf8).",
+         "// Textos de marca e nome interno do produto para o C++ (UTF-8; use QString::fromUtf8).",
          "#ifndef IMAN_BRAND_H",
          "#define IMAN_BRAND_H"]
         + ["#define %s %s" % (k, c_string(v)) for k, v in defs]
