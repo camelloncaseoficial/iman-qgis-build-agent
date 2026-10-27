@@ -9,8 +9,12 @@
     1. "official": a versao instalada no QGIS 3.44.13 oficial (etc/setup/installed.db do instalador oficial).
     2. "dated":    o tarball mais novo publicado no servidor ate o instante do pacote qgis-ltr oficial
                    (o que o build oficial tinha a mao quando compilou).
-  Raizes: BUILDDEPENDS e requires de qgis-ltr-common da receita qgis-ltr do jef-n/OSGeo4W num commit fixo,
-  fechadas pelos "requires:" do setup.ini.
+  Raizes: BUILDDEPENDS e requires de qgis-ltr-common da receita qgis-ltr do jef-n/OSGeo4W num commit fixo e, desde
+  a fatia 047, todo pacote do installed.db oficial menos os qgis-ltr* (que o nosso build substitui), fechadas pelos
+  "requires:" do setup.ini.
+  Coluna Runtime: "official" para o pacote que esta no installed.db oficial (entra na arvore instalada do produto),
+  "build-only" para o que so serve para compilar (os -devel e os dated; nao entram, decisao 3 do D-IMAN-043).
+  Sha256 ja gravado no lock anterior para o mesmo arquivo e mantido (o Get-Osgeo4wPackages.ps1 confere).
 
   Uso (rede, so leitura fora do diretorio de cache):
     pwsh -File iman/build/Resolve-Osgeo4wLock.ps1 -CacheRoot D:\iman-terra-build\cache
@@ -71,10 +75,18 @@ foreach ($l in (Get-Content $OfficialInstalledDb | Select-Object -Skip 1)) {
   $n, $f, $null = $l -split '\s+'
   $official[$n] = $f
 }
+# o conjunto de runtime do oficial, sem os pacotes do proprio QGIS (o nosso build entra no lugar deles)
+$officialRuntime = @($official.Keys | Where-Object { $_ -notmatch '^qgis-ltr($|-)' })
+
+$previousSha = @{}
+if (Test-Path $OutFile) {
+  Get-Content $OutFile | Where-Object { -not $_.StartsWith('#') } | ConvertFrom-Csv -Delimiter "`t" |
+    Where-Object Sha256 | ForEach-Object { $previousSha[$_.File] = $_.Sha256 }
+}
 
 # fecho pelos requires
 $queue = [System.Collections.Generic.Queue[string]]::new()
-$roots = @($buildDeps) + @($commonReq) | Sort-Object -Unique
+$roots = @($buildDeps) + @($commonReq) + $(if ($Latest) { @() } else { $officialRuntime }) | Sort-Object -Unique
 $roots | ForEach-Object { $queue.Enqueue($_) }
 $seen = @{}
 while ($queue.Count) {
@@ -102,7 +114,7 @@ function Get-Listing([string] $dir) {
 
 $out = foreach ($p in ($seen.Keys | Sort-Object)) {
   if (-not $dirs.ContainsKey($p)) {
-    [pscustomobject]@{ Package = $p; File = ''; Rule = 'missing-from-index'; Url = ''; Size = ''; Sha256 = ''; DatedPick = '' }
+    [pscustomobject]@{ Package = $p; File = ''; Rule = 'missing-from-index'; Url = ''; Size = ''; Sha256 = ''; DatedPick = ''; Runtime = '' }
     continue
   }
   $dir = $dirs[$p]
@@ -118,13 +130,17 @@ $out = foreach ($p in ($seen.Keys | Sort-Object)) {
     try { $size = (Invoke-WebRequest "$Mirror/$dir/$file" -Method Head).Headers['Content-Length'][0] }
     catch { $rule = "$rule-not-on-server" }
   }
-  [pscustomobject]@{ Package = $p; File = $file; Rule = $rule; Url = "$dir/$file"; Size = $size; Sha256 = ''; DatedPick = $(if ($dated) { $dated.File } else { '' }) }
+  [pscustomobject]@{ Package = $p; File = $file; Rule = $rule; Url = "$dir/$file"; Size = $size
+    Sha256 = $(if ($file -and $previousSha.ContainsKey($file)) { $previousSha[$file] } else { '' })
+    DatedPick = $(if ($dated) { $dated.File } else { '' })
+    Runtime = $(if ($official.ContainsKey($p) -and $p -notmatch '^qgis-ltr($|-)') { 'official' } else { 'build-only' }) }
 }
 
 $header = @(
   "# osgeo4w.lock.tsv gerado por Resolve-Osgeo4wLock.ps1 em $((Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ'))",
   "# mirror=$Mirror recipe=jef-n/OSGeo4W@$RecipeCommit cutoff=$($cutoff.ToString('yyyy-MM-ddTHH:mm:ssZ')) ($OfficialPackage)",
-  "# Sha256 e preenchido por Get-Osgeo4wPackages.ps1 no primeiro download e conferido nos seguintes."
+  "# Sha256 e preenchido por Get-Osgeo4wPackages.ps1 no primeiro download e conferido nos seguintes.",
+  "# Runtime=official: pacote do installed.db oficial, entra na arvore instalada; build-only: so para compilar."
 )
 Write-LfFile $OutFile ($header + ($out | ConvertTo-Csv -Delimiter "`t" -NoTypeInformation -UseQuotes Never))
 $out | Group-Object Rule | Select-Object Name, Count | Format-Table -AutoSize
