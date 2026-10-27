@@ -1,0 +1,158 @@
+# Licenca de cada pacote OSGeo4W da arvore do produto e a fonte dela no upstream (fatia 047).
+# Origem: ../iman-qgis-distro-agent/docs/licencas/inventario.csv (distro congelada, ultimo commit do arquivo
+# 5cbbb7b, 2026-09-07): colunas licenca, categoria, url_da_fonte e origem_da_informacao. As linhas com "047:" na
+# origem foram resolvidas ou corrigidas na fatia 047. Lido por iman/notices/Update-Notices.ps1.
+pacote	licenca	categoria	fonte_upstream	origem
+arrow-cpp	Apache-2.0	permissiva	https://github.com/apache/arrow	distro: repo-oficial (GitHub License API, apache/arrow)
+avce00	MIT	permissiva	http://avce00.maptools.org/dl/avce00-2.0.0.tar.gz	distro: arquivo de fonte upstream (cabecalho de avce00-2.0.0/avc_e00read.c, tarball que o recipe OSGeo4W baixa)
+base	MIT (utilitarios C de src/base: textreplace, bgspawn, getspecialfolder e outros); o xxmklink.exe e binario de terceiro sem licenca declarada no repositorio	permissiva	https://github.com/jef-n/OSGeo4W/tree/master/src/base	047: cabecalhos dos fontes em jef-n/OSGeo4W src/base (o repositorio nao tem LICENSE e o license.map esta vazio)
+brotli	MIT	permissiva	https://github.com/google/brotli	distro: repo-oficial (GitHub License API, google/brotli)
+c-blosc	BSD License (texto proprio do Blosc)	permissiva	https://github.com/Blosc/c-blosc/blob/main/LICENSE.txt	distro: repo-oficial (arquivo LICENSE de Blosc/c-blosc)
+cairo	Dupla: LGPL-2.1 OU MPL-1.1 (a escolha do destinatario)	copyleft-fraco	https://www.cairographics.org/	distro: site-oficial
+curl	curl License (tipo MIT/X)	permissiva	https://github.com/curl/curl/blob/master/COPYING	distro: repo-oficial (arquivo COPYING de curl/curl)
+curl-ca-bundle	MPL-2.0 (conjunto de CAs da Mozilla, extraido pelo curl)	copyleft-fraco	https://curl.se/docs/caextract.html	distro: repo-oficial do curl - o conteudo e o CA bundle da Mozilla
+exiv2	GPL-2.0-or-later (texto proprio no arquivo COPYING)	copyleft-forte	https://github.com/exiv2/exiv2/blob/main/COPYING	distro: repo-oficial (arquivo COPYING de exiv2/exiv2)
+expat	MIT	permissiva	https://github.com/libexpat/libexpat	distro: repo-oficial (GitHub License API, libexpat/libexpat)
+freetype	MULTIPLA: FreeType License (BSD-style com credito) OU GPL-2.0	permissiva	https://gitlab.freedesktop.org/freetype/freetype/-/blob/master/LICENSE.TXT	distro: repo-oficial (arquivo LICENSE.TXT de freetype/freetype)
+freexl	Tri-licenca MPL-1.1 OU GPL-2.0-or-later OU LGPL-2.1-or-later (a escolha do destinatario)	copyleft-fraco	https://www.gaia-gis.it/fossil/freexl/index	distro: site-oficial do projeto (gaia-gis)
+gdal	MIT (nucleo) + BSD-2/BSD-3 e outras em partes	permissiva	https://gdal.org/en/stable/license.html	distro: site-oficial + arquivo na arvore (apps/gdal/share/gdal/LICENSE.TXT, agregado)
+gdal-ecw	PROPRIETARIA: ERDAS ECW/JP2 Server Read-Only End-user SDK License Agreement v5.5 (Hexagon/Intergraph), que NAO permite distribuir aplicacao desktop com o SDK (secao 2.2); o plugin GDAL e MIT. Ver drivers de licenca condicionada	proprietaria-redistribuicao-bloqueada	https://download.osgeo.org/osgeo4w/v2/x86_64/release/gdal/gdal-dev/gdal-dev-ecw/gdal-dev-ecw-3.14.0-1183-940f719842-1.txt	047: campo license do setup.ini do OSGeo4W para o gdal-ecw (md5 57b34fd53b742820ebc1a884d5d34dd9)
+gdal-hdf5	MIT (plugin GDAL) - liga em HDF5 (BSD-3 com termos proprios)	permissiva	https://gdal.org/en/stable/license.html	distro: site-oficial (plugin do fonte GDAL)
+gdal-mrsid	PROPRIETARIA: Software License Agreement for MrSID Decode SDKs (Extensis); o plugin GDAL e MIT. Redistribuicao permitida com condicoes (secao 1.3). Ver drivers de licenca condicionada	proprietaria-redistribuicao-condicionada	https://download.osgeo.org/osgeo4w/v2/x86_64/release/gdal/gdal-dev/gdal-dev-mrsid/gdal-dev-mrsid-3.14.0-1183-940f719842-1.txt	047: campo license do setup.ini do OSGeo4W para o gdal-mrsid (md5 7e66c7da6f0609d1dc65242bc8ea9ba0)
+gdal-mss	MIT (plugin GDAL) - INUTIL sem o msodbcsql proprietario	permissiva	https://gdal.org/en/stable/drivers/vector/mssqlspatial.html	distro: site-oficial (plugin do fonte GDAL) - dependencia medida na tabela de importacao
+gdal-oracle	PROPRIETARIA na dependencia - plugins GDAL sob MIT ligam em OCI.dll (Oracle Instant Client)	proprietaria-redistribuicao-condicionada	https://www.oracle.com/database/technologies/instant-client.html	distro: recipe OSGeo4W baixa o Instant Client de download.oracle.com - OTN License NAO foi obtida nesta fatia
+gdal-sosi	MIT (plugin GDAL)	permissiva	https://gdal.org/en/stable/license.html	distro: site-oficial (plugin do fonte GDAL)
+gdal313-runtime	MIT (nucleo) + BSD-2/BSD-3 e outras em partes	permissiva	https://gdal.org/en/stable/license.html	distro: site-oficial (mesmo fonte do pacote gdal)
+geos	LGPL-2.1	copyleft-fraco	https://github.com/libgeos/geos/blob/main/COPYING	distro: repo-oficial (GitHub License API, libgeos/geos)
+gpsbabel	GPL-2.0	copyleft-forte	https://github.com/gpsbabel/gpsbabel	distro: repo-oficial (GitHub License API, gpsbabel/gpsbabel)
+grass	GPL-2.0-or-later	copyleft-forte	https://grass.osgeo.org/about/license/	distro: site-oficial + arquivo na arvore (apps/grass/grass85/COPYING)
+grass8	GPL-2.0-or-later	copyleft-forte	https://grass.osgeo.org/about/license/	distro: site-oficial - metapacote VAZIO na arvore
+gs	AGPL (GPL Ghostscript - fontes/CMap sob AGPL com excecao)	copyleft-forte	https://github.com/ArtifexSoftware/ghostpdl/blob/master/LICENSE	distro: repo-oficial (arquivo LICENSE de ArtifexSoftware/ghostpdl)
+gsl	GPL-3.0	copyleft-forte	https://www.gnu.org/software/gsl/	distro: repo-oficial (GitHub License API, BrianGladman/gsl - port do GNU GSL)
+hdf4	Termos proprios do HDF Group (BSD-style)	permissiva	https://github.com/HDFGroup/hdf4/blob/master/COPYING	distro: repo-oficial (arquivo COPYING de HDFGroup/hdf4)
+hdf5	BSD-3-Clause com termos proprios do HDF Group	permissiva	https://github.com/HDFGroup/hdf5/blob/develop/COPYING	distro: repo-oficial (arquivo COPYING de HDFGroup/hdf5)
+icu	Unicode License v3	permissiva	https://github.com/unicode-org/icu/blob/main/LICENSE	distro: repo-oficial (arquivo LICENSE de unicode-org/icu)
+laszip	Apache-2.0	permissiva	https://github.com/LASzip/LASzip	distro: repo-oficial (GitHub License API, LASzip/LASzip)
+lerc	Apache-2.0	permissiva	https://github.com/Esri/lerc	distro: repo-oficial (GitHub License API, Esri/lerc)
+libaec	BSD-2-Clause	permissiva	https://github.com/MathisRosenhauer/libaec	distro: repo-oficial (GitHub License API)
+libarchive	BSD-2-Clause (a distribuicao como um todo - arquivos com notas proprias)	permissiva	https://github.com/libarchive/libarchive/blob/master/COPYING	distro: repo-oficial (arquivo COPYING de libarchive/libarchive)
+libgeotiff	MIT/X-style (texto proprio, Niles Ritter / SoftwareBistro)	permissiva	https://github.com/OSGeo/libgeotiff/blob/master/libgeotiff/LICENSE	distro: projeto oficial OSGeo - recipe OSGeo4W baixa de download.osgeo.org/geotiff
+libharu	Zlib License	permissiva	https://github.com/libharu/libharu	distro: repo-oficial (GitHub License API, libharu/libharu)
+libiconv	LGPL (biblioteca) / GPL (utilitarios) - projeto GNU	copyleft-fraco	https://www.gnu.org/software/libiconv/	distro: projeto GNU oficial - recipe OSGeo4W baixa de ftp.gnu.org/pub/gnu/libiconv
+libjpeg-turbo	MULTIPLA: IJG License + BSD-3-Clause (zlib para partes)	permissiva	https://github.com/libjpeg-turbo/libjpeg-turbo/blob/main/LICENSE.md	distro: repo-oficial (arquivo LICENSE.md de libjpeg-turbo)
+libjxl	BSD-3-Clause	permissiva	https://github.com/libjxl/libjxl	distro: repo-oficial (GitHub License API, libjxl/libjxl)
+liblas	BSD-3-Clause	permissiva	https://github.com/libLAS/libLAS/blob/master/LICENSE.txt	distro: repo-oficial (arquivo LICENSE.txt de libLAS/libLAS) + arquivo na arvore (doc/COPYING)
+libmysql	GPL-2.0 com FOSS License Exception, OU licenca comercial (Oracle/MySQL)	copyleft-forte	https://dev.mysql.com/doc/refman/8.0/en/license-info.html	distro: recipe OSGeo4W baixa de downloads.mysql.com - termos exatos NAO confirmados nesta fatia
+libpng	PNG Reference Library License (libpng license)	permissiva	http://www.libpng.org/pub/png/src/libpng-LICENSE.txt	distro: projeto oficial no SourceForge, recipe OSGeo4W aponta o tarball libpng-1.6.x
+libpq	PostgreSQL License (tipo BSD/MIT)	permissiva	https://www.postgresql.org/about/licence/	distro: site-oficial
+librttopo	GPL-2.0	copyleft-forte	https://git.osgeo.org/gitea/rttopo/librttopo	distro: repo-oficial (arquivo COPYING no gitea da OSGeo)
+libspatialindex	MIT (desde a 1.8.0 - era LGPL antes)	permissiva	https://github.com/libspatialindex/libspatialindex/blob/master/LICENSE.txt	distro: repo-oficial (arquivo LICENSE.txt de libspatialindex)
+libspatialite	Tri-licenca MPL-1.1 OU GPL-2.0-or-later OU LGPL-2.1-or-later (a escolha do destinatario)	copyleft-fraco	https://www.gaia-gis.it/fossil/libspatialite/index	distro: site-oficial do projeto (gaia-gis)
+libtiff	libtiff License (tipo MIT/BSD, Sam Leffler / SGI)	permissiva	https://gitlab.com/libtiff/libtiff/-/blob/master/LICENSE.md	distro: repo-oficial (arquivo LICENSE.md do espelho libtiff)
+libwebp	BSD-3-Clause	permissiva	https://github.com/webmproject/libwebp	distro: repo-oficial (GitHub License API, webmproject/libwebp)
+libxml2	MIT	permissiva	https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/Copyright	distro: repo-oficial (arquivo Copyright de GNOME/libxml2)
+libxslt	MIT (libxslt) - libexslt com nota propria	permissiva	https://gitlab.gnome.org/GNOME/libxslt/-/blob/master/Copyright	distro: repo-oficial (arquivo Copyright de GNOME/libxslt)
+libzip	BSD-3-Clause	permissiva	https://github.com/nih-at/libzip/blob/main/LICENSE	distro: repo-oficial (arquivo LICENSE de nih-at/libzip)
+lz4	BSD-2-Clause (lib/) + GPL-2.0-or-later (demais arquivos)	copyleft-forte	https://github.com/lz4/lz4/blob/dev/LICENSE	distro: repo-oficial (arquivo LICENSE de lz4/lz4) - MULTIPLA, ver arquivo
+msodbcsql	PROPRIETARIA: Microsoft Software License Terms, Microsoft ODBC Driver 18 for SQL Server. So o codigo da lista REDIST e distribuivel (secao 2). Ver drivers de licenca condicionada	proprietaria-redistribuicao-condicionada	https://download.osgeo.org/osgeo4w/v2/x86_64/release/msodbcsql/msodbcsql-devel/msodbcsql-devel-18.0-2.txt	047: campo license do setup.ini do OSGeo4W para o msodbcsql-devel (md5 bf5c7da9d86a43a6c6745b05f9323e0d); a lista REDIST nao foi conferida
+msvcrt2019	PROPRIETARIA - Microsoft Visual C++ Redistributable (termos de redistribuicao da Microsoft)	proprietaria-redistribuicao-condicionada	https://learn.microsoft.com/cpp/windows/redistributing-visual-cpp-files	distro: recipe OSGeo4W nao traz URL - componente Microsoft identificado pelos nomes de arquivo
+netcdf	BSD-3-Clause	permissiva	https://github.com/Unidata/netcdf-c	distro: repo-oficial (GitHub License API, Unidata/netcdf-c)
+oci	PROPRIETARIA: Oracle Free Use Terms and Conditions (Oracle Instant Client 21.13). Redistribuicao permitida sem modificacao, sem cobranca e com copia da licenca. Ver drivers de licenca condicionada	proprietaria-redistribuicao-condicionada	https://download.osgeo.org/osgeo4w/v2/x86_64/release/oci/oci-devel/oci-devel-21.13-1.txt	047: campo license do setup.ini do OSGeo4W para o oci (md5 f1bae5db968ac61cc4db230c68668a2c)
+ogdi	MULTIPLA (duas licencas tipo MIT/BSD conforme o arquivo LICENSE)	permissiva	https://github.com/libogdi/ogdi/blob/master/LICENSE	distro: repo-oficial (arquivo LICENSE de libogdi/ogdi)
+opencl	Apache-2.0	permissiva	https://github.com/KhronosGroup/OpenCL-SDK	distro: repo-oficial (GitHub License API, KhronosGroup/OpenCL-SDK)
+openjpeg	BSD-2-Clause	permissiva	https://github.com/uclouvain/openjpeg/blob/master/LICENSE	distro: repo-oficial (arquivo LICENSE de uclouvain/openjpeg)
+openssl	Apache-2.0	permissiva	https://github.com/openssl/openssl	distro: repo-oficial (GitHub License API, openssl/openssl)
+pdal	BSD-3-Clause (texto proprio, Hobu Inc.)	permissiva	https://github.com/PDAL/PDAL/blob/master/LICENSE.txt	distro: repo-oficial (arquivo LICENSE.txt de PDAL/PDAL)
+pdal-libs	BSD-3-Clause (texto proprio, Hobu Inc.)	permissiva	https://github.com/PDAL/PDAL/blob/master/LICENSE.txt	distro: repo-oficial (arquivo LICENSE.txt de PDAL/PDAL)
+poppler	GPL-2.0	copyleft-forte	https://gitlab.freedesktop.org/poppler/poppler/-/blob/master/COPYING	distro: repo-oficial (arquivo COPYING de poppler no gitlab.freedesktop.org)
+proj	MIT	permissiva	https://proj.org/en/stable/about.html	distro: site-oficial
+proj-runtime-data	MIT (o pacote traz o proj.db e os arquivos de inicializacao do PROJ, sem grades de datum)	permissiva	https://github.com/OSGeo/PROJ/blob/master/COPYING	047: lista de arquivos do pacote medida (19 entradas, nenhuma grade)
+proj9-runtime	MIT	permissiva	https://proj.org/en/stable/about.html	distro: site-oficial (mesmo fonte do pacote proj)
+python3-annotated-types	OSI Approved :: MIT License	permissiva	https://github.com/annotated-types/annotated-types	distro: arquivo na arvore - dist-info METADATA (Classifier) - apps/Python312/Lib/site-packages/annotated_types-0.7.0.dist-info/METADATA
+python3-certifi	MPL-2.0	permissiva	https://github.com/certifi/python-certifi	distro: arquivo na arvore - dist-info METADATA (campo License:) - apps/Python312/Lib/site-packages/certifi-2026.6.17.dist-info/METADATA
+python3-charset-normalizer	MIT	permissiva		distro: arquivo na arvore - dist-info METADATA (campo License:) - apps/Python312/Lib/site-packages/charset_normalizer-3.4.9.dist-info/METADATA
+python3-contourpy	BSD 3-Clause License	permissiva	https://github.com/contourpy/contourpy	distro: arquivo na arvore - dist-info METADATA (campo License:) - apps/Python312/Lib/site-packages/contourpy-1.3.3.dist-info/METADATA
+python3-core	PSF License	permissiva	https://docs.python.org/3/license.html	distro: arquivo na arvore (apps/Python312/LICENSE.txt)
+python3-cycler	Copyright (c) 2015, matplotlib project	permissiva	https://matplotlib.org/cycler/	distro: arquivo na arvore - dist-info METADATA (campo License:) - apps/Python312/Lib/site-packages/cycler-0.12.1.dist-info/METADATA
+python3-duckdb	OSI Approved :: MIT License	permissiva	https://github.com/duckdb/duckdb-python	distro: arquivo na arvore - dist-info METADATA (Classifier) - apps/Python312/Lib/site-packages/duckdb-1.5.4.dist-info/METADATA
+python3-et-xmlfile	MIT	permissiva	https://foss.heptapod.net/openpyxl/et_xmlfile	distro: arquivo na arvore - dist-info METADATA (campo License:) - apps/Python312/Lib/site-packages/et_xmlfile-2.0.0.dist-info/METADATA
+python3-exifread	BSD-3-Clause	permissiva	https://github.com/ianare/exif-py	distro: arquivo na arvore - texto de apps/Python312/Lib/site-packages/exifread-3.5.1.dist-info/licenses/LICENSE
+python3-fonttools	MIT	permissiva	http://github.com/fonttools/fonttools	distro: arquivo na arvore - dist-info METADATA (campo License:) - apps/Python312/Lib/site-packages/fonttools-4.63.0.dist-info/METADATA
+python3-future	MIT	permissiva	https://github.com/PythonCharmers/python-future	distro: arquivo na arvore - dist-info METADATA (campo License:) - apps/Python312/Lib/site-packages/future-1.0.0.dist-info/METADATA
+python3-gdal	MIT (nucleo) + BSD-2/BSD-3 e outras em partes	permissiva	https://gdal.org/en/stable/license.html	distro: site-oficial (bindings Python do mesmo fonte GDAL)
+python3-geographiclib	MIT	permissiva	https://github.com/geographiclib/geographiclib-python	distro: arquivo na arvore - dist-info METADATA (campo License:) - apps/Python312/Lib/site-packages/geographiclib-2.1.dist-info/METADATA
+python3-geopandas	BSD-3-Clause	permissiva	https://github.com/geopandas/geopandas	distro: arquivo na arvore - texto de apps/Python312/Lib/site-packages/geopandas-1.1.4.dist-info/licenses/LICENSE.txt
+python3-httplib2	MIT	permissiva	https://github.com/httplib2/httplib2	distro: arquivo na arvore - dist-info METADATA (campo License:) - apps/Python312/Lib/site-packages/httplib2-0.32.0.dist-info/METADATA
+python3-idna	BSD-3-Clause	permissiva	https://github.com/kjd/idna	distro: arquivo na arvore - texto de apps/Python312/Lib/site-packages/idna-3.18.dist-info/licenses/LICENSE.md
+python3-jinja2	OSI Approved :: BSD License	permissiva	https://github.com/pallets/jinja/	distro: arquivo na arvore - dist-info METADATA (Classifier) - apps/Python312/Lib/site-packages/jinja2-3.1.6.dist-info/METADATA
+python3-kiwisolver	=========================	permissiva	https://github.com/nucleic/kiwi	distro: arquivo na arvore - dist-info METADATA (campo License:) - apps/Python312/Lib/site-packages/kiwisolver-1.5.0.dist-info/METADATA
+python3-lxml	BSD-3-Clause	permissiva	https://github.com/lxml/lxml	distro: arquivo na arvore - dist-info METADATA (campo License:) - apps/Python312/Lib/site-packages/lxml-6.1.1.dist-info/METADATA
+python3-markupsafe	BSD-3-Clause	permissiva	https://github.com/pallets/markupsafe/	distro: arquivo na arvore - texto de apps/Python312/Lib/site-packages/markupsafe-3.0.3.dist-info/licenses/LICENSE.txt
+python3-matplotlib	License agreement for matplotlib versions 1.3.0 and later	permissiva	https://matplotlib.org	distro: arquivo na arvore - dist-info METADATA (campo License:) - apps/Python312/Lib/site-packages/matplotlib-3.11.0.dist-info/METADATA
+python3-mock	OSI Approved :: BSD License	permissiva	https://github.com/testing-cabal/mock	distro: arquivo na arvore - dist-info METADATA (Classifier) - apps/Python312/Lib/site-packages/mock-5.2.0.dist-info/METADATA
+python3-narwhals	MIT	permissiva	https://github.com/narwhals-dev/narwhals	distro: arquivo na arvore - texto de apps/Python312/Lib/site-packages/narwhals-2.23.0.dist-info/licenses/LICENSE.md
+python3-networkx	BSD-3-Clause	permissiva	https://networkx.org/	distro: arquivo na arvore - texto de apps/Python312/Lib/site-packages/networkx-3.6.1.dist-info/licenses/LICENSE.txt
+python3-nose2	BSD-2-Clause	permissiva	https://github.com/nose-devs/nose2	distro: arquivo na arvore - dist-info METADATA (campo License:) - apps/Python312/Lib/site-packages/nose2-0.16.0.dist-info/METADATA
+python3-numpy	BSD-3-Clause	permissiva	https://numpy.org	distro: arquivo na arvore - texto de apps/Python312/Lib/site-packages/numpy-2.4.6.dist-info/licenses/LICENSE.txt
+python3-openpyxl	MIT	permissiva	https://foss.heptapod.net/openpyxl/openpyxl	distro: arquivo na arvore - dist-info METADATA (campo License:) - apps/Python312/Lib/site-packages/openpyxl-3.1.5.dist-info/METADATA
+python3-owslib	BSD-3-Clause	permissiva	https://geopython.github.io/OWSLib	distro: arquivo na arvore - dist-info METADATA (campo License:) - apps/Python312/Lib/site-packages/owslib-0.36.0.dist-info/METADATA
+python3-packaging	Apache-2.0	permissiva	https://github.com/pypa/packaging	distro: arquivo na arvore - texto de apps/Python312/Lib/site-packages/packaging-26.2.dist-info/licenses/LICENSE.APACHE
+python3-pandas	BSD 3-Clause License	permissiva	https://pandas.pydata.org	distro: arquivo na arvore - dist-info METADATA (campo License:) - apps/Python312/Lib/site-packages/pandas-3.0.3.dist-info/METADATA
+python3-pillow	MIT-CMU (licenca historica da PIL, texto proprio)	permissiva	https://github.com/python-pillow/Pillow/blob/main/LICENSE	distro: repo-oficial (arquivo LICENSE de python-pillow/Pillow)
+python3-pip	MIT	permissiva	https://pip.pypa.io/	distro: arquivo na arvore - texto de apps/Python312/Lib/site-packages/pip-26.1.2.dist-info/licenses/LICENSE.txt
+python3-plotly	OSI Approved :: MIT License	permissiva	https://plotly.com/python/	distro: arquivo na arvore - dist-info METADATA (Classifier) - apps/Python312/Lib/site-packages/plotly-6.9.0.dist-info/METADATA
+python3-ply	BSD	permissiva	http://www.dabeaz.com/ply/	distro: arquivo na arvore - dist-info METADATA (campo License:) - apps/Python312/Lib/site-packages/ply-3.11.dist-info/METADATA
+python3-psycopg	LGPL	copyleft-fraco	https://psycopg.org/	distro: arquivo na arvore - texto de apps/Python312/Lib/site-packages/psycopg-3.3.4.dist-info/licenses/LICENSE.txt
+python3-psycopg2	LGPL with exceptions	copyleft-fraco	https://psycopg.org/	distro: arquivo na arvore - dist-info METADATA (campo License:) - apps/Python312/Lib/site-packages/psycopg2-2.9.12.dist-info/METADATA
+python3-pyarrow	Apache-2.0	permissiva	https://github.com/apache/arrow	distro: repo-oficial (GitHub License API, apache/arrow)
+python3-pydantic	MIT	permissiva	https://github.com/pydantic/pydantic	distro: arquivo na arvore - texto de apps/Python312/Lib/site-packages/pydantic-2.13.4.dist-info/licenses/LICENSE
+python3-pydantic-core	MIT	permissiva	https://github.com/pydantic	distro: arquivo na arvore - texto de apps/Python312/Lib/site-packages/pydantic_core-2.46.4.dist-info/licenses/LICENSE
+python3-pygments	BSD-2-Clause	permissiva	https://pygments.org	distro: arquivo na arvore - texto de apps/Python312/Lib/site-packages/pygments-2.20.0.dist-info/licenses/LICENSE
+python3-pyodbc	MIT	permissiva	https://github.com/mkleehammer/pyodbc	distro: arquivo na arvore - dist-info METADATA (campo License:) - apps/Python312/Lib/site-packages/pyodbc-5.3.0.dist-info/METADATA
+python3-pyogrio	MIT License	permissiva	https://github.com/geopandas/pyogrio	distro: arquivo na arvore - dist-info METADATA (campo License:) - apps/Python312/Lib/site-packages/pyogrio-0.13.0.dist-info/METADATA
+python3-pyopengl	OSI Approved :: BSD License	permissiva	https://mcfletch.github.io/pyopengl/	distro: arquivo na arvore - dist-info METADATA (Classifier) - apps/Python312/Lib/site-packages/pyopengl-3.1.10.dist-info/METADATA
+python3-pyparsing	MIT	permissiva	https://github.com/pyparsing/pyparsing/	distro: arquivo na arvore - texto de apps/Python312/Lib/site-packages/pyparsing-3.3.2.dist-info/licenses/LICENSE
+python3-pypdf	BSD-2-Clause	permissiva	https://github.com/py-pdf/pypdf	distro: arquivo na arvore - texto de apps/Python312/Lib/site-packages/pypdf-6.14.2.dist-info/licenses/LICENSE
+python3-pyproj	MIT	permissiva	https://pyproj4.github.io/pyproj/	distro: arquivo na arvore - texto de apps/Python312/Lib/site-packages/pyproj-3.7.2.dist-info/licenses/LICENSE
+python3-pyqt5	GPL v3	copyleft-forte	https://www.riverbankcomputing.com/software/pyqt/	distro: arquivo na arvore - dist-info METADATA (campo License:) - apps/Python312/Lib/site-packages/pyqt5-5.15.11.dist-info/METADATA
+python3-pyqt5-sip	BSD-2-Clause	permissiva	https://github.com/Python-SIP/sip	distro: arquivo na arvore - dist-info METADATA (campo License:) - apps/Python312/Lib/site-packages/pyqt5_sip-12.18.0.dist-info/METADATA
+python3-pyserial	BSD	permissiva	https://github.com/pyserial/pyserial	distro: arquivo na arvore - dist-info METADATA (campo License:) - apps/Python312/Lib/site-packages/pyserial-3.5.dist-info/METADATA
+python3-python-dateutil	Dual License	permissiva	https://github.com/dateutil/dateutil	distro: arquivo na arvore - dist-info METADATA (campo License:) - apps/Python312/Lib/site-packages/python_dateutil-2.9.0.post0.dist-info/METADATA
+python3-pytz	MIT	permissiva	http://pythonhosted.org/pytz	distro: arquivo na arvore - dist-info METADATA (campo License:) - apps/Python312/Lib/site-packages/pytz-2026.2.dist-info/METADATA
+python3-pywin32	PSF	permissiva	https://github.com/mhammond/pywin32	distro: arquivo na arvore - dist-info METADATA (campo License:) - apps/Python312/Lib/site-packages/pywin32-311.dist-info/METADATA
+python3-pyyaml	MIT	permissiva	https://github.com/yaml/pyyaml	distro: arquivo na arvore - dist-info METADATA (campo License:) - apps/Python312/Lib/site-packages/pyyaml-6.0.3.dist-info/METADATA
+python3-qscintilla	GPL-3.0 OU licenca comercial (Riverbank)	copyleft-forte	https://www.riverbankcomputing.com/software/qscintilla/	distro: site-oficial do detentor (Riverbank Computing)
+python3-remotior-sensus	OSI Approved :: GNU General Public License v3 or later (GPLv3+)	copyleft-forte	https://github.com/semiautomaticgit/remotior_sensus	distro: arquivo na arvore - dist-info METADATA (Classifier) - apps/Python312/Lib/site-packages/remotior_sensus-0.7.5.dist-info/METADATA
+python3-reportlab	OSI Approved :: BSD License	permissiva	https://www.reportlab.com/	distro: arquivo na arvore - dist-info METADATA (Classifier) - apps/Python312/Lib/site-packages/reportlab-5.0.0.dist-info/METADATA
+python3-requests	Apache-2.0	permissiva	https://github.com/psf/requests	distro: arquivo na arvore - dist-info METADATA (campo License:) - apps/Python312/Lib/site-packages/requests-2.34.2.dist-info/METADATA
+python3-scipy	OSI Approved :: BSD License	permissiva	https://scipy.org/	distro: arquivo na arvore - dist-info METADATA (Classifier) - apps/Python312/Lib/site-packages/scipy-1.18.0.dist-info/METADATA
+python3-setuptools	MIT	permissiva	https://github.com/pypa/setuptools	distro: arquivo na arvore - texto de apps/Python312/Lib/site-packages/setuptools-83.0.0.dist-info/licenses/LICENSE
+python3-shapely	BSD 3-Clause	permissiva	https://github.com/shapely/shapely	distro: arquivo na arvore - dist-info METADATA (campo License:) - apps/Python312/Lib/site-packages/shapely-2.1.2.dist-info/METADATA
+python3-simplejson	MIT OR AFL-2.1	permissiva	https://github.com/simplejson/simplejson	distro: arquivo na arvore - dist-info METADATA (campo License:) - apps/Python312/Lib/site-packages/simplejson-4.1.1.dist-info/METADATA
+python3-sip	BSD-2-Clause	permissiva	https://github.com/Python-SIP/sip	distro: arquivo na arvore - texto de apps/Python312/Lib/site-packages/sip-6.15.3.dist-info/licenses/LICENSE
+python3-six	MIT	permissiva	https://github.com/benjaminp/six	distro: arquivo na arvore - dist-info METADATA (campo License:) - apps/Python312/Lib/site-packages/six-1.17.0.dist-info/METADATA
+python3-typing-extensions	PSF License	permissiva	https://github.com/python/typing_extensions/blob/main/LICENSE	distro: repo-oficial (arquivo LICENSE de python/typing_extensions)
+python3-typing-inspection	MIT	permissiva	https://github.com/pydantic/typing-inspection	distro: arquivo na arvore - texto de apps/Python312/Lib/site-packages/typing_inspection-0.4.2.dist-info/licenses/LICENSE
+python3-tzdata	Apache-2.0	permissiva	https://github.com/python/tzdata	distro: arquivo na arvore - dist-info METADATA (campo License:) - apps/Python312/Lib/site-packages/tzdata-2026.2.dist-info/METADATA
+python3-urllib3	MIT	permissiva		distro: arquivo na arvore - texto de apps/Python312/Lib/site-packages/urllib3-2.7.0.dist-info/licenses/LICENSE.txt
+python3-wxpython	OSI Approved	permissiva	https://wxPython.org/	distro: arquivo na arvore - dist-info METADATA (Classifier) - apps/Python312/Lib/site-packages/wxpython-4.2.5.dist-info/METADATA
+python3-xlrd	BSD	permissiva	http://www.python-excel.org/	distro: arquivo na arvore - dist-info METADATA (campo License:) - apps/Python312/Lib/site-packages/xlrd-2.0.2.dist-info/METADATA
+python3-xlwt	BSD	permissiva	http://www.python-excel.org/	distro: arquivo na arvore - dist-info METADATA (campo License:) - apps/Python312/Lib/site-packages/xlwt-1.3.0.dist-info/METADATA
+qca	LGPL-2.1	copyleft-fraco	https://github.com/KDE/qca	distro: repo-oficial (GitHub License API, KDE/qca)
+qscintilla	GPL-3.0 OU licenca comercial (Riverbank)	copyleft-forte	https://www.riverbankcomputing.com/software/qscintilla/	distro: site-oficial do detentor (Riverbank Computing)
+qt5-libs	LGPL-3.0 (edicao open source - partes so sob GPL-3.0)	copyleft-fraco	https://www.qt.io/licensing/open-source-lgpl-obligations	distro: site-oficial do detentor (The Qt Company)
+qt5-qml	LGPL-3.0 (edicao open source - partes so sob GPL-3.0)	copyleft-fraco	https://www.qt.io/licensing/open-source-lgpl-obligations	distro: site-oficial do detentor (The Qt Company)
+qt5-tools	LGPL-3.0 / GPL-3.0 conforme a ferramenta (edicao open source)	copyleft-fraco	https://www.qt.io/licensing/open-source-lgpl-obligations	distro: site-oficial do detentor (The Qt Company)
+qtkeychain-libs	BSD-2-Clause (texto proprio no COPYING)	permissiva	https://github.com/frankosterfeld/qtkeychain/blob/master/COPYING	distro: repo-oficial (arquivo COPYING de frankosterfeld/qtkeychain)
+qtwebkit-libs	LGPL-2.1-or-later e LGPL-2.0-or-later (WebCore, JavaScriptCore), com partes BSD-2-Clause (LICENSE-APPLE)	copyleft-fraco	https://github.com/qtwebkit/qtwebkit/tree/qtwebkit-5.212.0-alpha4/Source/WebCore	047: LICENSE-LGPL-2, LICENSE-LGPL-2.1 e LICENSE-APPLE na tag qtwebkit-5.212.0-alpha4
+qwt-libs	Qwt License 1.0 (LGPL-2.1 com tres excecoes)	copyleft-fraco	https://qwt.sourceforge.io/qwtlicense.html	distro: site-oficial
+saga	GPL-2.0-or-later (interface e ferramentas); a API (saga_api) sob LGPL-2.1-or-later	copyleft-forte	https://sourceforge.net/p/saga-gis/code/ci/master/tree/saga-gis/src/saga_core/	047: cabecalhos de saga_gui/saga_frame.h e saga_api/api_core.h no master do SourceForge (a tag 9.12.4 nao foi conferida)
+setup	GPL-2.0-or-later (osgeo4w-setup, derivado do setup do Cygwin)	copyleft-forte	https://github.com/jef-n/OSGeo4W/blob/master/src/setup/COPYING	047: COPYING e cabecalhos de jef-n/OSGeo4W src/setup
+sqlite3	Dominio publico (nao ha licenca - dedicacao ao dominio publico)	permissiva	https://www.sqlite.org/copyright.html	distro: site-oficial
+szip	Licenca propria do SZIP (ICs, LLC): descompressao livre; compressao so para uso cientifico nao comercial	proprietaria-redistribuicao-condicionada	https://download.osgeo.org/osgeo4w/v2/x86_64/release/szip/szip-devel/szip-devel-2.1.1-4.txt	047: campo license do setup.ini do OSGeo4W para o szip (md5 9dae8922da18cc6bf19260f90bee3aba)
+thrift	Apache-2.0	permissiva	https://github.com/apache/thrift	distro: repo-oficial (GitHub License API, apache/thrift)
+wxwidgets	wxWindows Library Licence 3.1 (LGPL-2 com excecao para binarios)	copyleft-fraco	https://www.wxwidgets.org/about/licence/	distro: site-oficial
+xerces-c	Apache-2.0	permissiva	https://github.com/apache/xerces-c	distro: repo-oficial (GitHub License API, apache/xerces-c)
+xz	MULTIPLA (0BSD para a liblzma - outras partes com licencas distintas)	permissiva	https://github.com/tukaani-project/xz/blob/master/COPYING	distro: repo-oficial (arquivo COPYING de tukaani-project/xz)
+zlib	Zlib License	permissiva	https://github.com/madler/zlib/blob/develop/LICENSE	distro: repo-oficial (arquivo LICENSE de madler/zlib)
+zstd	BSD-3-Clause + GPL-2.0 (duplo, ver arquivo)	permissiva	https://github.com/facebook/zstd/blob/dev/LICENSE	distro: repo-oficial (arquivo LICENSE de facebook/zstd)
