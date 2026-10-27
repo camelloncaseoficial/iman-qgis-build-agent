@@ -17,8 +17,9 @@
 [CmdletBinding()]
 param(
   [string] $WorkRoot,
-  [ValidateSet('Build', 'Official')] [string] $Target = 'Build',
+  [ValidateSet('Build', 'Official', 'Installed')] [string] $Target = 'Build',
   [string] $OfficialRoot = 'C:\Program Files\QGIS 3.44.13',
+  [string] $InstalledRoot = (Join-Path $env:LOCALAPPDATA 'Programs\IMAN Terra'),
   [string] $Lang = 'pt_BR',
   [int] $GuiTimeoutSeconds = 300
 )
@@ -28,6 +29,9 @@ $pwshExe = (Get-Process -Id $PID).Path
 
 if ($Target -eq 'Build') {
   $o4w = $Paths.Osgeo4w; $app = Join-Path $Paths.Install 'apps\qgis-ltr'; $guiExe = "$app\bin\qgis.exe"
+} elseif ($Target -eq 'Installed') {
+  # a arvore instalada pelo instalador (fatia 047); o iman-terra.exe aplica o proprio ambiente por cima deste
+  $o4w = $InstalledRoot; $app = Join-Path $InstalledRoot 'apps\qgis-ltr'; $guiExe = "$o4w\bin\iman-terra.exe"
 } else {
   $o4w = $OfficialRoot; $app = Join-Path $OfficialRoot 'apps\qgis-ltr'; $guiExe = "$o4w\bin\qgis-ltr-bin.exe"
 }
