@@ -77,8 +77,9 @@ Type: files; Name: "{app}\BUILD_ID.txt"
 Type: files; Name: "{app}\qgis-manifest.txt"
 Type: files; Name: "{app}\README.md"
 Type: files; Name: "{autoprograms}\Desinstalar {#ProductName}.lnk"
-; a arvore desta versao, para reinstalar sobre ela pousar em terreno limpo
+; a arvore desta versao, para reinstalar sobre ela pousar em terreno limpo, e o var\ que o postinstall cria
 #include TreeDirsInclude
+Type: filesandordirs; Name: "{app}\var"
 
 [Files]
 Source: "{#TreeDir}\*"; DestDir: "{app}"; Flags: recursesubdirs createallsubdirs ignoreversion
@@ -123,8 +124,10 @@ Root: HKCU; Subkey: "Software\Classes\Applications\iman-terra.exe\shell\open\com
 Filename: "{app}\bin\iman-terra.exe"; WorkingDir: "{userdocs}"; Description: "Abrir o {#ProductName} agora"; Flags: postinstall nowait skipifsilent unchecked
 
 [UninstallDelete]
-; a arvore inteira, inclusive o que nasceu depois da copia (o .env e os .done do postinstall, os .pyc do Python)
+; a arvore inteira, inclusive o que nasceu depois da copia (o .env e os .done do postinstall, os .pyc do Python),
+; e o var\ que so o postinstall cria (o log dele; medido na fatia 047: sem esta linha, sobrava var\log)
 #include TreeDirsUninstallInclude
+Type: filesandordirs; Name: "{app}\var"
 
 [Code]
 // postinstall da arvore (iman\postinstall.cmd): troca de caminho nos scripts dos pacotes e o bin\iman-terra.env

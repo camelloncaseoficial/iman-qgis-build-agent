@@ -67,10 +67,14 @@ function Get-RegDefault([string] $path, [string] $value = '') {
 }
 
 # 1. perfil novo
+# o registro de notificacao que o Windows cria para o AUMI do produto no primeiro toast tambem e do produto
+$aumiName = '{0}.{1}.{1}.3.44.13-Solothurn' -f $name.Organization, $name.Application
+$notifKeyPre = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings\$aumiName"
 if ($ResetProductData) {
   foreach ($p in $roaming, $local) { if (Test-Path $p) { Remove-Item -Recurse -Force $p } }
-  if (Test-Path $regKey) { Remove-Item -Recurse -Force $regKey }
+  foreach ($k in $regKey, $notifKeyPre) { if (Test-Path $k) { Remove-Item -Recurse -Force $k } }
 }
+$notifBefore = Test-Path $notifKeyPre
 $pre = [ordered]@{ roaming = (Test-Path $roaming); local = (Test-Path $local); registry = (Test-Path $regKey) }
 Add-Check 'A2:perfil-novo-antes' (-not ($pre.roaming -or $pre.local -or $pre.registry)) $pre
 $null = Invoke-Guard -Baseline
@@ -89,7 +93,6 @@ $p = Start-Process -FilePath $lnk -PassThru
 Remove-Item env:PYQGIS_STARTUP, env:IMAN_FACTS_OUT
 $launch = [ordered]@{ shortcut = $lnk; pid = $p.Id }
 if ($p) {
-  $launch.processPath = $p.Path
   $exited = $p.WaitForExit($TimeoutSeconds * 1000)
   if (-not $exited) { Stop-Process -Id $p.Id -Force }
   $launch.exitedClean = $exited
@@ -98,6 +101,8 @@ if ($p) {
 $factsFile = Join-Path $run 'launch-facts.json'
 $facts = if (Test-Path $factsFile) { Get-Content $factsFile -Raw -Encoding utf8 | ConvertFrom-Json } else { $null }
 $launch.facts = $facts
+# o caminho do executavel, gravado de dentro do processo (GetModuleFileNameW): depois que ele sai, o Process nao o da
+$launch.processPath = $facts.process_exe
 $exePath = Join-Path $InstalledRoot 'bin\iman-terra.exe'
 Add-Check 'A5:abre-pelo-atalho' ($facts -and $facts.pid -eq $p.Id -and $launch.processPath -eq $exePath -and $launch.exitedClean) $launch
 Add-Check 'A5:processo-iman-terra' ((Split-Path $launch.processPath -Leaf) -eq 'iman-terra.exe') ([ordered]@{ process = $launch.processPath })
@@ -137,7 +142,13 @@ $before = @(if (Test-Path $crashRoot) { Get-ChildItem $crashRoot -Directory | Fo
 $dummy = Start-Process -FilePath "$env:SystemRoot\System32\PING.EXE" -ArgumentList @('-n', '120', '127.0.0.1') -WindowStyle Hidden -PassThru
 $info = Join-Path $run 'crash-info.txt'
 Write-LfFile $info @("$($dummy.Id)", '0', '0', '', '', "`"$exePath`"", 'QGIS Version: 3.44.13-Solothurn', 'Relatorio sintetico do teste da fatia 047')
+# o QGIS abre o crash handler herdando o proprio ambiente, o do bin\iman-terra.env: o teste reproduz isso
+$saved = [Environment]::GetEnvironmentVariables('Process')
+Get-Content (Join-Path $InstalledRoot 'bin\iman-terra.env') | Where-Object { $_ -match '^([^=]+)=(.*)$' } |
+  ForEach-Object { [Environment]::SetEnvironmentVariable($Matches[1], $Matches[2], 'Process') }
 $crash = Start-Process -FilePath (Join-Path $InstalledRoot 'apps\qgis-ltr\qgiscrashhandler.exe') -ArgumentList "`"$info`"" -PassThru
+foreach ($k in @([Environment]::GetEnvironmentVariables('Process').Keys)) { [Environment]::SetEnvironmentVariable($k, $null, 'Process') }
+foreach ($k in $saved.Keys) { [Environment]::SetEnvironmentVariable($k, $saved[$k], 'Process') }
 # o relatorio e gravado quando a janela "Uh-oh" aparece (como no Invoke-BrandCaptures.ps1)
 $null = Wait-ProcessWindow $crash.Id { param($w) [ImanWindowCapture]::Title($w) -like 'Uh-oh*' } 60
 Start-Sleep -Seconds 2
@@ -151,7 +162,12 @@ $shortcutsAfter = Get-ProductShortcuts
 $startMenu = @($shortcutsAfter | Where-Object { $_.path -notlike "$([Environment]::GetFolderPath('Desktop'))*" })
 Add-Check 'A3:um-atalho-com-aumi' ($startMenu.Count -eq 1 -and $startMenu[0].aumi -eq $facts.aumi -and $facts.aumi) ([ordered]@{
     before = $shortcutsBefore; after = $shortcutsAfter; processAumi = $facts.aumi })
-Add-Check 'A3:notificacao' ([bool]$facts.notification_successful) ([ordered]@{ nativeNotifications = $facts.native_notifications; successful = $facts.notification_successful; captura = 'nao: o toast e janela do Windows, nao do processo do teste' })
+$notifKey = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings\$($facts.aumi)"
+$fallback = @($facts.message_bar_items | Where-Object { $_ -match 'Tarefa|Task' })
+Add-Check 'A3:notificacao' ($facts.notification_task_result -eq 'completed' -and $fallback.Count -eq 0 -and -not $notifBefore -and (Test-Path $notifKey)) ([ordered]@{
+    task = $facts.notification_task; taskResult = $facts.notification_task_result; messageBarFallback = $fallback
+    aumiKeyBefore = $notifBefore; aumiKeyAfter = (Test-Path $notifKey); key = $notifKey
+    captura = 'nao: o toast e janela do Windows, nao do processo do teste' })
 
 # 5. Abrir com
 $assoc = [ordered]@{}
