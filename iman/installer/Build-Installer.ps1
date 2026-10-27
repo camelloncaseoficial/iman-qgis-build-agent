@@ -41,7 +41,15 @@ if (-not $IsccPath) {
     Where-Object { Test-Path $_ } | Select-Object -First 1
 }
 if (-not $IsccPath -or -not (Test-Path $IsccPath)) { Stop-Build 2 'ISCC.exe do Inno Setup 7 nao encontrado (-IsccPath)' }
-$isccVersion = (Get-Item (Join-Path (Split-Path $IsccPath) 'ISCmplr.dll')).VersionInfo.ProductVersion
+# versao do compilador (DC-3 do D-IMAN-030): o ISCC 7 nao traz version info (0.0.0.0) e o banner so da a major; a
+# versao sai na linha "Compiler engine version" de uma compilacao que aborta no preprocessador (sonda medida pela
+# distro, ../iman-qgis-distro-agent/installer/build.ps1, Get-IsccVersao)
+$probe = Join-Path $WorkRoot 'stage\iscc-sonda.iss'
+New-Item -ItemType Directory -Force (Split-Path $probe) | Out-Null
+Set-Content -LiteralPath $probe -Value '#error iman-sonda-de-versao' -Encoding ascii
+$probeOut = & $IsccPath $probe 2>$null | Out-String
+Remove-Item $probe
+$isccVersion = if ($probeOut -match 'Compiler engine version:\s*Inno Setup\s+([0-9.]+)') { $Matches[1] } else { 'desconhecida' }
 if ($isccVersion -notmatch '^7\.') { Stop-Build 2 "o compilador e o Inno Setup $isccVersion; o D-IMAN-030 pede o 7" }
 
 # 1. arvore
