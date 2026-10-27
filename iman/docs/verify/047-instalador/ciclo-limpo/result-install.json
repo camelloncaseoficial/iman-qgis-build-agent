@@ -1,0 +1,103 @@
+{
+  "phase": "Install",
+  "run": "D:\\iman-terra-build\\verify\\install-cycle-20261027-183651",
+  "checks": {
+    "A6:instalou": {
+      "ok": true,
+      "detail": {
+        "exitCode": 0,
+        "seconds": 76,
+        "installer": "D:/iman-terra-build/dist/0.4.0-14f1fd4efd/Instituto-IMAN-IMAN-Terra-Setup-0.4.0-14f1fd4efd.exe"
+      }
+    },
+    "A6:sem-elevacao": {
+      "ok": true,
+      "detail": {
+        "log": [
+          "2026-10-27 18:36:54.905   Administrative install mode: No",
+          "2026-10-27 18:36:54.905   Install mode root key: HKEY_CURRENT_USER"
+        ]
+      }
+    },
+    "A6:arvore-antiga-saiu": {
+      "ok": true,
+      "detail": {
+        "before": [],
+        "oldLeft": [],
+        "after": [
+          "apps",
+          "bin",
+          "doc",
+          "etc",
+          "iman",
+          "lib",
+          "licencas",
+          "share",
+          "var",
+          "LICENSE",
+          "OSGeo4W.bat",
+          "OSGeo4W.ico",
+          "SOURCE_CODE.md",
+          "THIRD_PARTY_NOTICES.md",
+          "unins000.dat",
+          "unins000.exe"
+        ]
+      }
+    },
+    "A6:arvore-nova": {
+      "ok": true,
+      "detail": {
+        "exe": true,
+        "env": true,
+        "postinstallLogTail": [
+          "%USERPROFILE%\\AppData\\Local\\Programs\\IMANTE~1>if \"1\" == \"1\" goto skiparp ",
+          "== crssync",
+          "OK"
+        ],
+        "notices": [
+          "LICENSE",
+          "THIRD_PARTY_NOTICES.md",
+          "SOURCE_CODE.md"
+        ]
+      }
+    },
+    "A6:uma-entrada-0.4.0": {
+      "ok": true,
+      "detail": {
+        "before": [],
+        "after": [
+          {
+            "hive": "HKCU",
+            "view": "Registry64",
+            "key": "{7B3A9E42-1C6D-4E9F-9A21-6F2E5A1D8B34}_is1",
+            "displayName": "IMAN Terra",
+            "version": "0.4.0",
+            "location": "%USERPROFILE%\\AppData\\Local\\Programs\\IMAN Terra\\"
+          }
+        ]
+      }
+    },
+    "A6:perfil-distro-intacto": {
+      "ok": true,
+      "detail": {
+        "files": 28,
+        "profile": "%USERPROFILE%\\AppData\\Roaming\\InstitutoIMAN\\IMAN Terra"
+      }
+    },
+    "guarda": {
+      "ok": true,
+      "detail": {
+        "exit": 0,
+        "last": "GUARD OK: QGIS oficial, %USERPROFILE%\\AppData\\Roaming\\QGIS, %USERPROFILE%\\AppData\\Local\\QGIS, %USERPROFILE%\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\QGIS3.lnk, C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\QGIS 3.44.13, registro, associacoes e notificacoes do QGIS identicos ao retrato de 2026-10-27T18:36:53 (37473 itens)",
+        "diff": []
+      }
+    }
+  },
+  "before": {
+    "distroProfileFiles": 28,
+    "entries": [],
+    "appTop": [],
+    "shortcuts": []
+  },
+  "ok": true
+}

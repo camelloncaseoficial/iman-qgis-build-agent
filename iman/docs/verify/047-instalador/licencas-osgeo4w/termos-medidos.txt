@@ -1,0 +1,24 @@
+# campo license: do setup.ini do OSGeo4W (download.osgeo.org/osgeo4w/v2/x86_64/setup.ini.bz2, baixado em 2026-10-27)
+gdal-ecw: license: x86_64/release/gdal/gdal-dev/gdal-dev-ecw/gdal-dev-ecw-3.14.0-1183-940f719842-1.txt 35828 57b34fd53b742820ebc1a884d5d34dd9
+gdal-mrsid: license: x86_64/release/gdal/gdal-dev/gdal-dev-mrsid/gdal-dev-mrsid-3.14.0-1183-940f719842-1.txt 11727 7e66c7da6f0609d1dc65242bc8ea9ba0
+msodbcsql-devel: license: x86_64/release/msodbcsql/msodbcsql-devel/msodbcsql-devel-18.0-2.txt 12169 bf5c7da9d86a43a6c6745b05f9323e0d
+oci: license: x86_64/release/oci/oci-devel/oci-devel-21.13-1.txt 5903 f1bae5db968ac61cc4db230c68668a2c
+szip: license: x86_64/release/szip/szip-devel/szip-devel-2.1.1-4.txt 1986 9dae8922da18cc6bf19260f90bee3aba
+
+# md5 dos textos copiados para iman/notices/licencas/ (confere com o setup.ini)
+57b34fd53b742820ebc1a884d5d34dd9 *iman/notices/licencas/gdal-ecw.txt
+7e66c7da6f0609d1dc65242bc8ea9ba0 *iman/notices/licencas/gdal-mrsid.txt
+bf5c7da9d86a43a6c6745b05f9323e0d *iman/notices/licencas/msodbcsql.txt
+f1bae5db968ac61cc4db230c68668a2c *iman/notices/licencas/oci.txt
+9dae8922da18cc6bf19260f90bee3aba *iman/notices/licencas/szip.txt
+
+# o LICENSE do QGIS 3.44.13 oficial (apps/qgis-ltr/doc/LICENSE, 74524 bytes) e composto pelo pacote OSGeo4W:
+License overview:
+1. QGIS
+2. Oracle Instant Client
+3. SZIP compression library (transitional package)
+4. ECW Raster Plugin for GDAL
+5. MrSID Raster Plugin for GDAL
+# secao 4 dele (linha 548): ERDAS ECW/JP2 Server Read-Only End-user SDK License Agreement
+
+# jef-n/OSGeo4W license.map no commit c04652762e9fa6fb7e51c5fd3c9e699abb625223: 0 bytes (gh api .../contents/license.map --jq .size)

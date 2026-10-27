@@ -1,0 +1,3 @@
+apps/qgis-ltr/bin/qgis.reg.tmpl
+apps/qgis-ltr/dbghelp.dll
+apps/qgis-ltr/symsrv.dll
