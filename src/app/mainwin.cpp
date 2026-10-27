@@ -21,9 +21,15 @@
 #include <list>
 #include <memory>
 
+#include "iman_brand.h" // IMAN: marca da fonte unica, gerado no build a partir de iman/brand
+
+// IMAN: caixa de erro de carga em pt_BR com o nome do produto (D-IMAN-041, regra 3). MessageBoxA mostra os bytes
+// no codepage ANSI do Windows, por isso as frases foram escritas sem acento.
+#define IMAN_LOAD_ERROR_TITLE "Erro ao carregar o " IMAN_PRODUCT_NAME
+
 void showError( std::string message, std::string title )
 {
-  std::string newmessage = "Oops, looks like an error loading QGIS \n\n Details: \n\n" + message;
+  std::string newmessage = "Ops, houve um erro ao carregar o " IMAN_PRODUCT_NAME " \n\n Detalhes: \n\n" + message;
   MessageBox(
     NULL,
     newmessage.c_str(),
@@ -79,8 +85,8 @@ int CALLBACK WinMain( HINSTANCE /*hInstance*/, HINSTANCE /*hPrevInstance*/, LPST
       }
       catch ( std::ifstream::failure &e )
       {
-        std::string message = "Could not read environment variable list " + basename + ".vars" + " [" + e.what() + "]";
-        showError( message, "Error loading QGIS" );
+        std::string message = "Falha ao ler a lista de ambiente " + basename + ".vars" + " [" + e.what() + "]";
+        showError( message, IMAN_LOAD_ERROR_TITLE );
         return EXIT_FAILURE;
       }
 
@@ -97,8 +103,8 @@ int CALLBACK WinMain( HINSTANCE /*hInstance*/, HINSTANCE /*hPrevInstance*/, LPST
       }
       catch ( std::ifstream::failure &e )
       {
-        std::string message = "Could not write environment file " + basename + ".env" + " [" + e.what() + "]";
-        showError( message, "Error loading QGIS" );
+        std::string message = "Falha ao gravar o arquivo de ambiente " + basename + ".env" + " [" + e.what() + "]";
+        showError( message, IMAN_LOAD_ERROR_TITLE );
         return EXIT_FAILURE;
       }
     }
@@ -116,16 +122,16 @@ int CALLBACK WinMain( HINSTANCE /*hInstance*/, HINSTANCE /*hPrevInstance*/, LPST
     {
       if ( _putenv( var.c_str() ) < 0 )
       {
-        std::string message = "Could not set environment variable:" + var;
-        showError( message, "Error loading QGIS" );
+        std::string message = "Falha ao definir no ambiente: " + var;
+        showError( message, IMAN_LOAD_ERROR_TITLE );
         return EXIT_FAILURE;
       }
     }
   }
   catch ( std::ifstream::failure &e )
   {
-    std::string message = "Could not read environment file " + basename + ".env" + " [" + e.what() + "]";
-    showError( message, "Error loading QGIS" );
+    std::string message = "Falha ao ler o arquivo de ambiente " + basename + ".env" + " [" + e.what() + "]";
+    showError( message, IMAN_LOAD_ERROR_TITLE );
     return EXIT_FAILURE;
   }
 
@@ -189,9 +195,9 @@ int CALLBACK WinMain( HINSTANCE /*hInstance*/, HINSTANCE /*hPrevInstance*/, LPST
       NULL
     );
 
-    std::string message = "Could not load qgis_app.dll \n Windows Error: " + std::string( errorText )
-                          + "\n Help: \n\n Check " + basename + ".env for correct environment paths";
-    showError( message, "Error loading QGIS" );
+    std::string message = "Falha ao carregar o qgis_app.dll \n Erro do Windows: " + std::string( errorText )
+                          + "\n Ajuda: \n\n Confira os caminhos do ambiente em " + basename + ".env";
+    showError( message, IMAN_LOAD_ERROR_TITLE );
 
     LocalFree( errorText );
     errorText = NULL;
@@ -208,7 +214,7 @@ int CALLBACK WinMain( HINSTANCE /*hInstance*/, HINSTANCE /*hPrevInstance*/, LPST
 
   if ( !realmain )
   {
-    showError( "Could not locate main function in qgis_app.dll", "Error loading QGIS" );
+    showError( "Falha ao localizar a entrada main no qgis_app.dll", IMAN_LOAD_ERROR_TITLE );
     return EXIT_FAILURE;
   }
 

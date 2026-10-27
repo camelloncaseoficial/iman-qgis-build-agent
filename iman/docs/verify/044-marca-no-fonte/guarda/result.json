@@ -1,0 +1,28 @@
+{
+  "ok": true,
+  "root": "D:\\iman-terra-build\\guard-test\\20261025-164828",
+  "expected": {
+    "round1": 0,
+    "round2_after_change_between_rounds": 0,
+    "round3_change_during_round": 1,
+    "control_stale_baseline": 1
+  },
+  "steps": {
+    "round1": {
+      "exit": 0,
+      "last": "GUARD OK: QGIS oficial, D:\\iman-terra-build\\guard-test\\20261025-164828\\perfil-de-teste e registro QGIS identicos ao retrato de 2026-10-25T16:48:29 (3 itens)"
+    },
+    "round2_after_change_between_rounds": {
+      "exit": 0,
+      "last": "GUARD OK: QGIS oficial, D:\\iman-terra-build\\guard-test\\20261025-164828\\perfil-de-teste e registro QGIS identicos ao retrato de 2026-10-25T16:48:31 (3 itens)"
+    },
+    "round3_change_during_round": {
+      "exit": 1,
+      "last": "GUARD FALHOU: o QGIS oficial ou os dados dele mudaram desde o retrato de 2026-10-25T16:48:33 (2 diferencas)"
+    },
+    "control_stale_baseline": {
+      "exit": 1,
+      "last": "GUARD FALHOU: o QGIS oficial ou os dados dele mudaram desde o retrato de 2026-10-25T16:48:29 (2 diferencas)"
+    }
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "version": "3.44.13-Solothurn",
+  "dev_version": "95abe8cd9f",
+  "window_title_at_start": "Projeto sem título — Marca Teste A2 [iman-smoke]",
+  "project_read": true,
+  "layers": [
+    {
+      "name": "points",
+      "valid": true,
+      "features": 3,
+      "crs": "EPSG:4326"
+    }
+  ],
+  "window_visible": true,
+  "window_title": "smoke — Marca Teste A2 [iman-smoke]",
+  "window_size": [
+    1008,
+    381
+  ],
+  "translation": "pt_BR",
+  "settings": {
+    "locale/userLocale": "pt_BR",
+    "locale/overrideFlag": true,
+    "qgis/checkVersion": false,
+    "qgis/allowVersionCheck": false,
+    "core/httpsfeedqgisorg/disabled": true,
+    "cache/directory": "D:/iman-terra-build/smoke/build-20261025-172212/cache"
+  },
+  "translations": {
+    "QgisApp|QGIS": "Marca Teste A2",
+    "QgisApp|QGIS - %1 ('%2')": "Marca Teste A2 - motor QGIS %1 ('%2')",
+    "QgisApp|QGIS Ready!": "Marca Teste A2 pronto!",
+    "QgisApp|QGIS version": "Versão do QGIS",
+    "MainWindow|QGIS Home Page": "Página do Marca Teste A2",
+    "MainWindow|Exit QGIS": "Sair do Marca Teste A2",
+    "MainWindow|Donate to QGIS": "Doe para o QGIS",
+    "QgsAbout|About QGIS": "Sobre o QGIS"
+  },
+  "resources": {
+    ":/images/icons/qgis_icon.svg": "0f2cc61f6890942a2c28f237c1f20c713a4247baf8e3a22e7a0a7c61383fb50e",
+    ":/images/icons/qgis-icon-16x16.png": "04b36b5089c15fc849043278f7f0d553a414b21d2961bc7f1542aef68ddd8eb1",
+    ":/images/icons/qgis-icon-60x60.png": "0cf45f63bd510575332b9628ae69d3a6175bc3914a58c2099548708f49c0efb4",
+    ":/images/splash/splash.png": "aa403d13adf373a32aef83c4fb99c70a4bb41038d199fefdd428bf4dbe4ff877",
+    ":/images/themes/default/providerQgis.svg": "7e83e7ac912e7611a304453d6de54353f30bdbf40182cc53c0a81c14ce1bd9c9",
+    ":/images/icons/qgis-full.png": "3e5ebce122ca6d955535313210abbe37b9d1343a157c7f5b51af4ab368d94d5d"
+  },
+  "app_icon_path": "D:/iman-terra-build/install/apps/qgis-ltr/./images/icons/qgis-icon-60x60.png",
+  "app_icon_sha256": "0cf45f63bd510575332b9628ae69d3a6175bc3914a58c2099548708f49c0efb4",
+  "check_version_action_visible": false,
+  "help_actions": {
+    "mActionQgisHomePage": {
+      "text": "Página do Marca Teste A2",
+      "urls": [
+        "https://institutoiman.org.br"
+      ]
+    },
+    "mActionReportaBug": {
+      "text": "Reportar um problema",
+      "urls": [
+        "https://institutoiman.org.br"
+      ]
+    },
+    "mActionNeedSupport": {
+      "text": "Precisa de Suporte Comercial?",
+      "urls": [
+        "https://institutoiman.org.br"
+      ]
+    },
+    "mActionDonate": {
+      "text": "Doe para o QGIS",
+      "urls": [
+        "https://qgis.org/funding/donate/"
+      ]
+    },
+    "mActionGetInvolved": {
+      "text": "Envolva-se",
+      "urls": [
+        "https://qgis.org/community/involve/"
+      ]
+    },
+    "mActionSponsors": {
+      "text": "Membros de Suporte do QGIS",
+      "urls": [
+        "https://qgis.org/funding/membership/members/"
+      ]
+    }
+  },
+  "pdf": {
+    "status": 0,
+    "file": "layout.pdf",
+    "creator": [
+      "",
+      "Marca Teste A2 (motor QGIS 3.44.13-Solothurn)"
+    ],
+    "producer": [
+      "Qt 5.15.13",
+      "Marca Teste A2 (motor QGIS 3.44.13-Solothurn)"
+    ],
+    "xmp_creator_tool": [
+      "Marca Teste A2 (motor QGIS 3.44.13-Solothurn)"
+    ],
+    "xmp_producer": [
+      "Marca Teste A2 (motor QGIS 3.44.13-Solothurn)"
+    ]
+  },
+  "saved_project": {
+    "written": true,
+    "qgis_version_attribute": "3.44.13-Solothurn"
+  }
+}

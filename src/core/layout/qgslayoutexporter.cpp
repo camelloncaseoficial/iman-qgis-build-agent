@@ -19,6 +19,7 @@
 #include "qgslayoutitemmap.h"
 #include "qgslayoutpagecollection.h"
 #include "qgsogrutils.h"
+#include "iman_brand.h" // IMAN: marca da fonte unica, gerado no build a partir de iman/brand
 #include "qgspaintenginehack.h"
 #include "qgslayoutguidecollection.h"
 #include "qgsabstractlayoutiterator.h"
@@ -2282,7 +2283,8 @@ bool QgsLayoutExporter::saveImage( const QImage &image, const QString &imageFile
 
 QString QgsLayoutExporter::getCreator()
 {
-  return QStringLiteral( "QGIS %1" ).arg( Qgis::version() );
+  // IMAN: Creator e Producer com o nome do produto e a versao do motor (D-IMAN-041, regra 3)
+  return QStringLiteral( "%1 (%2 %3)" ).arg( QString::fromUtf8( IMAN_PRODUCT_NAME ), QString::fromUtf8( IMAN_ENGINE_LABEL ), Qgis::version() );
 }
 
 void QgsLayoutExporter::setXmpMetadata( QPdfWriter *pdfWriter, QgsLayout *layout )

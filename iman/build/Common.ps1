@@ -1,4 +1,4 @@
-# Configuracao comum dos scripts de build do IMAN Terra (dot-source: . "$PSScriptRoot\Common.ps1").
+# Configuracao comum dos scripts de build do produto (dot-source: . "$PSScriptRoot\Common.ps1").
 # Tudo que e baixado ou gerado vive fora do repo, em $WorkRoot (padrao D:\iman-terra-build, ou $env:IMAN_BUILD_ROOT).
 
 $ErrorActionPreference = 'Stop'
@@ -17,6 +17,7 @@ $Paths = @{
   Install  = Join-Path $WorkRoot 'install'
   Logs     = Join-Path $WorkRoot 'logs'
   Smoke    = Join-Path $WorkRoot 'smoke'
+  Brand    = Join-Path $WorkRoot 'brand'
 }
 
 $Osgeo4wMirror = 'https://download.osgeo.org/osgeo4w/v2'
@@ -96,4 +97,34 @@ function Import-ToolsPath {
       (Join-Path $Paths.Tools 'ninja'),
       (Join-Path $Paths.Tools 'winflexbison')
     ) -join ';') + ';' + $env:PATH
+}
+
+# Perfil descartavel em $Profiles, com o cache de rede dentro dele ([cache] directory nos perfis 'default', do
+# qgis_process, e 'iman-smoke', da GUI): sem isso o QGIS grava no cache padrao %LOCALAPPDATA%\QGIS\QGIS3\cache,
+# que o nome interno QGIS3 compartilha com o QGIS oficial (fatia 044).
+function New-DisposableProfile([string] $Profiles, [string] $CacheDir) {
+  foreach ($p in 'default', 'iman-smoke') {
+    $ini = Join-Path $Profiles "profiles\$p\QGIS\QGIS3.ini"
+    New-Item -ItemType Directory -Force (Split-Path $ini) | Out-Null
+    Write-LfFile $ini @('[cache]', "directory=$($CacheDir -replace '\\', '/')")
+  }
+}
+
+# Ambiente de runtime no processo atual: o mesmo de bin\qgis_process-qgis-ltr.bat do oficial (o4w_env, GRASS,
+# apps\qgis-ltr), com o perfil em $Profiles (QGIS_CUSTOM_CONFIG_PATH; nunca %APPDATA%\QGIS).
+function Import-QgisRuntime([string] $Osgeo4wRoot, [string] $AppRoot, [string] $Profiles) {
+  $grassEnv = Get-ChildItem "$Osgeo4wRoot\apps\grass\grass*\etc\env.bat" -ErrorAction SilentlyContinue | Select-Object -First 1
+  $cmdline = "call `"$Osgeo4wRoot\bin\o4w_env.bat`" >nul"
+  if ($grassEnv) { $cmdline += " && call `"$($grassEnv.FullName)`" >nul" }
+  $lines = & cmd.exe /c "$cmdline && set"
+  foreach ($l in $lines) { if ($l -match '^([^=]+)=(.*)$') { Set-Item -Path "env:$($Matches[1])" -Value $Matches[2] } }
+  $grassDir = if ($grassEnv) { Split-Path (Split-Path $grassEnv.FullName) } else { $null }
+  $env:PATH = (@("$AppRoot\bin") + $(if ($grassDir) { @("$grassDir\lib", "$grassDir\bin") } else { @() }) + @($env:PATH)) -join ';'
+  $env:QGIS_PREFIX_PATH = $AppRoot -replace '\\', '/'
+  $env:GDAL_FILENAME_IS_UTF8 = 'YES'
+  $env:VSI_CACHE = 'TRUE'
+  $env:VSI_CACHE_SIZE = '1000000'
+  $env:QT_PLUGIN_PATH = "$AppRoot\qtplugins;$Osgeo4wRoot\apps\qt5\plugins"
+  $env:PYTHONPATH = "$AppRoot\python;$env:PYTHONPATH"
+  $env:QGIS_CUSTOM_CONFIG_PATH = $Profiles
 }

@@ -1,0 +1,92 @@
+{
+  "target": "Build",
+  "lang": "pt_BR",
+  "run": "D:\\iman-terra-build\\smoke\\captures-build-pt_BR-20261025-173332",
+  "steps": {
+    "gui": {
+      "exitedClean": true,
+      "facts": {
+        "title_at_start": "Projeto sem título — IMAN Terra [iman-smoke]",
+        "title_after_load": "smoke — IMAN Terra [iman-smoke]",
+        "main": "01-janela.png",
+        "splash_message": "IMAN Terra pronto!",
+        "splash": "02-splash-mensagem-final.png",
+        "toolbox": "03-processamento.png",
+        "help_menu_items": [
+          "Conteúdo da Ajuda",
+          "Documentação de API do C++",
+          "Documentação de API do PyQGIS",
+          "Complementos",
+          "Reportar um problema",
+          "Doe para o QGIS",
+          "Envolva-se",
+          "Precisa de Suporte Comercial?",
+          "Membros de Suporte do QGIS",
+          "Página do IMAN Terra",
+          "Sobre"
+        ],
+        "help_menu": "04-menu-ajuda.png",
+        "about_title": "Sobre o QGIS — Sobre",
+        "about": "05-sobre.png",
+        "browser": "06-navegador-qgz.png",
+        "layer_properties": "07-propriedades-camada.png",
+        "layer_properties_title": "Layer Properties - points — Simbologia",
+        "options_providers": "08-opcoes-processamento-provedores.png",
+        "translation": "pt_BR"
+      }
+    },
+    "splash": {
+      "capture": "02-splash-real.png",
+      "size": [
+        0,
+        0
+      ]
+    },
+    "crash": {
+      "title": "Uh-oh!",
+      "capture": "09-crash-handler.png",
+      "texts": [
+        "Copiar relatório",
+        "Detalhes do relatório",
+        "Nos conte algo sobre o que você estava fazendo quando o IMAN Terra falhou. \nPor favor, inclua o máximo de informação possível, assim como quaisquer passos que possamos seguir para reproduzir o problema, se possível.",
+        "Reabrir o IMAN Terra",
+        "Sair",
+        "IMAN Terra terminou inesperadamente",
+        "Oh meu Deus! Algo inesperado aconteceu e o IMAN Terra terminou sem ser capaz de lidar com o erro de forma adequada.\n\nQuer ajudar a corrigir este problema? Use o botão 'Copiar relatório' abaixo e envie o relatório ao Instituto IMAN pela página https://institutoiman.org.br."
+      ],
+      "crashFoldersCreatedAndRemoved": [
+        "ad32df81-cda1-4c83-892a-a907bf1d3e0b"
+      ],
+      "report": [
+        "**Crash ID**: ID not generated due to missing information.",
+        "",
+        " Your version of QGIS install might not have debug information included or we couldn't get crash information."
+      ]
+    },
+    "erro-de-carga": {
+      "copy": "D:\\iman-terra-build\\smoke\\captures-build-pt_BR-20261025-173332\\copia-sem-qgis_app\\bin",
+      "qgisAppDllInCopy": false,
+      "title": "Erro ao carregar o IMAN Terra",
+      "capture": "10-erro-de-carga.png",
+      "texts": [
+        "Aceptar",
+        "Ops, houve um erro ao carregar o IMAN Terra \n\n Detalhes: \n\nFalha ao carregar o qgis_app.dll \n Erro do Windows: No se puede encontrar el módulo especificado.\r\n\n Ajuda: \n\n Confira os caminhos do ambiente em D:\\iman-terra-build\\smoke\\captures-build-pt_BR-20261025-173332\\copia-sem-qgis_app\\bin\\qgis.env"
+      ]
+    }
+  },
+  "guard": "GUARD OK: QGIS oficial, %USERPROFILE%\\AppData\\Roaming\\QGIS, %USERPROFILE%\\AppData\\Local\\QGIS, %USERPROFILE%\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\QGIS3.lnk e registro QGIS identicos ao retrato de 2026-10-25T17:33:34 (37448 itens)",
+  "guardOk": true,
+  "captures": [
+    "01-janela.png",
+    "02-splash-mensagem-final.png",
+    "02-splash-real.png",
+    "03-processamento.png",
+    "04-menu-ajuda.png",
+    "05-sobre.png",
+    "06-navegador-qgz.png",
+    "07-propriedades-camada.png",
+    "08-opcoes-processamento-provedores.png",
+    "09-crash-handler.png",
+    "10-erro-de-carga.png"
+  ]
+}

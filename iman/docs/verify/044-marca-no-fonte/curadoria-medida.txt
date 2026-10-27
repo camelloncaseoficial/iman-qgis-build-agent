@@ -1,0 +1,7 @@
+# comando: lconvert -i "C:\Program Files\QGIS 3.44.13\apps\qgis-ltr\i18n\qgis_pt_BR.qm" -o qgis_pt_BR_oficial.ts
+#          python3 iman/brand/build_brand.py --measure qgis_pt_BR_oficial.ts
+# sha256 do .qm oficial: 5ea0f56661918552ccf64bb9795534928441d3c8b44c7d52d9f0a731d4643f31
+# sha256 do .qm do build: 5ea0f56661918552ccf64bb9795534928441d3c8b44c7d52d9f0a731d4643f31
+mensagens do .qm com QGIS na traducao: 275, em 85 contextos
+curadoria: 275 mensagens; por classe: aplicativo 74, duvida 8, projeto 185, versao 8
+CURADORIA OK

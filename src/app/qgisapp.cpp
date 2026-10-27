@@ -3187,6 +3187,8 @@ void QgisApp::createActions()
   connect( mActionNeedSupport, &QAction::triggered, this, &QgisApp::supportProviders );
   connect( mActionQgisHomePage, &QAction::triggered, this, &QgisApp::helpQgisHomePage );
   connect( mActionCheckQgisVersion, &QAction::triggered, this, &QgisApp::checkQgisVersion );
+  // IMAN: sem checagem de versao do QGIS (allowVersionCheck na configuracao global), o item sai do menu (D-IMAN-039, regra 4)
+  mActionCheckQgisVersion->setVisible( QgsSettings().value( QStringLiteral( "/qgis/allowVersionCheck" ), true ).toBool() );
   connect( mActionAbout, &QAction::triggered, this, &QgisApp::about );
   connect( mActionSponsors, &QAction::triggered, this, &QgisApp::sponsors );
 

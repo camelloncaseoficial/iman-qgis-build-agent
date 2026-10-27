@@ -1,0 +1,93 @@
+{
+  "target": "Official",
+  "lang": "pt_BR",
+  "run": "D:\\iman-terra-build\\smoke\\captures-official-pt_BR-20261025-173440",
+  "steps": {
+    "gui": {
+      "exitedClean": true,
+      "facts": {
+        "title_at_start": "Projeto sem título — QGIS [iman-smoke]",
+        "title_after_load": "smoke — QGIS [iman-smoke]",
+        "main": "01-janela.png",
+        "splash_message": "QGIS pronto!",
+        "splash": "02-splash-mensagem-final.png",
+        "toolbox": "03-processamento.png",
+        "help_menu_items": [
+          "Conteúdo da Ajuda",
+          "Documentação de API do C++",
+          "Documentação de API do PyQGIS",
+          "Complementos",
+          "Reportar um problema",
+          "Doe para o QGIS",
+          "Envolva-se",
+          "Precisa de Suporte Comercial?",
+          "Membros de Suporte do QGIS",
+          "Página do QGIS",
+          "Verificar a versão do QGIS",
+          "Sobre"
+        ],
+        "help_menu": "04-menu-ajuda.png",
+        "about_title": "Sobre o QGIS — Sobre",
+        "about": "05-sobre.png",
+        "browser": "06-navegador-qgz.png",
+        "layer_properties": "07-propriedades-camada.png",
+        "layer_properties_title": "Layer Properties - points — Simbologia",
+        "options_providers": "08-opcoes-processamento-provedores.png",
+        "translation": "pt_BR"
+      }
+    },
+    "splash": {
+      "capture": "02-splash-real.png",
+      "size": [
+        0,
+        0
+      ]
+    },
+    "crash": {
+      "title": "Uh-oh!",
+      "capture": "09-crash-handler.png",
+      "texts": [
+        "Copy Report",
+        "Report details",
+        "Tell us something about what you were doing when QGIS crashed.\nPlease include as much information as you can, as well as any steps we can follow to reproduce the issue, if possible.",
+        "Reload QGIS",
+        "Quit",
+        "QGIS ended unexpectedly",
+        "Oh dear! Something unexpected happened and QGIS ended without being able to handle the error gracefully.\n\nAre you keen to help us fix bugs? QGIS relies on donations to pay developers to do funded bug fixing to improve the stability of the software. We also have a team of enthusiastic volunteers who are all working hard to improve the quality of QGIS. To do that, we need your help. Find out how to help our developers.\n\nSend us a helpful bug report by using the 'Copy Report' button below, \nthen open a ticket on the QGIS Issue Tracker."
+      ],
+      "crashFoldersCreatedAndRemoved": [
+        "d9891aae-c0f1-46bc-9592-122032c613e8"
+      ],
+      "report": [
+        "**Crash ID**: [ID not generated due to missing information.",
+        "",
+        " Your version of QGIS install might not have debug information included or we couldn't get crash information.](https://github.com/qgis/QGIS/search?q=ID not generated due to missing information."
+      ]
+    },
+    "erro-de-carga": {
+      "copy": "D:\\iman-terra-build\\smoke\\captures-official-pt_BR-20261025-173440\\copia-sem-qgis_app\\bin",
+      "qgisAppDllInCopy": false,
+      "title": "Error loading QGIS",
+      "capture": "10-erro-de-carga.png",
+      "texts": [
+        "Aceptar",
+        "Oops, looks like an error loading QGIS \n\n Details: \n\nCould not load qgis_app.dll \n Windows Error: No se puede encontrar el módulo especificado.\r\n\n Help: \n\n Check D:\\iman-terra-build\\smoke\\captures-official-pt_BR-20261025-173440\\copia-sem-qgis_app\\bin\\qgis-ltr-bin.env for correct environment paths"
+      ]
+    }
+  },
+  "guard": "GUARD OK: QGIS oficial, %USERPROFILE%\\AppData\\Roaming\\QGIS, %USERPROFILE%\\AppData\\Local\\QGIS, %USERPROFILE%\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\QGIS3.lnk e registro QGIS identicos ao retrato de 2026-10-25T17:34:43 (37448 itens)",
+  "guardOk": true,
+  "captures": [
+    "01-janela.png",
+    "02-splash-mensagem-final.png",
+    "02-splash-real.png",
+    "03-processamento.png",
+    "04-menu-ajuda.png",
+    "05-sobre.png",
+    "06-navegador-qgz.png",
+    "07-propriedades-camada.png",
+    "08-opcoes-processamento-provedores.png",
+    "09-crash-handler.png",
+    "10-erro-de-carga.png"
+  ]
+}

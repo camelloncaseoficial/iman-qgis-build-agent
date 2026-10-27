@@ -1,0 +1,14 @@
+{
+  "product_name": "IMAN Terra",
+  "organization_name": "Instituto IMAN",
+  "product_url": "https://institutoiman.org.br",
+  "engine_label": "motor QGIS",
+  "default_locale": "pt_BR",
+  "help_urls": {
+    "helpQgisHomePageUrl": "product_url",
+    "reportaBugUrl": "product_url",
+    "supportProvidersUrl": "product_url"
+  },
+  "qgis_news_feed": false,
+  "qgis_version_check": false
+}

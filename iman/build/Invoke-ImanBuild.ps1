@@ -22,8 +22,9 @@ function Invoke-Step([string] $script, [string[]] $extra) {
   if ($LASTEXITCODE) { Write-Step "$script falhou (exit $LASTEXITCODE)"; exit 1 }
 }
 
-# retrato do QGIS oficial antes de qualquer passo, para a guarda do smoke comparar
-if (-not (Test-Path (Join-Path $WorkRoot 'guard\baseline.txt'))) { Invoke-Step 'Test-OfficialQgisUntouched.ps1' @('-Baseline') }
+# retrato do QGIS oficial no comeco de cada rodada, antes de qualquer passo: a guarda do smoke prova que esta
+# rodada nao tocou o oficial (ressalva R1 do gate 043)
+Invoke-Step 'Test-OfficialQgisUntouched.ps1' @('-Baseline')
 if (-not $SkipTools) { Invoke-Step 'Install-BuildTools.ps1' @() }
 $depArgs = @(); if ($Offline) { $depArgs += '-Offline' }; if ($Lock) { $depArgs += @('-Lock', $Lock) }
 Invoke-Step 'Get-Osgeo4wPackages.ps1' $depArgs

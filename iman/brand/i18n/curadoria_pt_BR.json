@@ -1,0 +1,2301 @@
+{
+ "about": "Curadoria das mensagens do qgis_pt_BR.qm do QGIS 3.44.13 cuja traducao contem QGIS (regra 3 do D-IMAN-039, briefing qgis-build 044). As classes aplicativo e versao entram na traducao sobreposta iman_pt_BR; projeto e duvida ficam como estao. Marcadores do texto: {product}, {PRODUCT}, {engine}, {org}, {url}, trocados por iman/brand/build_brand.py a partir de brand.json. 'extra' sao superficies do Bloco D fora das 275.",
+ "measured": {
+  "qm": "apps/qgis-ltr/i18n/qgis_pt_BR.qm do 3.44.13",
+  "sha256": "5ea0f56661918552ccf64bb9795534928441d3c8b44c7d52d9f0a731d4643f31",
+  "messages": 275
+ },
+ "messages": [
+  {
+   "id": 1,
+   "context": "QgsDelimitedTextSourceSelectBase",
+   "source": "Watch for changes to the file by other applications while QGIS is running",
+   "qgis": "Olhar por mudanças para o arquivo por outros aplicativos enquanto o QGIS está rodando",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "Olhar por mudanças para o arquivo por outros aplicativos enquanto o {product} está rodando"
+  },
+  {
+   "id": 2,
+   "context": "QObject",
+   "source": "This plugin is disabled because it previously crashed QGIS.",
+   "qgis": "Este complemento está desativado porque travou o QGIS anteriormente.",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "Este complemento está desativado porque travou o {product} anteriormente."
+  },
+  {
+   "id": 3,
+   "context": "QObject",
+   "source": "A valid QGIS expression string, e.g \"road_name\" = 'MAIN RD'",
+   "qgis": "Uma cadeia de caracteres de expressão do QGIS válida, por ex. \"nome_estrada\" = 'RUA PRINCIPAL'",
+   "class": "projeto",
+   "why": "tecnologia do QGIS: expressao"
+  },
+  {
+   "id": 4,
+   "context": "QObject",
+   "source": "LAS and LAZ files cannot be opened by this QGIS install.",
+   "qgis": "Esta instalação do QGIS nâo é capaz de abrir arquivos LAS e LAZ.",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "Esta instalação do {product} nâo é capaz de abrir arquivos LAS e LAZ."
+  },
+  {
+   "id": 5,
+   "context": "QObject",
+   "source": "The installer used to install this version of QGIS does not include the PDAL library required for opening LAS and LAZ point clouds. Please obtain one of the alternative installers from https://qgis.org which has point cloud support enabled.",
+   "qgis": "O instalador usado para instalar a presente versão do QGIS não inclui a biblioteca PDAL necessária para abrir nuvens de pontos LAS e LAZ. Por favor, obtenha um dos instaladores alternativos em https://qgis.org que contém suporte habilitado para trabalhar com nuvens de pontos.",
+   "class": "duvida",
+   "why": "o texto manda obter outro instalador em qgis.org; nem QGIS nem o nome do produto deixam a frase verdadeira (nao aparece neste build, que tem PDAL)"
+  },
+  {
+   "id": 6,
+   "context": "QObject",
+   "source": "RESTART QGIS",
+   "qgis": "REINICIAR QGIS",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "REINICIAR {PRODUCT}"
+  },
+  {
+   "id": 7,
+   "context": "QObject",
+   "source": "The structured method to make geometries valid requires a QGIS build based on GEOS 3.10 or later",
+   "qgis": "O método estruturado para tornar as geometrias válidas requer uma compilação QGIS baseada no GEOS 3.10 ou posterior",
+   "class": "projeto",
+   "why": "motor: capacidade, dependencia ou comportamento interno do QGIS; o texto segue verdadeiro"
+  },
+  {
+   "id": 8,
+   "context": "QObject",
+   "source": "Address and port (default: \"localhost:8000\")\naddress and port can also be specified with the environment\nvariables QGIS_SERVER_ADDRESS and QGIS_SERVER_PORT.",
+   "qgis": "Endereço e porta (padrão: \"localhost: 8000\")\nendereço e porta também podem ser especificados com o ambiente\nvariáveis ​​QGIS_SERVER_ADDRESS e QGIS_SERVER_PORT.",
+   "class": "projeto",
+   "why": "nome tecnico do QGIS (API, variavel, servidor, modulo)"
+  },
+  {
+   "id": 9,
+   "context": "QObject",
+   "source": "The symbol is not supported in QGIS",
+   "qgis": "O símbolo não é suportado no QGIS",
+   "class": "projeto",
+   "why": "motor: capacidade, dependencia ou comportamento interno do QGIS; o texto segue verdadeiro"
+  },
+  {
+   "id": 10,
+   "context": "QObject",
+   "source": "Creates a style database by extracting all symbols, color ramps, text formats and label settings from a QGIS project.",
+   "qgis": "Cria um banco de dados de estilos extraindo todos os símbolos, rampas de cores, formatos de texto e configurações de etiqueta de um projeto QGIS.",
+   "class": "projeto",
+   "why": "formato de arquivo ou de dado do QGIS"
+  },
+  {
+   "id": 11,
+   "context": "QObject",
+   "source": "This algorithm creates a new vector layer that only contains matching features from an input layer. The criteria for adding features to the resulting layer is based on a QGIS expression.\n\nFor help with QGIS expression functions, see the inbuilt help for specific functions which is available in the expression builder.",
+   "qgis": "Esse algoritmo cria uma nova camada vetorial que apenas contem funções correspondentes de uma camada de entrada. O critério para adicionar funções à camada resultante é baseado em uma função do QGIS.\n\nPara ajuda com as funções de expressões QGIS, veja a ajuda integrada para funções específicas disponíveis no construtor de expressões.\n",
+   "class": "projeto",
+   "why": "tecnologia do QGIS: expressao"
+  },
+  {
+   "id": 12,
+   "context": "QObject",
+   "source": "QGIS Development Server %1",
+   "qgis": "Servidor de Desenvolvimento QGIS %1",
+   "class": "projeto",
+   "why": "nome tecnico do QGIS (API, variavel, servidor, modulo)"
+  },
+  {
+   "id": 13,
+   "context": "QObject",
+   "source": "QGIS files",
+   "qgis": "Arquivos QGIS",
+   "class": "projeto",
+   "why": "formato de arquivo ou de dado do QGIS"
+  },
+  {
+   "id": 14,
+   "context": "QObject",
+   "source": "This algorithm updates existing geometries (or creates new geometries) for input features by use of a QGIS expression. This allows complex geometry modifications which can utilize all the flexibility of the QGIS expression engine to manipulate and create geometries for output features.\n\nFor help with QGIS expression functions, see the inbuilt help for specific functions which is available in the expression builder.",
+   "qgis": "Esse algoritmo atualiza geometrias existentes (ou cria novas geometrias) para feições de entrada usando uma expressão QGIS. Isso permite modificações geométricas complexas que podem utilizar toda a flexibilidade do mecanismo de expressão QGIS para manipular e criar geometrias para as feições de saída.\nPara obter ajuda com as funções de expressão do QGIS, consulte a ajuda incorporada para funções específicas que estão disponíveis no construtor de expressões.",
+   "class": "projeto",
+   "why": "tecnologia do QGIS: expressao"
+  },
+  {
+   "id": 15,
+   "context": "QObject",
+   "source": "Couldn't load QGIS utils.",
+   "qgis": "Impossível carregar QGIS utils.",
+   "class": "projeto",
+   "why": "nome tecnico do QGIS (API, variavel, servidor, modulo)"
+  },
+  {
+   "id": 16,
+   "context": "QObject",
+   "source": "QGIS starting in non-interactive mode not supported.\nYou are seeing this message most likely because you have no DISPLAY environment variable set.\n",
+   "qgis": "QGIS iniciou no modo não-interativo não suportado.\nVocê está vendo esta mensagem provavelmente porque você não tem MOSTRADA nenhuma variável de ambiente definida.",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "{product} iniciou no modo não-interativo não suportado.\nVocê está vendo esta mensagem provavelmente porque você não tem MOSTRADA nenhuma variável de ambiente definida."
+  },
+  {
+   "id": 17,
+   "context": "QObject",
+   "source": "This algorithm combines multiple QGIS style databases into a single style database. If any symbols exist with duplicate names between the different source databases these will be renamed to have unique names in the output combined database.",
+   "qgis": "Esse algoritmo combina vários bancos de dados de estilo QGIS em um único banco de dados de estilo. Se existirem símbolos com nomes duplicados entre os diferentes bancos de dados de origem, eles serão renomeados para ter nomes exclusivos no banco de dados combinado de saída.",
+   "class": "projeto",
+   "why": "formato de arquivo ou de dado do QGIS"
+  },
+  {
+   "id": 18,
+   "context": "QObject",
+   "source": "Couldn't load PyQGIS Server.",
+   "qgis": "Não foi possível carregar o Servidor PyQGIS.",
+   "class": "projeto",
+   "why": "nome tecnico do QGIS (API, variavel, servidor, modulo)"
+  },
+  {
+   "id": 19,
+   "context": "QObject",
+   "source": "There was an error loading a plugin. The following diagnostic information may help the QGIS developers resolve the issue:\n%1.",
+   "qgis": "Houve um erro ao carregar o complemento. A informação de diagnóstico seguinte pode ser útil para os desenvolvedores do QGIS resolverem esse problema:\n%1.",
+   "class": "projeto",
+   "why": "projeto, comunidade, documentacao ou creditos do QGIS"
+  },
+  {
+   "id": 20,
+   "context": "QObject",
+   "source": "This algorithm extracts all style objects (including symbols, color ramps, text formats and label settings) from a QGIS project.\n\nThe extracted symbols are saved to a QGIS style database (XML format), which can be managed and imported via the Style Manager dialog.",
+   "qgis": "Esse algoritmo extrai todos os objetos de estilo (incluindo símbolos, rampas de cores, formatos de texto e configurações de etiqueta) de um projeto QGIS.\n\nOs símbolos extraídos são salvos em um banco de dados de estilo QGIS (formato XML), que pode ser gerenciado e importado através da caixa de diálogo Gerenciador de estilos.",
+   "class": "projeto",
+   "why": "formato de arquivo ou de dado do QGIS"
+  },
+  {
+   "id": 21,
+   "context": "QObject",
+   "source": "No authentication methods can be used. Check your QGIS installation",
+   "qgis": "Nenhum método de autenticação pôde ser usado. Verifique sua instalação do QGIS",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "Nenhum método de autenticação pôde ser usado. Verifique sua instalação do {product}"
+  },
+  {
+   "id": 22,
+   "context": "QObject",
+   "source": "Path to a QGIS project file (*.qgs or *.qgz),\nif specified it will override the query string MAP argument\nand the QGIS_PROJECT_FILE environment variable.",
+   "qgis": "Caminho para um arquivo de projeto QGIS (* .qgs ou * .qgz),\nse especificado, substituirá o argumento MAP da string de consulta\ne a variável de ambiente QGIS_PROJECT_FILE.",
+   "class": "projeto",
+   "why": "formato de arquivo ou de dado do QGIS"
+  },
+  {
+   "id": 23,
+   "context": "QObject",
+   "source": "This algorithm sorts a vector layer according to an expression. Be careful, it might not work as expected with some providers, the order might not be kept every time.\n\nFor help with QGIS expression functions, see the inbuilt help for specific functions which is available in the expression builder.",
+   "qgis": "Este algoritmo ordena uma camada vetorial de acordo com uma expressão. Tenha cuidado, ele pode não funcionar como esperado com alguns fornecedores, a ordem pode não ser mantida toda vez.\n\nPara ajuda com as funções de expressão QGIS, veja a ajuda embutida para funções específicas que está disponível no 'construtor de expressões'.",
+   "class": "projeto",
+   "why": "tecnologia do QGIS: expressao"
+  },
+  {
+   "id": 24,
+   "context": "QObject",
+   "source": "Calculating a projective transformation requires a QGIS build based GSL",
+   "qgis": "O cálculo de uma transformação projetiva requer uma compilação do QGIS baseada no GSL",
+   "class": "projeto",
+   "why": "motor: capacidade, dependencia ou comportamento interno do QGIS; o texto segue verdadeiro"
+  },
+  {
+   "id": 25,
+   "context": "QObject",
+   "source": "Calculating a helmert transformation requires a QGIS build based GSL",
+   "qgis": "O calculo de transformações de helmert requer um QGIS compilado com GSL",
+   "class": "projeto",
+   "why": "motor: capacidade, dependencia ou comportamento interno do QGIS; o texto segue verdadeiro"
+  },
+  {
+   "id": 26,
+   "context": "QObject",
+   "source": "The brush style is not supported in QGIS",
+   "qgis": "O estilo de pincel não é suportado no QGIS",
+   "class": "projeto",
+   "why": "motor: capacidade, dependencia ou comportamento interno do QGIS; o texto segue verdadeiro"
+  },
+  {
+   "id": 27,
+   "context": "QObject",
+   "source": "Calculating constrainedDelaunayTriangulation requires a QGIS build based on GEOS 3.11 or later",
+   "qgis": "O cálculo da constrainedDelaunayTriangulation  requer um QGIS compilado com GEOS 3.11 ou superior",
+   "class": "projeto",
+   "why": "motor: capacidade, dependencia ou comportamento interno do QGIS; o texto segue verdadeiro"
+  },
+  {
+   "id": 28,
+   "context": "QObject",
+   "source": "QGIS version:",
+   "qgis": "QGIS versão:",
+   "class": "versao",
+   "why": "mostra a versao do QGIS: o texto diz motor QGIS",
+   "text": "Versão do {engine}:"
+  },
+  {
+   "id": 29,
+   "context": "QObject",
+   "source": "The line style is not supported in QGIS",
+   "qgis": "O estilo de linha não é suportado no QGIS",
+   "class": "projeto",
+   "why": "motor: capacidade, dependencia ou comportamento interno do QGIS; o texto segue verdadeiro"
+  },
+  {
+   "id": 30,
+   "context": "QObject",
+   "source": "Simplifying coverages requires a QGIS build based on GEOS 3.12 or later",
+   "qgis": "A simplificação das coberturas requer um QGIS compilado com GEOS 3.12 ou superior",
+   "class": "projeto",
+   "why": "motor: capacidade, dependencia ou comportamento interno do QGIS; o texto segue verdadeiro"
+  },
+  {
+   "id": 31,
+   "context": "QObject",
+   "source": "This algorithm exports a vector layer to a PostgreSQL database, creating a new table.\n\nPrior to this a connection between QGIS and the PostgreSQL database has to be created (for example through the QGIS Browser panel).",
+   "qgis": "Este algoritmo exporta uma camada vetorial para um banco de dados PostgreSQL, criando uma nova tabela.\n\nAntes disso, uma conexão entre o QGIS e o banco de dados PostgreSQL deve ser criada (por exemplo, através do painel do navegador QGIS).",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "Este algoritmo exporta uma camada vetorial para um banco de dados PostgreSQL, criando uma nova tabela.\n\nAntes disso, uma conexão entre o {product} e o banco de dados PostgreSQL deve ser criada (por exemplo, através do painel do navegador {product})."
+  },
+  {
+   "id": 32,
+   "context": "QObject",
+   "source": "QGIS Generated Color Map Export File",
+   "qgis": "Arquivo de exportação de Mapa de Cores gerado pelo QGIS",
+   "class": "duvida",
+   "why": "texto gravado em arquivo ou dado exportado pelo usuario, nao na interface"
+  },
+  {
+   "id": 33,
+   "context": "QObject",
+   "source": "Plugin \"%1\" is not compatible with this version of QGIS.\nIt will be disabled.",
+   "qgis": "Complemento \"%1\" não é compatível com esta versão do QGIS.\nEle será desabilitado.",
+   "class": "projeto",
+   "why": "ecossistema de complementos do QGIS e compatibilidade com a versao do motor"
+  },
+  {
+   "id": 34,
+   "context": "QObject",
+   "source": "Version of QGIS and libraries",
+   "qgis": "Versão do QGIS e bibliotecas",
+   "class": "versao",
+   "why": "mostra a versao do QGIS: o texto diz motor QGIS",
+   "text": "Versão do {engine} e bibliotecas"
+  },
+  {
+   "id": 35,
+   "context": "QObject",
+   "source": "QGIS native provider",
+   "qgis": "provedor nativo QGIS",
+   "class": "duvida",
+   "why": "nome de provedor de dados do QGIS; identifica o componente do QGIS, nao o programa em uso"
+  },
+  {
+   "id": 36,
+   "context": "QObject",
+   "source": "Too many files opened (%1). Cannot open %2. You may raise the limit with the 'ulimit -n number_of_files' command before starting QGIS.",
+   "qgis": "Muitos arquivos abertos (%1). Não é possível abrir %2. Você pode aumentar o limite com o comando 'ulimit -n number_of_files' antes de iniciar o QGIS.",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "Muitos arquivos abertos (%1). Não é possível abrir %2. Você pode aumentar o limite com o comando 'ulimit -n number_of_files' antes de iniciar o {product}."
+  },
+  {
+   "id": 37,
+   "context": "QObject",
+   "source": "This QGIS build does not include the PDAL library dependency required for opening LAS or LAZ point clouds.",
+   "qgis": "Esta compilação do QGIS não inclui a dependência de biblioteca PDAL necessária para abrir nuvens de pontos LAS ou LAZ.",
+   "class": "projeto",
+   "why": "motor: capacidade, dependencia ou comportamento interno do QGIS; o texto segue verdadeiro"
+  },
+  {
+   "id": 38,
+   "context": "QObject",
+   "source": "Validating coverages requires a QGIS build based on GEOS 3.12 or later",
+   "qgis": "A validação das coberturas requer um QGIS compilado com GEOS 3.12 ou superior",
+   "class": "projeto",
+   "why": "motor: capacidade, dependencia ou comportamento interno do QGIS; o texto segue verdadeiro"
+  },
+  {
+   "id": 39,
+   "context": "QObject",
+   "source": "An existing QGIS authentication ID string",
+   "qgis": "Uma cadeia de caracteres ID de autenticação do QGIS existente",
+   "class": "projeto",
+   "why": "nome tecnico do QGIS (API, variavel, servidor, modulo)"
+  },
+  {
+   "id": 40,
+   "context": "QObject",
+   "source": "Python is not enabled in QGIS.",
+   "qgis": "O python não está habilitado no QGIS.",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "O python não está habilitado no {product}."
+  },
+  {
+   "id": 41,
+   "context": "QObject",
+   "source": "Couldn't load PyQGIS.",
+   "qgis": "Não foi possível carregar PyQGIS.",
+   "class": "projeto",
+   "why": "nome tecnico do QGIS (API, variavel, servidor, modulo)"
+  },
+  {
+   "id": 42,
+   "context": "QObject",
+   "source": "QGIS geometry cannot be converted to a GEOS geometry",
+   "qgis": "Geometria QGIS não pode ser convertida para geometria GEOS",
+   "class": "projeto",
+   "why": "nome tecnico do QGIS (API, variavel, servidor, modulo)"
+  },
+  {
+   "id": 43,
+   "context": "QObject",
+   "source": "This algorithm calculates the result of a QGIS expression and makes it available for use in other parts of the model.",
+   "qgis": "Esse algoritmo calcula o resultado da expressão do QGIS e a torna válida para usar em outras partes do modelo.",
+   "class": "projeto",
+   "why": "tecnologia do QGIS: expressao"
+  },
+  {
+   "id": 44,
+   "context": "QObject",
+   "source": "QGIS Help",
+   "qgis": "\nAjuda do QGIS",
+   "class": "projeto",
+   "why": "projeto, comunidade, documentacao ou creditos do QGIS"
+  },
+  {
+   "id": 45,
+   "context": "QObject",
+   "source": "Calculating concaveHull requires a QGIS build based on GEOS 3.11 or later",
+   "qgis": "O cálculo do concaveHull requer uma compilação QGIS baseada no GEOS 3.11 ou posterior",
+   "class": "projeto",
+   "why": "motor: capacidade, dependencia ou comportamento interno do QGIS; o texto segue verdadeiro"
+  },
+  {
+   "id": 46,
+   "context": "QObject",
+   "source": "The keep collapsed option for making geometries valid requires a QGIS build based on GEOS 3.10 or later",
+   "qgis": "A opção manter recolhido para tornar as geometrias válidas requer uma compilação QGIS baseada no GEOS 3.10 ou posterior",
+   "class": "projeto",
+   "why": "motor: capacidade, dependencia ou comportamento interno do QGIS; o texto segue verdadeiro"
+  },
+  {
+   "id": 47,
+   "context": "QgsExpression",
+   "source": "language (lowercase, two- or three-letter, ISO 639 language code) used to convert the string into a date. By default the current QGIS user locale is used.",
+   "qgis": "idioma (letras minúsculas, duas ou três letras, código de idioma ISO 639) usado para converter a cadeia de caracteres em uma data. Por padrão, é usado o local atual do usuário QGIS.",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "idioma (letras minúsculas, duas ou três letras, código de idioma ISO 639) usado para converter a cadeia de caracteres em uma data. Por padrão, é usado o local atual do usuário {product}."
+  },
+  {
+   "id": 48,
+   "context": "QgsExpression",
+   "source": "hash('QGIS', 'keccak_256')",
+   "qgis": "hash('QGIS', 'keccak_256')",
+   "class": "projeto",
+   "why": "exemplo de expressao; o resultado mostrado depende do literal"
+  },
+  {
+   "id": 49,
+   "context": "QgsExpression",
+   "source": "hash('QGIS', 'keccak_224')",
+   "qgis": "hash('QGIS', 'keccak_224')",
+   "class": "projeto",
+   "why": "exemplo de expressao; o resultado mostrado depende do literal"
+  },
+  {
+   "id": 50,
+   "context": "QgsExpression",
+   "source": "hash('QGIS', 'keccak_384')",
+   "qgis": "hash('QGIS', 'keccak_384')",
+   "class": "projeto",
+   "why": "exemplo de expressao; o resultado mostrado depende do literal"
+  },
+  {
+   "id": 51,
+   "context": "QgsExpression",
+   "source": "language (lowercase, two- or three-letter, <a href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>ISO 639 language code</a>) used to format the number into a string. By default the current QGIS user locale is used.",
+   "qgis": "idioma (minúsculas, duas ou três letras, <a href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>código de idioma ISO 639 </a>) usado para formatar o número em uma cadeia. Por padrão, a localidade atual do usuário QGIS é usada.",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "idioma (minúsculas, duas ou três letras, <a href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>código de idioma ISO 639 </a>) usado para formatar o número em uma cadeia. Por padrão, a localidade atual do usuário {product} é usada."
+  },
+  {
+   "id": 52,
+   "context": "QgsExpression",
+   "source": "hash('QGIS', 'sha256')",
+   "qgis": "hash('QGIS', 'sha256')",
+   "class": "projeto",
+   "why": "exemplo de expressao; o resultado mostrado depende do literal"
+  },
+  {
+   "id": 53,
+   "context": "QgsExpression",
+   "source": "hash('QGIS', 'sha224')",
+   "qgis": "hash('QGIS', 'sha224')",
+   "class": "projeto",
+   "why": "exemplo de expressao; o resultado mostrado depende do literal"
+  },
+  {
+   "id": 54,
+   "context": "QgsExpression",
+   "source": "hash('QGIS', 'sha384')",
+   "qgis": "hash('QGIS', 'sha384')",
+   "class": "projeto",
+   "why": "exemplo de expressao; o resultado mostrado depende do literal"
+  },
+  {
+   "id": 55,
+   "context": "QgsExpression",
+   "source": "hash('QGIS', 'sha512')",
+   "qgis": "hash('QGIS', 'sha512')",
+   "class": "projeto",
+   "why": "exemplo de expressao; o resultado mostrado depende do literal"
+  },
+  {
+   "id": 56,
+   "context": "QgsExpression",
+   "source": "sha256('QGIS')",
+   "qgis": "sha256('QGIS')",
+   "class": "projeto",
+   "why": "exemplo de expressao; o resultado mostrado depende do literal"
+  },
+  {
+   "id": 57,
+   "context": "QgsExpression",
+   "source": "'QGIS'",
+   "qgis": "'QGIS'",
+   "class": "projeto",
+   "why": "exemplo de expressao; o resultado mostrado depende do literal"
+  },
+  {
+   "id": 58,
+   "context": "QgsExpression",
+   "source": "eval_template('QGIS [% upper(\\'rocks\\') %]')",
+   "qgis": "eval_template('QGIS [% upper(\\'rocks\\') %]')",
+   "class": "projeto",
+   "why": "exemplo de expressao; o resultado mostrado depende do literal"
+  },
+  {
+   "id": 59,
+   "context": "QgsExpression",
+   "source": "wordwrap('UNIVERSITY OF QGIS',13)",
+   "qgis": "wordwrap('UNIVERSIDADE DO QGIS',13)",
+   "class": "projeto",
+   "why": "exemplo de expressao; o resultado mostrado depende do literal"
+  },
+  {
+   "id": 60,
+   "context": "QgsExpression",
+   "source": "wordwrap('UNIVERSITY OF QGIS',-3)",
+   "qgis": "wordwrap('UNIVERSIDADE DO QGIS',-3)",
+   "class": "projeto",
+   "why": "exemplo de expressao; o resultado mostrado depende do literal"
+  },
+  {
+   "id": 61,
+   "context": "QgsExpression",
+   "source": "regexp_replace('QGIS SHOULD ROCK','\\\\sSHOULD\\\\s',' DOES ')",
+   "qgis": "regexp_replace('QGIS SHOULD ROCK','\\\\sSHOULD\\\\s',' DOES ')",
+   "class": "projeto",
+   "why": "exemplo de expressao; o resultado mostrado depende do literal"
+  },
+  {
+   "id": 62,
+   "context": "QgsExpression",
+   "source": "to_base64('QGIS')",
+   "qgis": "to_base64('QGIS')",
+   "class": "projeto",
+   "why": "exemplo de expressao; o resultado mostrado depende do literal"
+  },
+  {
+   "id": 63,
+   "context": "QgsExpression",
+   "source": "QGIS ROCKS",
+   "qgis": "QGIS É ROCK",
+   "class": "projeto",
+   "why": "exemplo de expressao; o resultado mostrado depende do literal"
+  },
+  {
+   "id": 64,
+   "context": "QgsExpression",
+   "source": "'UNIVERSITY OF<br>QGIS'",
+   "qgis": "'UNIVERSIDADE DO<br>QGIS'",
+   "class": "projeto",
+   "why": "exemplo de expressao; o resultado mostrado depende do literal"
+  },
+  {
+   "id": 65,
+   "context": "QgsExpression",
+   "source": "replace('QGIS',array('Q','S'),'')",
+   "qgis": "replace('QGIS',array('Q','S'),'')",
+   "class": "projeto",
+   "why": "exemplo de expressao; o resultado mostrado depende do literal"
+  },
+  {
+   "id": 66,
+   "context": "QgsExpression",
+   "source": "replace('QGIS ABC',array('A','B','C'),array('X','Y','Z'))",
+   "qgis": "replace('QGIS ABC',array('A','B','C'),array('X','Y','Z'))",
+   "class": "projeto",
+   "why": "exemplo de expressao; o resultado mostrado depende do literal"
+  },
+  {
+   "id": 67,
+   "context": "QgsExpression",
+   "source": "'QGIS ROCKS'",
+   "qgis": "'QGIS ROCKS'",
+   "class": "projeto",
+   "why": "exemplo de expressao; o resultado mostrado depende do literal"
+  },
+  {
+   "id": 68,
+   "context": "QgsExpression",
+   "source": "[ 'QGIS', 'DOES', 'ROCK' ]",
+   "qgis": "[ 'QGIS', 'DOES', 'ROCK' ]",
+   "class": "projeto",
+   "why": "exemplo de expressao; o resultado mostrado depende do literal"
+  },
+  {
+   "id": 69,
+   "context": "QgsExpression",
+   "source": "array_replace(array('APP', 'SHOULD', 'ROCK'),map('APP','QGIS','SHOULD','DOES'))",
+   "qgis": "matriz_substituir(matriz('APP', 'SHOULD', 'ROCK'),mapa('APP','QGIS','SHOULD','DOES'))",
+   "class": "projeto",
+   "why": "exemplo de expressao; o resultado mostrado depende do literal"
+  },
+  {
+   "id": 70,
+   "context": "QgsExpression",
+   "source": "Converts a string into a date object. An optional format string can be provided to parse the string; see <a href='https://doc.qt.io/qt-5/qdate.html#fromString-2'>QDate::fromString</a> or the documentation of the format_date function for additional documentation on the format. By default the current QGIS user locale is used.",
+   "qgis": "Converte uma cadeia em um objeto de data. Uma cadeia de formato opcional pode ser fornecida para analisar a cadeia; Ver <a href='https://doc.qt.io/qt-5/qdate.html#fromString-2'>QData::deCadeia</a> ou a documentação da função formato_data para documentação adicional sobre o formato. Por padrão, a localidade atual do usuário QGIS é usada.",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "Converte uma cadeia em um objeto de data. Uma cadeia de formato opcional pode ser fornecida para analisar a cadeia; Ver <a href='https://doc.qt.io/qt-5/qdate.html#fromString-2'>QData::deCadeia</a> ou a documentação da função formato_data para documentação adicional sobre o formato. Por padrão, a localidade atual do usuário {product} é usada."
+  },
+  {
+   "id": 71,
+   "context": "QgsExpression",
+   "source": "replace('QGIS SHOULD ROCK','SHOULD','DOES')",
+   "qgis": "substituir('QGIS SHOULD ROCK','SHOULD','DOES')",
+   "class": "projeto",
+   "why": "exemplo de expressao; o resultado mostrado depende do literal"
+  },
+  {
+   "id": 72,
+   "context": "QgsExpression",
+   "source": "'QGIS ' + 'ROCKS'",
+   "qgis": "'QGIS ' + 'ROCKS'",
+   "class": "projeto",
+   "why": "exemplo de expressao; o resultado mostrado depende do literal"
+  },
+  {
+   "id": 73,
+   "context": "QgsExpression",
+   "source": "language (lowercase, two- or three-letter, <a href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>ISO 639 language code</a>) used to format the date into a custom string. By default the current QGIS user locale is used.",
+   "qgis": "idioma (minúsculas, duas ou três letras, <a href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>código de idioma ISO 639 </a>) usado para formatar a data em uma cadeia personalizada. Por padrão, a localidade atual do usuário QGIS é usada.",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "idioma (minúsculas, duas ou três letras, <a href='https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes'>código de idioma ISO 639 </a>) usado para formatar a data em uma cadeia personalizada. Por padrão, a localidade atual do usuário {product} é usada."
+  },
+  {
+   "id": 74,
+   "context": "QgsExpression",
+   "source": "hash('QGIS', 'md5')",
+   "qgis": "hash('QGIS', 'md5')",
+   "class": "projeto",
+   "why": "exemplo de expressao; o resultado mostrado depende do literal"
+  },
+  {
+   "id": 75,
+   "context": "QgsExpression",
+   "source": "hash('QGIS', 'md4')",
+   "qgis": "hash('QGIS', 'md4')",
+   "class": "projeto",
+   "why": "exemplo de expressao; o resultado mostrado depende do literal"
+  },
+  {
+   "id": 76,
+   "context": "QgsExpression",
+   "source": "'QGIS DOES ROCK'",
+   "qgis": "'QGIS É ROCK'",
+   "class": "projeto",
+   "why": "exemplo de expressao; o resultado mostrado depende do literal"
+  },
+  {
+   "id": 77,
+   "context": "QgsExpression",
+   "source": "Returns a number formatted with the locale separator for thousands. By default the current QGIS user locale is used. Also truncates the decimal places to the number of supplied places.",
+   "qgis": "Retorna um número formatado com o separador de localidade para milhares. Por padrão, a localidade atual do usuário QGIS é usada. Também trunca as casas decimais para o número de casas fornecidas.",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "Retorna um número formatado com o separador de localidade para milhares. Por padrão, a localidade atual do usuário {product} é usada. Também trunca as casas decimais para o número de casas fornecidas."
+  },
+  {
+   "id": 78,
+   "context": "QgsExpression",
+   "source": "md5('QGIS')",
+   "qgis": "md5('QGIS')",
+   "class": "projeto",
+   "why": "exemplo de expressao; o resultado mostrado depende do literal"
+  },
+  {
+   "id": 79,
+   "context": "QgsExpression",
+   "source": "array_replace(array('QGIS','SHOULD','ROCK'),'SHOULD','DOES')",
+   "qgis": "matriz_substituir(matriz('QGIS','SHOULD','ROCK'),'SHOULD','DOES')",
+   "class": "projeto",
+   "why": "exemplo de expressao; o resultado mostrado depende do literal"
+  },
+  {
+   "id": 80,
+   "context": "QgsExpression",
+   "source": "[ 'QGIS', 'rocks' ]",
+   "qgis": "[ 'QGIS', 'rola' ]",
+   "class": "projeto",
+   "why": "exemplo de expressao; o resultado mostrado depende do literal"
+  },
+  {
+   "id": 81,
+   "context": "QgsExpression",
+   "source": "The color ramps available vary between QGIS installations. This function may not give the expected results if you move your QGIS project between installations.",
+   "qgis": "Os gradientes de cores disponíveis entre instalações do QGIS. Esta função pode fornecer resultados não esperados se você mover seu projeto do QGIS entre instalações.",
+   "class": "projeto",
+   "why": "motor: capacidade, dependencia ou comportamento interno do QGIS; o texto segue verdadeiro"
+  },
+  {
+   "id": 82,
+   "context": "QgsExpression",
+   "source": "hash('QGIS', 'sha3_512')",
+   "qgis": "hash('QGIS', 'sha3_512')",
+   "class": "projeto",
+   "why": "exemplo de expressao; o resultado mostrado depende do literal"
+  },
+  {
+   "id": 83,
+   "context": "QgsExpression",
+   "source": "hash('QGIS', 'sha3_256')",
+   "qgis": "hash('QGIS', 'sha3_256')",
+   "class": "projeto",
+   "why": "exemplo de expressao; o resultado mostrado depende do literal"
+  },
+  {
+   "id": 84,
+   "context": "QgsExpression",
+   "source": "hash('QGIS', 'sha3_224')",
+   "qgis": "hash('QGIS', 'sha3_224')",
+   "class": "projeto",
+   "why": "exemplo de expressao; o resultado mostrado depende do literal"
+  },
+  {
+   "id": 85,
+   "context": "QgsExpression",
+   "source": "hash('QGIS', 'sha3_384')",
+   "qgis": "hash('QGIS', 'sha3_384')",
+   "class": "projeto",
+   "why": "exemplo de expressao; o resultado mostrado depende do literal"
+  },
+  {
+   "id": 86,
+   "context": "QgsExpression",
+   "source": "hash('QGIS', 'sha1')",
+   "qgis": "hash('QGIS', 'sha1')",
+   "class": "projeto",
+   "why": "exemplo de expressao; o resultado mostrado depende do literal"
+  },
+  {
+   "id": 87,
+   "context": "QgsExpression",
+   "source": "language (lowercase, two- or three-letter, ISO 639 language code) used to convert the string into a datetime. By default the current QGIS user locale is used.",
+   "qgis": "idioma (letras minúsculas, duas ou três letras, código de idioma ISO 639) usado para converter a cadeia de caracteres em data-tempo. Por padrão, é usado o local atual do usuário QGIS.",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "idioma (letras minúsculas, duas ou três letras, código de idioma ISO 639) usado para converter a cadeia de caracteres em data-tempo. Por padrão, é usado o local atual do usuário {product}."
+  },
+  {
+   "id": 88,
+   "context": "QgsExpression",
+   "source": "'QGIS XYZ'",
+   "qgis": "'QGIS XYZ'",
+   "class": "projeto",
+   "why": "exemplo de expressao; o resultado mostrado depende do literal"
+  },
+  {
+   "id": 89,
+   "context": "QgsExpression",
+   "source": "Converts a string into a datetime object. An optional format string can be provided to parse the string; see <a href='https://doc.qt.io/qt-5/qdate.html#fromString-2'>QDate::fromString</a>, <a href='https://doc.qt.io/qt-5/qtime.html#fromString-1'>QTime::fromString</a> or the documentation of the format_date function for additional documentation on the format. By default the current QGIS user locale is used.",
+   "qgis": "Converte uma cadeia em um objeto data-tempo. Uma cadeia de formato opcional pode ser fornecida para analisar a cadeia; ver <a href='https://doc.qt.io/qt-5/qdate.html#fromString-2'>QData::deCadeia</a>, <a href='https://doc.qt.io/qt-5/qtime.html#fromString-1'>QTempo::deCadeia</a> ou a documentação da função formato_data para documentação adicional sobre o formato. Por padrão, a localidade atual do usuário QGIS é usada.",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "Converte uma cadeia em um objeto data-tempo. Uma cadeia de formato opcional pode ser fornecida para analisar a cadeia; ver <a href='https://doc.qt.io/qt-5/qdate.html#fromString-2'>QData::deCadeia</a>, <a href='https://doc.qt.io/qt-5/qtime.html#fromString-1'>QTempo::deCadeia</a> ou a documentação da função formato_data para documentação adicional sobre o formato. Por padrão, a localidade atual do usuário {product} é usada."
+  },
+  {
+   "id": 90,
+   "context": "QgsExpression",
+   "source": "replace('APP SHOULD ROCK',map('APP','QGIS','SHOULD','DOES'))",
+   "qgis": "replace('APP SHOULD ROCK',map('APP','QGIS','SHOULD','DOES'))",
+   "class": "projeto",
+   "why": "exemplo de expressao; o resultado mostrado depende do literal"
+  },
+  {
+   "id": 91,
+   "context": "QgsExpression",
+   "source": "regexp_match('QGIS ROCKS','\\\\sROCKS')",
+   "qgis": "regexp_match('QGIS ROCKS','\\\\sROCKS')",
+   "class": "projeto",
+   "why": "exemplo de expressao; o resultado mostrado depende do literal"
+  },
+  {
+   "id": 92,
+   "context": "QgsExpression",
+   "source": "'UNIVERSITY<br>OF QGIS'",
+   "qgis": "'UNIVERSIDADE DO<br>QGIS'",
+   "class": "projeto",
+   "why": "exemplo de expressao; o resultado mostrado depende do literal"
+  },
+  {
+   "id": 93,
+   "context": "QgsOptionsBase",
+   "source": "<b>Note:</b> Enabling / changing override on locale requires an application restart",
+   "qgis": "<b>Nota:</b> se ativar a sobreposição ou alterar o idioma tem de reiniciar o QGIS",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "<b>Nota:</b> se ativar a sobreposição ou alterar o idioma tem de reiniciar o {product}"
+  },
+  {
+   "id": 94,
+   "context": "QgsOptionsBase",
+   "source": "The following OpenCL devices were found on this system (changing the default device requires QGIS to be restarted).",
+   "qgis": "Os seguintes dispositivos OpenCL foram encontrados neste sistema (alterar o dispositivo padrão requer que o QGIS seja reiniciado).",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "Os seguintes dispositivos OpenCL foram encontrados neste sistema (alterar o dispositivo padrão requer que o {product} seja reiniciado)."
+  },
+  {
+   "id": 95,
+   "context": "QgsOptionsBase",
+   "source": "Path(s) to search for QGIS help",
+   "qgis": "Caminho(s) para a ajuda do QGIS",
+   "class": "projeto",
+   "why": "projeto, comunidade, documentacao ou creditos do QGIS"
+  },
+  {
+   "id": 96,
+   "context": "QgsOptionsBase",
+   "source": "Style <i>(QGIS restart required)</i>",
+   "qgis": "Estilo <i>(necessário o reinício do QGIS)</i>",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "Estilo <i>(necessário o reinício do {product})</i>"
+  },
+  {
+   "id": 97,
+   "context": "QgsOptionsBase",
+   "source": "<html><head/><body><p>Some of the internal C++ processing core algorithms and renderers can take advantage of an OpenCL compatible device to increase the performances.<br/><span style=\" font-weight:600;\">QGIS OpenCL support is highly experimental and can crash QGIS because of bugs in the underlying libraries, enable at your own risk!</span></p></body></html>",
+   "qgis": "<html><head/><body><p>Alguns dos algoritmos e processadores de processamento interno do C ++ podem tirar proveito de um dispositivo compatível com OpenCL para aumentar o desempenho. <br/><span style=\" font-weight:600;\">O suporte ao QGIS OpenCL é altamente experimental e pode travar o QGIS devido a erros nas bibliotecas subjacentes, ative por seu próprio risco!</span></p></body></html>",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "<html><head/><body><p>Alguns dos algoritmos e processadores de processamento interno do C ++ podem tirar proveito de um dispositivo compatível com OpenCL para aumentar o desempenho. <br/><span style=\" font-weight:600;\">O suporte ao QGIS OpenCL é altamente experimental e pode travar o {product} devido a erros nas bibliotecas subjacentes, ative por seu próprio risco!</span></p></body></html>"
+  },
+  {
+   "id": 98,
+   "context": "QgsOptionsBase",
+   "source": "If checked, QGIS project news is shown on the welcome page on startup",
+   "qgis": "Se conferido, novo projeto QGIS é mostrado no começo da página de abertura",
+   "class": "projeto",
+   "why": "feed de noticias do projeto QGIS (desligado na fatia)"
+  },
+  {
+   "id": 99,
+   "context": "QgsOptionsBase",
+   "source": "<html><head/><body><p>The connection cache stores all authentication connections data even when the connection fails.<br/>If you make any change to the authentication configurations or to the certification authorities, you should clear the authentication cache or<br/>restart QGIS. <br/>When this option is checked, the authentication cache will be automatically cleared every time an SSL error occurs and you choose to abort the connection.<br/></p></body></html>",
+   "qgis": "\nO cache de conexão armazena todos os dados de conexões de autenticação mesmo quando a conexão falha. Se você fizer qualquer alteração nas configurações de autenticação ou nas autoridades de certificação, deverá limpar o cache de autenticação ou reiniciar o QGIS. Quando esta opção estiver marcada, o cache de autenticação será automaticamente limpo toda vez que ocorrer um erro SSL e você escolher abortar a conexão.",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "\nO cache de conexão armazena todos os dados de conexões de autenticação mesmo quando a conexão falha. Se você fizer qualquer alteração nas configurações de autenticação ou nas autoridades de certificação, deverá limpar o cache de autenticação ou reiniciar o {product}. Quando esta opção estiver marcada, o cache de autenticação será automaticamente limpo toda vez que ocorrer um erro SSL e você escolher abortar a conexão."
+  },
+  {
+   "id": 100,
+   "context": "QgsOptionsBase",
+   "source": "Check QGIS version at startup",
+   "qgis": "Verificar a versão do QGIS ao iniciar",
+   "class": "projeto",
+   "why": "checagem de versao do QGIS (desligada e fora do menu na fatia)"
+  },
+  {
+   "id": 101,
+   "context": "QgsOptionsBase",
+   "source": "Warn when opening a project file saved with an older version of QGIS",
+   "qgis": "Lembrar quando abrir um projeto salvo com uma versão antiga do QGIS",
+   "class": "projeto",
+   "why": "formato de arquivo ou de dado do QGIS"
+  },
+  {
+   "id": 102,
+   "context": "QgsOptionsBase",
+   "source": "Show only QGIS-specific variables",
+   "qgis": "Mostrar somente variáveis específicas do QGIS",
+   "class": "projeto",
+   "why": "nome tecnico do QGIS (API, variavel, servidor, modulo)"
+  },
+  {
+   "id": 103,
+   "context": "QgsOptionsBase",
+   "source": "Show QGIS news feed on welcome page",
+   "qgis": "Mostrar feed de notícias QGIS na página de boas-vindas",
+   "class": "projeto",
+   "why": "feed de noticias do projeto QGIS (desligado na fatia)"
+  },
+  {
+   "id": 104,
+   "context": "QgsRasterLayerPropertiesBase",
+   "source": "Edit QGIS Server settings",
+   "qgis": "Editar configurações do servidor do QGIS",
+   "class": "projeto",
+   "why": "nome tecnico do QGIS (API, variavel, servidor, modulo)"
+  },
+  {
+   "id": 105,
+   "context": "QgsRasterLayerPropertiesBase",
+   "source": "QGIS Server",
+   "qgis": "QGIS Server",
+   "class": "projeto",
+   "why": "nome tecnico do QGIS (API, variavel, servidor, modulo)"
+  },
+  {
+   "id": 106,
+   "context": "QgsExpressionBuilderWidgetBase",
+   "source": "Create a new function file based on the template file.\n\nChange the name of the script and save to allow QGIS to auto load on startup.",
+   "qgis": "Crie um novo arquivo de função baseado num arquivo modelo.\n\nAltere o nome do script e salve-o para permitir ao QGIS carregá-lo automaticamente no início.",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "Crie um novo arquivo de função baseado num arquivo modelo.\n\nAltere o nome do script e salve-o para permitir ao {product} carregá-lo automaticamente no início."
+  },
+  {
+   "id": 107,
+   "context": "QgsExpressionBuilderWidgetBase",
+   "source": "Run the current editor text in QGIS (also saves current script).\n\nUse this when testing your functions.\n\nSaved scripts are auto loaded on QGIS startup.",
+   "qgis": "Rode o editor de texto atual no QGIS (também salve o script atual).\n\nUse isto quando testar as suas funções.\n\nOs scripts salvos são carregados automaticamente no início do QGIS.",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "Rode o editor de texto atual no {product} (também salve o script atual).\n\nUse isto quando testar as suas funções.\n\nOs scripts salvos são carregados automaticamente no início do {product}."
+  },
+  {
+   "id": 108,
+   "context": "QgsAuthOAuth2Edit",
+   "source": "Defined configurations are JSON-formatted files, with a single configuration per file. This allows configurations to be swapped out via filesystem tools without affecting user configurations. It is recommended to use the Configure tab’s export function, then edit the resulting file. See QGIS documentation for further details.",
+   "qgis": "As configurações definidas são arquivos formatados em JSON, com uma única configuração por arquivo. Isso permite que as configurações sejam trocadas por ferramentas do sistema de arquivos sem afetar as configurações do usuário. É recomendável usar a função de exportação da guia Configurar e editar o arquivo resultante. Consulte a documentação do QGIS para obter mais detalhes.",
+   "class": "projeto",
+   "why": "projeto, comunidade, documentacao ou creditos do QGIS"
+  },
+  {
+   "id": 109,
+   "context": "QgsCodeEditorOptionsWidget",
+   "source": "QGIS Expression",
+   "qgis": "Expressão QGIS",
+   "class": "projeto",
+   "why": "tecnologia do QGIS: expressao"
+  },
+  {
+   "id": 110,
+   "context": "MainWindow",
+   "source": "Exit QGIS",
+   "qgis": "Sair do QGIS",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "Sair do {product}"
+  },
+  {
+   "id": 111,
+   "context": "MainWindow",
+   "source": "QGIS Sustaining Members",
+   "qgis": "Membros de Suporte do QGIS",
+   "class": "projeto",
+   "why": "projeto, comunidade, documentacao ou creditos do QGIS"
+  },
+  {
+   "id": 112,
+   "context": "MainWindow",
+   "source": "QGIS Home Page",
+   "qgis": "Página do QGIS",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "Página do {product}"
+  },
+  {
+   "id": 113,
+   "context": "MainWindow",
+   "source": "Check if your QGIS version is up to date (requires internet access)",
+   "qgis": "Verificar se seu QGIS é a versão atual",
+   "class": "projeto",
+   "why": "checagem de versao do QGIS (desligada e fora do menu na fatia)"
+  },
+  {
+   "id": 114,
+   "context": "MainWindow",
+   "source": "Check QGIS Version",
+   "qgis": "Verificar a versão do QGIS",
+   "class": "projeto",
+   "why": "checagem de versao do QGIS (desligada e fora do menu na fatia)"
+  },
+  {
+   "id": 115,
+   "context": "MainWindow",
+   "source": "Donate to QGIS",
+   "qgis": "Doe para o QGIS",
+   "class": "projeto",
+   "why": "projeto, comunidade, documentacao ou creditos do QGIS"
+  },
+  {
+   "id": 116,
+   "context": "MainWindow",
+   "source": "PyQGIS API Documentation",
+   "qgis": "Documentação de API do PyQGIS",
+   "class": "projeto",
+   "why": "projeto, comunidade, documentacao ou creditos do QGIS"
+  },
+  {
+   "id": 117,
+   "context": "DBManagerPlugin",
+   "source": "QGIS Geometry type:",
+   "qgis": "tipo de Geometria QGIS:",
+   "class": "projeto",
+   "why": "nome tecnico do QGIS (API, variavel, servidor, modulo)"
+  },
+  {
+   "id": 118,
+   "context": "QgsOptions",
+   "source": "QGIS",
+   "qgis": "QGIS",
+   "class": "projeto",
+   "why": "nome tecnico do QGIS (API, variavel, servidor, modulo)"
+  },
+  {
+   "id": 119,
+   "context": "QgsOptions",
+   "source": "Detected active locale on your system: %1",
+   "qgis": "%1 é o idioma atualmente ativo em seu QGIS",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "%1 é o idioma atualmente ativo em seu {product}"
+  },
+  {
+   "id": 120,
+   "context": "QgsOptions",
+   "source": "One or more drivers have been disabled. This will only take effect after QGIS is restarted.",
+   "qgis": "Um ou mais drivers foram desativados. Isso só entrará em vigor depois que o QGIS for reiniciado.",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "Um ou mais drivers foram desativados. Isso só entrará em vigor depois que o {product} for reiniciado."
+  },
+  {
+   "id": 121,
+   "context": "QgsOptions",
+   "source": "QGIS files",
+   "qgis": "Arquivos QGIS",
+   "class": "projeto",
+   "why": "formato de arquivo ou de dado do QGIS"
+  },
+  {
+   "id": 122,
+   "context": "QgsOptions",
+   "source": "QGIS is compiled without OpenCL support. GPU acceleration is not available.",
+   "qgis": "O QGIS é compilado sem suporte ao OpenCL. A aceleração da GPU não está disponível.",
+   "class": "projeto",
+   "why": "motor: capacidade, dependencia ou comportamento interno do QGIS; o texto segue verdadeiro"
+  },
+  {
+   "id": 123,
+   "context": "QgsOptions",
+   "source": "QGIS restart required",
+   "qgis": "Necessário reiniciar o QGIS",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "Necessário reiniciar o {product}"
+  },
+  {
+   "id": 124,
+   "context": "QgsOptions",
+   "source": "<h1>Default projection for new projects</h1>Select a projection that should be used for new projects that are created in QGIS.",
+   "qgis": "<h1>Projeção padrão para novos projetos</h1> Selecione uma projeção que deve ser usada para novos projetos criados no QGIS.",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "<h1>Projeção padrão para novos projetos</h1> Selecione uma projeção que deve ser usada para novos projetos criados no {product}."
+  },
+  {
+   "id": 125,
+   "context": "QgsRasterTransparencyWidget",
+   "source": "QGIS Generated Transparent Pixel Value Export File",
+   "qgis": "Exportar arquivo com pixel transparente gerado pelo QGIS",
+   "class": "duvida",
+   "why": "texto gravado em arquivo ou dado exportado pelo usuario, nao na interface"
+  },
+  {
+   "id": 126,
+   "context": "QgsLayoutHtmlWidgetBase",
+   "source": "Evaluate QGIS expressions in HTML source",
+   "qgis": "Avaliar expressões QGIS na fonte HTML",
+   "class": "projeto",
+   "why": "tecnologia do QGIS: expressao"
+  },
+  {
+   "id": 127,
+   "context": "QgsExternalResourceConfigDlg",
+   "source": "<html><head/><body><p>Select how to store path in the attribute field</p><p><br/>- Absolute path: stores the filenames with their absolute full paths</p><p>- Relative to project path: stores the filenames with relative paths from the current QGIS project path.</p><p>For example, if your QGIS project is in <span style=\" font-style:italic;\">&quot;/home/user/my_project.qgs&quot;</span> and your filename is <span style=\" font-style:italic;\">&quot;/home/user/data/files/test.pdf&quot;</span>, the attribute will only store <span style=\" font-style:italic;\">&quot;data/files/test.pdf&quot;</span>.</p><p><br/>- Relative to default path: stores the filenames with relative paths from the default path set just above.</p><p>For example, if your default path is <span style=\" font-style:italic;\">&quot;/home/user/data/&quot;</span> and your filename is <span style=\" font-style:italic;\">&quot;/home/user/data/files/test.pdf&quot;</span>, the attribute will only store <span style=\" font-style:italic;\">&quot;files/test.pdf&quot;</span>.</p><p><br/></p></body></html>",
+   "qgis": "<html><head/><body><p>Selecione como armazenar o caminho no campo de atributo</p><p><br/>- Caminho absoluto: armazena os nomes dos arquivos com seus caminhos completos absolutos</p><p>- Relativo ao caminho do projeto: armazena os nomes dos arquivos com os caminhos relativos do caminho atual do projeto QGIS.</p><p>Por exemplo, se o seu projeto QGIS estiver em <span style=\" font-style:italic;\">&quot;/home/user/my_project.qgs&quot;</span> e seu nome de arquivo for <span style=\" font-style:italic;\">&quot;/home/user/data/files/test.pdf&quot;</span>, o atributo armazenará apenas <span style=\" font-style:italic;\">&quot;data/files/test.pdf&quot;</span>.</p><p><br/>- Relativo ao caminho padrão: armazena os nomes dos arquivos com os caminhos relativos do caminho padrão definido logo acima.</p><p>Por exemplo, se seu caminho padrão for <span style=\" font-style:italic;\">&quot;/home/user/data/&quot;</span> e seu nome de arquivo for<span style=\" font-style:italic;\">&quot;/home/user/data/files/test.pdf&quot;</span>, o atributo armazenará apenas <span style=\" font-style:italic;\">&quot;files/test.pdf&quot;</span>.</p><p><br/></p></body></html>",
+   "class": "projeto",
+   "why": "formato de arquivo ou de dado do QGIS"
+  },
+  {
+   "id": 128,
+   "context": "QgsLayoutDesignerDialog",
+   "source": "<p>The SVG export function in QGIS has several problems due to bugs and deficiencies in the underlying Qt SVG library. In particular, there are problems with layers not being clipped to the map bounding box.</p>",
+   "qgis": "<p>A função de exportar SVG no QGIS tem vários problemas devido a erros e deficiências na biblioteca subjacente do Qt SVG. Em particular, existem problemas com camadas que não são recortadas nos limites da caixa delimitadora do mapa.</p>",
+   "class": "projeto",
+   "why": "motor: capacidade, dependencia ou comportamento interno do QGIS; o texto segue verdadeiro"
+  },
+  {
+   "id": 129,
+   "context": "QgsLayoutDesignerDialog",
+   "source": "QGIS Layout Designer",
+   "qgis": "Designer de composição QGIS",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "Designer de composição {product}"
+  },
+  {
+   "id": 130,
+   "context": "QgsLayoutDesignerDialog",
+   "source": "If you require a vector-based output file from QGIS it is suggested that you try exporting to PDF if the SVG output is not satisfactory.</p>",
+   "qgis": "Se necessitar de um ficheiro de saída baseado em vetores do QGIS é sugerido que tente exportar para PDF se a saída SVG não for satisfatória.</p>",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "Se necessitar de um ficheiro de saída baseado em vetores do {product} é sugerido que tente exportar para PDF se a saída SVG não for satisfatória.</p>"
+  },
+  {
+   "id": 131,
+   "context": "QgisApp",
+   "source": "QGIS",
+   "qgis": "QGIS",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "{product}"
+  },
+  {
+   "id": 132,
+   "context": "QgisApp",
+   "source": "Multiple instances of QGIS application object detected.\nPlease contact the developers.\n",
+   "qgis": "Múltiplas instâncias da aplicação de objeto do QGIS detectadas.\nPor favor contate os desenvolvedores.",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "Múltiplas instâncias da aplicação de objeto do {product} detectadas.\nPor favor contate os desenvolvedores."
+  },
+  {
+   "id": 133,
+   "context": "QgisApp",
+   "source": "Exit QGIS",
+   "qgis": "Sair do QGIS",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "Sair do {product}"
+  },
+  {
+   "id": 134,
+   "context": "QgisApp",
+   "source": "This project file was created by a newer version of QGIS (%1) and could not be completely loaded.",
+   "qgis": "Este arquivo de projeto foi criado por uma versão mais recente do QGIS (%1) e não pôde ser completamente carregado.",
+   "class": "projeto",
+   "why": "formato de arquivo ou de dado do QGIS"
+  },
+  {
+   "id": 135,
+   "context": "QgisApp",
+   "source": "Choose a QGIS project file",
+   "qgis": "Escolha um projeto do QGIS",
+   "class": "projeto",
+   "why": "formato de arquivo ou de dado do QGIS"
+  },
+  {
+   "id": 136,
+   "context": "QgisApp",
+   "source": "QGIS code revision",
+   "qgis": "Código da versão do QGIS",
+   "class": "projeto",
+   "why": "Sobre do QGIS (BL-1): rotulo da tabela de versao, que QgisApp::getVersionString monta so para o Sobre"
+  },
+  {
+   "id": 137,
+   "context": "QgisApp",
+   "source": "QGIS Version Information",
+   "qgis": "Informações sobre a versão do QGIS",
+   "class": "projeto",
+   "why": "checagem de versao do QGIS (desligada e fora do menu na fatia)"
+  },
+  {
+   "id": 138,
+   "context": "QgisApp",
+   "source": "Do you really want to quit QGIS?",
+   "qgis": "Você realmente deseja sair do QGIS?",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "Você realmente deseja sair do {product}?"
+  },
+  {
+   "id": 139,
+   "context": "QgisApp",
+   "source": "QGIS code branch",
+   "qgis": "Código de ramificação QGIS",
+   "class": "projeto",
+   "why": "Sobre do QGIS (BL-1): rotulo da tabela de versao, que QgisApp::getVersionString monta so para o Sobre"
+  },
+  {
+   "id": 140,
+   "context": "QgisApp",
+   "source": "QGIS Project Formats",
+   "qgis": "Formatos do Projeto QGIS",
+   "class": "projeto",
+   "why": "formato de arquivo ou de dado do QGIS"
+  },
+  {
+   "id": 141,
+   "context": "QgisApp",
+   "source": "QGIS Ready!",
+   "qgis": "QGIS pronto!",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "{product} pronto!"
+  },
+  {
+   "id": 142,
+   "context": "QgisApp",
+   "source": "QGIS Authentication",
+   "qgis": "Autenticação QGIS",
+   "class": "projeto",
+   "why": "nome tecnico do QGIS (API, variavel, servidor, modulo)"
+  },
+  {
+   "id": 143,
+   "context": "QgisApp",
+   "source": "QGIS - %1 ('%2')",
+   "qgis": "QGIS - %1 ('%2')",
+   "class": "versao",
+   "why": "mostra a versao do QGIS: o texto diz motor QGIS",
+   "text": "{product} - {engine} %1 ('%2')"
+  },
+  {
+   "id": 144,
+   "context": "QgisApp",
+   "source": "QGIS version",
+   "qgis": "Versão do QGIS",
+   "class": "projeto",
+   "why": "Sobre do QGIS (BL-1): rotulo da tabela de versao, que QgisApp::getVersionString monta so para o Sobre"
+  },
+  {
+   "id": 145,
+   "context": "QgisApp",
+   "source": "You are running the current version of QGIS",
+   "qgis": "Você está rodando a versão atual do QGIS",
+   "class": "projeto",
+   "why": "checagem de versao do QGIS (desligada e fora do menu na fatia)"
+  },
+  {
+   "id": 146,
+   "context": "QgisApp",
+   "source": "There is a new version of QGIS available",
+   "qgis": "Existe uma nova versão do QGIS disponível",
+   "class": "projeto",
+   "why": "checagem de versao do QGIS (desligada e fora do menu na fatia)"
+  },
+  {
+   "id": 147,
+   "context": "QgisApp",
+   "source": "This copy of QGIS writes debugging output.",
+   "qgis": "Esta cópia do QGIS grava saídas de depuração.",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "Esta cópia do {product} grava saídas de depuração."
+  },
+  {
+   "id": 148,
+   "context": "QgisApp",
+   "source": "You are running a development version of QGIS",
+   "qgis": "Você está executando uma versão de desenvolvimento do QGIS",
+   "class": "projeto",
+   "why": "checagem de versao do QGIS (desligada e fora do menu na fatia)"
+  },
+  {
+   "id": 149,
+   "context": "QgsAttributesFormProperties",
+   "source": "# -*- coding: utf-8 -*-\n\"\"\"\nQGIS forms can have a Python function that is called when the form is\nopened.\n\nUse this function to add extra logic to your forms.\n\nEnter the name of the function in the \"Python Init function\"\nfield.\nAn example follows:\n\"\"\"\nfrom qgis.PyQt.QtWidgets import QWidget\n\ndef my_form_open(dialog, layer, feature):\n    geom = feature.geometry()\n    control = dialog.findChild(QWidget, \"MyLineEdit\")\n",
+   "qgis": "# -*- código: utf-8 -*-\n\"\"\"\nOs formulários do QGIS podem ter uma função Python que é chamada quando o formulário é\naberto.\n\nUse esta função para adicionar lógica extra aos seus formulários.\n\nEntre com o nome da função no campo \"função Python Init\nSegue um exemplo:\n\"\"\"\nde qgis.PyQt.QtWidgets import QWidget\n\ndef my_form_open(diálogo, camada, feição):\n    geom = feature.geometry()\n    control = dialog.findChild(QWidget, \"MyLineEdit\")\n",
+   "class": "projeto",
+   "why": "nome tecnico do QGIS (API, variavel, servidor, modulo)"
+  },
+  {
+   "id": 150,
+   "context": "QgsAttributesFormProperties",
+   "source": "QGIS forms can have a Python function that is called when the form is opened.\nUse this function to add extra logic to your forms.",
+   "qgis": "Os formulários QGIS podem ter uma função Python que é chamada quando o formulário é aberto.\nUtilize esta funcionalidade para adicionar uma lógica extra formulários.",
+   "class": "projeto",
+   "why": "nome tecnico do QGIS (API, variavel, servidor, modulo)"
+  },
+  {
+   "id": 151,
+   "context": "QgsProjectPropertiesBase",
+   "source": "QGIS Server",
+   "qgis": "QGIS Server",
+   "class": "projeto",
+   "why": "nome tecnico do QGIS (API, variavel, servidor, modulo)"
+  },
+  {
+   "id": 152,
+   "context": "QgsProjectPropertiesBase",
+   "source": "Speed up project loading by skipping data checks in PostgreSQL layers. Useful in QGIS server context or project with huge database views or materialized views.",
+   "qgis": "Acelere o carregamento do projeto ignorando as verificações de dados nas camadas do PostgreSQL. Útil no contexto ou projeto do servidor QGIS, com grandes visualizações de banco de dados ou visualizações materializadas.",
+   "class": "projeto",
+   "why": "nome tecnico do QGIS (API, variavel, servidor, modulo)"
+  },
+  {
+   "id": 153,
+   "context": "QgsNewHttpConnection",
+   "source": "QGIS",
+   "qgis": "QGIS",
+   "class": "projeto",
+   "why": "nome tecnico do QGIS (API, variavel, servidor, modulo)"
+  },
+  {
+   "id": 154,
+   "context": "QgsVirtualLayerSourceSelectBase",
+   "source": "Embedded layers can be added to have SQL queries with layers that are independent from layers loaded by the current QGIS project.\nIn particular, saving a virtual layer with embedded layers to a QLR file can be done to reuse its definition in another project.",
+   "qgis": "Camadas incorporadas podem ser adicionadas para ter consultas SQL com camadas que são independentes das camadas carregadas pelo project.\n QGIS atual\nEm particular, economizando uma camada virtual com camadas incorporadas a um arquivo QLR pode ser feito para reutilizar sua definição em outro projeto.",
+   "class": "projeto",
+   "why": "formato de arquivo ou de dado do QGIS"
+  },
+  {
+   "id": 155,
+   "context": "QgsPluginManagerBase",
+   "source": "<html><head/><body><p><span style=\" font-weight:600;\">Experimental plugins are generally unsuitable for production use.</span> These plugins are in early stages of development, and should be considered 'incomplete' or 'proof of concept' tools. QGIS does not recommend installing these plugins unless you intend to use them for testing purposes.</p></body></html>",
+   "qgis": "<html><head/><body><p><span style=\" font-weight:600;\">Complementos experimentais geralmente não são adequados para uso em produção.</span> Esses plugins estão em estágios iniciais de desenvolvimento e devem ser considerados ferramentas \"incompletas\" ou de \"prova de conceito\". O QGIS não recomenda a instalação desses plugins, a menos que você pretenda usá-los para fins de teste.</body></html>",
+   "class": "projeto",
+   "why": "ecossistema de complementos do QGIS e compatibilidade com a versao do motor"
+  },
+  {
+   "id": 156,
+   "context": "QgsPluginManagerBase",
+   "source": "<html><head/><body><p><span style=\" font-weight:600;\">Deprecated plugins are generally unsuitable for production use.</span> These plugins are unmaintained, and should be considered 'obsolete' tools. QGIS does not recommend installing these plugins unless you still need it and there are no other alternatives available.</p></body></html>",
+   "qgis": "<html><head/><body><p><span style=\" font-weight:600;\">Complementos obsoletos geralmente não são adequados para uso em produção.</span>Esses plugins não recebem manutenção e devem ser considerados ferramentas \"obsoletas\". O QGIS não recomenda a instalação desses plugins, a menos que você ainda precise deles e não haja outras alternativas disponíveis. </p></body></html>",
+   "class": "projeto",
+   "why": "ecossistema de complementos do QGIS e compatibilidade com a versao do motor"
+  },
+  {
+   "id": 157,
+   "context": "QgsStyleManagerDialog",
+   "source": "Download new styles from the online QGIS style repository",
+   "qgis": "Baixar novos estilos do repositório online de estilo QGIS",
+   "class": "projeto",
+   "why": "projeto, comunidade, documentacao ou creditos do QGIS"
+  },
+  {
+   "id": 158,
+   "context": "PythonConsole",
+   "source": "QGIS Python Console\n======================================\n\nThe console is a Python interpreter that allows you to execute python commands.\nModules from QGIS (analysis, core, gui, 3d) and Qt (QtCore, QtGui, QtNetwork,\nQtWidgets, QtXml) as well as Python's math, os, re and sys modules are already\nimported and can be used directly.\n\nUseful variables:\n\n- iface will return the current QGIS interface, class 'QgisInterface'\n- iface.mainWindow() will return the Qt Main Window\n- iface.mapCanvas() will return the map canvas\n- iface.layerTreeView() will return the layer tree\n- iface.activeLayer() will return the active layer\n- QgsProject.instance() will return the current project\n\nFrom the console, you can type the following special commands:\n\n    - _pyqgis, _pyqgis(object): Open the QGIS Python API (or the Qt documentation) in a web browser\n    - _api, _api(object): Open the QGIS C++ API (or the Qt documentation) in a web browser\n    - _cookbook: Open the PyQGIS Developer Cookbook in a web browser\n    - System commands: Any command starting with an exclamation mark (!) will be executed by the system shell. Examples:\n        !gdalinfo --formats: List all available GDAL drivers\n        !ogr2ogr --help: Show help for the ogr2ogr command\n        !ping www.qgis.org: Ping the QGIS website\n        !pip install black: install black python formatter using pip (if available)\n    - ?: Show this help\n",
+   "qgis": "Painel de Python do QGIS\n======================================\nA consola é um interpretador Python que lhe permite executar comandos Python.\nMódulos do QGIS (analysis, core, gui, 3d) e Qt (QtCore, QtGui, \nQtNetwork,\nQtWidgets, QtXml) bem como os módulos math, os, re e sys do Python já estão importados e podem ser usados diretamente\n\nVáriaveis úteis:\n\n- iface devolverá a interface atual do QGIS, classe 'QgisInterface'\n- iface.mainWindow() retornará a janela principal do Qt\n- iface.mapCanvas() retornará a tela do mapa\n- iface.layerTreeView() retornará a árvore de camadas\n- iface.activeLayer() retornará a camada ativa\n- QgsProject.instance() retornará o projeto atual\n\nA partir do painel, você poderá escrever os seguintes comandos especiais:\n\n - _pyqgis, _pyqgis(object): Abre o API Python do QGIS (ou a documentação Qt) num navegador da web\n- _api, _api(object): Abre QGIS C++ API (ou a documentação Qt) num navegador da web\n- _cookbook: Abre o livro de comandos para programadores PyQGIS num navegador da web\n- Sistema de comandos: Qualquer comando que inicia com exclamação (!) será executado por um sistema shell. Exemplos: \n     !gdalinfo --formats: Lista todos os controladores GDAL disponíveis\n     !ogr2ogr --help: Exibe ajuda para o comando ogr2ogr \n     !ping www.qgis.org: Marca o website QGIS\n     !pip install black: Instala python em formato preto usando pip (se disponível)\n- ?: Exibe essa ajuda\n",
+   "class": "projeto",
+   "why": "nome tecnico do QGIS (API, variavel, servidor, modulo)"
+  },
+  {
+   "id": 159,
+   "context": "PythonConsole",
+   "source": "PyQGIS Cookbook",
+   "qgis": "Livro de Receitas PyQGIS",
+   "class": "projeto",
+   "why": "nome tecnico do QGIS (API, variavel, servidor, modulo)"
+  },
+  {
+   "id": 160,
+   "context": "PythonConsole",
+   "source": "PyQGIS API Documentation",
+   "qgis": "Documentação da API do PyQGIS",
+   "class": "projeto",
+   "why": "nome tecnico do QGIS (API, variavel, servidor, modulo)"
+  },
+  {
+   "id": 161,
+   "context": "QgsLayerTreeModel",
+   "source": "New layers added from another QGIS instance",
+   "qgis": "Novas camadas adicionadas de outra instância do QGIS",
+   "class": "projeto",
+   "why": "motor: capacidade, dependencia ou comportamento interno do QGIS; o texto segue verdadeiro"
+  },
+  {
+   "id": 162,
+   "context": "QgsVectorLayerPropertiesBase",
+   "source": "Edit QGIS Server settings",
+   "qgis": "Editar configurações do servidor do QGIS",
+   "class": "projeto",
+   "why": "nome tecnico do QGIS (API, variavel, servidor, modulo)"
+  },
+  {
+   "id": 163,
+   "context": "QgsVectorLayerPropertiesBase",
+   "source": "Selected dependent layers should include any layers which may externally alter the data in this layer. For instance, layers with database triggers or custom PyQGIS scripting which alter this layer should be selected. Correctly specifying dependent layers allows QGIS to invalidate caches for this layer when the dependent layers are altered.",
+   "qgis": "Camadas dependentes selecionadas devem incluir todas as camadas que podem alterar externamente os dados nesta camada. Por exemplo, camadas com gatilhos de banco de dados ou scripts PyQGIS customizada que alteram esta camada deve ser selecionada. Especificando corretamente camadas dependentes permite o QGIS invalidar caches para esta camada quando as camadas dependentes são alteradas.",
+   "class": "projeto",
+   "why": "motor: capacidade, dependencia ou comportamento interno do QGIS; o texto segue verdadeiro"
+  },
+  {
+   "id": 164,
+   "context": "QgsVectorLayerPropertiesBase",
+   "source": "QGIS Server",
+   "qgis": "QGIS Server",
+   "class": "projeto",
+   "why": "nome tecnico do QGIS (API, variavel, servidor, modulo)"
+  },
+  {
+   "id": 165,
+   "context": "QgsVectorLayerPropertiesBase",
+   "source": "<html><head/><body><p>Some data providers can notify QGIS (e.g. PostgreSQL) with a message. If this is the case for this layer's data provider, notification will refresh the layer. </p></body></html>",
+   "qgis": "<html><head/><body><p>Alguns fornecedores de dados podem notificar o QGIS (p.ex. PostgreSQL) com uma mensagem. Se for este o caso para o fornecedor de dados desta camada, a notificação irá atualizar a camada. </p></body></html>",
+   "class": "projeto",
+   "why": "motor: capacidade, dependencia ou comportamento interno do QGIS; o texto segue verdadeiro"
+  },
+  {
+   "id": 166,
+   "context": "QgsGeorefPluginGuiBase",
+   "source": "Link Georeferencer to QGIS",
+   "qgis": "Conectar georreferenciador ao QGIS",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "Conectar georreferenciador ao {product}"
+  },
+  {
+   "id": 167,
+   "context": "QgsGeorefPluginGuiBase",
+   "source": "Link QGIS to Georeferencer",
+   "qgis": "Conectar QGIS ao Georreferenciador",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "Conectar {product} ao Georreferenciador"
+  },
+  {
+   "id": 168,
+   "context": "QgsProjectProperties",
+   "source": "TS file generated with source language %1.\n- open it with Qt Linguist\n- translate strings\n- save the TS file with the suffix of the target language (e.g. _de.ts)\n- release to get the QM file including the suffix (e.g. aproject_de.qm)\n- open the original QGIS file (e.g. aproject.qgs)\n- if your QGIS is set to use a specific language and the QM file for that language is found, the translated QGIS project will be generated on the fly.\n- you will be redirected to this new project (e.g. aproject_de.qgs).",
+   "qgis": "Arquivo TS gerado com o idioma de origem % 1.\n- abrir com o Qt Linguist\n- traduzir cadeias\n- salvar o arquivo TS com o sufixo do idioma de destino (por exemplo, _de.ts)\n- lançar para obter o arquivo QM incluindo o sufixo (por exemplo, aproject_de.qm)\n- abrir o arquivo original do QGIS (por exemplo, aproject.qgs)\n- se o seu QGIS estiver configurado para usar um idioma específico e o arquivo QM para esse idioma for encontrado, o projeto QGIS traduzido será gerado na hora.\n- você será redirecionado para este novo projeto (por exemplo, aproject_de.qgs).",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "Arquivo TS gerado com o idioma de origem % 1.\n- abrir com o Qt Linguist\n- traduzir cadeias\n- salvar o arquivo TS com o sufixo do idioma de destino (por exemplo, _de.ts)\n- lançar para obter o arquivo QM incluindo o sufixo (por exemplo, aproject_de.qm)\n- abrir o arquivo original do QGIS (por exemplo, aproject.qgs)\n- se o seu {product} estiver configurado para usar um idioma específico e o arquivo QM para esse idioma for encontrado, o projeto QGIS traduzido será gerado na hora.\n- você será redirecionado para este novo projeto (por exemplo, aproject_de.qgs)."
+  },
+  {
+   "id": 169,
+   "context": "QgsMetadataWidget",
+   "source": "Ok, it seems valid according to the QGIS Schema.",
+   "qgis": "OK, parece que é válido de acordo com o esquema QGIS.",
+   "class": "projeto",
+   "why": "nome tecnico do QGIS (API, variavel, servidor, modulo)"
+  },
+  {
+   "id": 170,
+   "context": "QgsWcsCapabilities",
+   "source": "WCS server version %1 is not supported by QGIS (supported versions: 1.0.0, 1.1.0, 1.1.2)",
+   "qgis": "Servidor WCS versão %1 não é suportada pelo QGIS (versões suportadas: 1.0.0, 1.1.0, 1.1.2)",
+   "class": "projeto",
+   "why": "motor: capacidade, dependencia ou comportamento interno do QGIS; o texto segue verdadeiro"
+  },
+  {
+   "id": 171,
+   "context": "QgsAttributeActionPropertiesDialogBase",
+   "source": "Enter the name of an action here. The name should be unique (QGIS will make it unique if necessary).",
+   "qgis": "Entre com o nome da ação aqui. O nome deve ser único (QGIS fará único se necessário).",
+   "class": "projeto",
+   "why": "motor: capacidade, dependencia ou comportamento interno do QGIS; o texto segue verdadeiro"
+  },
+  {
+   "id": 172,
+   "context": "QgsPgNewConnectionBase",
+   "source": "Allow saving/loading QGIS projects in the database",
+   "qgis": "Permitir salvar/carregar projetos QGIS no banco de dados",
+   "class": "projeto",
+   "why": "formato de arquivo ou de dado do QGIS"
+  },
+  {
+   "id": 173,
+   "context": "QgsPgNewConnectionBase",
+   "source": "Allow saving/loading QGIS layer metadata in the database",
+   "qgis": "Permitir salvar/carregar metadados de camadas do QGIS no banco de dados",
+   "class": "projeto",
+   "why": "formato de arquivo ou de dado do QGIS"
+  },
+  {
+   "id": 174,
+   "context": "variable_help",
+   "source": "Current QGIS version string.",
+   "qgis": "String da atual versão do QGIS.",
+   "class": "projeto",
+   "why": "nome tecnico do QGIS (API, variavel, servidor, modulo)"
+  },
+  {
+   "id": 175,
+   "context": "variable_help",
+   "source": "Two letter identifier for current QGIS locale.",
+   "qgis": "Identificador de duas letras para a localização atual do QGIS",
+   "class": "projeto",
+   "why": "nome tecnico do QGIS (API, variavel, servidor, modulo)"
+  },
+  {
+   "id": 176,
+   "context": "variable_help",
+   "source": "Current QGIS release name.",
+   "qgis": "Nome do lançamento atual do QGIS.",
+   "class": "projeto",
+   "why": "nome tecnico do QGIS (API, variavel, servidor, modulo)"
+  },
+  {
+   "id": 177,
+   "context": "variable_help",
+   "source": "Short QGIS version string.",
+   "qgis": "String reduzida com a versão do QGIS.",
+   "class": "projeto",
+   "why": "nome tecnico do QGIS (API, variavel, servidor, modulo)"
+  },
+  {
+   "id": 178,
+   "context": "variable_help",
+   "source": "QGIS platform, e.g., 'desktop' or 'server'.",
+   "qgis": "Plataforma QGIS, por exemplo, 'desktop' ou 'server'.",
+   "class": "projeto",
+   "why": "nome tecnico do QGIS (API, variavel, servidor, modulo)"
+  },
+  {
+   "id": 179,
+   "context": "variable_help",
+   "source": "Current QGIS version number.",
+   "qgis": "Numero da atual versão do QGIS",
+   "class": "projeto",
+   "why": "nome tecnico do QGIS (API, variavel, servidor, modulo)"
+  },
+  {
+   "id": 180,
+   "context": "grasslabels",
+   "source": "Link GDAL supported raster loaded in QGIS as GRASS raster",
+   "qgis": "Vincular raster com suporte GDAL carregado no QGIS como uma raster GRASS",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "Vincular raster com suporte GDAL carregado no {product} como uma raster GRASS"
+  },
+  {
+   "id": 181,
+   "context": "grasslabels",
+   "source": "Import raster into GRASS from QGIS view",
+   "qgis": "Importa raster para o GRASS a partir da visão do QGIS",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "Importa raster para o GRASS a partir da visão do {product}"
+  },
+  {
+   "id": 182,
+   "context": "QgsNewMemoryLayerDialogBase",
+   "source": "<i><b>Warning:</b> Temporary scratch layers are not saved and will be discarded when QGIS is closed.</i>",
+   "qgis": "<i><b>Aviso:</b> camadas temporárias de rascunho não estão salvas e serão descartadas quando o QGIS for fechado.</i>",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "<i><b>Aviso:</b> camadas temporárias de rascunho não estão salvas e serão descartadas quando o {product} for fechado.</i>"
+  },
+  {
+   "id": 183,
+   "context": "QgsWelcomePage",
+   "source": "New QGIS version available",
+   "qgis": "Está disponível uma nova versão do QGIS",
+   "class": "projeto",
+   "why": "checagem de versao do QGIS (desligada e fora do menu na fatia)"
+  },
+  {
+   "id": 184,
+   "context": "QgsWelcomePage",
+   "source": "Hide QGIS News…",
+   "qgis": "Ocultar notícias do QGIS…",
+   "class": "projeto",
+   "why": "feed de noticias do projeto QGIS (desligado na fatia)"
+  },
+  {
+   "id": 185,
+   "context": "QgsWelcomePage",
+   "source": "Are you sure you want to hide QGIS news? (The news feed can be re-enabled from the QGIS settings dialog.)",
+   "qgis": "Tem certeza de que deseja ocultar as notícias do QGIS? (O feed de notícias pode ser reativado na caixa de diálogo de configurações do QGIS.)",
+   "class": "projeto",
+   "why": "feed de noticias do projeto QGIS (desligado na fatia)"
+  },
+  {
+   "id": 186,
+   "context": "QgsWelcomePage",
+   "source": "QGIS News",
+   "qgis": "Notícias do QGIS",
+   "class": "projeto",
+   "why": "feed de noticias do projeto QGIS (desligado na fatia)"
+  },
+  {
+   "id": 187,
+   "context": "QgsProcessingExpressionParameterDefinitionWidget",
+   "source": "QGIS",
+   "qgis": "QGIS",
+   "class": "projeto",
+   "why": "nome tecnico do QGIS (API, variavel, servidor, modulo)"
+  },
+  {
+   "id": 188,
+   "context": "QgsRasterLayerProperties",
+   "source": "Large resolution raster layers can slow navigation in QGIS.",
+   "qgis": "Rasters de alta resolução podem tornar lenta a navegação no QGIS.",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "Rasters de alta resolução podem tornar lenta a navegação no {product}."
+  },
+  {
+   "id": 189,
+   "context": "QgsRasterLayerProperties",
+   "source": "By creating lower resolution copies of the data (pyramids) performance can be considerably improved as QGIS selects the most suitable resolution to use depending on the level of zoom.",
+   "qgis": "Ao criar cópias de baixa resolução (pirâmide) poderá haver um ganho em performance, pois o QGIS selecionará a resolução de acordo com o nível de aproximação.",
+   "class": "projeto",
+   "why": "motor: capacidade, dependencia ou comportamento interno do QGIS; o texto segue verdadeiro"
+  },
+  {
+   "id": 190,
+   "context": "QgsBusyIndicatorDialog",
+   "source": "QGIS",
+   "qgis": "QGIS",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "{product}"
+  },
+  {
+   "id": 191,
+   "context": "QgsPuzzleWidget",
+   "source": "QGIS",
+   "qgis": "QGIS",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "{product}"
+  },
+  {
+   "id": 192,
+   "context": "QgsCrashDialog",
+   "source": "The plugin <b>%1</b> caused QGIS to crash.",
+   "qgis": "O plugin <b>%1</b> causou o colapso do QGIS.",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "O plugin <b>%1</b> causou o colapso do {product}."
+  },
+  {
+   "id": 193,
+   "context": "QgsCrashDialog",
+   "source": "A command entered in the Python console caused QGIS to crash.",
+   "qgis": "Um comando inserido no console Python provocou o colapso do QGIS.",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "Um comando inserido no console Python provocou o colapso do {product}."
+  },
+  {
+   "id": 194,
+   "context": "QgsCrashDialog",
+   "source": "A user script crashed QGIS",
+   "qgis": "Um script de usuário travou o QGIS",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "Um script de usuário travou o {product}"
+  },
+  {
+   "id": 195,
+   "context": "QgsCrashDialog",
+   "source": "Plugin %1 crashed QGIS",
+   "qgis": "Plugin %1 QGIS falhou",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "O plugin %1 travou o {product}"
+  },
+  {
+   "id": 196,
+   "context": "QgsCrashDialog",
+   "source": "This user script <b>%1</b> caused QGIS to crash.",
+   "qgis": "Este script de usuário<b>%1</b> causou o colapso do QGIS.",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "Este script de usuário<b>%1</b> causou o colapso do {product}."
+  },
+  {
+   "id": 197,
+   "context": "QgsCrashDialog",
+   "source": "Oh dear! Something unexpected happened and QGIS ended without being able to handle the error gracefully.<br><br>",
+   "qgis": "Oh meu Deus! Algo inesperado aconteceu e o QGIS terminou sem ser capaz de lidar com o erro de forma adequada.<br><br>",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "Oh meu Deus! Algo inesperado aconteceu e o {product} terminou sem ser capaz de lidar com o erro de forma adequada.<br><br>"
+  },
+  {
+   "id": 198,
+   "context": "QgsCrashDialog",
+   "source": "Reload QGIS",
+   "qgis": "Recarregar QGIS",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "Reabrir o {product}"
+  },
+  {
+   "id": 199,
+   "context": "QgsCrashDialog",
+   "source": "QGIS ended unexpectedly",
+   "qgis": "QGIS terminou inesperadamente",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "{product} terminou inesperadamente"
+  },
+  {
+   "id": 200,
+   "context": "QgsCrashDialog",
+   "source": "Command crashed QGIS",
+   "qgis": "O comando colapsou o QGIS",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "O comando colapsou o {product}"
+  },
+  {
+   "id": 201,
+   "context": "QgsCrashDialog",
+   "source": "<html><head/><body><p>Tell us something about what you were doing when QGIS crashed.</p><p>Please include as much information as you can, as well as any steps we can follow to reproduce the issue, if possible.</p></body></html>",
+   "qgis": "<html><head/><body><p>Nos conte algo sobre o que você estava fazendo quando o QGIS falhou. </p><p>Por favor, inclua o máximo de informação possível, assim como quaisquer passos que possamos seguir para reproduzir o problema, se possível.</p></body></html>",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "<html><head/><body><p>Nos conte algo sobre o que você estava fazendo quando o {product} falhou. </p><p>Por favor, inclua o máximo de informação possível, assim como quaisquer passos que possamos seguir para reproduzir o problema, se possível.</p></body></html>"
+  },
+  {
+   "id": 202,
+   "context": "QgsPluginManager",
+   "source": "This plugin is incompatible with this version of QGIS",
+   "qgis": "Esse complemento é incompatível com essa versão do QGIS",
+   "class": "projeto",
+   "why": "ecossistema de complementos do QGIS e compatibilidade com a versao do motor"
+  },
+  {
+   "id": 203,
+   "context": "QgsPluginManager",
+   "source": "Plugin designed for QGIS %1",
+   "qgis": "Complemento projetado para QGIS %1",
+   "class": "projeto",
+   "why": "ecossistema de complementos do QGIS e compatibilidade com a versao do motor"
+  },
+  {
+   "id": 204,
+   "context": "QgsPluginManager",
+   "source": "The repository is blocked due to incompatibility with your QGIS version",
+   "qgis": "Este repositório está bloqueado devido à incompatibilidade com sua versão do QGIS",
+   "class": "projeto",
+   "why": "ecossistema de complementos do QGIS e compatibilidade com a versao do motor"
+  },
+  {
+   "id": 205,
+   "context": "QgsPluginManager",
+   "source": "No QGIS plugins found in %1",
+   "qgis": "Nenhum complemento do QGIS encontrado em %1",
+   "class": "projeto",
+   "why": "ecossistema de complementos do QGIS e compatibilidade com a versao do motor"
+  },
+  {
+   "id": 206,
+   "context": "QgsPluginManager",
+   "source": "<h3>All Plugins</h3><p>On the left you see the list of all plugins available for your QGIS, both installed and available for download. Some plugins come with your QGIS installation while most of them are made available via the plugin repositories.</p><p>You can temporarily enable or disable a plugin. To <i>enable</i> or <i>disable</i> a plugin, click its checkbox or double-click its name…</p><p>Plugins showing in <span style='color:red'>red</span> are not loaded because there is a problem. They are also listed on the 'Invalid' tab. Click on the plugin name to see more details, or to reinstall or uninstall this plugin.</p>",
+   "qgis": "<h3>Todos os módulos</h3><p>No lado esquerdo pode ver uma lista de todos os módulos disponíveis para o QGIS, ambos instalados e disponíveis para descarregar. Alguns módulos vêm com a instalação do QGIS enquanto a maioria deles ficam disponíveis através dos repositórios de módulos.</p><p>Pode temporariamente desativar ou ativar um módulo. Para <i>ativar</i> ou <i>desativar</i> um módulo, clique na caixa de verificação ou duplo clique no nome…</p><p>Os módulos mostrados a <span style='color:red'>vermelho</span> não estão carregados porque têm algum problema. Eles também estão na lista do separador 'Inválido'. Clique no nome do módulo para ver mais detalhes, ou para reinstalar ou desinstalar o módulo.</p>",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "<h3>Todos os módulos</h3><p>No lado esquerdo pode ver uma lista de todos os módulos disponíveis para o {product}, ambos instalados e disponíveis para descarregar. Alguns módulos vêm com a instalação do {product} enquanto a maioria deles ficam disponíveis através dos repositórios de módulos.</p><p>Pode temporariamente desativar ou ativar um módulo. Para <i>ativar</i> ou <i>desativar</i> um módulo, clique na caixa de verificação ou duplo clique no nome…</p><p>Os módulos mostrados a <span style='color:red'>vermelho</span> não estão carregados porque têm algum problema. Eles também estão na lista do separador 'Inválido'. Clique no nome do módulo para ver mais detalhes, ou para reinstalar ou desinstalar o módulo.</p>"
+  },
+  {
+   "id": 207,
+   "context": "QgsPluginManager",
+   "source": "<h3>Installed Plugins</h3><p>Here you only see plugins <b>installed on your QGIS</b>.</p><p>Click on the name to see details. </p><p>Click the checkbox or double-click the name to <i>activate</i> or <i>deactivate</i> the plugin.</p><p>You can change the sorting via the context menu (right click).</p>",
+   "qgis": "<h3>Módulos Instalados</h3><p>Aqui só vê módulos <b>instalados no seu QGIS</b>.</p><p>Clique no nome para ver mais detalhes. </p><p>Clique na caixa de verificação ou faça duplo clique no nome para <i>ativar</i> ou <i>desativar</i> o módulo.</p><p>Pode alterar a ordenação através do menu de contexto (clique direito do rato).</p>",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "<h3>Módulos Instalados</h3><p>Aqui só vê módulos <b>instalados no seu {product}</b>.</p><p>Clique no nome para ver mais detalhes. </p><p>Clique na caixa de verificação ou faça duplo clique no nome para <i>ativar</i> ou <i>desativar</i> o módulo.</p><p>Pode alterar a ordenação através do menu de contexto (clique direito do rato).</p>"
+  },
+  {
+   "id": 208,
+   "context": "QgsFieldItemGuiProvider",
+   "source": "\nThis field is a geometry column, its removal may make the table unusable by QGIS!",
+   "qgis": "\nEste campo é uma coluna de geometria, sua remoção pode tornar a tabela inutilizável pelo QGIS!",
+   "class": "projeto",
+   "why": "motor: capacidade, dependencia ou comportamento interno do QGIS; o texto segue verdadeiro"
+  },
+  {
+   "id": 209,
+   "context": "QgsFieldItemGuiProvider",
+   "source": "\nThis field is part of a primary key, its removal may make the table unusable by QGIS!",
+   "qgis": "\nEste campo é parte de uma chave primária, sua remoção pode tornar a tabela inutilizável pelo QGIS!",
+   "class": "projeto",
+   "why": "motor: capacidade, dependencia ou comportamento interno do QGIS; o texto segue verdadeiro"
+  },
+  {
+   "id": 210,
+   "context": "QgsInstallGridShiftFileDialog",
+   "source": "The %1 grid shift file has been successfully installed. Please restart QGIS for this change to take effect.",
+   "qgis": "O arquivo de mudança de grade %1 foi instalado com sucesso. Por favor, reinicie o QGIS para que essa alteração entre em vigor.",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "O arquivo de mudança de grade %1 foi instalado com sucesso. Por favor, reinicie o {product} para que essa alteração entre em vigor."
+  },
+  {
+   "id": 211,
+   "context": "QgsMapCoordsDialogBase",
+   "source": "<html><head/><body><p>Enter X and Y coordinates (DMS (<span style=\" font-style:italic;\">dd mm ss.ss</span>), DD (<span style=\" font-style:italic;\">dd.dd</span>) or projected coordinates (<span style=\" font-style:italic;\">mmmm.mm</span>)) which correspond with the selected point on the image. Alternatively, click the button with icon of a pencil and then click a corresponding point on map canvas of QGIS to fill in coordinates of that point.</p></body></html>",
+   "qgis": "<html><head/><body><p>Entre com as coordenadas X e Y (DMS (<span style=\" font-style:italic;\">dd mm ss.ss</span>), DD (<span style=\" font-style:italic;\">dd.dd</span>) ou coordenadas projetadas (<span style=\" font-style:italic;\">mmmm.mm</span>)) que correspondem com o ponto selecionado na imagem. Alternativamente, clique no ícone com o lápis e então clique no ponto correspondente no mapa da tela do QGIS para preencher as coordenadas daquele ponto.</p></body></html>",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "<html><head/><body><p>Entre com as coordenadas X e Y (DMS (<span style=\" font-style:italic;\">dd mm ss.ss</span>), DD (<span style=\" font-style:italic;\">dd.dd</span>) ou coordenadas projetadas (<span style=\" font-style:italic;\">mmmm.mm</span>)) que correspondem com o ponto selecionado na imagem. Alternativamente, clique no ícone com o lápis e então clique no ponto correspondente no mapa da tela do {product} para preencher as coordenadas daquele ponto.</p></body></html>"
+  },
+  {
+   "id": 212,
+   "context": "QGISAlgorithm",
+   "source": "This algorithm creates a selection in a vector layer. The criteria for selecting features is based on a QGIS expression.\nFor help with QGIS expression functions, see the inbuilt help for specific functions which is available in the expression builder.\n",
+   "qgis": "Esse algoritmo cria uma seleção numa camada vetorial. O critério para selecionar feições é baseado em uma expressão QGIS.\nPara ajuda com as funções de expressões QGIS, veja a ajuda integrada para funções específicas disponíveis no construtor de expressões.\n",
+   "class": "projeto",
+   "why": "tecnologia do QGIS: expressao"
+  },
+  {
+   "id": 213,
+   "context": "QGISAlgorithm",
+   "source": "This algorithm performs a SQL database query on a PostGIS database connected to QGIS and loads the query results as a new layer.\n",
+   "qgis": "Esse algoritmo executa uma consulta ao banco de dados SQL em um banco de dados PostGIS conectado ao QGIS e carrega os resultados da consulta como uma nova camada.\n",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "Esse algoritmo executa uma consulta ao banco de dados SQL em um banco de dados PostGIS conectado ao {product} e carrega os resultados da consulta como uma nova camada.\n"
+  },
+  {
+   "id": 214,
+   "context": "QgsPostgresRasterProvider",
+   "source": "The table has no column suitable for use as a key. QGIS requires a primary key, a PostgreSQL oid column or a ctid for tables.",
+   "qgis": "A tabela não possui coluna adequada para uso como chave. O QGIS requer uma chave primária, uma coluna oid do PostgreSQL ou um ctid para tabelas.",
+   "class": "projeto",
+   "why": "motor: capacidade, dependencia ou comportamento interno do QGIS; o texto segue verdadeiro"
+  },
+  {
+   "id": 215,
+   "context": "QgsPostgresProvider",
+   "source": "The table has no column suitable for use as a key. QGIS requires a primary key, a PostgreSQL oid column or a ctid for tables.",
+   "qgis": "A tabela não possui coluna adequada para ser usada como uma chave. O QGIS necessita de uma chave primária, uma coluna oid PostgreSQL ou uma ctid para tabelas.",
+   "class": "projeto",
+   "why": "motor: capacidade, dependencia ou comportamento interno do QGIS; o texto segue verdadeiro"
+  },
+  {
+   "id": 216,
+   "context": "QgsPluginInstaller",
+   "source": "If you haven't canceled the download manually, it might be caused by a timeout. In this case consider increasing the connection timeout value in QGIS options.",
+   "qgis": "Se você não tiver cancelado a ação baixar manualmente, ele pode ter sido causado por um esgotamento do tempo limite. Neste caso, considere aumentar o valor de tempo limite de conexão nas opções do QGIS.",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "Se você não tiver cancelado a ação baixar manualmente, ele pode ter sido causado por um esgotamento do tempo limite. Neste caso, considere aumentar o valor de tempo limite de conexão nas opções do {product}."
+  },
+  {
+   "id": 217,
+   "context": "QgsPluginInstaller",
+   "source": "You can't remove the official QGIS Plugin Repository. You can disable it if needed.",
+   "qgis": "Você não pode remover o Repositório Oficial do QGIS. Você pode desligá-lo se for nescessário.",
+   "class": "projeto",
+   "why": "ecossistema de complementos do QGIS e compatibilidade com a versao do motor"
+  },
+  {
+   "id": 218,
+   "context": "QgsPluginInstaller",
+   "source": "The plugin is not compatible with this version of QGIS. It's designed for QGIS versions:",
+   "qgis": "O complemento não é compatível com esta versão do QGIS. Ele foi desenvolvido para o QGIS versão:",
+   "class": "projeto",
+   "why": "ecossistema de complementos do QGIS e compatibilidade com a versao do motor"
+  },
+  {
+   "id": 219,
+   "context": "QgsPluginInstaller",
+   "source": "QGIS has detected an obsolete plugin that masks its more recent version shipped with this copy of QGIS. This is likely due to files associated with a previous installation of QGIS. Do you want to remove the old plugin right now and unmask the more recent version?",
+   "qgis": "O QGIS detectou um complemento obsoleto que mascara sua versão mais recente fornecido com esta cópia do QGIS. Isto provavelmente é devido a arquivos associados a uma instalação anterior do QGIS. Você quer remover o complemento antigo agora e desmascarar a versão mais recente?",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "O {product} detectou um complemento obsoleto que mascara sua versão mais recente fornecido com esta cópia do {product}. Isto provavelmente é devido a arquivos associados a uma instalação anterior do {product}. Você quer remover o complemento antigo agora e desmascarar a versão mais recente?"
+  },
+  {
+   "id": 220,
+   "context": "QgsPluginInstaller",
+   "source": "If you haven't canceled the download manually, it was most likely caused by a timeout. In this case consider increasing the connection timeout value in QGIS options window.",
+   "qgis": "Se você não tiver cancelado a ação baixar manualmente, isto provavelmente foi causado por esgotamento do tempo limite. Neste caso, considere aumentar o valor de tempo limite de conexão na janela de opções do QGIS.",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "Se você não tiver cancelado a ação baixar manualmente, isto provavelmente foi causado por esgotamento do tempo limite. Neste caso, considere aumentar o valor de tempo limite de conexão na janela de opções do {product}."
+  },
+  {
+   "id": 221,
+   "context": "QgsPluginInstaller",
+   "source": "This repository is blocked due to incompatibility with your QGIS version",
+   "qgis": "Este repositório está bloqueado por causa da incompatibilidade com sua versão do QGIS",
+   "class": "projeto",
+   "why": "ecossistema de complementos do QGIS e compatibilidade com a versao do motor"
+  },
+  {
+   "id": 222,
+   "context": "QgsPluginInstaller",
+   "source": "The Zip file is not a valid QGIS python plugin. No root folder was found inside.",
+   "qgis": "O arquivo Zip não é um complemento python QGIS válido. Nenhuma pasta raiz foi encontrada dentro.",
+   "class": "projeto",
+   "why": "ecossistema de complementos do QGIS e compatibilidade com a versao do motor"
+  },
+  {
+   "id": 223,
+   "context": "QgsPluginInstaller",
+   "source": "QGIS Python Install from ZIP Plugin Installer",
+   "qgis": "Instalação do Python QGIS a partir do instalador do complemento ZIP",
+   "class": "projeto",
+   "why": "ecossistema de complementos do QGIS e compatibilidade com a versao do motor"
+  },
+  {
+   "id": 224,
+   "context": "QgsPluginInstaller",
+   "source": "QGIS Official Plugin Repository",
+   "qgis": "Repositório Oficial de Complementos do QGIS",
+   "class": "projeto",
+   "why": "ecossistema de complementos do QGIS e compatibilidade com a versao do motor"
+  },
+  {
+   "id": 225,
+   "context": "QgsMapLayerLoadStyleDialog",
+   "source": "QGIS Layer Style File",
+   "qgis": "Arquivo de estilo de camada do QGIS",
+   "class": "projeto",
+   "why": "formato de arquivo ou de dado do QGIS"
+  },
+  {
+   "id": 226,
+   "context": "QgsMapLayerLoadStyleDialog",
+   "source": "QGIS Layer Style File, SLD File",
+   "qgis": "Arquivo de estilo de camada do QGIS",
+   "class": "projeto",
+   "why": "formato de arquivo ou de dado do QGIS"
+  },
+  {
+   "id": 227,
+   "context": "QgsAbout",
+   "source": "Available QGIS Authentication Method Plugins",
+   "qgis": "Autenticação do QGIS Complemento Método  disponível",
+   "class": "projeto",
+   "why": "Sobre do QGIS (BL-1)"
+  },
+  {
+   "id": 228,
+   "context": "QgsAbout",
+   "source": "QGIS is licensed under the GNU General Public License",
+   "qgis": "O QGIS é licenciado sob a General Public License (GNU)",
+   "class": "projeto",
+   "why": "Sobre do QGIS (BL-1)"
+  },
+  {
+   "id": 229,
+   "context": "QgsAbout",
+   "source": "QGIS Home Page",
+   "qgis": "Página do QGIS",
+   "class": "projeto",
+   "why": "Sobre do QGIS (BL-1)"
+  },
+  {
+   "id": 230,
+   "context": "QgsAbout",
+   "source": "Available QGIS Data Provider Plugins",
+   "qgis": "Complementos de Provedores de Dados do QGIS disponíveis",
+   "class": "projeto",
+   "why": "Sobre do QGIS (BL-1)"
+  },
+  {
+   "id": 231,
+   "context": "QgsAbout",
+   "source": "About QGIS",
+   "qgis": "Sobre o QGIS",
+   "class": "projeto",
+   "why": "Sobre do QGIS (BL-1)"
+  },
+  {
+   "id": 232,
+   "context": "QgsGrassOptionsBase",
+   "source": "The version of GRASS which was used to build the GRASS provider and plugin in QGIS. Exactly the same version must be used on runtime.",
+   "qgis": "A versão do GRASS que foi usada para construir o provedor GRASS e o complemento no QGIS. Deve ser utilizada a mesma versão da rotina para rodar.",
+   "class": "projeto",
+   "why": "motor: capacidade, dependencia ou comportamento interno do QGIS; o texto segue verdadeiro"
+  },
+  {
+   "id": 233,
+   "context": "QgsPostgresProjectStorageDialog",
+   "source": "Storage of QGIS projects is not enabled for this database connection.",
+   "qgis": "O armazenamento de projetos QGIS não está ativado para esta conexão à base de dados.",
+   "class": "projeto",
+   "why": "formato de arquivo ou de dado do QGIS"
+  },
+  {
+   "id": 234,
+   "context": "Python",
+   "source": "QGIS version:",
+   "qgis": "Versão do QGIS:",
+   "class": "versao",
+   "why": "mostra a versao do QGIS: o texto diz motor QGIS",
+   "text": "Versão do {engine}:"
+  },
+  {
+   "id": 235,
+   "context": "BatchPanel",
+   "source": "Opening older QGIS batch Processing files from an untrusted source can harm your computer. Only continue if you trust the source of the file. Continue?",
+   "qgis": "Abrir arquivos de processamento em lote QGIS mais antigos de uma fonte não confiável pode danificar seu computador. Continue apenas se você confiar na origem do arquivo. Continuar?",
+   "class": "projeto",
+   "why": "formato de arquivo ou de dado do QGIS"
+  },
+  {
+   "id": 236,
+   "context": "QgsLayoutManager",
+   "source": "Loading QGIS 2.x compositions",
+   "qgis": "Carregando composições do QGIS 2.x",
+   "class": "projeto",
+   "why": "formato de arquivo ou de dado do QGIS"
+  },
+  {
+   "id": 237,
+   "context": "QgsCptCityColorRampDialog",
+   "source": "Error - cpt-city gradient files not found.\n\nYou have two means of installing them:\n\n1) Install the \"Color Ramp Manager\" python plugin (you must enable Experimental plugins in the plugin manager) and use it to download latest cpt-city package.\nYou can install the entire cpt-city archive or a selection for QGIS.\n\n2) Download the complete archive (in svg format) and unzip it to your QGIS settings directory [%1] .\n\nThis file can be found at [%2]\nand current file is [%3]",
+   "qgis": "Erro - arquivos do gradiente cpt-city não encontrados.\n\nVocê tem duas vias para instalá-lo:\n\n1) Instalar o complemento python \"Gerenciador de cores de gradiente\" (você deve habilitar os Complementos Experimentais no gerenciador de complementos) e usá-lo para baixar o pacote cpt-city.\nVocê pode instalar o arquivo cpt-city inteiro ou uma seleção para o QGIS.\n\n2) Baixar o arquivo completo (no formato svg) e descompactá-lo para a sua pasta de configurações do QGIS [%1].\n\nEste arquivo pode ser encontrado em [%2]\ne arquivo atual é [%3]",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "Erro - arquivos do gradiente cpt-city não encontrados.\n\nVocê tem duas vias para instalá-lo:\n\n1) Instalar o complemento python \"Gerenciador de cores de gradiente\" (você deve habilitar os Complementos Experimentais no gerenciador de complementos) e usá-lo para baixar o pacote cpt-city.\nVocê pode instalar o arquivo cpt-city inteiro ou uma seleção para o {product}.\n\n2) Baixar o arquivo completo (no formato svg) e descompactá-lo para a sua pasta de configurações do {product} [%1].\n\nEste arquivo pode ser encontrado em [%2]\ne arquivo atual é [%3]"
+  },
+  {
+   "id": 238,
+   "context": "QgsAppLayerTreeViewMenuProvider",
+   "source": "Save as &QGIS Layer Style File…",
+   "qgis": "Guardar como Ficheiro de Estilo de Camada &QGIS...",
+   "class": "projeto",
+   "why": "formato de arquivo ou de dado do QGIS"
+  },
+  {
+   "id": 239,
+   "context": "QgsDelimitedTextProvider",
+   "source": "The following lines were not loaded into QGIS due to errors:",
+   "qgis": "As linhas a seguir não foram carregadas no QGIS devido a erros:",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "As linhas a seguir não foram carregadas no {product} devido a erros:"
+  },
+  {
+   "id": 240,
+   "context": "QgsVectorTileLayerPropertiesBase",
+   "source": "QGIS Server",
+   "qgis": "QGIS Server",
+   "class": "projeto",
+   "why": "nome tecnico do QGIS (API, variavel, servidor, modulo)"
+  },
+  {
+   "id": 241,
+   "context": "Postprocessing",
+   "source": "You can check the 'Log Messages Panel' in QGIS main window to find more information about the execution of the algorithm.",
+   "qgis": "Você pode verificar o 'Painel de Registro de Mensagens' na janela principal do QGIS para encontrar mais informações sobre a realização do algoritmo.",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "Você pode verificar o 'Painel de Registro de Mensagens' na janela principal do {product} para encontrar mais informações sobre a realização do algoritmo."
+  },
+  {
+   "id": 242,
+   "context": "QgsOWSSourceSelect",
+   "source": "Several WMS servers have been added to the server list. Note that if you access the Internet via a web proxy, you will need to set the proxy settings in the QGIS options dialog.",
+   "qgis": "Foram adicionados vários servidores WMS à lista de servidores. Note que se aceder à Internet através de um proxy web, terá de configurar os configurações do proxy na janela de opções do QGIS.",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "Foram adicionados vários servidores WMS à lista de servidores. Note que se aceder à Internet através de um proxy web, terá de configurar os configurações do proxy na janela de opções do {product}."
+  },
+  {
+   "id": 243,
+   "context": "QgsAdvancedSettingsWidgetBase",
+   "source": "<html><head/><body><p>Changes on this page are dangerous and can break your QGIS installation in various ways. Any change you make is applied immediately, without clicking the <span style=\" font-style:italic;\">OK</span> button.</p></body></html>",
+   "qgis": "<html><head/><body><p>As alterações feitas nesta página são perigosas e podem danificar de várias formas a sua instalação do QGIS. Qualquer alteração feita é imediatamente aplicada, antes mesmo de clicar no botão <span style=\" font-style:italic;\">OK.</span></p></body></html>",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "<html><head/><body><p>As alterações feitas nesta página são perigosas e podem danificar de várias formas a sua instalação do {product}. Qualquer alteração feita é imediatamente aplicada, antes mesmo de clicar no botão <span style=\" font-style:italic;\">OK.</span></p></body></html>"
+  },
+  {
+   "id": 244,
+   "context": "QgsLayoutManagerDialog",
+   "source": "Use <i>Settings --> Options --> Layouts --> Layout Paths</i> to configure the folders in which QGIS will search for print layout templates.",
+   "qgis": " \nUse <i>Configurações --> Opções --> Layouts --> Caminhos de modelo</i> para configurar as pastas nas quais o QGIS procurará tipos de modelo de impressão.",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": " \nUse <i>Configurações --> Opções --> Layouts --> Caminhos de modelo</i> para configurar as pastas nas quais o {product} procurará tipos de modelo de impressão."
+  },
+  {
+   "id": 245,
+   "context": "QgsGpsDeviceOptionsWidget",
+   "source": "In the download and upload commands there can be special words that will be replaced by QGIS when the commands are used. These words are:",
+   "qgis": "Nos comandos de download e upload podem haver palavras especiais que serão substituídas por QGIS quando os comandos forem utilizados. Estas palavras são:",
+   "class": "projeto",
+   "why": "motor: capacidade, dependencia ou comportamento interno do QGIS; o texto segue verdadeiro"
+  },
+  {
+   "id": 246,
+   "context": "QgsTipGuiBase",
+   "source": "QGIS Tips!",
+   "qgis": "Dicas do QGIS!",
+   "class": "projeto",
+   "why": "projeto, comunidade, documentacao ou creditos do QGIS"
+  },
+  {
+   "id": 247,
+   "context": "QgsMessageLogViewer",
+   "source": "QGIS Log",
+   "qgis": "Registro do QGIS",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "Registro do {product}"
+  },
+  {
+   "id": 248,
+   "context": "QgsExpressionTreeView",
+   "source": "QGIS Version Mismatch",
+   "qgis": "Incompatibilidade de versão do QGIS",
+   "class": "projeto",
+   "why": "motor: capacidade, dependencia ou comportamento interno do QGIS; o texto segue verdadeiro"
+  },
+  {
+   "id": 249,
+   "context": "QgsExpressionTreeView",
+   "source": "The imported expressions are from newer version of QGIS (%1) and some of the expression might not work the current version (%2). Are you sure you want to continue?",
+   "qgis": "As expressões importadas são da versão mais recente do QGIS (%1) e algumas das expressões podem não funcionar na versão atual (%2). Você tem certeza que quer continuar?",
+   "class": "projeto",
+   "why": "motor: capacidade, dependencia ou comportamento interno do QGIS; o texto segue verdadeiro"
+  },
+  {
+   "id": 250,
+   "context": "QgsProjectLayerGroupDialog",
+   "source": "QGIS files",
+   "qgis": "Arquivos QGIS",
+   "class": "projeto",
+   "why": "formato de arquivo ou de dado do QGIS"
+  },
+  {
+   "id": 251,
+   "context": "QgsProcessingFeedback",
+   "source": "QGIS version: %1",
+   "qgis": "Versão do QGIS: %1",
+   "class": "versao",
+   "why": "mostra a versao do QGIS: o texto diz motor QGIS",
+   "text": "Versão do {engine}: %1"
+  },
+  {
+   "id": 252,
+   "context": "QgsProcessingFeedback",
+   "source": "QGIS code revision: %1",
+   "qgis": "Código de revisão do QGIS: %1",
+   "class": "versao",
+   "why": "mostra a versao do QGIS: o texto diz motor QGIS",
+   "text": "Código de revisão do {engine}: %1"
+  },
+  {
+   "id": 253,
+   "context": "QgsFirstRunDialog",
+   "source": "Welcome to QGIS %1",
+   "qgis": "Bem vindo ao QGIS %1",
+   "class": "versao",
+   "why": "mostra a versao do QGIS: o texto diz motor QGIS",
+   "text": "Bem vindo ao {product} ({engine} %1)"
+  },
+  {
+   "id": 254,
+   "context": "QgsFirstRunDialog",
+   "source": "Welcome to QGIS 3",
+   "qgis": "Bem vindo ao QGIS 3",
+   "class": "versao",
+   "why": "mostra a versao do QGIS: o texto diz motor QGIS",
+   "text": "Bem vindo ao {product} ({engine} 3)"
+  },
+  {
+   "id": 255,
+   "context": "QgsFirstRunDialog",
+   "source": "Welcome to QGIS",
+   "qgis": "Bem-vindo(a) ao QGIS",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "Bem-vindo(a) ao {product}"
+  },
+  {
+   "id": 256,
+   "context": "QgsFirstRunDialog",
+   "source": "I want a clean start. Don't import my QGIS 2 settings.",
+   "qgis": "Eu quero um início limpo. Não importar minhas configurações do QGIS 2.",
+   "class": "projeto",
+   "why": "projeto, comunidade, documentacao ou creditos do QGIS"
+  },
+  {
+   "id": 257,
+   "context": "QgsFirstRunDialog",
+   "source": "Import settings from QGIS 2.",
+   "qgis": "Importar configurações a partir do QGIS 2.",
+   "class": "projeto",
+   "why": "projeto, comunidade, documentacao ou creditos do QGIS"
+  },
+  {
+   "id": 258,
+   "context": "QgsPdalAlgorithms",
+   "source": "QGIS (PDAL)",
+   "qgis": "QGIS (PDAL)",
+   "class": "duvida",
+   "why": "nome de provedor do QGIS; o icone do provedor passa a ser o do produto, mas o nome identifica o conjunto de algoritmos do QGIS"
+  },
+  {
+   "id": 259,
+   "context": "QgsStatusBarCoordinatesWidget",
+   "source": "QGIS Hackfests",
+   "qgis": "Hackfests QGIS",
+   "class": "projeto",
+   "why": "projeto, comunidade, documentacao ou creditos do QGIS"
+  },
+  {
+   "id": 260,
+   "context": "QgsStatusBarCoordinatesWidget",
+   "source": "QGIS Contributors",
+   "qgis": "Contribuidores do QGIS",
+   "class": "projeto",
+   "why": "projeto, comunidade, documentacao ou creditos do QGIS"
+  },
+  {
+   "id": 261,
+   "context": "appinfo",
+   "source": "<p>QGIS is a user friendly Open Source Geographic Information System (GIS) licensed under the GNU General Public License. QGIS is an official project of the Open Source Geospatial Foundation (OSGeo). It runs on Linux, Unix, Mac OSX, Windows and Android and supports numerous vector, raster, and database formats and functionalities.</p>\n  ",
+   "qgis": "O QGIS é um Sistema de Informação Geográfico (SIG) Código Aberto amigável licenciado segundo a Licença Pública Geral GNU. O QGIS é um projeto oficial da Fundação Geoespacial de Código Aberto (OSGeo). Funciona em Linux, Unix, Mac OSX, Windows e Android e suporta um conjunto variado de vetores, rasters, bases de dados, e funcionalidades.\n",
+   "class": "projeto",
+   "why": "metadados do QGIS para Linux; nao chegam ao Windows"
+  },
+  {
+   "id": 262,
+   "context": "appinfo",
+   "source": "QGIS Development Team",
+   "qgis": "Equipe de desenvolvimento QGIS",
+   "class": "projeto",
+   "why": "metadados do QGIS para Linux; nao chegam ao Windows"
+  },
+  {
+   "id": 263,
+   "context": "appinfo",
+   "source": "QGIS Desktop",
+   "qgis": "QGIS Desktop",
+   "class": "projeto",
+   "why": "metadados do QGIS para Linux; nao chegam ao Windows"
+  },
+  {
+   "id": 264,
+   "context": "TcpServerWorker",
+   "source": "QGIS Development Server listening on http://%1:%2",
+   "qgis": "QGIS Development Server atendendo em http://%1:%2",
+   "class": "projeto",
+   "why": "nome tecnico do QGIS (API, variavel, servidor, modulo)"
+  },
+  {
+   "id": 265,
+   "context": "QgsMapLayerComboBoxPlugin",
+   "source": "A combo box to list the layers registered in QGIS. Layers might be filtered according to their type.",
+   "qgis": "Uma combo box para listar todas as camadas registadas no QGIS. As camadas podem ser filtradas de acordo com o seu tipo.",
+   "class": "projeto",
+   "why": "nome tecnico do QGIS (API, variavel, servidor, modulo)"
+  },
+  {
+   "id": 266,
+   "context": "QgisCustomWidgets",
+   "source": "QGIS custom widgets",
+   "qgis": "Widgets personalizados QGIS",
+   "class": "projeto",
+   "why": "nome tecnico do QGIS (API, variavel, servidor, modulo)"
+  },
+  {
+   "id": 267,
+   "context": "QgsMessageViewer",
+   "source": "QGIS Message",
+   "qgis": "Mensagem do QGIS",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "Mensagem do {product}"
+  },
+  {
+   "id": 268,
+   "context": "QgsGPXProvider",
+   "source": "Digitized in QGIS",
+   "qgis": "Digitalizada no QGIS",
+   "class": "duvida",
+   "why": "texto gravado em arquivo ou dado exportado pelo usuario, nao na interface"
+  },
+  {
+   "id": 269,
+   "context": "QgsVirtualLayerProvider",
+   "source": "QGIS expression",
+   "qgis": "expressão do QGIS",
+   "class": "projeto",
+   "why": "tecnologia do QGIS: expressao"
+  },
+  {
+   "id": 270,
+   "context": "RenderingStyleFilePanel",
+   "source": "QGIS Layer Style File (*.qml *.QML)",
+   "qgis": "Arquivo de estilo da camada QGIS (*.qml *.QML)",
+   "class": "projeto",
+   "why": "formato de arquivo ou de dado do QGIS"
+  },
+  {
+   "id": 271,
+   "context": "QgsPluginInstallerPluginErrorDialogBase",
+   "source": "The plugin seems to be invalid or have unfulfilled dependencies. It has been installed, but can't be loaded. If you really need this plugin, you can contact its author or <a href=\"http://lists.osgeo.org/mailman/listinfo/qgis-user\">QGIS users group</a> and try to solve the problem. If not, you can just uninstall it. Here is the error message below:",
+   "qgis": "O complemento parece ser inválido ou tem dependências não preenchidas. Ele pode estar instalado, mas não foi carregado. Se você realmente necessita desse complemento você terá de consultar o autor ou <a href=\"https://groups.google.com/forum/?hl=pt-BR#!forum/qgisbrasil\">Grupo de Usuários QGISBrasil</a> e tentar resolver o problema. Se não for usar, desinstale-o. Aqui está a mensagem de erro:",
+   "class": "projeto",
+   "why": "projeto, comunidade, documentacao ou creditos do QGIS"
+  },
+  {
+   "id": 272,
+   "context": "QgsStyleXmlDataItem",
+   "source": "QGIS style library",
+   "qgis": "Biblioteca de estilo QGIS",
+   "class": "projeto",
+   "why": "formato de arquivo ou de dado do QGIS"
+  },
+  {
+   "id": 273,
+   "context": "QgsLayerTreeViewMemoryIndicatorProvider",
+   "source": "<b>Temporary layer only!</b><br>Contents will be discarded after closing QGIS.",
+   "qgis": "<b>Apenas uma camada temporária!</b><br>Os conteúdos serão descartados ao fechar o QGIS.",
+   "class": "aplicativo",
+   "why": "nomeia o programa em uso",
+   "text": "<b>Apenas uma camada temporária!</b><br>Os conteúdos serão descartados ao fechar o {product}."
+  },
+  {
+   "id": 274,
+   "context": "Qgs3DAlgorithms",
+   "source": "QGIS (3D)",
+   "qgis": "QGIS (3D)",
+   "class": "duvida",
+   "why": "nome de provedor do QGIS; o icone do provedor passa a ser o do produto, mas o nome identifica o conjunto de algoritmos do QGIS"
+  },
+  {
+   "id": 275,
+   "context": "QgsNativeAlgorithms",
+   "source": "QGIS (native c++)",
+   "qgis": "QGIS (c++ nativo)",
+   "class": "duvida",
+   "why": "nome de provedor do QGIS; o icone do provedor passa a ser o do produto, mas o nome identifica o conjunto de algoritmos do QGIS"
+  }
+ ],
+ "extra": [
+  {
+   "context": "QgsCrashDialog",
+   "source": "Are you keen to help us fix bugs? QGIS relies on donations to pay developers to do funded bug fixing to improve the stability of the software. We also have a team of enthusiastic volunteers who are all working hard to improve the quality of QGIS. To do that, we need your help. <a href=\"https://qgis.org/resources/support/bug-reporting/#bugs-features-and-issues\">Find out how to help our developers</a>.<br><br>Send us a helpful bug report by using the 'Copy Report' button below, <br>then open a ticket on the <a href=\"https://github.com/qgis/QGIS/issues\">QGIS Issue Tracker</a>.",
+   "class": "bloco-d",
+   "why": "crash handler (Bloco D): sem traducao pt_BR no QGIS e manda relatar no QGIS; passa a levar ao endereco do produto",
+   "text": "Quer ajudar a corrigir este problema? Use o botão 'Copiar relatório' abaixo e envie o relatório ao {org} pela página <a href=\"{url}\">{url}</a>."
+  }
+ ]
+}
