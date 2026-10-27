@@ -99,12 +99,23 @@ function Import-ToolsPath {
     ) -join ';') + ';' + $env:PATH
 }
 
+# Nome interno (organizacao e aplicacao) do alvo: o do produto vem da fonte unica (D-IMAN-043, fatia 047); o do
+# QGIS oficial e QGIS/QGIS3. Da a pasta do perfil, do cache e dos crashes, o .ini dentro do perfil e a chave de
+# registro HKCU\Software\<organizacao>\<aplicacao>.
+function Get-InternalName([string] $Target = 'Build') {
+  if ($Target -eq 'Official') { return [pscustomobject]@{ Organization = 'QGIS'; Application = 'QGIS3' } }
+  $b = Get-Content (Join-Path $RepoRoot 'iman\brand\brand.json') -Raw -Encoding utf8 | ConvertFrom-Json
+  [pscustomobject]@{ Organization = $b.internal_organization_name; Application = $b.internal_application_name }
+}
+
 # Perfil descartavel em $Profiles, com o cache de rede dentro dele ([cache] directory nos perfis 'default', do
-# qgis_process, e 'iman-smoke', da GUI): sem isso o QGIS grava no cache padrao %LOCALAPPDATA%\QGIS\QGIS3\cache,
-# que o nome interno QGIS3 compartilha com o QGIS oficial (fatia 044).
-function New-DisposableProfile([string] $Profiles, [string] $CacheDir) {
+# qgis_process, e 'iman-smoke', da GUI): sem isso o QGIS grava no cache padrao %LOCALAPPDATA%\<org>\<app>\cache.
+# Na fatia 044 esse cache era o do QGIS oficial (nome interno QGIS3 compartilhado); desde a 047 o .ini semeado e o
+# do nome interno do alvo (<org>\<app>.ini dentro do perfil), senao o QGIS nao o le.
+function New-DisposableProfile([string] $Profiles, [string] $CacheDir, [string] $Target = 'Build') {
+  $name = Get-InternalName $Target
   foreach ($p in 'default', 'iman-smoke') {
-    $ini = Join-Path $Profiles "profiles\$p\QGIS\QGIS3.ini"
+    $ini = Join-Path $Profiles "profiles\$p\$($name.Organization)\$($name.Application).ini"
     New-Item -ItemType Directory -Force (Split-Path $ini) | Out-Null
     Write-LfFile $ini @('[cache]', "directory=$($CacheDir -replace '\\', '/')")
   }

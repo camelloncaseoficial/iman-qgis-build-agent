@@ -8,7 +8,7 @@
        Sobre, Navegador com o .qgz, Propriedades da camada, Opcoes > Processamento > Provedores;
     2. splash real: o QGIS abre sem --nologo e o splash e capturado da tela enquanto carrega;
     3. crash handler com um relatorio sintetico (A8): o processo "travado" e um ping descartavel; o crash handler
-       grava uma pasta em %LOCALAPPDATA%\QGIS\QGIS3\crashes (nome interno, fatia do instalador): o report.txt dela
+       grava uma pasta em %LOCALAPPDATA%\<org>\<app>\crashes (o nome interno do alvo; o do produto desde a 047): o report.txt dela
        vira evidencia e a pasta criada nesta rodada e removida (decisao do sponsor em 2026-10-25);
     4. caixa de erro de carga (A9) numa COPIA da pasta bin sem o qgis_app.dll, nunca na instalacao de trabalho
        nem no oficial.
@@ -43,7 +43,7 @@ function Add-Fact([string] $name, $detail) {
 & $pwshExe -NoProfile -File (Join-Path $PSScriptRoot 'Test-OfficialQgisUntouched.ps1') -WorkRoot $WorkRoot -Baseline | Out-Null
 
 $profiles = Join-Path $run 'profiles'
-New-DisposableProfile $profiles (Join-Path $run 'cache')
+New-DisposableProfile $profiles (Join-Path $run 'cache') $Target
 Import-QgisRuntime $o4w $app $profiles
 $runtimePath = $env:PATH
 
@@ -68,7 +68,7 @@ Add-Fact 'gui' ([ordered]@{ exitedClean = $exited; facts = $facts })
 
 # 2. splash real, num segundo perfil novo
 $profiles2 = Join-Path $run 'profiles-splash'
-New-DisposableProfile $profiles2 (Join-Path $run 'cache-splash')
+New-DisposableProfile $profiles2 (Join-Path $run 'cache-splash') $Target
 $env:QGIS_CUSTOM_CONFIG_PATH = $profiles2
 $exitScript = Join-Path $run 'sair.py'
 Write-LfFile $exitScript @('from qgis.PyQt.QtCore import QTimer', 'from qgis.utils import iface', 'QTimer.singleShot(2000, iface.actionExit().trigger)')
@@ -85,7 +85,8 @@ Add-Fact 'splash' ([ordered]@{ capture = $splashFile; size = $(if ($h) { [ImanWi
 $env:QGIS_CUSTOM_CONFIG_PATH = $profiles
 
 # 3. crash handler com relatorio sintetico
-$crashRoot = Join-Path $env:LOCALAPPDATA 'QGIS\QGIS3\crashes'
+$internal = Get-InternalName $Target
+$crashRoot = Join-Path $env:LOCALAPPDATA "$($internal.Organization)\$($internal.Application)\crashes"
 $crashRootExisted = Test-Path $crashRoot
 $before = @(if ($crashRootExisted) { Get-ChildItem $crashRoot -Directory | ForEach-Object FullName })
 $dummy = Start-Process -FilePath "$env:SystemRoot\System32\PING.EXE" -ArgumentList @('-n', '300', '127.0.0.1') -WindowStyle Hidden -PassThru

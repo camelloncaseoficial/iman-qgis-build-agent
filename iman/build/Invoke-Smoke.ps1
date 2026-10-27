@@ -5,6 +5,10 @@
 .DESCRIPTION
   -Target Build (padrao): o binario de $WorkRoot\install contra a raiz $WorkRoot\osgeo4w.
   -Target Official: o QGIS 3.44.13 oficial instalado, so lido; e o CONTROLE das checagens de marca.
+  -Target Installed (fatia 047): a arvore instalada pelo instalador (-InstalledRoot). O qgis_process roda com o
+    ambiente da arvore instalada; a GUI abre pelo bin\iman-terra.exe com o ambiente do processo SEM o runtime
+    montado por este script (o iman-terra.exe le o bin\iman-terra.env, como pelo atalho). A revisao do binario tem
+    de ser o commit do iman\BUILD_INFO.txt da instalacao.
     1. qgis_process --version, --json list (provedores e ids de algoritmo) e --json plugins, comparados com a
        referencia medida no oficial (smoke\expected\*.txt: o comportamento e o do QGIS, A11);
     2. so no Build: qgis_process run native:buffer no fixture points.geojson; confere 3 feicoes na saida;
@@ -17,14 +21,15 @@
   -Lang passa --lang ao QGIS (ex.: pt_BR, para comparar o oficial no mesmo idioma); com ele, o Official nao da
   veredito de controle.
   O perfil descartavel recebe so a pasta do cache de rede ([cache] directory), para o QGIS nao gravar no cache
-  padrao %LOCALAPPDATA%\QGIS\QGIS3\cache, que o nome interno QGIS3 compartilha com o QGIS oficial.
+  padrao %LOCALAPPDATA%\<org>\<app>\cache (o do QGIS oficial, no alvo Official).
   Saida: $WorkRoot\smoke\<target>-<data>\ (summary.json, capturas, logs). Sai com 1 se o veredito falhar.
 #>
 [CmdletBinding()]
 param(
   [string] $WorkRoot,
-  [ValidateSet('Build', 'Official')] [string] $Target = 'Build',
+  [ValidateSet('Build', 'Official', 'Installed')] [string] $Target = 'Build',
   [string] $OfficialRoot = 'C:\Program Files\QGIS 3.44.13',
+  [string] $InstalledRoot = (Join-Path $env:LOCALAPPDATA 'Programs\IMAN Terra'),
   [string] $Lang,
   [int] $GuiTimeoutSeconds = 240
 )
@@ -34,9 +39,13 @@ $gitExe = (Get-Command git.exe -ErrorAction Stop).Source
 
 if ($Target -eq 'Build') {
   $o4w = $Paths.Osgeo4w; $app = Join-Path $Paths.Install 'apps\qgis-ltr'; $guiExe = "$app\bin\qgis.exe"
+} elseif ($Target -eq 'Installed') {
+  $o4w = $InstalledRoot; $app = Join-Path $InstalledRoot 'apps\qgis-ltr'; $guiExe = "$o4w\bin\iman-terra.exe"
 } else {
   $o4w = $OfficialRoot; $app = Join-Path $OfficialRoot 'apps\qgis-ltr'; $guiExe = "$o4w\bin\qgis-ltr-bin.exe"
 }
+# ambiente do processo antes do runtime: o da GUI do alvo Installed (o iman-terra.exe monta o resto pelo .env)
+$plainEnv = [Environment]::GetEnvironmentVariables('Process')
 if (-not (Test-Path "$app\bin\qgis_process.exe")) { throw "qgis_process ausente em $app\bin" }
 
 $suffix = if ($Lang) { "-$Lang" } else { '' }
@@ -47,7 +56,7 @@ New-Item -ItemType Directory -Force $profiles, $work | Out-Null
 
 # cache de rede dentro do perfil descartavel (perfil 'default' do qgis_process e o perfil da GUI)
 $cacheDir = (Join-Path $run 'cache') -replace '\\', '/'
-New-DisposableProfile $profiles $cacheDir
+New-DisposableProfile $profiles $cacheDir $Target
 Import-QgisRuntime $o4w $app $profiles
 $py = "$($Paths.Osgeo4w)\bin\python3.exe"
 
@@ -69,6 +78,12 @@ if ($Target -eq 'Build') {
   $head = (& $gitExe -C $RepoRoot rev-parse HEAD).Trim()
   $verOk = $verOk -and $rev -ne 'unknown' -and $head.StartsWith($rev)
   $summary.head = $head
+} elseif ($Target -eq 'Installed') {
+  # BL-6 na arvore instalada: o binario e o commit que o instalador registrou
+  $info = Get-Content (Join-Path $o4w 'iman\BUILD_INFO.txt') -ErrorAction SilentlyContinue
+  $commit = (@($info | Where-Object { $_ -match '^Commit\s*:' }) -replace '^Commit\s*:\s*', '' | Select-Object -First 1)
+  $verOk = $verOk -and $rev -ne 'unknown' -and $commit -and $commit.Trim().StartsWith($rev)
+  $summary.buildInfoCommit = $commit
 }
 Add-Result 'version' $verOk ([ordered]@{ revision = $rev; lines = @($ver.Trim() -split "`r?`n" | Select-Object -First 3) })
 
@@ -97,7 +112,7 @@ try {
 $summary.corePluginFolders = @(Get-ChildItem "$app\python\plugins" -Directory -ErrorAction SilentlyContinue | ForEach-Object Name | Sort-Object)
 
 $fx = Join-Path $PSScriptRoot 'smoke\fixtures'
-if ($Target -eq 'Build') {
+if ($Target -ne 'Official') {
   Copy-Item "$fx\points.geojson" $work
   $bufOut = Join-Path $work 'buffer.gpkg'
   $res = & $qp --json run native:buffer -- "INPUT=$work\points.geojson" 'DISTANCE=0.01' 'SEGMENTS=8' "OUTPUT=$bufOut" 2>&1 | Out-String
@@ -122,7 +137,19 @@ $t0 = Get-Date
 $guiArgs = @('--profiles-path', "`"$profiles`"", '--profile', 'iman-smoke', '--nologo', '--noversioncheck')
 if ($Lang) { $guiArgs += @('--lang', $Lang) }
 $guiArgs += @('--code', "`"$(Join-Path $PSScriptRoot 'smoke\smoke_gui.py')`"")
-$p = Start-Process -FilePath $guiExe -PassThru -ArgumentList $guiArgs
+if ($Target -eq 'Installed') {
+  # a GUI instalada abre com o ambiente de antes do runtime, mais as duas variaveis do smoke_gui.py
+  $runtimeEnv = [Environment]::GetEnvironmentVariables('Process')
+  foreach ($k in $runtimeEnv.Keys) { [Environment]::SetEnvironmentVariable($k, $null, 'Process') }
+  foreach ($k in $plainEnv.Keys) { [Environment]::SetEnvironmentVariable($k, $plainEnv[$k], 'Process') }
+  $env:IMAN_SMOKE_OUT = $run
+  $env:IMAN_SMOKE_PROJECT = $qgz
+  $p = Start-Process -FilePath $guiExe -PassThru -ArgumentList $guiArgs
+  foreach ($k in @([Environment]::GetEnvironmentVariables('Process').Keys)) { [Environment]::SetEnvironmentVariable($k, $null, 'Process') }
+  foreach ($k in $runtimeEnv.Keys) { [Environment]::SetEnvironmentVariable($k, $runtimeEnv[$k], 'Process') }
+} else {
+  $p = Start-Process -FilePath $guiExe -PassThru -ArgumentList $guiArgs
+}
 $exited = $p.WaitForExit($GuiTimeoutSeconds * 1000)
 if (-not $exited) { Stop-Process -Id $p.Id -Force; Start-Sleep 2 }
 $guiJson = Join-Path $run 'gui.json'
@@ -220,7 +247,7 @@ $summary.profileWrittenTo = @(Get-ChildItem $profiles -Recurse -File | ForEach-O
 $brandSteps = @($summary.steps.Keys | Where-Object { $_ -like 'marca:*' })
 $otherSteps = @($summary.steps.Keys | Where-Object { $_ -notlike 'marca:*' })
 $othersOk = @($otherSteps | Where-Object { -not $summary.steps[$_].ok }).Count -eq 0
-if ($Target -eq 'Build') {
+if ($Target -ne 'Official') {
   $verdict = $othersOk -and $brandSteps.Count -gt 0 -and @($brandSteps | Where-Object { -not $summary.steps[$_].ok }).Count -eq 0
 } elseif (-not $Lang) {
   $caught = @($brandSteps | Where-Object { $summary.steps[$_].ok })
