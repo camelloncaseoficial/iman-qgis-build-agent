@@ -5,7 +5,7 @@ produto escrito a mao. Mudar o nome e mudar `brand.json` e recompilar (A2 do bri
 
 | Arquivo | O que e | Quem le |
 |---|---|---|
-| `brand.json` | nome do produto, organizacao, endereco, rotulo do motor ("motor QGIS"), idioma padrao, feed e checagem de versao. A versao do produto ainda nao existe e nao esta aqui | `build_brand.py` e o smoke (`iman/build/Invoke-Smoke.ps1`) |
+| `brand.json` | nome e versao do produto (`product_version`, desde a 047), organizacao, endereco, rotulo do motor ("motor QGIS"), idioma padrao, feed e checagem de versao; e o nome interno (`internal_organization_name`, `internal_organization_domain`, `internal_application_name`, D-IMAN-043), que da a pasta do perfil, do cache e dos crashes, a chave de registro e o AUMI, separado do nome de exibicao | `build_brand.py`, o smoke (`iman/build/Invoke-Smoke.ps1`) e o instalador (`iman/installer/Build-Installer.ps1`) |
 | `i18n/curadoria_pt_BR.json` | as 275 mensagens do `qgis_pt_BR.qm` com "QGIS" na traducao, cada uma numa classe (aplicativo, versao, projeto, duvida), e o texto final das que mudam, com marcadores (`{product}`, `{engine}`, `{org}`, `{url}`); mais as superficies do Bloco D (`extra`) | `build_brand.py` |
 | `build_brand.py` | gera no build `iman_brand.h`, `iman_pt_BR.ts` e `qgis_global_settings.ini`; com `--measure` confere a curadoria contra o `.qm` do QGIS | `iman/build/Build-Qgis.ps1` |
 | `assets/` | assets aprovados, copiados da distro congelada (abaixo) | `derive_assets.py` |
@@ -45,6 +45,7 @@ simbolo, sem re-colorir. Enquadramento do recorte: o medido pela distro (`derive
 | `derived/qgis-icon-60x60.png` | escala 60 | `iman-symbol.png` | `images/icons/qgis-icon-60x60.png` | `0cf45f63bd510575332b9628ae69d3a6175bc3914a58c2099548708f49c0efb4` |
 | `derived/qgis_icon.svg` | recorte, 256 | `splash-iman-terra.svg` | `images/icons/qgis_icon.svg` | `0f2cc61f6890942a2c28f237c1f20c713a4247baf8e3a22e7a0a7c61383fb50e` |
 | `derived/providerQgis.svg` | recorte, 16 | `splash-iman-terra.svg` | `images/themes/default/providerQgis.svg` | `7e83e7ac912e7611a304453d6de54353f30bdbf40182cc53c0a81c14ce1bd9c9` |
+| `derived/iman-terra-qgs.ico`, `iman-terra-qgz.ico`, `iman-terra-qlr.ico` | copia | `icon-iman-terra.ico` | nada no QGIS: icones de tipo de arquivo do "Abrir com" do instalador (fatia 047) | `f9d2c6ed2ae68f6812fc865e6b8743913f3114d8029b0ae8d9632a7fb9d9b581` |
 
 Os SVG tem o mesmo `viewBox` e os mesmos `path` do `providerQgis.svg` do tema da distro; muda o tamanho nominal
 (o do arquivo do QGIS que cada um substitui).
@@ -52,5 +53,5 @@ Os SVG tem o mesmo `viewBox` e os mesmos `path` do `providerQgis.svg` do tema da
 ## O que nao troca (D-IMAN-039, regra 2; BL-1)
 
 `qgis-full.png` e os icones do "Sobre", a medalha de "Membros de Suporte" (`mActionHelpSponsors.png`), os icones de
-tipo de arquivo (`qgis-qgs.ico` e irmaos, fatia do instalador) e a imagem padrao da decoracao do mapa
-(`qgis-icon-minimal-black.svg`).
+tipo de arquivo do QGIS (`qgis-qgs.ico` e irmaos: o "Abrir com" do produto usa os `iman-terra-*.ico` de `derived/`,
+fatia 047) e a imagem padrao da decoracao do mapa (`qgis-icon-minimal-black.svg`).
