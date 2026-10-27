@@ -1,0 +1,3 @@
+# Arquivos que vao para a arvore instalada: bytes exatos (os .bat do cmd em CRLF, o .vars em LF como o do
+# QGIS oficial, que o mainwin.cpp le linha a linha), qualquer que seja o core.autocrlf do clone.
+* -text
