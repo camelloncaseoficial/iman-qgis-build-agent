@@ -9,9 +9,9 @@
 
 O instalador do IMAN Terra carrega uma árvore completa de programas: o QGIS 3.44.13 **compilado pelo Instituto IMAN
 a partir de um fork público do código-fonte do QGIS, com modificações** (seção 2), e o conjunto de pacotes OSGeo4W
-que o QGIS 3.44.13 oficial instala no Windows, na mesma versão de cada pacote (seção 3). O Instituto IMAN é
-**redistribuidor** desses componentes: eles não são obra do Instituto IMAN, pertencem aos seus autores e
-permanecem sob as suas próprias licenças.
+que o QGIS 3.44.13 oficial instala no Windows, na mesma versão de cada pacote (seção 3), mais dois arquivos das
+Debugging Tools for Windows da Microsoft (seção 5). O Instituto IMAN é **redistribuidor** desses componentes: eles
+não são obra do Instituto IMAN, pertencem aos seus autores e permanecem sob as suas próprias licenças.
 
 **O driver ECW/JP2 não é distribuído.** O QGIS 3.44.13 oficial instala também o pacote `gdal-ecw` (o driver ECW/JP2
 do GDAL, com o SDK ECW/JP2 da Hexagon). O IMAN Terra não o distribui, por causa do termo da Hexagon ("ERDAS ECW/JP2
@@ -299,6 +299,17 @@ desses termos, como publicadas, estão na pasta `licencas\` da instalação.
   mesmas DLLs em `apps\qgis-ltr\bin`, do compilador que gerou o QGIS do IMAN Terra (MSVC 14.44).
 - **Termo:** código distribuível do Visual Studio, conforme
   https://learn.microsoft.com/cpp/windows/redistributing-visual-cpp-files.
+
+### Microsoft Debugging Tools for Windows (`dbghelp.dll` e `symsrv.dll`)
+
+- **Arquivos:** `apps\qgis-ltr\dbghelp.dll` e `apps\qgis-ltr\symsrv.dll`, versão 10.0.26100.7705, das Debugging
+  Tools for Windows do Windows SDK 10.0.26100, no mesmo lugar em que o pacote `qgis-ltr` oficial os leva. O crash
+  handler do QGIS os usa para montar a pilha de uma falha.
+- **Termo:** "Microsoft Software License Terms, Microsoft Windows Software Development Kit (SDK) for Windows"
+  (`licencas\windows-sdk.txt`), seção "Distributable Code": é distribuível o código da lista REDIST.TXT da Microsoft
+  (https://learn.microsoft.com/legal/windows-sdk/redist), que na seção "Debugging Tools for Windows" diz "You may
+  distribute these files as part of your program." e nomeia `Dbghelp.dll` e `Symsrv.dll`. Os dois vão sem
+  modificação, como parte do IMAN Terra, e seguem sob o termo da Microsoft.
 
 ### SZIP (`szip`)
 

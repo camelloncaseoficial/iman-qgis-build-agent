@@ -63,8 +63,9 @@ licença e a fonte de onde ela foi lida. O Qt é distribuído sob a LGPL-3.0, e 
 estão nomeados no mesmo arquivo.
 
 Alguns componentes NÃO são software livre e só podem ser redistribuídos sob as condições dos seus donos: o MrSID
-Decode SDK (Extensis), o Oracle Instant Client, o Microsoft ODBC Driver 18 e o runtime do Microsoft Visual C++. Os
-termos estão na pasta licencas\ da instalação e na seção 5 de THIRD_PARTY_NOTICES.md.
+Decode SDK (Extensis), o Oracle Instant Client, o Microsoft ODBC Driver 18, o runtime do Microsoft Visual C++ e o
+dbghelp.dll e o symsrv.dll das Debugging Tools for Windows (Microsoft). Os termos estão na pasta licencas\ da
+instalação e na seção 5 de THIRD_PARTY_NOTICES.md.
 
 Nada nesta licença remove, oculta ou enfraquece os créditos, as marcas ou as licenças do QGIS ou de qualquer
 outro terceiro.

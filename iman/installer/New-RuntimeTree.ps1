@@ -19,7 +19,8 @@
               conjunto), os .pyc (o postinstall do oficial os apaga) e o bin\qgis.exe (vira bin\iman-terra.exe);
         dentro: os plugins Qt que o cmake --install grava no Qt da raiz de build (sqldrivers e designer, tirados de
               $WorkRoot\build\output) e o widget-plugin do PyQt (python/custom_widgets do fonte), nos lugares do
-              pacote oficial;
+              pacote oficial; e o dbghelp.dll e o symsrv.dll, que o qgis-ltr oficial leva em apps\qgis-ltr para o
+              crash handler montar a pilha, das Debugging Tools for Windows ($DebuggerRedist do Common.ps1);
     - bin\iman-terra.exe (o qgis.exe, decisao 11), bin\iman-terra.vars, bin\iman-terra-env.bat,
       bin\qgis_process-iman-terra.bat e iman\postinstall.cmd, de iman/installer/runtime;
     - iman\icons: os icones de tipo de arquivo derivados (iman/brand/derived).
@@ -96,6 +97,13 @@ foreach ($k in $extra.Keys) {
   if (-not (Test-Path $extra[$k])) { throw "ausente: $($extra[$k])" }
   New-Item -ItemType Directory -Force (Split-Path (Join-Path $dst $k)) | Out-Null
   Copy-Item $extra[$k] (Join-Path $dst $k)
+}
+foreach ($f in $DebuggerRedist.Keys) {
+  $src = Join-Path $DebuggersDir $f
+  if (-not (Test-Path $src)) { throw "ausente: $src; rode Install-BuildTools.ps1 (Debugging Tools for Windows)" }
+  $h = (Get-FileHash -Algorithm SHA256 $src).Hash.ToLowerInvariant()
+  if ($h -ne $DebuggerRedist[$f].Sha256) { throw "sha256 divergente em ${src}: fixado $($DebuggerRedist[$f].Sha256), obtido $h" }
+  Copy-Item $src (Join-Path $dst $f)
 }
 
 # 3. lancador, postinstall e icones

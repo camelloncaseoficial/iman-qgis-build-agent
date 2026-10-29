@@ -1,13 +1,14 @@
 <#
 .SYNOPSIS
-  Instala as ferramentas de build fixadas: VS 2022 Build Tools (componentes da receita qgis-ltr) e, em
-  $WorkRoot\tools, CMake, ninja e winflexbison portateis. Idempotente.
+  Instala as ferramentas de build fixadas: VS 2022 Build Tools (componentes da receita qgis-ltr), as Debugging Tools
+  for Windows do mesmo Windows SDK e, em $WorkRoot\tools, CMake, ninja e winflexbison portateis. Idempotente.
 
 .NOTES
-  A instalacao do VS pede elevacao (UAC). Rodar so com a confirmacao do sponsor (regra fixa do CLAUDE.md).
+  A instalacao do VS e a das Debugging Tools pedem elevacao (UAC). Rodar so com a confirmacao do sponsor (regra fixa
+  do CLAUDE.md).
 #>
 [CmdletBinding()]
-param([string] $WorkRoot, [switch] $SkipVs)
+param([string] $WorkRoot, [switch] $SkipVs, [switch] $SkipDebuggers)
 . "$PSScriptRoot\Common.ps1"
 
 foreach ($name in 'cmake', 'ninja', 'winflexbison') {
@@ -60,4 +61,21 @@ if (-not $SkipVs) {
   $msvc = (Get-ChildItem (Join-Path $vs 'VC\Tools\MSVC') | Sort-Object Name | Select-Object -Last 1).Name
   Write-Step "VS Build Tools: $vs, MSVC $msvc (exit $($p.ExitCode))"
   if (-not $msvc.StartsWith($ExpectedMsvc)) { Write-Warning "MSVC $msvc difere do $ExpectedMsvc do build oficial" }
+}
+
+# Debugging Tools for Windows (o dbghelp.dll e o symsrv.dll da arvore do produto): recurso do proprio Windows SDK
+# que o VS instalou, pelo instalador dele em cache. Pede UAC. Patch de 2026-10-29 da fatia 047.
+if (-not $SkipDebuggers -and -not (Test-Path (Join-Path $DebuggersDir 'dbghelp.dll'))) {
+  $sdkBuild = $VsSdkVersion -replace '\.0$', ''
+  $sdk = Get-ItemProperty 'HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*' -ErrorAction SilentlyContinue |
+    Where-Object { $_.DisplayName -like "Windows Software Development Kit - Windows $sdkBuild.*" -and $_.BundleCachePath } |
+    Select-Object -First 1
+  if (-not $sdk) { throw "Windows SDK $sdkBuild sem instalador em cache: instale o SDK pelo VS Build Tools antes" }
+  Write-Step "instalando as Debugging Tools for Windows de $($sdk.DisplayName) (pede UAC)"
+  $p = Start-Process -FilePath $sdk.BundleCachePath -ArgumentList @('/features', 'OptionId.WindowsDesktopDebuggers', '/quiet', '/norestart') -Verb RunAs -Wait -PassThru
+  if ($p.ExitCode -notin 0, 3010) { throw "winsdksetup saiu com $($p.ExitCode)" }
+}
+foreach ($f in $DebuggerRedist.Keys) {
+  $v = (Get-Item (Join-Path $DebuggersDir $f) -ErrorAction SilentlyContinue).VersionInfo.FileVersionRaw
+  Write-Step "Debugging Tools: $f $(if ($v) { $v } else { 'ausente' }) (fixado $($DebuggerRedist[$f].Version))"
 }

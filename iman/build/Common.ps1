@@ -53,6 +53,16 @@ $VsSdkVersion = '10.0.26100.0'
 # Toolset que compilou o 3.44.13 oficial (linker 14.44, Rich header build 35225 em qgis_core.dll)
 $ExpectedMsvc = '14.44'
 
+# dbghelp.dll e symsrv.dll das Debugging Tools for Windows do SDK fixado: o pacote qgis-ltr oficial os leva em
+# apps\qgis-ltr, para o crash handler montar a pilha, e o New-RuntimeTree.ps1 os poe no mesmo lugar (patch de
+# 2026-10-29 da fatia 047). Distribuiveis pela lista REDIST do Windows SDK, secao "Debugging Tools for Windows"
+# (https://learn.microsoft.com/legal/windows-sdk/redist). Instalados pelo Install-BuildTools.ps1.
+$DebuggersDir = Join-Path ${env:ProgramFiles(x86)} 'Windows Kits\10\Debuggers\x64'
+$DebuggerRedist = [ordered]@{
+  'dbghelp.dll' = @{ Version = '10.0.26100.7705'; Sha256 = '23d33e01020b6d1de7dd29cd737287042476a6e0a8deafdab68f01e61a801fcf' }
+  'symsrv.dll' = @{ Version = '10.0.26100.7705'; Sha256 = '89efaac07673f87a2862d6b163bc6626b51770ad1bd48c4f277e356df0a08c1d' }
+}
+
 # Arquivo versionado sempre em UTF-8 sem BOM e LF (o Set-Content do Windows grava CRLF)
 function Write-LfFile([string] $path, [string[]] $lines) {
   [IO.File]::WriteAllText($path, (($lines -join "`n") + "`n"), [Text.UTF8Encoding]::new($false))
