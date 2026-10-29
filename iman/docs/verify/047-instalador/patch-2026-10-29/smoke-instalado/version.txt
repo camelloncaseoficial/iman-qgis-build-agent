@@ -1,0 +1,11 @@
+QGIS 3.44.13-Solothurn 'Solothurn' (25da3275c5)
+QGIS code revision 25da3275c5
+Qt version 5.15.13
+Python version 3.12.13
+GDAL/OGR version 3.13.2
+PROJ version 9.8.1
+EPSG Registry database version v12.029 (2025-10-02)
+GEOS version 3.14.1-CAPI-1.20.5
+SQLite version 3.53.4
+OS Windows 11 Version 2009
+

@@ -260,3 +260,182 @@ seria interagir com processo do usuário).
 - A instalação interativa (todas as medidas usaram `/VERYSILENT`) e o atalho opcional da Área de Trabalho.
 - A 0.3.0 da distro **não está mais instalada** nesta máquina (o ciclo a substituiu e desinstalou). Para o smoke do
   sponsor "instala sobre a 0.3.0", ela precisa ser reinstalada antes, do instalador da distro.
+
+## Patch de 2026-10-29
+
+Briefing `qgis-build #047` PATCH (emenda de 2026-10-29 ao D-IMAN-043, decisão 3). Branch `fix/047-patch-sem-ecw`,
+nascida de `origin/develop` `173221974b` (o merge do PR #3); PR #4. Mesma máquina, medições de 2026-10-29. O que está
+acima desta seção é o que a fatia mediu em 2026-10-27 e não foi reescrito: onde o patch muda um resultado, o novo está
+aqui. Evidência em `patch-2026-10-29/`, com o caminho do perfil do Windows trocado por `%USERPROFILE%`.
+
+**O instalador novo é o do commit `25da3275c5`:**
+`D:\iman-terra-build\dist\0.4.0-25da3275c5\Instituto-IMAN-IMAN-Terra-Setup-0.4.0-25da3275c5.exe` (512.754.179 bytes,
+SHA-256 `207c5052789384efef1d0e016fec151c12a7e5537b4e4896b9976eb8ff7a172a`, Inno Setup 7.1.0, ISCC 709 s;
+`patch-2026-10-29/instalador/BUILD_INFO.txt`). A versão segue 0.4.0 (o briefing não pede outra). Ele não entra no git e
+não foi distribuído. O `SOURCE_CODE.md` carimbado que vai no pacote cita o commit inteiro,
+`25da3275c54a92ee18fb68fccf8e89c09f630ed9` (`patch-2026-10-29/instalador/SOURCE_CODE.md`).
+
+| Pasta | O que é |
+|---|---|
+| `patch-2026-10-29/instalador/` | `BUILD_INFO.txt` e o `SOURCE_CODE.md` carimbado do instalador novo (P8) |
+| `patch-2026-10-29/sem-ecw/` | `Test-NoEcw.ps1` na árvore instalada, com o `Test-RuntimeSet.ps1` em `conjunto/`; em `visto-falhando-0.4.0/`, a mesma checagem no 0.4.0 anterior (P1) |
+| `patch-2026-10-29/termos/` | o termo de redistribuição do `dbghelp.dll` e do `symsrv.dll`, com a origem e o hash dos arquivos (P3) |
+| `patch-2026-10-29/pilha/` | `Test-CrashStack.ps1`: a pilha montada pelo crash handler instalado; em `visto-falhando-0.4.0/`, o 0.4.0 anterior (P3) |
+| `patch-2026-10-29/qgis-process/` | `Test-QgisProcessRuntime.ps1`: o VC++ que o `qgis_process` instalado carrega (P4) |
+| `patch-2026-10-29/instalado/` | `Test-Installed.ps1` no instalador novo, perfil novo (P5) |
+| `patch-2026-10-29/ciclo/` | a máquina sem o IMAN Terra antes (`pre-ciclo.txt`), instalar e desinstalar (P5) |
+| `patch-2026-10-29/smoke-instalado/` | o smoke do 044 contra a árvore instalada (P5) |
+
+### Veredito do patch
+
+**P1 a P5 e P8 medidos e passando; P6 e P7 no PR e no `/deliver`.** O produto sai sem o ECW, com o `dbghelp.dll` e o
+`symsrv.dll` das Debugging Tools for Windows em `apps\qgis-ltr`, e o `qgis_process` instalado carrega um VC++ só. Nada
+do resto do 047 regrediu, e a guarda passou em toda etapa. Nenhum STOP disparou.
+
+### P1 Sem ECW: medido
+
+`iman/installer/Test-NoEcw.ps1` (novo), na árvore instalada (`patch-2026-10-29/sem-ecw/result.json`):
+
+- **Arquivos:** busca na árvore inteira por `NCSEcw.dll` e `gdal_ECW_JP2ECW.dll`: nenhum. No oficial, os dois estão
+  (`bin\NCSEcw.dll` e `apps\gdal\lib\gdalplugins\gdal_ECW_JP2ECW.dll`).
+- **Conjunto:** o `Test-RuntimeSet.ps1` do 047, sem mudança, compara a árvore com o `installed.db` do oficial menos os
+  `qgis-ltr*`. A única diferença é `so-no-oficial gdal-ecw gdal-ecw-3.13.2-1.tar.bz2`, exatamente a esperada. Nenhum
+  `-devel`, e 0 dos 152 pacotes com diferença de arquivos. Contra o alvo do briefing (o oficial menos os `qgis-ltr*` e
+  o `gdal-ecw`, mais o nosso build), o diff é vazio. O teste pré-existente reporta `FALHOU` por essa diferença
+  (`sem-ecw/conjunto/result.json`). Isso é o que ele deve dizer agora; o teste não foi editado, e o veredito do P1 vem do
+  `Test-NoEcw.ps1`, que exige essa e só essa diferença (decisão do sponsor na sessão: "Teste novo para P1").
+- **GDAL:** `gdalinfo --formats` da árvore instalada, com o `o4w_env.bat` dela, lista 148 drivers: sem `ECW`, sem
+  `JP2ECW`, com `JP2OpenJPEG` (`sem-ecw/gdal-formats-produto.txt`).
+- **Visto falhando:**
+  - contra o oficial, a mesma checagem lista 150 drivers, com `ECW` e `JP2ECW` (`sem-ecw/gdal-formats-oficial.txt`);
+  - contra o 0.4.0 anterior, ainda instalado antes do ciclo, o teste reprovou nas três checagens: os dois arquivos
+    presentes, o conjunto sem a diferença esperada e o GDAL com `ECW` e `JP2ECW`
+    (`sem-ecw/visto-falhando-0.4.0/result.json`).
+- **Onde:** `$RuntimeExcluded` no `New-RuntimeTree.ps1`, com o motivo, é o lugar único da exclusão. O lock segue com
+  `Runtime=official` para o `gdal-ecw` (diz o que o oficial instala) e não mudou. A árvore montada tem 152 pacotes mais
+  o `iman-terra`, 37.332 arquivos e 2.377.372.907 bytes.
+- **Nenhum outro pacote saiu nem mudou:** os 152 restantes têm a mesma lista de arquivos do oficial. O smoke abaixo dá
+  os mesmos provedores, algoritmos e plugins.
+
+### P2 Notices: medido
+
+- **Contagem:** `THIRD_PARTY_NOTICES.md` tem 153 entradas, e o `installed.db` da árvore instalada tem 153 pacotes
+  (152 OSGeo4W e o `iman-terra`). `Update-Notices.ps1 -Check -Tree "%LOCALAPPDATA%\Programs\IMAN Terra"`: "notices em
+  dia: 153 entradas para 153 pacotes", exit 0. O `Build-Installer.ps1` faz a mesma conta antes de compilar.
+- **Texto:**
+  - saíram a seção "ECW/JP2 (`gdal-ecw`): redistribuição bloqueada", a linha do `gdal-ecw` no
+    `licencas-upstream.tsv`, o `licencas/gdal-ecw.txt` e o ECW da lista de não livres do `LICENSE`;
+  - a seção 1 do `THIRD_PARTY_NOTICES.md` diz que o driver ECW/JP2 **não é distribuído**, com o termo da Hexagon (seção
+    2.2) e o `JP2OpenJPEG` como o que segue para JPEG 2000;
+  - nenhuma frase diz que o ECW é parte do produto ou que a distribuição está bloqueada por ele.
+- **Evidência do STOP:** o `licencas-osgeo4w/termos-medidos.txt` desta pasta fica como registro do STOP de 2026-10-27.
+
+### P3 `dbghelp.dll` e `symsrv.dll`: medido
+
+- **Origem:** Debugging Tools for Windows do Windows SDK 10.0.26100.7705. O feature `OptionId.WindowsDesktopDebuggers`
+  foi instalado nesta máquina com o "sim" do sponsor na sessão, pelo `winsdksetup` em cache do SDK já instalado. O exit
+  foi 0, em 20 s, e a guarda passou antes e depois. O `Install-BuildTools.ps1` passou a fazer esse passo (parâmetro
+  `-SkipDebuggers` para pular), e o `New-RuntimeTree.ps1` copia os dois de `C:\Program Files (x86)\Windows
+  Kits\10\Debuggers\x64` conferindo o SHA-256 fixado em `$DebuggerRedist` (`Common.ps1`).
+- **Arquivos** (sem modificação; assinatura Microsoft válida):
+
+  | Arquivo | Versão | Bytes | SHA-256 |
+  |---|---|---|---|
+  | `dbghelp.dll` | 10.0.26100.7705 | 2.259.288 | `23d33e01020b6d1de7dd29cd737287042476a6e0a8deafdab68f01e61a801fcf` |
+  | `symsrv.dll` | 10.0.26100.7705 | 424.280 | `89efaac07673f87a2862d6b163bc6626b51770ad1bd48c4f277e356df0a08c1d` |
+
+  O `qgis-ltr` oficial leva os dois na versão 10.0.19041.685. A versão difere; o lugar e o papel são os mesmos.
+- **Termo** (`patch-2026-10-29/termos/debugging-tools-redist.txt`):
+  - a licença do Windows SDK, seção 2.a.i, permite distribuir o que está na lista REDIST
+    (https://learn.microsoft.com/en-us/legal/windows-sdk/redist, "UPDATED 10/21/2024", lida em 2026-10-29);
+  - a seção "Debugging Tools for Windows" da lista diz "You may distribute these files as part of your program." e
+    nomeia `Dbghelp.dll` e `Symsrv.dll`;
+  - as condições de distribuição (2.a.ii e 2.a.iii: termos ao usuário final, indenização, sem licença excluída) são as
+    mesmas do runtime do VC++ que o 047 já leva;
+  - o texto da licença entrou no pacote como `licencas\windows-sdk.txt`, e os notices ganharam a entrada (seção 5 do
+    `THIRD_PARTY_NOTICES.md`, seção 3 do `LICENSE`).
+- **A pilha** (`Test-CrashStack.ps1`, novo; `patch-2026-10-29/pilha/`):
+  - **Falha provocada:** num processo descartável aberto pelo teste (o Python da árvore instalada com
+    `crash_target.py`), um `CreateThread` que começa em `msvcrt.strlen` com argumento nulo causa um access violation. O
+    filtro de exceção grava o arquivo de informação no formato do QGIS.
+  - **Crash handler:** o `qgiscrashhandler.exe` instalado, aberto pelo teste com o ambiente do `iman-terra.env`, abriu
+    a janela em 5 s (`crash-handler.png`).
+  - **DLLs carregadas** (`Process.Modules` do handler): o `dbghelp.dll` e o `symsrv.dll` de `apps\qgis-ltr`, os dois
+    10.0.26100.7705.
+  - **Símbolos:** o servidor de símbolos baixou os PDBs de `ntdll`, `kernel32` e `msvcrt` para a pasta da rodada.
+  - **Pilha** (`stack.txt`): `strlen`, `BaseThreadInitThunk`, `RtlUserThreadStart`.
+  - **Encerramento:** handler e processo fechados pelos PIDs que o teste recebeu.
+- **Visto falhando** (o 0.4.0 anterior, `pilha/visto-falhando-0.4.0/`): os dois arquivos ausentes da árvore. O handler
+  carregou `C:\WINDOWS\SYSTEM32\dbghelp.dll` 10.0.26100.9549, não carregou `symsrv` e não baixou símbolo. A pilha desta
+  falha sintética saiu igual, porque os módulos são do sistema e o `dbghelp` do sistema os resolve pela tabela de
+  exportação. A diferença medida é qual `dbghelp` monta a pilha e se o servidor de símbolos é usado. Que a pilha de um
+  crash dentro do QGIS ganha nomes de função com os PDBs do build é **relatado**: o build não publica PDB para o servidor
+  de símbolos, e provocar um crash dentro do `iman-terra.exe` está fora do que este teste abre.
+
+### P4 O VC++ do `qgis_process`: medido
+
+`Test-QgisProcessRuntime.ps1` (novo; `patch-2026-10-29/qgis-process/`), com perfil descartável novo
+(`QGIS_CUSTOM_CONFIG_PATH`). O script `PYQGIS_STARTUP` `qgis_process_facts.py` lê, de dentro do processo, a cada 50 ms,
+os módulos carregados (`EnumProcessModules`) e a versão de cada um (`VerQueryValue`). O intervalo entre a última leitura
+e a saída do processo vai no resultado.
+
+- **Chamadas:**
+  - `bin\qgis_process-iman-terra.bat --json plugins`: exit 0, `grassprovider` e `processing`;
+  - `bin\qgis_process-iman-terra.bat --json run native:buffer -- INPUT=<points.geojson> DISTANCE=0.01 SEGMENTS=8
+    OUTPUT=<buffer.gpkg>`, sobre uma camada descartável de 3 pontos: exit 0. O `ogrinfo` da árvore lê 3 feições
+    poligonais no `buffer.gpkg`.
+- **VC++ carregado, nas duas chamadas:** `MSVCP140.dll`, `MSVCP140_1.dll`, `MSVCP140_2.dll`,
+  `MSVCP140_ATOMIC_WAIT.dll`, `VCRUNTIME140.dll` e `VCRUNTIME140_1.dll`. Todos 14.44.35211.0, todos de
+  `apps\qgis-ltr\bin`, ao lado do `qgis_process.exe` (o do `cmake --install`). **Uma versão só, um diretório só**:
+  nenhum STOP de runtime, e nenhuma DLL foi trocada nem movida.
+- A GUI segue com o 14.38.33135.0 de `bin\` (`instalado/result.json`, `A5:vc-runtime-carregado`). São dois processos
+  distintos, cada um com um VC++ só. Isso fecha o `N/E` do A5.
+
+### P5 O resto do 047: medido
+
+- **Máquina sem o IMAN Terra antes do ciclo** (`ciclo/pre-ciclo.txt`):
+  - o 0.4.0 de 2026-10-27 estava instalado. Foi desinstalado pelo próprio `unins000.exe` (aberto pelo PID): exit 0,
+    15 s; a pasta e a entrada saíram;
+  - para o A2 partir de um perfil novo, as sobras do produto dos testes anteriores foram **renomeadas, não apagadas**,
+    com o sufixo `.antes-047-patch`: `%APPDATA%\InstitutoIMAN\IMANTerra` (9 arquivos),
+    `%LOCALAPPDATA%\InstitutoIMAN\IMANTerra` (5 arquivos), `HKCU\Software\InstitutoIMAN\IMANTerra` e
+    `HKCU\...\Notifications\Settings\InstitutoIMAN.IMANTerra.IMANTerra.3.44.13-Solothurn` (as duas chaves exportadas em
+    `.reg` antes, fora do git). Decisão do sponsor na sessão: "Renomear e restaurar";
+  - a guarda passou antes e depois.
+- **Instalar** (`ciclo/result-install.json`): 88 s, sem elevação (`Administrative install mode: No`), uma entrada
+  `IMAN Terra` `0.4.0`, a árvore nova com os notices, e o perfil da distro com o mesmo hash.
+- **`Test-Installed.ps1` inteiro, A2 a A9** (`instalado/result.json`): todas as checagens OK. Perfil novo antes; abre
+  pelo atalho em 56 s e sai limpo; nome interno, perfil, cache, registro e crashes do produto; `qgis_process` lê o
+  perfil novo; um atalho com o AUMI; a notificação; o "Abrir com"; o padrão do `.qgz` igual; os créditos iguais aos do
+  oficial.
+- **Smoke do 044 contra a árvore instalada** (`smoke-instalado/summary.json`): todas as checagens OK (versão e revisão
+  `25da3275c5`, 7 provedores, 426 algoritmos, plugins, `native:buffer`, janela e `.qgz`, as 8 de marca,
+  `controle:sobre`, guarda). **Nenhum `smoke/expected/*.txt` mudou.**
+- **Desinstalar** (`ciclo/result-uninstall.json`): 11 s; a pasta, os atalhos, as associações e a entrada saíram; o
+  perfil do produto ficou, como no A6; o da distro com o mesmo hash.
+- **A guarda passou em toda etapa:** antes e depois do pré-ciclo, das Debugging Tools, da instalação, de cada teste e da
+  desinstalação.
+- **A sessão terminou com o IMAN Terra desinstalado.** Ficou da rodada, sem apagar:
+  - o perfil `%APPDATA%\InstitutoIMAN\IMANTerra`, o cache e os crashes em `%LOCALAPPDATA%\InstitutoIMAN\IMANTerra`;
+  - `HKCU\Software\InstitutoIMAN\IMANTerra` e a chave de notificação do produto;
+  - as quatro cópias `.antes-047-patch`, para o sponsor decidir.
+
+  A pasta `IMAN Terra.SOBRAS-GATE` e o `QGIS3.lnk` não foram tocados.
+
+### Desvios declarados
+
+- **Disco:** no começo da sessão, D: tinha 9,5 GB livres, abaixo dos 50 GB do STOP. Parei e reportei. O sponsor mandou
+  seguir na sessão ("pode prosseguir"). Depois, D: passou a ter mais de 94 GB livres, liberados fora desta sessão. No
+  fim, C: tem 258,9 GB e D: 105,1 GB livres.
+- **Branch e PR:** o briefing pedia a branch `feat/047-instalador` e o PR #3, mas o PR #3 já estava mergeado. O
+  sponsor decidiu na sessão: "Nova branch, novo PR" (`fix/047-patch-sem-ecw`, PR #4).
+- **O 0.4.0 estava instalado** no começo da sessão, ao contrário do registro da bancada. Foi desinstalado no
+  pré-ciclo, acima.
+- **A compilação incremental foi interrompida uma vez** pelo ambiente, por pouca memória. Reiniciei com o "sim" do
+  sponsor, e ela retomou do ponto em que parou.
+
+### O que o patch NÃO testou
+
+- A VM limpa (BL-7): segue a próxima fatia.
+- A pilha de um crash dentro do próprio `iman-terra.exe`, com os PDBs do build (relatado, acima).
+- O smoke do sponsor (instalação interativa, Menu Iniciar, "Abrir com" no Explorer, notices lidos na tela).

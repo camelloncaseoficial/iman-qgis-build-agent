@@ -1,0 +1,49 @@
+{
+  "ok": false,
+  "root": "%USERPROFILE%\\AppData\\Local\\Programs\\IMAN Terra",
+  "official": "C:\\Program Files\\QGIS 3.44.13",
+  "packages": {
+    "tree": 153,
+    "treeWithoutOurBuild": 152,
+    "official": 159,
+    "officialWithoutQgisLtr": 153,
+    "ourBuildEntry": "iman-terra-0.4.0-25da3275c5",
+    "differences": [
+      "so-no-oficial gdal-ecw gdal-ecw-3.13.2-1.tar.bz2"
+    ],
+    "devel": []
+  },
+  "filesPerPackage": {
+    "compared": 152,
+    "withDifferences": 0,
+    "differences": {}
+  },
+  "ourBuildVsQgisLtr": {
+    "ourFiles": 7772,
+    "officialFiles": 7764,
+    "onlyOurs": [
+      "apps/qgis-ltr/bin/concrt140.dll",
+      "apps/qgis-ltr/bin/msvcp140_1.dll",
+      "apps/qgis-ltr/bin/msvcp140_2.dll",
+      "apps/qgis-ltr/bin/msvcp140_atomic_wait.dll",
+      "apps/qgis-ltr/bin/msvcp140_codecvt_ids.dll",
+      "apps/qgis-ltr/bin/msvcp140.dll",
+      "apps/qgis-ltr/bin/vcruntime140_1.dll",
+      "apps/qgis-ltr/bin/vcruntime140.dll",
+      "apps/qgis-ltr/i18n/iman_pt_BR.qm"
+    ],
+    "onlyOfficial": [
+      "apps/qgis-ltr/bin/qgis.reg.tmpl"
+    ]
+  },
+  "size": {
+    "tree": {
+      "files": 38243,
+      "bytes": 2412992748.0
+    },
+    "official": {
+      "files": 37421,
+      "bytes": 2392384679.0
+    }
+  }
+}

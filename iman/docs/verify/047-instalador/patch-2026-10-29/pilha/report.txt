@@ -1,0 +1,24 @@
+**Crash ID**: fc60e77b23e5cbe2cab0f367440189490a78bd91
+
+
+**Stack Trace**
+
+```
+
+strlen :
+BaseThreadInitThunk :
+RtlUserThreadStart :
+```
+
+
+
+**QGIS Info**
+Relatorio do teste P3 do patch de 2026-10-29 da fatia 047: falha provocada num processo descartavel
+
+
+
+**System Info**
+CPU Type: x86_64
+Kernel Type: winnt
+Kernel Version: 10.0.26200
+
