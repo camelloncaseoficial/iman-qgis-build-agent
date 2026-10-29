@@ -55,6 +55,9 @@ Ciclo de uma fatia: `/start-session` -> ler o briefing -> implementar -> gate ->
 - **GPL (BL-6):** todo binario distribuido sai de um commit publico deste repo, identificado no pacote.
 - **Perfil isolado** (BL-3): o produto nunca le nem escreve a configuracao, o perfil ou a instalacao de um QGIS do usuario.
 - **Marca em fonte unica** (BL-4): nome, versao e todo texto de marca vem de um unico lugar em `iman/brand/`.
+- **Processo alheio nao se toca** (R3 do gate do 044): captura, smoke e scripts so abrem, tocam e fecham processos
+  que eles mesmos abriram (pelo PID que receberam ao abrir). Nunca fechar, focar, capturar ou matar por nome uma janela
+  ou processo do usuario, nem o QGIS oficial.
 - **Verdade na VM limpa (BL-7):** smoke que nao rodou na VM e lacuna declarada, nunca "pronto".
 - **Build reproduzivel:** o build sai de script versionado, com as versoes das dependencias fixadas; "funcionou na
   minha maquina" sem o script nao e entrega.

@@ -1,0 +1,9 @@
+c0c12cb8dc754640d61f3357ac5c0e0b81baff6f6b8710e09bf2306f18c66335 *iman/docs/verify/043-fundacao/README.md
+e6b5f7fe189583c8cb171c25e9e4d2827c05bb7b5f5118c6d1951568ebf8c336 *iman/docs/verify/043-fundacao/evidence/smoke-build-canvas.png
+623e87641b35a2fef8524bf01f6bc26b03cdb44fd89ac82b33c7d27d308ccaa1 *iman/docs/verify/043-fundacao/evidence/smoke-build-gui.json
+a350e5f510710d8851d309072c3e3fef185d525e0a042300aebefa4e3a9e77a8 *iman/docs/verify/043-fundacao/evidence/smoke-build-gui.png
+8bcd7f52f3c97c40ed4cd1cce58b70fb4ffe68587213f4cfb6f971fc1dcd6d3f *iman/docs/verify/043-fundacao/evidence/smoke-build-summary.json
+8ad344a5974bb739496886277119d9db4ed9e20c3c56fdb8ee03ad034eb6df67 *iman/docs/verify/043-fundacao/evidence/smoke-build-version.txt
+7028376bf18eaf5c9fbdb960d22767218daac8e0af3d0f35d4a38e0cc5937717 *iman/docs/verify/043-fundacao/evidence/smoke-official-summary.json
+7dce8401a42ffbc91e760366870a0852478c4a9f8e199590ec4f7ed921d762fe *iman/docs/verify/043-fundacao/evidence/smoke-official-version.txt
+51bad2087a93a3070fae790a7eb02bf54e5cf15774446c2a07dd466cf0229a24 *iman/docs/verify/043-fundacao/osgeo4w-latest.lock.tsv

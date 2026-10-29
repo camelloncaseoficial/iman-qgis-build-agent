@@ -41,8 +41,9 @@ int main( int argc, char *argv[] )
 
   QApplication app( argc, argv );
   QApplication::setQuitOnLastWindowClosed( true );
-  QCoreApplication::setOrganizationName( "QGIS" );
-  QCoreApplication::setApplicationName( "QGIS3" );
+  // IMAN: o nome interno do produto (D-IMAN-043): os crashes vao para a pasta do produto, nao para a do QGIS
+  QCoreApplication::setOrganizationName( IMAN_INTERNAL_ORGANIZATION_NAME );
+  QCoreApplication::setApplicationName( IMAN_INTERNAL_APPLICATION_NAME );
 
   // IMAN: o crash handler fala o idioma padrao do produto, com a traducao do QGIS e a sobreposta da marca por
   // cima (D-IMAN-041, regra 3); os .qm ficam em i18n, ao lado do executavel

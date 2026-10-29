@@ -36,6 +36,7 @@ VIEWBOX = "%.2f %.2f %.0f %.0f" % (CENTER_X - SIDE / 2, CENTER_Y - SIDE / 2, SID
 SYMBOL_MARKER_CLASS = "fil28"  # o degrade da folha: so o simbolo usa
 
 # derivado em iman/brand/derived -> (operacao, asset de origem, parametro, arquivo do QGIS que ele substitui)
+# Sem arquivo do QGIS (None): o derivado vai so para o instalador (iman/installer), nao para a arvore do QGIS.
 TARGETS = [
     ("qgis.ico", "copia", "icon-iman-terra.ico", None, "src/app/qgis.ico"),
     ("splash.png", "copia", "splash-iman-terra.png", None, "images/splash/splash.png"),
@@ -43,6 +44,10 @@ TARGETS = [
     ("qgis-icon-60x60.png", "escala", "iman-symbol.png", 60, "images/icons/qgis-icon-60x60.png"),
     ("qgis_icon.svg", "recorte", "splash-iman-terra.svg", 256, "images/icons/qgis_icon.svg"),
     ("providerQgis.svg", "recorte", "splash-iman-terra.svg", 16, "images/themes/default/providerQgis.svg"),
+    # icones de tipo de arquivo do "Abrir com" (fatia 047): o icone aprovado do produto, um arquivo por tipo
+    ("iman-terra-qgs.ico", "copia", "icon-iman-terra.ico", None, None),
+    ("iman-terra-qgz.ico", "copia", "icon-iman-terra.ico", None, None),
+    ("iman-terra-qlr.ico", "copia", "icon-iman-terra.ico", None, None),
 ]
 
 
@@ -146,17 +151,18 @@ def main(argv):
     for name, op, source, param, qgis_path in TARGETS:
         data = derive(op, source, param)
         derived = os.path.join(DERIVED, name)
-        tree = os.path.join(REPO, *qgis_path.split("/"))
+        tree = os.path.join(REPO, *qgis_path.split("/")) if qgis_path else None
         if check:
             if read(derived) != data:
                 diverged.append("%s nao e a derivacao de %s" % (name, source))
-            if read(tree) != data:
+            if tree and read(tree) != data:
                 diverged.append("%s na arvore do QGIS difere de derived/%s" % (qgis_path, name))
             continue
         with open(derived, "wb") as fh:
             fh.write(data)
-        shutil.copyfile(derived, tree)
-        print("%-22s %-8s de %-22s -> %s" % (name, op, source, qgis_path))
+        if tree:
+            shutil.copyfile(derived, tree)
+        print("%-22s %-8s de %-22s -> %s" % (name, op, source, qgis_path or "instalador"))
     if check:
         for d in diverged:
             print("DIVERGE: " + d)

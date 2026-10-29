@@ -1,0 +1,89 @@
+IMAN Terra: licença e avisos
+============================
+
+Leia antes de instalar. Este é um resumo fiel do que você vai receber; os termos de cada componente estão em
+THIRD_PARTY_NOTICES.md, instalado na mesma pasta do produto, e o caminho para o código-fonte está em
+SOURCE_CODE.md.
+
+--------------------------------------------------------------------------------
+O QUE VOCÊ ESTÁ INSTALANDO
+--------------------------------------------------------------------------------
+
+O IMAN Terra é uma experiência geoespacial desktop independente, powered by QGIS, distribuída gratuitamente pelo
+Instituto IMAN.
+
+O instalador traz uma cópia completa do QGIS 3.44.13 e do conjunto de componentes que o QGIS oficial instala no
+Windows, dentro da pasta do produto. Você não precisa ter o QGIS instalado, e nada de uma instalação existente do
+QGIS é alterado: o IMAN Terra usa a própria pasta de configuração.
+
+O QGIS do IMAN Terra NÃO é o binário publicado pela QGIS.ORG. Ele foi RECOMPILADO pelo Instituto IMAN a partir de
+um fork público do código-fonte do QGIS e MODIFICADO (nome e marca do produto, ícones, pasta de configuração e
+alguns textos). O fork, a tag de origem e o commit exato estão em SOURCE_CODE.md.
+
+  O IMAN Terra é uma experiência geoespacial desktop independente, powered by QGIS.
+  O QGIS é um sistema de informação geográfica livre e de código aberto,
+  desenvolvido por QGIS.ORG e contribuidores (https://qgis.org).
+  Este projeto NÃO é um produto oficial do QGIS e NÃO é endossado pela QGIS.ORG.
+
+--------------------------------------------------------------------------------
+1. QGIS: GNU GENERAL PUBLIC LICENSE
+--------------------------------------------------------------------------------
+
+O QGIS, inclusive com as modificações do Instituto IMAN, é distribuído sob a GNU General Public License, versão 2
+ou (a seu critério) qualquer versão posterior (GPL-2.0-or-later). O texto integral está em
+apps\qgis-ltr\doc\LICENSE, na pasta de instalação. Os créditos do QGIS (autores, contribuidores, patrocinadores,
+doadores e tradutores) ficam intactos, na mesma pasta e no "Sobre o QGIS" do programa.
+
+Você tem direito ao código-fonte correspondente ao binário que recebeu: ver SOURCE_CODE.md.
+
+--------------------------------------------------------------------------------
+2. COMPONENTES PRÓPRIOS DO INSTITUTO IMAN
+--------------------------------------------------------------------------------
+
+Scripts de build, instalador, lançador e fonte de marca (a pasta iman/ do fork):
+
+Copyright (C) 2026 Instituto IMAN.
+
+Este programa é software livre: você pode redistribuí-lo e/ou modificá-lo sob os termos da Licença Pública Geral
+GNU (GNU GPL), conforme publicada pela Free Software Foundation, na versão 3 da Licença ou (a seu critério)
+qualquer versão posterior.
+
+Este programa é distribuído na expectativa de ser útil, mas SEM QUALQUER GARANTIA; sem mesmo a garantia implícita
+de COMERCIABILIDADE ou ADEQUAÇÃO A UM PROPÓSITO ESPECÍFICO. Consulte a Licença Pública Geral GNU para mais
+detalhes. Você deve ter recebido uma cópia da GNU GPL junto com este programa; caso contrário, consulte
+<https://www.gnu.org/licenses/>.
+
+--------------------------------------------------------------------------------
+3. DEMAIS COMPONENTES DE TERCEIROS
+--------------------------------------------------------------------------------
+
+Os demais componentes (GDAL, PROJ, Qt, Python, GRASS e os outros pacotes OSGeo4W) permanecem sob as próprias
+licenças, com os próprios detentores de direitos. THIRD_PARTY_NOTICES.md traz uma entrada por pacote, com a
+licença e a fonte de onde ela foi lida. O Qt é distribuído sob a LGPL-3.0, e alguns módulos dele só sob a GPL-3.0;
+estão nomeados no mesmo arquivo.
+
+Alguns componentes NÃO são software livre e só podem ser redistribuídos sob as condições dos seus donos: o SDK
+ECW/JP2 (Hexagon), o MrSID Decode SDK (Extensis), o Oracle Instant Client, o Microsoft ODBC Driver 18 e o runtime
+do Microsoft Visual C++. Os termos estão na pasta licencas\ da instalação e na seção 5 de THIRD_PARTY_NOTICES.md.
+
+Nada nesta licença remove, oculta ou enfraquece os créditos, as marcas ou as licenças do QGIS ou de qualquer
+outro terceiro.
+
+--------------------------------------------------------------------------------
+4. MARCA E ASSETS DO INSTITUTO IMAN
+--------------------------------------------------------------------------------
+
+Os nomes "IMAN" e "IMAN Terra", o logotipo do Instituto IMAN e os demais assets de marca (ícones, splash, cores
+institucionais) são do Instituto IMAN e constituem marca. NÃO são cobertos pela GPL e NÃO são licenciados para
+reuso, redistribuição ou obras derivadas sem autorização expressa e por escrito do Instituto IMAN.
+
+"QGIS" e o logotipo do QGIS são marcas da QGIS.ORG. O uso aqui é nominativo ("powered by QGIS") e não implica
+endosso.
+
+--------------------------------------------------------------------------------
+5. AUSÊNCIA DE GARANTIA
+--------------------------------------------------------------------------------
+
+O IMAN Terra é fornecido gratuitamente e SEM QUALQUER GARANTIA, expressa ou implícita, na máxima extensão
+permitida pela lei aplicável. O uso é por sua conta e risco. Isto vale para os componentes do Instituto IMAN e
+para os de terceiros, cada um sob os termos de garantia da própria licença.

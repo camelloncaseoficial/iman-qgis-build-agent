@@ -22,6 +22,9 @@ $Paths = @{
 
 $Osgeo4wMirror = 'https://download.osgeo.org/osgeo4w/v2'
 $LockFile = Join-Path $PSScriptRoot 'osgeo4w.lock.tsv'
+# tar do Windows (bsdtar, le .tar.bz2) pelo caminho: chamado do Git Bash, o tar.exe do PATH e o GNU tar do Git, que
+# le "D:\..." como host remoto (medido na fatia 047)
+$TarExe = Join-Path $env:SystemRoot 'System32\tar.exe'
 
 # Ferramentas fixadas: versao, URL e sha256 (o do CMake confere com o cmake-3.29.0-SHA-256.txt oficial;
 # o do bootstrapper do VS e o que a Microsoft embute na URL de download).
@@ -99,12 +102,23 @@ function Import-ToolsPath {
     ) -join ';') + ';' + $env:PATH
 }
 
+# Nome interno (organizacao e aplicacao) do alvo: o do produto vem da fonte unica (D-IMAN-043, fatia 047); o do
+# QGIS oficial e QGIS/QGIS3. Da a pasta do perfil, do cache e dos crashes, o .ini dentro do perfil e a chave de
+# registro HKCU\Software\<organizacao>\<aplicacao>.
+function Get-InternalName([string] $Target = 'Build') {
+  if ($Target -eq 'Official') { return [pscustomobject]@{ Organization = 'QGIS'; Application = 'QGIS3' } }
+  $b = Get-Content (Join-Path $RepoRoot 'iman\brand\brand.json') -Raw -Encoding utf8 | ConvertFrom-Json
+  [pscustomobject]@{ Organization = $b.internal_organization_name; Application = $b.internal_application_name }
+}
+
 # Perfil descartavel em $Profiles, com o cache de rede dentro dele ([cache] directory nos perfis 'default', do
-# qgis_process, e 'iman-smoke', da GUI): sem isso o QGIS grava no cache padrao %LOCALAPPDATA%\QGIS\QGIS3\cache,
-# que o nome interno QGIS3 compartilha com o QGIS oficial (fatia 044).
-function New-DisposableProfile([string] $Profiles, [string] $CacheDir) {
+# qgis_process, e 'iman-smoke', da GUI): sem isso o QGIS grava no cache padrao %LOCALAPPDATA%\<org>\<app>\cache.
+# Na fatia 044 esse cache era o do QGIS oficial (nome interno QGIS3 compartilhado); desde a 047 o .ini semeado e o
+# do nome interno do alvo (<org>\<app>.ini dentro do perfil), senao o QGIS nao o le.
+function New-DisposableProfile([string] $Profiles, [string] $CacheDir, [string] $Target = 'Build') {
+  $name = Get-InternalName $Target
   foreach ($p in 'default', 'iman-smoke') {
-    $ini = Join-Path $Profiles "profiles\$p\QGIS\QGIS3.ini"
+    $ini = Join-Path $Profiles "profiles\$p\$($name.Organization)\$($name.Application).ini"
     New-Item -ItemType Directory -Force (Split-Path $ini) | Out-Null
     Write-LfFile $ini @('[cache]', "directory=$($CacheDir -replace '\\', '/')")
   }
@@ -127,4 +141,8 @@ function Import-QgisRuntime([string] $Osgeo4wRoot, [string] $AppRoot, [string] $
   $env:QT_PLUGIN_PATH = "$AppRoot\qtplugins;$Osgeo4wRoot\apps\qt5\plugins"
   $env:PYTHONPATH = "$AppRoot\python;$env:PYTHONPATH"
   $env:QGIS_CUSTOM_CONFIG_PATH = $Profiles
+  # O WinToast cria ou regrava Start Menu\Programs\<QGIS_WIN_APP_NAME>.lnk a cada abertura (fatia 044: QGIS3.lnk;
+  # fatia 047: o build criou IMANTerra.lnk). Uma pasta que nao existe faz a criacao falhar: rodado por estes
+  # scripts, nenhum alvo grava atalho no Menu Iniciar (sem notificacao nativa, o que o smoke nao usa).
+  $env:QGIS_WIN_APP_NAME = 'iman-sem-atalho-no-menu\iman-sem-atalho'
 }

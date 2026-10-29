@@ -1,6 +1,6 @@
 ---
 name: reference_build_environment
-description: Bancada de build desta maquina: o que a fatia 043 instalou (versoes), onde fica cada coisa, tempos e disco medidos em 2026-10-23; achados de BL-3, build e captura da fatia 044 (2026-10-25).
+description: Bancada de build desta maquina: o que a fatia 043 instalou (versoes), onde fica cada coisa, tempos e disco medidos em 2026-10-23; achados de BL-3, build e captura da fatia 044 (2026-10-25); instalador, nome interno e armadilhas da fatia 047 (2026-10-27).
 type: reference
 ---
 
@@ -41,3 +41,23 @@ Medido na fatia 044 (2026-10-25), laudo `iman/docs/verify/044-marca-no-fonte/REA
 - **Captura de janela:** o pwsh 7 nasce com a consciencia de DPI fixada; `WindowCapture.ps1` usa DPI por thread.
   Testar captura so com janela criada pelo proprio teste, nunca com app do usuario (o Bloco de Notas do Windows 11
   restaura as abas da sessao do usuario).
+
+Medido na fatia 047 (2026-10-27), laudo `iman/docs/verify/047-instalador/README.md`:
+
+- **Nome interno proprio** (`InstitutoIMAN`/`IMANTerra`): o produto grava em `%APPDATA%\InstitutoIMAN\IMANTerra`,
+  `%LOCALAPPDATA%\InstitutoIMAN\IMANTerra` (cache, crashes) e `HKCU\Software\InstitutoIMAN\IMANTerra`; o `.ini`
+  do perfil e `<perfil>\InstitutoIMAN\IMANTerra.ini` (o `New-DisposableProfile` semeia pelo alvo). O R2 do 044
+  (gravar em `QGIS\QGIS3`) fechou.
+- **Inno Setup 7.1.0** ja estava em `C:\Program Files\Inno Setup 7`; sem version info (0.0.0.0): a versao sai da
+  linha `Compiler engine version` (sonda no `Build-Installer.ps1`). ISCC da arvore de 2,2 GB: 751 a 857 s, 489 MB.
+- **Do Git Bash, `tar.exe` e o GNU tar do Git** (le `D:\` como host): os scripts usam `$TarExe` (System32). O gate
+  roda do Git Bash.
+- **WinToast:** cria `Start Menu\Programs\<QGIS_WIN_APP_NAME ou o nome interno>.lnk`. O `Import-QgisRuntime` passa uma
+  pasta inexistente para o build de desenvolvimento nao criar atalho; o produto instalado valida o `IMAN Terra.lnk` do
+  instalador.
+- **`PYQGIS_STARTUP`** roda antes do pacote `qgis` estar no `sys.path` (so PyQt5 no topo do script).
+- **Hook da Crew:** comando de shell que cita `.env` (mesmo `iman-terra.env` em comentario) e bloqueado; editar pelo
+  Edit/Write.
+- **A 0.3.0 da distro foi substituida e desinstalada** nesta maquina pelo A6 (com o sim do sponsor); o perfil dela em
+  `%APPDATA%\InstitutoIMAN\IMAN Terra` ficou com o mesmo hash. O IMAN Terra 0.4.0 tambem foi desinstalado no fim.
+- Sem Debugging Tools do Windows SDK: o `dbghelp.dll`/`symsrv.dll` do pacote `qgis-ltr` oficial nao tem fonte aqui.

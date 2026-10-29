@@ -174,9 +174,10 @@ int main( int argc, char *argv[] )
   QgsApplication::setPrefixPath( myPrefixPath, true );
 
   // Set up the QSettings environment must be done after qapp is created
-  QgsApplication::setOrganizationName( QStringLiteral( "QGIS" ) );
-  QgsApplication::setOrganizationDomain( QStringLiteral( "qgis.org" ) );
-  QgsApplication::setApplicationName( QStringLiteral( "QGIS3" ) );
+  // IMAN: o nome interno do produto, o mesmo do aplicativo (D-IMAN-043)
+  QgsApplication::setOrganizationName( QgsApplication::QGIS_ORGANIZATION_NAME );
+  QgsApplication::setOrganizationDomain( QgsApplication::QGIS_ORGANIZATION_DOMAIN );
+  QgsApplication::setApplicationName( QgsApplication::QGIS_APPLICATION_NAME );
 
   QgsApplication::init();
   QgsApplication::initQgis();
