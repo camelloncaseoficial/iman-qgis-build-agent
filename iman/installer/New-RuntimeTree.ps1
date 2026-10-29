@@ -1,13 +1,14 @@
 <#
 .SYNOPSIS
   Monta a arvore de runtime do produto (o que o instalador copia para {app}): o conjunto de pacotes OSGeo4W do QGIS
-  3.44.13 oficial fixado no lock (Runtime=official), com o nosso build no lugar dos pacotes qgis-ltr*, o lancador e
-  o postinstall. Fatia 047 (D-IMAN-043, decisao 3).
+  3.44.13 oficial fixado no lock (Runtime=official), menos os de $RuntimeExcluded, com o nosso build no lugar dos
+  pacotes qgis-ltr*, o lancador e o postinstall. Fatia 047 (D-IMAN-043, decisao 3, com a emenda de 2026-10-29).
 
 .DESCRIPTION
   Saida em $WorkRoot\stage\tree, refeita do zero a cada rodada, com o layout da instalacao oficial
   (C:\Program Files\QGIS 3.44.13: bin, apps, etc, share...):
-    - cada pacote Runtime=official do lock, extraido do cache e conferido pelo sha256 do lock. Os
+    - cada pacote Runtime=official do lock, menos os de $RuntimeExcluded (abaixo, com o motivo), extraido do cache e
+      conferido pelo sha256 do lock. Os
       etc\postinstall\*.bat NAO rodam aqui: rodam na maquina do usuario, na pasta instalada (iman\postinstall.cmd),
       como no osgeo4w-setup e no MSI oficial, porque gravam o caminho da instalacao;
     - etc\setup\installed.db e um <pacote>.lst.gz por pacote (a lista de arquivos), o manifesto que o
@@ -49,9 +50,20 @@ function Write-GzLines([string] $path, [string[]] $lines) {
   $gz.Write($bytes, 0, $bytes.Length); $gz.Dispose(); $fs.Dispose()
 }
 
+# Pacotes do conjunto oficial que nao entram na arvore, cada um com o motivo. Lugar unico da exclusao (emenda de
+# 2026-10-29 ao D-IMAN-043, decisao 3: o runtime e o conjunto do oficial menos os qgis-ltr* e menos estes). O lock
+# segue com Runtime=official para eles: diz o que o oficial instala, nao o que o produto leva.
+$RuntimeExcluded = [ordered]@{
+  'gdal-ecw' = 'o termo da Hexagon (ERDAS ECW/JP2 Server Read-Only End-user SDK License Agreement v5.5, secao 2.2) nao permite distribuir aplicacao desktop com o SDK'
+}
+
 # 1. pacotes do conjunto oficial
-$rows = @(Get-Content $LockFile | Where-Object { -not $_.StartsWith('#') } | ConvertFrom-Csv -Delimiter "`t" | Where-Object Runtime -eq 'official')
-if (-not $rows) { throw 'lock sem pacote Runtime=official' }
+$official = @(Get-Content $LockFile | Where-Object { -not $_.StartsWith('#') } | ConvertFrom-Csv -Delimiter "`t" | Where-Object Runtime -eq 'official')
+if (-not $official) { throw 'lock sem pacote Runtime=official' }
+$stale = @($RuntimeExcluded.Keys | Where-Object { $_ -notin $official.Package })
+if ($stale) { throw "exclusao sem pacote Runtime=official no lock: $($stale -join ', ')" }
+$rows = @($official | Where-Object { -not $RuntimeExcluded.Contains($_.Package) })
+foreach ($k in $RuntimeExcluded.Keys) { Write-Step "fora da arvore: $k ($($RuntimeExcluded[$k]))" }
 $devel = @($rows | Where-Object { $_.Package -match '-devel$' })
 if ($devel) { throw "pacote -devel marcado como runtime: $($devel.Package -join ', ')" }
 $db = [System.Collections.Generic.List[string]]::new(); $db.Add('INSTALLED.DB 2')
@@ -109,7 +121,7 @@ $db.Add("iman-terra iman-terra-$($brand.product_version)-$commit 0")
 $files = @(Get-ChildItem $tree -Recurse -File -Force)
 $summary = [ordered]@{
   tree = $tree; seconds = [int]((Get-Date) - $t0).TotalSeconds
-  packages = $rows.Count; ourFiles = $ours.Count
+  packages = $rows.Count; excluded = @($RuntimeExcluded.Keys); ourFiles = $ours.Count
   files = $files.Count; bytes = ($files | Measure-Object Length -Sum).Sum
   commit = $commit
 }
