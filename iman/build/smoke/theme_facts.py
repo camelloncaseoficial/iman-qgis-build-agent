@@ -183,6 +183,10 @@ def step_load_project():
         # o Navegador lista as unidades da maquina (com nome e e-mail de conta): fora das capturas do laudo publico
         window.findChild(QDockWidget, "Browser").hide()
     QApplication.processEvents()
+    # a coordenada e a dica entram aqui, antes da espera: a barra de status refaz o layout e a dica aparece no
+    # proximo ciclo de eventos (capturadas logo depois de criadas, as duas saiam incompletas)
+    iface.mapCanvas().xyCoordinates.emit(COORDINATE)
+    QToolTip.showText(window.mapToGlobal(QPoint(300, 300)), "Dica do IMAN Terra: SIRGAS 2000 / UTM 24S", window)
 
 
 def step_main_window():
@@ -261,9 +265,6 @@ def step_tabs():
 
 def step_status_bar():
     # D2: a coordenada inteira cabe no campo de largura fixa da barra de status
-    canvas = iface.mapCanvas()
-    canvas.xyCoordinates.emit(COORDINATE)
-    QApplication.processEvents()
     status = iface.mainWindow().findChild(QStatusBar)
     coord = None
     for e in status.findChildren(QLineEdit):
@@ -310,9 +311,6 @@ def step_attribute_table():
 
 
 def step_tooltip():
-    window = iface.mainWindow()
-    QToolTip.showText(window.mapToGlobal(QPoint(300, 300)), "Dica do IMAN Terra: SIRGAS 2000 / UTM 24S", window)
-    QApplication.processEvents()
     tips = [w for w in QApplication.topLevelWidgets() if w.metaObject().className() == "QTipLabel" and w.isVisible()]
     if tips:
         save(tips[0], "12-dica.png")
@@ -354,7 +352,7 @@ def second():
 def third():
     steps = [step_dock, step_close_reopen_dock, step_status_bar]
     if captures:
-        steps = [step_main_window, step_menu] + steps + [step_attribute_table, step_tooltip, step_tabs]
+        steps = [step_tooltip, step_main_window, step_menu] + steps + [step_attribute_table, step_tabs]
     steps.append(step_switch_themes)
     for step in steps:
         run(step)
