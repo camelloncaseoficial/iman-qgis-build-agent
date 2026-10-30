@@ -1,0 +1,37 @@
+Termo de redistribuicao do dbghelp.dll e do symsrv.dll (patch de 2026-10-29 da fatia 047, P3, L.2)
+
+1. Licenca do Windows SDK instalado nesta maquina
+   arquivo: C:\Program Files (x86)\Windows Kits\10\Licenses\10.0.26100.0\sdk_license.rtf
+   sha256:  0f4a26ac9dc50066f8a1bfeaaf3f092d1b9e4791df5487b9f3c31e7c3dc4d7f5
+   texto:   iman/notices/licencas/windows-sdk.txt (convertido do RTF pelo RichTextBox do .NET, sem edicao)
+   trecho (secao 2.a.i, no original):
+     "REDIST.TXT Files. You may copy and distribute the object code form of code listed in REDIST.TXT files plus
+     the files listed on the REDIST.TXT list located at http://go.microsoft.com/fwlink/?LinkId=524842."
+   As condicoes de distribuicao (secao 2.a.ii e 2.a.iii) estao no mesmo arquivo; sao as mesmas do codigo
+   distribuivel do Visual Studio que a fatia 047 ja leva (o runtime do VC++).
+
+2. A lista REDIST.TXT
+   http://go.microsoft.com/fwlink/?LinkId=524842 redireciona (302) para
+   https://learn.microsoft.com/en-us/legal/windows-sdk/redist
+   pagina "Windows SDK redist lists", "UPDATED 10/21/2024", git_commit_id 5517c932e1189e1d731dc4a24ae8f6b2fdf38bd4,
+   lida em 2026-10-29. Secao "Debugging Tools for Windows", no original:
+     "You may distribute these files as part of your program.
+      - Dbgeng.dll
+      - Dbgcore.dll
+      - Dbgmodel.dll
+      - Dbghelp.dll
+      - Srcsrv.dll
+      - Symsrv.dll
+      - Symchk.exe
+      - Symbolcheck.dll
+      - Symstore.exe
+      - Program Files\Windows Kits\10\Debuggers\Redist\X86 Debuggers and Tools-x86_en-us.msi
+      - Program Files\Windows Kits\10\Debuggers\Redist\X64 Debuggers and Tools-x64_en-us.msi
+      - App Verifier"
+
+3. Os arquivos levados (sem modificacao), de C:\Program Files (x86)\Windows Kits\10\Debuggers\x64
+   dbghelp.dll  10.0.26100.7705  2259288 bytes  sha256 23d33e01020b6d1de7dd29cd737287042476a6e0a8deafdab68f01e61a801fcf  assinatura Valid (Microsoft Corporation)
+   symsrv.dll   10.0.26100.7705   424280 bytes  sha256 89efaac07673f87a2862d6b163bc6626b51770ad1bd48c4f277e356df0a08c1d  assinatura Valid (Microsoft Corporation)
+   Para comparacao, os do pacote qgis-ltr oficial (C:\Program Files\QGIS 3.44.13\apps\qgis-ltr):
+   dbghelp.dll  10.0.19041.685   1869264 bytes  sha256 2cef144c25e0af97f53dec368d299d06f9b2d5be0fb057d77b8e18cf618350a7
+   symsrv.dll   10.0.19041.685    256976 bytes  sha256 a604151a45669f414d61392533562ec20ab532db216669143d1a48ddf5b3c05c

@@ -61,3 +61,22 @@ Medido na fatia 047 (2026-10-27), laudo `iman/docs/verify/047-instalador/README.
 - **A 0.3.0 da distro foi substituida e desinstalada** nesta maquina pelo A6 (com o sim do sponsor); o perfil dela em
   `%APPDATA%\InstitutoIMAN\IMAN Terra` ficou com o mesmo hash. O IMAN Terra 0.4.0 tambem foi desinstalado no fim.
 - Sem Debugging Tools do Windows SDK: o `dbghelp.dll`/`symsrv.dll` do pacote `qgis-ltr` oficial nao tem fonte aqui.
+  (Superado pelo patch de 2026-10-29, abaixo.)
+
+Medido no patch da fatia 047 (2026-10-29), laudo `iman/docs/verify/047-instalador/README.md`, secao "Patch de
+2026-10-29":
+
+- **Debugging Tools for Windows instaladas** com o sim do sponsor (so o feature `OptionId.WindowsDesktopDebuggers` do
+  SDK 10.0.26100.7705, pelo `winsdksetup` em cache; UAC; 20 s): `C:\Program Files (x86)\Windows Kits\10\Debuggers\x64`.
+  O `dbghelp.dll`/`symsrv.dll` 10.0.26100.7705 de la vai para `apps\qgis-ltr` com o sha256 fixado no `Common.ps1`;
+  atualizar o SDK muda o hash e o `New-RuntimeTree.ps1` recusa.
+- **O 0.4.0 NAO tinha sido desinstalado** no fim da fatia 047 (o registro acima estava errado): estava em
+  `%LOCALAPPDATA%\Programs\IMAN Terra`. O patch o desinstalou e terminou com o IMAN Terra desinstalado.
+- **Sobras renomeadas, nao apagadas** (sufixo `.antes-047-patch`, decisao do sponsor): `%APPDATA%` e `%LOCALAPPDATA%`
+  `\InstitutoIMAN\IMANTerra`, `HKCU\Software\InstitutoIMAN\IMANTerra` e a chave de notificacao do AUMI do produto (o
+  A3 exige que ela nao exista antes). Os `.reg` exportados ficam em `D:\iman-terra-build\verify\patch-047-pre-ciclo`.
+  Depois do ciclo, os nomes sem sufixo voltaram a existir (perfil da rodada).
+- **Disco:** D: com 9,5 GB livres no comeco (seguiu por decisao do sponsor), 105 GB no fim; C: 259 GB.
+- **Memoria:** um build em segundo plano foi interrompido pelo ambiente por pouca memoria (com ~9 GB livres); o
+  Claude Code nao reinicia sozinho. O incremental retoma de onde parou.
+- **Tempos:** arvore de runtime 58 a 111 s; ISCC 709 s; instalar 88 s; desinstalar 11 a 15 s.

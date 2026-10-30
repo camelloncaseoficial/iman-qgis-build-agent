@@ -1,0 +1,16 @@
+Produto          : IMAN Terra 0.4.0
+Commit           : 25da3275c54a92ee18fb68fccf8e89c09f630ed9
+Branch           : fix/047-patch-sem-ecw
+Repositorio      : https://github.com/camelloncaseoficial/iman-qgis-build-agent
+Base do QGIS     : final-3_44_13
+QGIS             : 3.44.13-Solothurn (code revision 25da3275c5)
+AUMI             : InstitutoIMAN.IMANTerra.IMANTerra.3.44.13-Solothurn
+Lock OSGeo4W     : iman/build/osgeo4w.lock.tsv sha256 01881a96c967142f867bb1baa970bd604814edfe782a8afa02b9a388b558d363
+Pacotes          : 152 do conjunto oficial + iman-terra
+Compilador       : Inno Setup 7.1.0 (C:\Program Files\Inno Setup 7\ISCC.exe)
+Gerado em        : 2026-10-29T16:23:51Z
+Instalador       : Instituto-IMAN-IMAN-Terra-Setup-0.4.0-25da3275c5.exe
+Tamanho          : 512754179 bytes
+SHA-256          : 207c5052789384efef1d0e016fec151c12a7e5537b4e4896b9976eb8ff7a172a
+Arvore           : 37332 arquivos, 2377372907 bytes
+ISCC             : 709 s

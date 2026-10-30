@@ -1,0 +1,42 @@
+{
+  "pid": 21180,
+  "organization": "InstitutoIMAN",
+  "organization_domain": "institutoiman.org.br",
+  "application": "IMANTerra",
+  "settings_dir": "%USERPROFILE%/AppData/Roaming/InstitutoIMAN/IMANTerra\\profiles\\default/",
+  "native_settings": "%USERPROFILE%/AppData/Roaming/InstitutoIMAN/IMANTerra/profiles/default/InstitutoIMAN/IMANTerra.ini",
+  "cache_location": "%USERPROFILE%/AppData/Local/InstitutoIMAN/IMANTerra/cache",
+  "app_local_data": "%USERPROFILE%/AppData/Local/InstitutoIMAN/IMANTerra",
+  "aumi": "InstitutoIMAN.IMANTerra.IMANTerra.3.44.13-Solothurn",
+  "vc_runtime": [
+    {
+      "module": "%USERPROFILE%\\AppData\\Local\\Programs\\IMAN Terra\\bin\\MSVCP140.dll",
+      "version": "14.38.33135.0"
+    },
+    {
+      "module": "%USERPROFILE%\\AppData\\Local\\Programs\\IMAN Terra\\bin\\VCRUNTIME140.dll",
+      "version": "14.38.33135.0"
+    },
+    {
+      "module": "%USERPROFILE%\\AppData\\Local\\Programs\\IMAN Terra\\bin\\VCRUNTIME140_1.dll",
+      "version": "14.38.33135.0"
+    },
+    {
+      "module": "%USERPROFILE%\\AppData\\Local\\Programs\\IMAN Terra\\bin\\MSVCP140_1.dll",
+      "version": "14.38.33135.0"
+    },
+    {
+      "module": "%USERPROFILE%\\AppData\\Local\\Programs\\IMAN Terra\\bin\\MSVCP140_2.dll",
+      "version": "14.38.33135.0"
+    },
+    {
+      "module": "%USERPROFILE%\\AppData\\Local\\Programs\\IMAN Terra\\bin\\MSVCP140_ATOMIC_WAIT.dll",
+      "version": "14.38.33135.0"
+    }
+  ],
+  "window_title": "Projeto sem título — IMAN Terra",
+  "process_exe": "%USERPROFILE%\\AppData\\Local\\Programs\\IMAN Terra\\bin\\iman-terra.exe",
+  "notification_task": "Notificacao de teste da fatia 047",
+  "notification_task_result": "completed",
+  "message_bar_items": []
+}

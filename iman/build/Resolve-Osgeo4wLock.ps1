@@ -12,7 +12,8 @@
   Raizes: BUILDDEPENDS e requires de qgis-ltr-common da receita qgis-ltr do jef-n/OSGeo4W num commit fixo e, desde
   a fatia 047, todo pacote do installed.db oficial menos os qgis-ltr* (que o nosso build substitui), fechadas pelos
   "requires:" do setup.ini.
-  Coluna Runtime: "official" para o pacote que esta no installed.db oficial (entra na arvore instalada do produto),
+  Coluna Runtime: "official" para o pacote que esta no installed.db oficial (entra na arvore instalada do produto,
+  menos os excluidos com motivo no $RuntimeExcluded do New-RuntimeTree.ps1, desde o patch de 2026-10-29 da 047),
   "build-only" para o que so serve para compilar (os -devel e os dated; nao entram, decisao 3 do D-IMAN-043).
   Sha256 ja gravado no lock anterior para o mesmo arquivo e mantido (o Get-Osgeo4wPackages.ps1 confere).
 

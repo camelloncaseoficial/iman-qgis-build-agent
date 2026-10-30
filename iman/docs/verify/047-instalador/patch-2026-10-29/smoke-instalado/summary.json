@@ -1,0 +1,213 @@
+{
+  "target": "Installed",
+  "lang": "",
+  "app": "%USERPROFILE%\\AppData\\Local\\Programs\\IMAN Terra\\apps\\qgis-ltr",
+  "run": "D:\\iman-terra-build\\smoke\\installed-20261029-133938",
+  "profiles": "D:\\iman-terra-build\\smoke\\installed-20261029-133938\\profiles",
+  "steps": {
+    "version": {
+      "ok": true,
+      "detail": {
+        "revision": "25da3275c5",
+        "lines": [
+          "QGIS 3.44.13-Solothurn 'Solothurn' (25da3275c5)",
+          "QGIS code revision 25da3275c5",
+          "Qt version 5.15.13"
+        ]
+      }
+    },
+    "providers": {
+      "ok": true,
+      "detail": {
+        "providers": [
+          "3d",
+          "gdal",
+          "model",
+          "native",
+          "pdal",
+          "qgis",
+          "script"
+        ],
+        "algorithms": 426,
+        "differences": []
+      }
+    },
+    "plugins": {
+      "ok": true,
+      "detail": {
+        "plugins": [
+          "grassprovider",
+          "processing"
+        ],
+        "differences": []
+      }
+    },
+    "native:buffer": {
+      "ok": true,
+      "detail": {
+        "exit": 0,
+        "features": 3,
+        "geometry": "Multi Polygon"
+      }
+    },
+    "gui+qgz": {
+      "ok": true,
+      "detail": {
+        "seconds": 13,
+        "exitedClean": true,
+        "exitCode": 0,
+        "title": "smoke — IMAN Terra [iman-smoke]",
+        "layers": [
+          {
+            "name": "points",
+            "valid": true,
+            "features": 3,
+            "crs": "EPSG:4326"
+          }
+        ],
+        "errors": null,
+        "capture": "gui.png"
+      }
+    },
+    "projeto-salvo": {
+      "ok": true,
+      "detail": {
+        "written": true,
+        "qgis_version_attribute": "3.44.13-Solothurn"
+      }
+    },
+    "marca:titulo": {
+      "ok": true,
+      "detail": {
+        "atStart": "Projeto sem título — IMAN Terra [iman-smoke]",
+        "afterLoad": "smoke — IMAN Terra [iman-smoke]",
+        "caption": "IMAN Terra - motor QGIS %1 ('%2')"
+      }
+    },
+    "marca:traducao": {
+      "ok": true,
+      "detail": {
+        "QgisApp|QGIS": "IMAN Terra",
+        "MainWindow|Exit QGIS": "Sair do IMAN Terra"
+      }
+    },
+    "marca:idioma": {
+      "ok": true,
+      "detail": {
+        "translation": "pt_BR",
+        "userLocale": "pt_BR",
+        "overrideFlag": true,
+        "QgsAbout|About QGIS": "Sobre o QGIS"
+      }
+    },
+    "marca:splash": {
+      "ok": true,
+      "detail": {
+        "resource": "aa403d13adf373a32aef83c4fb99c70a4bb41038d199fefdd428bf4dbe4ff877",
+        "derived": "aa403d13adf373a32aef83c4fb99c70a4bb41038d199fefdd428bf4dbe4ff877",
+        "message": "IMAN Terra pronto!"
+      }
+    },
+    "marca:icones": {
+      "ok": true,
+      "detail": {
+        ":/images/icons/qgis_icon.svg": true,
+        ":/images/icons/qgis-icon-16x16.png": true,
+        ":/images/icons/qgis-icon-60x60.png": true,
+        ":/images/themes/default/providerQgis.svg": true,
+        "disco:qgis-icon-60x60.png": true,
+        "IDI_ICON1:iman-terra.exe": true,
+        "IDI_ICON1:qgiscrashhandler.exe": true
+      }
+    },
+    "marca:enderecos": {
+      "ok": true,
+      "detail": {
+        "mActionQgisHomePage": [
+          "https://institutoiman.org.br"
+        ],
+        "mActionReportaBug": [
+          "https://institutoiman.org.br"
+        ],
+        "mActionNeedSupport": [
+          "https://institutoiman.org.br"
+        ],
+        "mActionDonate": [
+          "https://qgis.org/funding/donate/"
+        ],
+        "mActionGetInvolved": [
+          "https://qgis.org/community/involve/"
+        ],
+        "mActionSponsors": [
+          "https://qgis.org/funding/membership/members/"
+        ]
+      }
+    },
+    "marca:noticias-versao": {
+      "ok": true,
+      "detail": {
+        "feedDisabled": true,
+        "allowVersionCheck": false,
+        "checkVersion": false,
+        "checkVersionActionVisible": false,
+        "feedInNetworkCache": []
+      }
+    },
+    "marca:pdf": {
+      "ok": true,
+      "detail": {
+        "expected": "IMAN Terra (motor QGIS 3.44.13-Solothurn)",
+        "status": 0,
+        "creator": "IMAN Terra (motor QGIS 3.44.13-Solothurn)",
+        "producer": "IMAN Terra (motor QGIS 3.44.13-Solothurn)",
+        "xmp": [
+          "IMAN Terra (motor QGIS 3.44.13-Solothurn)",
+          "IMAN Terra (motor QGIS 3.44.13-Solothurn)"
+        ],
+        "allInfoCreator": [
+          "",
+          "IMAN Terra (motor QGIS 3.44.13-Solothurn)"
+        ],
+        "allInfoProducer": [
+          "Qt 5.15.13",
+          "IMAN Terra (motor QGIS 3.44.13-Solothurn)"
+        ]
+      }
+    },
+    "controle:sobre": {
+      "ok": true,
+      "detail": {
+        "resource": "3e5ebce122ca6d955535313210abbe37b9d1343a157c7f5b51af4ab368d94d5d",
+        "qgisSource": "3e5ebce122ca6d955535313210abbe37b9d1343a157c7f5b51af4ab368d94d5d"
+      }
+    },
+    "guard": {
+      "ok": true,
+      "detail": "GUARD OK: QGIS oficial, %USERPROFILE%\\AppData\\Roaming\\QGIS, %USERPROFILE%\\AppData\\Local\\QGIS, %USERPROFILE%\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\QGIS3.lnk, C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\QGIS 3.44.13, registro, associacoes e notificacoes do QGIS identicos ao retrato de 2026-10-28T13:04:49 (37473 itens)"
+    }
+  },
+  "buildInfoCommit": "25da3275c54a92ee18fb68fccf8e89c09f630ed9",
+  "corePluginFolders": [
+    "db_manager",
+    "grassprovider",
+    "MetaSearch",
+    "processing"
+  ],
+  "profileWrittenTo": [
+    "\\profiles\\profiles.ini",
+    "\\profiles\\default\\bookmarks.xml",
+    "\\profiles\\default\\qgis.db",
+    "\\profiles\\default\\symbology-style.db",
+    "\\profiles\\default\\InstitutoIMAN\\IMANTerra.ini",
+    "\\profiles\\default\\python\\expressions\\__init__.py",
+    "\\profiles\\default\\python\\expressions\\__pycache__\\__init__.cpython-312.pyc",
+    "\\profiles\\iman-smoke\\bookmarks.xml",
+    "\\profiles\\iman-smoke\\qgis-auth.db",
+    "\\profiles\\iman-smoke\\qgis.db",
+    "\\profiles\\iman-smoke\\symbology-style.db",
+    "\\profiles\\iman-smoke\\user-history.db",
+    "\\profiles\\iman-smoke\\InstitutoIMAN\\IMANTerra.ini",
+    "\\profiles\\iman-smoke\\python\\expressions\\__init__.py"
+  ],
+  "ok": true
+}

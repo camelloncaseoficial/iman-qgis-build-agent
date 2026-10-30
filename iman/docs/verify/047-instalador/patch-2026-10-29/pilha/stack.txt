@@ -1,0 +1,4 @@
+>00: 0x7FFAF44DB7B0 strlen
+>01: 0x7FFAF3E7DD90 BaseThreadInitThunk
+>02: 0x7FFAF545EE20 RtlUserThreadStart
+

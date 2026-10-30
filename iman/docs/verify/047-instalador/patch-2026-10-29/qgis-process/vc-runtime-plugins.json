@@ -1,0 +1,39 @@
+{
+  "pid": 29740,
+  "polls": 8,
+  "modules_total": 286,
+  "vc_runtime": [
+    {
+      "module": "%USERPROFILE%\\AppData\\Local\\Programs\\IMANTE~1\\apps\\qgis-ltr\\bin\\MSVCP140.dll",
+      "version": "14.44.35211.0",
+      "seen_at_s": 0.0
+    },
+    {
+      "module": "%USERPROFILE%\\AppData\\Local\\Programs\\IMANTE~1\\apps\\qgis-ltr\\bin\\VCRUNTIME140_1.dll",
+      "version": "14.44.35211.0",
+      "seen_at_s": 0.0
+    },
+    {
+      "module": "%USERPROFILE%\\AppData\\Local\\Programs\\IMANTE~1\\apps\\qgis-ltr\\bin\\VCRUNTIME140.dll",
+      "version": "14.44.35211.0",
+      "seen_at_s": 0.0
+    },
+    {
+      "module": "%USERPROFILE%\\AppData\\Local\\Programs\\IMANTE~1\\apps\\qgis-ltr\\bin\\MSVCP140_2.dll",
+      "version": "14.44.35211.0",
+      "seen_at_s": 0.0
+    },
+    {
+      "module": "%USERPROFILE%\\AppData\\Local\\Programs\\IMANTE~1\\apps\\qgis-ltr\\bin\\MSVCP140_1.dll",
+      "version": "14.44.35211.0",
+      "seen_at_s": 0.0
+    },
+    {
+      "module": "%USERPROFILE%\\AppData\\Local\\Programs\\IMANTE~1\\apps\\qgis-ltr\\bin\\MSVCP140_ATOMIC_WAIT.dll",
+      "version": "14.44.35211.0",
+      "seen_at_s": 0.0
+    }
+  ],
+  "last_poll_s": 0.391,
+  "last_poll_epoch": 1793291966.288815
+}

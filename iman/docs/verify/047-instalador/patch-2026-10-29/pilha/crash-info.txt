@@ -1,0 +1,7 @@
+41528
+62256
+0x000000ec7edaec70
+srv*D:\iman-terra-build\verify\crash-stack-20261029-133909\symbols*https://msdl.microsoft.com/download/symbols
+
+
+Relatorio do teste P3 do patch de 2026-10-29 da fatia 047: falha provocada num processo descartavel
