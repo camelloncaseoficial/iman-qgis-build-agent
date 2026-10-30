@@ -117,7 +117,10 @@ if ($f) {
     $shaRepo = (Get-FileHash -Algorithm SHA256 (Join-Path $RepoRoot "iman\brand\theme\$product\style.qss")).Hash
     $shaApp = if (Test-Path "$themeDir\style.qss") { (Get-FileHash -Algorithm SHA256 "$themeDir\style.qss").Hash } else { $null }
     $loaded = $th.themePaths.$product
-    Add-Check 'tema-na-arvore' ($shaApp -eq $shaRepo -and $loaded -and ((Resolve-Path $loaded).Path -eq (Resolve-Path $themeDir).Path)) ([ordered]@{
+    # o QGIS instalado devolve o caminho na forma 8.3 (C:/Users/FRANCI~1/...): compara as formas curtas das duas pastas
+    $fso = New-Object -ComObject Scripting.FileSystemObject
+    $sameDir = $loaded -and (Test-Path $loaded) -and (Test-Path $themeDir) -and ($fso.GetFolder($loaded).ShortPath -eq $fso.GetFolder($themeDir).ShortPath)
+    Add-Check 'tema-na-arvore' ($shaApp -eq $shaRepo -and $sameDir) ([ordered]@{
         themeDir = $themeDir; loadedFrom = $loaded; sameAsRepo = ($shaApp -eq $shaRepo) })
     $want = $brand.default_project_crs
     Add-Check 'T5:src-projeto-novo' ($crs.atStart -eq $want -and $crs.afterNewProject -eq $want -and $crs.defaultProjectCrs -eq $want -and $crs.newProjectCrsBehavior -eq $brand.new_project_crs_behavior) ([ordered]@{
