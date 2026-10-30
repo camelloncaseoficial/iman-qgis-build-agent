@@ -1,0 +1,79 @@
+{
+  "qss": "D:\\_projetos\\iman-webgeo\\iman-qgis-build-agent\\iman\\brand\\theme\\IMAN Terra\\style.qss",
+  "sha256": "48f9a6cb8c6c39e65d3fe5fca29fa2bf1f5d1def9ece30a9de67ed46769fb287",
+  "ok": true,
+  "checks": {
+    "1": {
+      "check": "border-radius 2px (12)",
+      "ok": true,
+      "detail": {
+        "declarations": 12
+      }
+    },
+    "2": {
+      "check": "QMenuBar::item padding 3px 4px",
+      "ok": true,
+      "detail": {
+        "padding": "3px 4px"
+      }
+    },
+    "3": {
+      "check": "QStatusBar sem padding (D2)",
+      "ok": true,
+      "detail": {
+        "blocks": 0
+      }
+    },
+    "4": {
+      "check": "QDockWidget::title sem padding vert.",
+      "ok": true,
+      "detail": {
+        "blocks": 0
+      }
+    },
+    "5": {
+      "check": "cantos da aba 2px (2)",
+      "ok": true,
+      "detail": {
+        "declarations": 2
+      }
+    },
+    "6": {
+      "check": "sem titlebar-close-icon (D1)",
+      "ok": true,
+      "detail": {
+        "found": 0
+      }
+    },
+    "7": {
+      "check": "zero hex orfao (V.5)",
+      "ok": true,
+      "detail": {
+        "palette": 18,
+        "usedDistinct": 12,
+        "used": [
+          "#155F3D",
+          "#1A231D",
+          "#1E7A4D",
+          "#5E6A61",
+          "#95A093",
+          "#CFE0D2",
+          "#D0D5C9",
+          "#E2E5DE",
+          "#E4F0E8",
+          "#EFF2EC",
+          "#F5F7F2",
+          "#FFFFFF"
+        ],
+        "orphans": 0
+      }
+    },
+    "8": {
+      "check": "sem regras da camada de marca",
+      "ok": true,
+      "detail": {
+        "found": 0
+      }
+    }
+  }
+}

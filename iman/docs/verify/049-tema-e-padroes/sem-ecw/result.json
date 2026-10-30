@@ -1,0 +1,67 @@
+{
+  "run": "D:\\iman-terra-build\\verify\\no-ecw-20261030-174851",
+  "root": "%USERPROFILE%\\AppData\\Local\\Programs\\IMAN Terra",
+  "official": "C:\\Program Files\\QGIS 3.44.13",
+  "checks": {
+    "P1:sem-arquivo-ecw": {
+      "ok": true,
+      "detail": {
+        "searched": [
+          "NCSEcw.dll",
+          "gdal_ECW_JP2ECW.dll"
+        ],
+        "found": [],
+        "controlInOfficial": [
+          "C:\\Program Files\\QGIS 3.44.13\\bin\\NCSEcw.dll",
+          "C:\\Program Files\\QGIS 3.44.13\\apps\\gdal\\lib\\gdalplugins\\gdal_ECW_JP2ECW.dll"
+        ]
+      }
+    },
+    "P1:conjunto-oficial-menos-ecw": {
+      "ok": true,
+      "detail": {
+        "target": "installed.db do oficial menos qgis-ltr* e gdal-ecw, mais o nosso build",
+        "testRuntimeSet": {
+          "exit": 1,
+          "run": "D:\\iman-terra-build\\verify\\runtime-set-20261030-174855",
+          "differences": [
+            "so-no-oficial gdal-ecw gdal-ecw-3.13.2-1.tar.bz2"
+          ],
+          "expected": [
+            "so-no-oficial gdal-ecw gdal-ecw-3.13.2-1.tar.bz2"
+          ],
+          "devel": [],
+          "packagesCompared": 152,
+          "packagesWithFileDifferences": 0
+        },
+        "treePackages": 152,
+        "officialWithoutQgisLtr": 153
+      }
+    },
+    "P1:gdal-sem-ecw": {
+      "ok": true,
+      "detail": {
+        "exit": 0,
+        "drivers": 148,
+        "ECW": false,
+        "JP2ECW": false,
+        "JP2OpenJPEG": true
+      }
+    },
+    "P1:visto-falhando-no-oficial": {
+      "ok": true,
+      "detail": {
+        "exit": 0,
+        "drivers": 150,
+        "ECW": true,
+        "JP2ECW": true,
+        "JP2OpenJPEG": true
+      }
+    },
+    "guarda": {
+      "ok": true,
+      "detail": "GUARD OK: QGIS oficial, %USERPROFILE%\\AppData\\Roaming\\QGIS, %USERPROFILE%\\AppData\\Local\\QGIS, %USERPROFILE%\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\QGIS3.lnk, C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\QGIS 3.44.13, registro, associacoes e notificacoes do QGIS identicos ao retrato de 2026-10-30T17:48:53 (37473 itens)"
+    }
+  },
+  "ok": true
+}

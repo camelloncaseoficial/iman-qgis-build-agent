@@ -1,0 +1,118 @@
+{
+  "captures": {},
+  "theme": {
+    "themeName": "Blend of Gray",
+    "styleSheetLength": 35624,
+    "qtStyle": "QStyleSheetStyle",
+    "uiThemes": [
+      "Blend of Gray",
+      "IMAN Terra",
+      "Night Mapping",
+      "default"
+    ],
+    "themePaths": {
+      "Blend of Gray": "D:/iman-terra-build/install/apps/qgis-ltr/resources/themes/Blend of Gray",
+      "Night Mapping": "D:/iman-terra-build/install/apps/qgis-ltr/resources/themes/Night Mapping",
+      "IMAN Terra": "D:/iman-terra-build/install/apps/qgis-ltr/resources/themes/IMAN Terra"
+    },
+    "defaultThemesFolder": "D:/iman-terra-build/install/apps/qgis-ltr/./resources/themes",
+    "userThemesFolder": "D:\\iman-terra-build\\smoke\\theme-build-usertheme-blend-of-gray-20261030-172552\\profiles\\profiles\\iman-smoke//themes",
+    "settingUITheme": "Blend of Gray"
+  },
+  "crs": {
+    "atStart": "EPSG:31984",
+    "defaultProjectCrs": "EPSG:31984",
+    "newProjectCrsBehavior": "UsePresetCrs",
+    "layerDefaultCrs": "EPSG:31984",
+    "unknownCrsBehavior": "NoAction",
+    "defaultCrsForNewLayers": "EPSG:31984",
+    "afterNewProject": "EPSG:31984",
+    "afterNewProjectDescription": "SIRGAS 2000 / UTM zone 24S"
+  },
+  "distroLayerKey": {
+    "probe": "EPSG:5880",
+    "before": "EPSG:31984",
+    "withDistroKey_app_projections_layerDefaultCrs": "EPSG:31984",
+    "withKey_Projections_layerDefaultCrs": "EPSG:5880",
+    "after": "EPSG:31984"
+  },
+  "options": {
+    "found": true,
+    "projectGlobalCrs": "EPSG:31984",
+    "layerGlobalCrs": "EPSG:31984",
+    "radProjectUseCrsOfFirstLayer": {
+      "checked": false,
+      "text": "Use SRC para adicionar primeira camada"
+    },
+    "radProjectUseDefaultCrs": {
+      "checked": true,
+      "text": "&Usar um SRC padrão"
+    },
+    "cmbUITheme": {
+      "current": "Blend of Gray",
+      "items": [
+        "Blend of Gray",
+        "Night Mapping",
+        "default",
+        "IMAN Terra"
+      ]
+    },
+    "scrollBarWidth": 9
+  },
+  "projectRead": true,
+  "dock": {
+    "title": "Camadas",
+    "buttons": {
+      "qt_dockwidget_floatbutton": {
+        "visible": true,
+        "size": [
+          16,
+          13
+        ],
+        "iconNull": false,
+        "ink": 123,
+        "pixels": 320
+      },
+      "qt_dockwidget_closebutton": {
+        "visible": true,
+        "size": [
+          16,
+          16
+        ],
+        "iconNull": false,
+        "ink": 0,
+        "pixels": 400
+      }
+    },
+    "titleBarHeight": 18,
+    "titleFontHeight": 12,
+    "titleTextWidth": 40,
+    "dockWidth": 294
+  },
+  "dockCloseReopen": {
+    "closedByButton": true,
+    "reopened": true
+  },
+  "coordinateField": {
+    "found": true,
+    "text": "555519,90000  9585490,50000",
+    "width": 167,
+    "minimumWidth": 167,
+    "maximumWidth": 167,
+    "contentsWidth": 161,
+    "available": 157,
+    "needed": 152,
+    "fits": true
+  },
+  "statusBarCrs": null,
+  "switchThemes": {
+    "Blend of Gray": {
+      "themeName": "Blend of Gray",
+      "styleSheetLength": 35624
+    },
+    "Night Mapping": {
+      "themeName": "Night Mapping",
+      "styleSheetLength": 37487
+    }
+  }
+}
