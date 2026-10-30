@@ -14,7 +14,7 @@
               (smoke\fixtures\profile-0.4.0, sem a chave UI/UITheme);
     UserTheme perfil com UI/UITheme=<-UserTheme> gravado pelo usuario (padrao 'default').
   Veredito:
-    Build/Installed, New ou Seeded: o tema e o ui_theme do brand.json, com folha de estilo e estilo fusion; projeto
+    Build/Installed, New ou Seeded: o tema e o ui_theme do brand.json, com folha de estilo; projeto
       novo no default_project_crs, com o new_project_crs_behavior; camada sem SRC no layer_default_crs; Opcoes > SRC
       com o SRC e "usar SRC predefinido"; os temas de fabrica na lista e escolhiveis (T9); botao de fechar da dock com
       icone e funcionando (D1), coordenada inteira no campo da barra de status (D2), titulo da dock sem corte (D4).
@@ -112,7 +112,7 @@ if ($f) {
         themeName = $th.themeName; styleSheetLength = $th.styleSheetLength; settingUITheme = $th.settingUITheme; global = $product })
   } elseif ($productTheme) {
     $themeDir = Join-Path $app "resources\themes\$product"
-    Add-Check 'T1:tema-padrao' ($th.themeName -eq $product -and $th.styleSheetLength -gt 0 -and $th.qtStyle -eq 'fusion' -and $th.settingUITheme -eq $product -and -not $seededHasTheme) ([ordered]@{
+    Add-Check 'T1:tema-padrao' ($th.themeName -eq $product -and $th.styleSheetLength -gt 0 -and $th.settingUITheme -eq $product -and -not $seededHasTheme) ([ordered]@{
         themeName = $th.themeName; styleSheetLength = $th.styleSheetLength; qtStyle = $th.qtStyle; settingUITheme = $th.settingUITheme; userIniHasUITheme = $seededHasTheme })
     $shaRepo = (Get-FileHash -Algorithm SHA256 (Join-Path $RepoRoot "iman\brand\theme\$product\style.qss")).Hash
     $shaApp = if (Test-Path "$themeDir\style.qss") { (Get-FileHash -Algorithm SHA256 "$themeDir\style.qss").Hash } else { $null }

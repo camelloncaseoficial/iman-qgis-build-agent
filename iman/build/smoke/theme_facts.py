@@ -6,6 +6,7 @@ import json
 import os
 
 from qgis.core import QgsApplication, QgsPointXY, QgsProject, QgsSettings
+from qgis.PyQt import sip
 from qgis.PyQt.QtCore import QPoint, Qt, QTimer
 from qgis.PyQt.QtGui import QColor, QFontMetrics
 from qgis.PyQt.QtWidgets import (
@@ -25,6 +26,7 @@ from qgis.PyQt.QtWidgets import (
     QToolTip,
     QWidget,
 )
+from qgis.gui import QgsProjectionSelectionWidget
 from qgis.utils import iface
 
 out_dir = os.environ["IMAN_THEME_OUT"]
@@ -69,7 +71,7 @@ def step_theme():
     facts["theme"] = {
         "themeName": QgsApplication.themeName(),
         "styleSheetLength": len(QApplication.instance().styleSheet()),
-        "qtStyle": QApplication.style().objectName(),
+        "qtStyle": QApplication.style().metaObject().className(),
         "uiThemes": sorted(themes.keys()),
         "themePaths": {k: v for k, v in themes.items() if v},
         "defaultThemesFolder": QgsApplication.defaultThemesFolder(),
@@ -134,10 +136,10 @@ def read_options():
         return
     info = {"found": True}
     try:
-        crs_widget = dialog.findChild(QWidget, "leProjectGlobalCrs")
-        info["projectGlobalCrs"] = crs_widget.crs().authid() if crs_widget is not None else None
-        layer_widget = dialog.findChild(QWidget, "leLayerGlobalCrs")
-        info["layerGlobalCrs"] = layer_widget.crs().authid() if layer_widget is not None else None
+        # o sip devolve os seletores de SRC do dialogo como QWidget: o cast da a classe deles
+        for key, name in (("projectGlobalCrs", "leProjectGlobalCrs"), ("layerGlobalCrs", "leLayerGlobalCrs")):
+            widget = dialog.findChild(QWidget, name)
+            info[key] = sip.cast(widget, QgsProjectionSelectionWidget).crs().authid() if widget is not None else None
         for name in ("radProjectUseCrsOfFirstLayer", "radProjectUseDefaultCrs"):
             radio = dialog.findChild(QRadioButton, name)
             info[name] = {"checked": radio.isChecked(), "text": radio.text()} if radio is not None else None
@@ -177,6 +179,9 @@ def step_load_project():
     window = iface.mainWindow()
     window.showNormal()
     window.resize(1536, 960)
+    if captures:
+        # o Navegador lista as unidades da maquina (com nome e e-mail de conta): fora das capturas do laudo publico
+        window.findChild(QDockWidget, "Browser").hide()
     QApplication.processEvents()
 
 
@@ -244,6 +249,7 @@ def step_tabs():
     window = iface.mainWindow()
     layers = window.findChild(QDockWidget, "Layers")
     browser = window.findChild(QDockWidget, "Browser")
+    browser.show()
     window.tabifyDockWidget(layers, browser)
     layers.raise_()
     QApplication.processEvents()
