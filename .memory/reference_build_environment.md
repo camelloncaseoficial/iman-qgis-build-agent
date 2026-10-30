@@ -80,3 +80,21 @@ Medido no patch da fatia 047 (2026-10-29), laudo `iman/docs/verify/047-instalado
 - **Memoria:** um build em segundo plano foi interrompido pelo ambiente por pouca memoria (com ~9 GB livres); o
   Claude Code nao reinicia sozinho. O incremental retoma de onde parou.
 - **Tempos:** arvore de runtime 58 a 111 s; ISCC 709 s; instalar 88 s; desinstalar 11 a 15 s.
+
+Medido na fatia 049 (2026-10-30), laudo `iman/docs/verify/049-tema-e-padroes/README.md`:
+
+- **O 0.4.0 estava instalado de novo** (2026-10-29 15:10, smoke do sponsor). Desinstalado pelo `unins000.exe` (18 s) e
+  as sobras do produto renomeadas com o sufixo `.antes-049` (decisao do sponsor; `.reg` em
+  `D:\iman-terra-build\verify\049-pre-ciclo`). Ficaram tambem as `.antes-047-patch`. A sessao terminou desinstalado.
+- **Rodar o alvo Build cria `%LOCALAPPDATA%\InstitutoIMAN\IMANTerra\cache`**, mesmo com perfil descartavel (o
+  `Invoke-Smoke.ps1` tambem). O `A2:perfil-novo-antes` do `Test-Installed.ps1` exige a pasta ausente: rodar o
+  `Test-Installed` antes das medicoes do build, ou com `-ResetProductData`.
+- **O QGIS instalado devolve caminhos na forma 8.3** (`C:/Users/FRANCI~1/...`): comparar pastas pela forma curta.
+- **Captura da barra de status logo depois de mudar a coordenada sai com o layout velho** (rotulo e icone sobre o
+  campo, no oficial tambem): mudar antes da espera. O `QToolTip.showText` so aparece no ciclo de eventos seguinte.
+- **O painel Navegador lista as unidades da maquina com nome e e-mail de conta:** fora de captura que vai para o laudo.
+- **Disco:** D: com 33 GB livres no comeco (abaixo do teto de 50 GB do briefing; seguiu por decisao do sponsor), 31 GB
+  no fim; C: 254 GB.
+- **Tempos:** build incremental (so qgsversion.h) 51 s + install 173 s; arvore de runtime 85 s; ISCC 741 s; instalar
+  89 s; desinstalar 11 s.
+

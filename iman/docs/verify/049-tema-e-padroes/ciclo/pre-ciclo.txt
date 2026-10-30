@@ -1,0 +1,8 @@
+guarda antes: [17:11:35] retrato gravado: D:\iman-terra-build\verify\049-pre-ciclo\guard\baseline.txt (37473 linhas)
+antes: entrada IMAN Terra 0.4.0 em %USERPROFILE%\AppData\Local\Programs\IMAN Terra\ (instalado em 2026-10-29 15:10); nenhum processo da arvore em execucao
+desinstalou: unins000.exe /VERYSILENT aberto pelo PID, exit 0, 18 s; pasta saiu; entrada saiu
+renomeada: %USERPROFILE%\AppData\Roaming\InstitutoIMAN\IMANTerra -> IMANTerra.antes-049 (9 arquivos)
+renomeada: %USERPROFILE%\AppData\Local\InstitutoIMAN\IMANTerra -> IMANTerra.antes-049 (4 arquivos)
+renomeada: HKCU\Software\InstitutoIMAN\IMANTerra -> IMANTerra.antes-049 (exportada antes em D:\iman-terra-build\verify\049-pre-ciclo\IMANTerra.antes-049.reg)
+renomeada: HKCU\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings\InstitutoIMAN.IMANTerra.IMANTerra.3.44.13-Solothurn -> ...Solothurn.antes-049 (exportada antes em D:\iman-terra-build\verify\049-pre-ciclo\InstitutoIMAN.IMANTerra.IMANTerra.3.44.13-Solothurn.antes-049.reg)
+guarda depois: GUARD OK: QGIS oficial, %APPDATA%\QGIS, %LOCALAPPDATA%\QGIS, QGIS3.lnk, Menu Iniciar do oficial, registro, associacoes e notificacoes do QGIS identicos ao retrato de 2026-10-30T17:11:34 (37473 itens)

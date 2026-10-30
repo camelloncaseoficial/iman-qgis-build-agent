@@ -1,0 +1,251 @@
+{
+  "run": "D:\\iman-terra-build\\verify\\installed-20261030-174308",
+  "installedRoot": "%USERPROFILE%\\AppData\\Local\\Programs\\IMAN Terra",
+  "checks": {
+    "A2:perfil-novo-antes": {
+      "ok": false,
+      "detail": {
+        "roaming": false,
+        "local": true,
+        "registry": false
+      }
+    },
+    "A5:abre-pelo-atalho": {
+      "ok": true,
+      "detail": {
+        "shortcut": "%USERPROFILE%\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\IMAN Terra.lnk",
+        "pid": 10576,
+        "exitedClean": true,
+        "seconds": 29,
+        "facts": {
+          "pid": 10576,
+          "organization": "InstitutoIMAN",
+          "organization_domain": "institutoiman.org.br",
+          "application": "IMANTerra",
+          "settings_dir": "%USERPROFILE%/AppData/Roaming/InstitutoIMAN/IMANTerra\\profiles\\default/",
+          "native_settings": "%USERPROFILE%/AppData/Roaming/InstitutoIMAN/IMANTerra/profiles/default/InstitutoIMAN/IMANTerra.ini",
+          "cache_location": "%USERPROFILE%/AppData/Local/InstitutoIMAN/IMANTerra/cache",
+          "app_local_data": "%USERPROFILE%/AppData/Local/InstitutoIMAN/IMANTerra",
+          "aumi": "InstitutoIMAN.IMANTerra.IMANTerra.3.44.13-Solothurn",
+          "vc_runtime": [
+            {
+              "module": "%USERPROFILE%\\AppData\\Local\\Programs\\IMAN Terra\\bin\\VCRUNTIME140_1.dll",
+              "version": "14.38.33135.0"
+            },
+            {
+              "module": "%USERPROFILE%\\AppData\\Local\\Programs\\IMAN Terra\\bin\\VCRUNTIME140.dll",
+              "version": "14.38.33135.0"
+            },
+            {
+              "module": "%USERPROFILE%\\AppData\\Local\\Programs\\IMAN Terra\\bin\\MSVCP140.dll",
+              "version": "14.38.33135.0"
+            },
+            {
+              "module": "%USERPROFILE%\\AppData\\Local\\Programs\\IMAN Terra\\bin\\MSVCP140_1.dll",
+              "version": "14.38.33135.0"
+            },
+            {
+              "module": "%USERPROFILE%\\AppData\\Local\\Programs\\IMAN Terra\\bin\\MSVCP140_2.dll",
+              "version": "14.38.33135.0"
+            },
+            {
+              "module": "%USERPROFILE%\\AppData\\Local\\Programs\\IMAN Terra\\bin\\MSVCP140_ATOMIC_WAIT.dll",
+              "version": "14.38.33135.0"
+            }
+          ],
+          "window_title": "Projeto sem título — IMAN Terra",
+          "process_exe": "%USERPROFILE%\\AppData\\Local\\Programs\\IMAN Terra\\bin\\iman-terra.exe",
+          "notification_task": "Notificacao de teste da fatia 047",
+          "notification_task_result": "completed",
+          "message_bar_items": []
+        },
+        "processPath": "%USERPROFILE%\\AppData\\Local\\Programs\\IMAN Terra\\bin\\iman-terra.exe"
+      }
+    },
+    "A5:processo-iman-terra": {
+      "ok": true,
+      "detail": {
+        "process": "%USERPROFILE%\\AppData\\Local\\Programs\\IMAN Terra\\bin\\iman-terra.exe"
+      }
+    },
+    "A5:vc-runtime-carregado": {
+      "ok": true,
+      "detail": {
+        "modules": [
+          {
+            "module": "%USERPROFILE%\\AppData\\Local\\Programs\\IMAN Terra\\bin\\VCRUNTIME140_1.dll",
+            "version": "14.38.33135.0"
+          },
+          {
+            "module": "%USERPROFILE%\\AppData\\Local\\Programs\\IMAN Terra\\bin\\VCRUNTIME140.dll",
+            "version": "14.38.33135.0"
+          },
+          {
+            "module": "%USERPROFILE%\\AppData\\Local\\Programs\\IMAN Terra\\bin\\MSVCP140.dll",
+            "version": "14.38.33135.0"
+          },
+          {
+            "module": "%USERPROFILE%\\AppData\\Local\\Programs\\IMAN Terra\\bin\\MSVCP140_1.dll",
+            "version": "14.38.33135.0"
+          },
+          {
+            "module": "%USERPROFILE%\\AppData\\Local\\Programs\\IMAN Terra\\bin\\MSVCP140_2.dll",
+            "version": "14.38.33135.0"
+          },
+          {
+            "module": "%USERPROFILE%\\AppData\\Local\\Programs\\IMAN Terra\\bin\\MSVCP140_ATOMIC_WAIT.dll",
+            "version": "14.38.33135.0"
+          }
+        ],
+        "how": "EnumProcessModules + VerQueryValue dentro do processo (launch_facts.py)"
+      }
+    },
+    "A2:produto-perfil-cache": {
+      "ok": true,
+      "detail": {
+        "roaming": true,
+        "profileDefault": true,
+        "local": true,
+        "registry": true,
+        "organization": "InstitutoIMAN",
+        "application": "IMANTerra",
+        "domain": "institutoiman.org.br",
+        "settingsDir": "%USERPROFILE%/AppData/Roaming/InstitutoIMAN/IMANTerra\\profiles\\default/",
+        "nativeSettings": "%USERPROFILE%/AppData/Roaming/InstitutoIMAN/IMANTerra/profiles/default/InstitutoIMAN/IMANTerra.ini",
+        "cache": "%USERPROFILE%/AppData/Local/InstitutoIMAN/IMANTerra/cache",
+        "appLocalData": "%USERPROFILE%/AppData/Local/InstitutoIMAN/IMANTerra"
+      }
+    },
+    "A2:produto-registro": {
+      "ok": true,
+      "detail": {
+        "key": "HKCU:\\Software\\InstitutoIMAN\\IMANTerra",
+        "exists": true,
+        "nativeSettings": "%USERPROFILE%/AppData/Roaming/InstitutoIMAN/IMANTerra/profiles/default/InstitutoIMAN/IMANTerra.ini"
+      }
+    },
+    "A2:qgis_process-perfil-novo": {
+      "ok": true,
+      "detail": {
+        "exit": 0,
+        "plugins": [
+          "grassprovider",
+          "iman_marcador_047",
+          "processing"
+        ],
+        "marker": "%USERPROFILE%\\AppData\\Roaming\\InstitutoIMAN\\IMANTerra\\profiles\\default\\python\\plugins\\iman_marcador_047"
+      }
+    },
+    "A2:crashes-do-produto": {
+      "ok": true,
+      "detail": {
+        "crashRoot": "%USERPROFILE%\\AppData\\Local\\InstitutoIMAN\\IMANTerra\\crashes",
+        "created": [
+          "a71a2bb2-0a3b-4c91-ac40-23289d6c7bc2"
+        ]
+      }
+    },
+    "A3:um-atalho-com-aumi": {
+      "ok": true,
+      "detail": {
+        "before": {
+          "path": "%USERPROFILE%\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\IMAN Terra.lnk",
+          "aumi": "InstitutoIMAN.IMANTerra.IMANTerra.3.44.13-Solothurn",
+          "mtime": "2026-10-30T17:42:35"
+        },
+        "after": {
+          "path": "%USERPROFILE%\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\IMAN Terra.lnk",
+          "aumi": "InstitutoIMAN.IMANTerra.IMANTerra.3.44.13-Solothurn",
+          "mtime": "2026-10-30T17:42:35"
+        },
+        "processAumi": "InstitutoIMAN.IMANTerra.IMANTerra.3.44.13-Solothurn"
+      }
+    },
+    "A3:notificacao": {
+      "ok": true,
+      "detail": {
+        "task": "Notificacao de teste da fatia 047",
+        "taskResult": "completed",
+        "messageBarFallback": [],
+        "aumiKeyBefore": false,
+        "aumiKeyAfter": true,
+        "key": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Notifications\\Settings\\InstitutoIMAN.IMANTerra.IMANTerra.3.44.13-Solothurn",
+        "captura": "nao: o toast e janela do Windows, nao do processo do teste"
+      }
+    },
+    "A7:abrir-com": {
+      "ok": true,
+      "detail": {
+        "qgs": {
+          "openWithProgids": "IMANTerra.qgs",
+          "progIdCommand": "\"%USERPROFILE%\\AppData\\Local\\Programs\\IMAN Terra\\bin\\iman-terra.exe\" \"%1\"",
+          "progIdIcon": "%USERPROFILE%\\AppData\\Local\\Programs\\IMAN Terra\\iman\\icons\\iman-terra-qgs.ico"
+        },
+        "qgz": {
+          "openWithProgids": "IMANTerra.qgz",
+          "progIdCommand": "\"%USERPROFILE%\\AppData\\Local\\Programs\\IMAN Terra\\bin\\iman-terra.exe\" \"%1\"",
+          "progIdIcon": "%USERPROFILE%\\AppData\\Local\\Programs\\IMAN Terra\\iman\\icons\\iman-terra-qgz.ico"
+        },
+        "qlr": {
+          "openWithProgids": "IMANTerra.qlr",
+          "progIdCommand": "\"%USERPROFILE%\\AppData\\Local\\Programs\\IMAN Terra\\bin\\iman-terra.exe\" \"%1\"",
+          "progIdIcon": "%USERPROFILE%\\AppData\\Local\\Programs\\IMAN Terra\\iman\\icons\\iman-terra-qlr.ico"
+        }
+      }
+    },
+    "A7:padrao-do-qgz-igual": {
+      "ok": true,
+      "detail": {
+        "before": {
+          "hkcr": "QGIS Project",
+          "userChoice": null
+        },
+        "after": {
+          "hkcr": "QGIS Project",
+          "userChoice": null
+        }
+      }
+    },
+    "A9:creditos-iguais-ao-oficial": {
+      "ok": true,
+      "detail": {
+        "AUTHORS": {
+          "installed": "EC73B33B86A6E42633E28B9612812C8EF871D04A7052AA99D17D332208896384",
+          "official": "EC73B33B86A6E42633E28B9612812C8EF871D04A7052AA99D17D332208896384",
+          "equal": true
+        },
+        "CONTRIBUTORS": {
+          "installed": "B00AD2E6AD3F206D2C68780BABC2B57164738A89C2E55CFAF830EEC075CFA2EE",
+          "official": "B00AD2E6AD3F206D2C68780BABC2B57164738A89C2E55CFAF830EEC075CFA2EE",
+          "equal": true
+        },
+        "SPONSORS": {
+          "installed": "C6CD1AF37E8420AD46D495F19E8AE53B6968D724E56FB84029ECC5AE021D8DB5",
+          "official": "C6CD1AF37E8420AD46D495F19E8AE53B6968D724E56FB84029ECC5AE021D8DB5",
+          "equal": true
+        },
+        "DONORS": {
+          "installed": "9E0D81F68A537B74BD87C19D0C1A54213ABC7E9BE8DBEE22CC842D5EC764A35A",
+          "official": "9E0D81F68A537B74BD87C19D0C1A54213ABC7E9BE8DBEE22CC842D5EC764A35A",
+          "equal": true
+        },
+        "TRANSLATORS": {
+          "installed": "0D2F77B6FC724FF1600DE9BB81DD9FF2D1E02B013D9E5D59300808D339AEBCDB",
+          "official": "0D2F77B6FC724FF1600DE9BB81DD9FF2D1E02B013D9E5D59300808D339AEBCDB",
+          "equal": true
+        },
+        "LICENSE": {
+          "installedBytes": 18801,
+          "officialBytes": 74524,
+          "equal": true,
+          "rule": "a GPL do QGIS da arvore contida no LICENSE composto do oficial"
+        }
+      }
+    },
+    "guarda": {
+      "ok": true,
+      "detail": "GUARD OK: QGIS oficial, %USERPROFILE%\\AppData\\Roaming\\QGIS, %USERPROFILE%\\AppData\\Local\\QGIS, %USERPROFILE%\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\QGIS3.lnk, C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\QGIS 3.44.13, registro, associacoes e notificacoes do QGIS identicos ao retrato de 2026-10-30T17:43:10 (37473 itens)"
+    }
+  },
+  "ok": false
+}

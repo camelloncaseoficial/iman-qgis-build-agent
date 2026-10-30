@@ -5,9 +5,10 @@ produto escrito a mao. Mudar o nome e mudar `brand.json` e recompilar (A2 do bri
 
 | Arquivo | O que e | Quem le |
 |---|---|---|
-| `brand.json` | nome e versao do produto (`product_version`, desde a 047), organizacao, endereco, rotulo do motor ("motor QGIS"), idioma padrao, feed e checagem de versao; e o nome interno (`internal_organization_name`, `internal_organization_domain`, `internal_application_name`, D-IMAN-043), que da a pasta do perfil, do cache e dos crashes, a chave de registro e o AUMI, separado do nome de exibicao | `build_brand.py`, o smoke (`iman/build/Invoke-Smoke.ps1`) e o instalador (`iman/installer/Build-Installer.ps1`) |
+| `brand.json` | nome e versao do produto (`product_version`, desde a 047), organizacao, endereco, rotulo do motor ("motor QGIS"), idioma padrao, feed e checagem de versao; e o nome interno (`internal_organization_name`, `internal_organization_domain`, `internal_application_name`, D-IMAN-043), que da a pasta do perfil, do cache e dos crashes, a chave de registro e o AUMI, separado do nome de exibicao; desde a 049, o tema de interface padrao (`ui_theme`) e os SRC padrao de projeto novo e de camada sem SRC (`default_project_crs`, `new_project_crs_behavior`, `layer_default_crs`) | `build_brand.py`, o smoke (`iman/build/Invoke-Smoke.ps1`), o instalador (`iman/installer/Build-Installer.ps1`), o `Build-Qgis.ps1` (pasta do tema) e o `Test-ThemeDefaults.ps1` |
 | `i18n/curadoria_pt_BR.json` | as 275 mensagens do `qgis_pt_BR.qm` com "QGIS" na traducao, cada uma numa classe (aplicativo, versao, projeto, duvida), e o texto final das que mudam, com marcadores (`{product}`, `{engine}`, `{org}`, `{url}`); mais as superficies do Bloco D (`extra`) | `build_brand.py` |
 | `build_brand.py` | gera no build `iman_brand.h`, `iman_pt_BR.ts` e `qgis_global_settings.ini`; com `--measure` confere a curadoria contra o `.qm` do QGIS | `iman/build/Build-Qgis.ps1` |
+| `theme/<ui_theme>/style.qss` | o tema padrao (fatia 049): copia do QSS aprovado na distro congelada (`df761da`), sem as regras da camada de marca; vira tema nativo do QGIS | `iman/build/Build-Qgis.ps1` copia para `resources\themes` da instalacao; `iman/build/Test-ThemeQss.ps1` guarda raio, D1, D2, D4 e zero hex orfao |
 | `assets/` | assets aprovados, copiados da distro congelada (abaixo) | `derive_assets.py` |
 | `derived/` | o que substitui o logo do QGIS no fonte, derivado dos assets | `derive_assets.py` copia para a arvore do QGIS; o smoke compara com o recurso compilado |
 | `derive_assets.py` | deriva `derived/` e copia para a arvore do QGIS; `--check` so confere | humano, ao trocar um asset |
@@ -23,7 +24,7 @@ python3 iman/brand/build_brand.py --measure <qgis_pt_BR.ts convertido do .qm pel
 
 Copiados de `../iman-qgis-distro-agent/app/assets/` (distro congelada, `HEAD` `59ac0ce`, ultimo commit dos quatro
 arquivos `c275590`, 2026-09-09: a arte oficial ingerida na fatia distro #021). So assets aprovados entram aqui
-(D-IMAN-040); nada do QSS, do plugin de marca ou do launcher da distro.
+(D-IMAN-040); nada do plugin de marca ou do launcher da distro. O QSS da distro veio depois, na fatia 049 (`theme/`, acima), pela emenda de 2026-10-29 ao D-IMAN-040.
 
 | Arquivo | SHA-256 | Nota |
 |---|---|---|

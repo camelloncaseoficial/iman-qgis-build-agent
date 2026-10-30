@@ -1,0 +1,158 @@
+/* ==========================================================================
+   IMAN Terra - tema institucional (QSS), passada "light-chrome" (suavizada).
+   ORIGEM: copia de `app/profile-template/iman-distro/themes/IMAN Terra/style.qss`
+   da distro congelada (../iman-qgis-distro-agent, commit
+   df761da5e892378fbf8066794c2dd0132e1926a1), trazida pela fatia 049 (emenda de
+   2026-10-29 ao D-IMAN-040, itens 1 e 2). Cores, raios e regras sao os da distro;
+   sairam so as seis regras da camada de marca (#qa, #qatile, #rec, #ImanHomeVersao,
+   #ImanSobreCreditos, #ImanTerraMenuBtn), que estilizavam widgets do plugin de marca
+   da distro, que o fork nao tem.
+   COMO CHEGA AO PRODUTO: e um tema nativo do QGIS. O iman/build/Build-Qgis.ps1 copia
+   esta pasta para <pkgDataPath>/resources/themes/IMAN Terra/ da instalacao (o
+   New-RuntimeTree.ps1 a leva junto para o instalador), e o qgis_global_settings.ini
+   gerado pelo iman/brand/build_brand.py traz UI/UITheme=IMAN Terra, valor de
+   iman/brand/brand.json (ui_theme). No arranque o QGIS aplica o tema ao aplicativo
+   inteiro (QgsApplication::setUITheme) e troca o estilo do Qt para fusion. A escolha
+   do usuario em Opcoes > Geral vence a global.
+   Recolore a chrome da UI Qt (menus, toolbars, headers, selecao, abas, botoes,
+   campos, scrollbars) na linguagem do comp (docs/TerraWindow.dc.html da distro),
+   MANTENDO areas de conteudo (arvore, tabelas) claras p/ legibilidade.
+   MUDANCA (sponsor, 2026-07-15): a chrome (menubar / status bar / titulos de dock /
+   headers de tabela / tooltip) DEIXA de ser o verde profundo #103D29 (cansava a vista
+   em sessao longa) e passa a superficie CLARA (panel-2 / branco). O verde institucional
+   #1E7A4D / #155F3D vira ACENTO (selecao, item ativo, sublinhado de aba, botao default,
+   foco). Mesma identidade/paleta D-IMAN-026 - so muda QUAIS superficies recebem o verde
+   escuro. O token #103D29 (brand) permanece na paleta para acentos pequenos.
+   LIMITE HONESTO: QSS COLORE, nao troca icone nativo (icon-theme = fora de escopo)
+   nem reestrutura layout.
+   Paleta ATIVA D-IMAN-026 (fonte: docs/design-system.md da distro, "Tema claro"):
+     brand #103D29 | brand-2 #1E7A4D | accent #2B8FD6 | moss #6E9160 | earth #8A7A55
+     bg #EBEEE8 | panel #FFFFFF | panel-2 #F5F7F2 | border #E2E5DE | text #1A231D
+     text-muted #5E6A61 | text-faint #95A093 | hover #EFF2EC | active-bg #E4F0E8
+     active-fg #155F3D | border-strong #D0D5C9 | border-accent #CFE0D2 | ink #0E1A14
+   BL-4: todo hex das regras abaixo existe como token nesta paleta (text-faint, usado
+   no botao desabilitado, e token da tabela da distro que o cabecalho dela nao listava).
+   Hex orfao no QSS e proibido - foi assim que a fatia 002 da distro acabou com tres
+   fontes de marca em desacordo. GUARDA: iman/build/Test-ThemeQss.ps1.
+   ========================================================================== */
+
+/* RAIO: 2px EM TUDO (sponsor, 2026-09-09 - "coloque 2px para tudo, ja e muito").
+   Sem escala, sem token grande e pequeno, sem excecao: um valor so. Sao 12
+   declaracoes de `border-radius`, mais os 2 cantos especificos da aba
+   (`border-top-*-radius`), todos em 2px. Os 2 da aba entraram porque "2px em
+   tudo" nao comporta uma aba de 8px ao lado de um botao de 2px, e a troca e uma
+   linha para reverter (a regra QTabBar::tab, abaixo).
+   GUARDA: iman/build/Test-ThemeQss.ps1 reprova se qualquer um sair de 2px.
+
+   DENSIDADE DA BARRA DE MENUS: `QMenuBar::item` passou de `6px 12px` para
+   `3px 4px` (sponsor, 2026-09-09). Os 12px de cada lado somavam ~24px entre
+   "Projeto" e "Editar"; com 4px cai para ~8px. O 3px vertical e recomendacao
+   do arquiteto: a pilula de :selected precisa de folga para nao espremer o
+   texto. CERCA: a mudanca e POR SELETOR. `QStatusBar` (D2) e
+   `QDockWidget::title` (D4) NAO recebem padding - ver os comentarios deles
+   abaixo, e as assercoes 3 e 4 da guarda. */
+
+/* ---- Barra de menus: CLARA, texto escuro, item ativo em verde pastel ---- */
+QMenuBar { background-color: #FFFFFF; color: #1A231D; border: none; border-bottom: 1px solid #E2E5DE; }
+QMenuBar::item { background: transparent; padding: 3px 4px; border-radius: 2px; }
+QMenuBar::item:selected { background-color: #E4F0E8; color: #155F3D; }
+QMenuBar::item:pressed { background-color: #E4F0E8; color: #155F3D; }
+
+/* ---- Menus abertos ---- */
+QMenu { background-color: #FFFFFF; color: #1A231D; border: 1px solid #E2E5DE; border-radius: 2px; padding: 5px; }
+QMenu::item { padding: 6px 26px 6px 22px; border-radius: 2px; }
+QMenu::item:selected { background-color: #E4F0E8; color: #155F3D; }
+QMenu::separator { height: 1px; background: #E2E5DE; margin: 5px 10px; }
+
+/* ---- Toolbars: fundo panel-2, densidade limpa, separadores sutis ---- */
+QToolBar { background-color: #F5F7F2; border: none; border-bottom: 1px solid #E2E5DE; spacing: 3px; padding: 4px 6px; }
+QToolBar::separator { background: #E2E5DE; width: 1px; margin: 5px 5px; }
+QToolButton { background: transparent; border: 1px solid transparent; border-radius: 2px; padding: 3px; }
+QToolButton:hover { background-color: #EFF2EC; border: 1px solid #CFE0D2; }
+QToolButton:checked, QToolButton:pressed { background-color: #E4F0E8; border: 1px solid #1E7A4D; }
+QToolButton::menu-button { border: none; }
+
+/* ---- Status bar: CLARA, texto suave, chip de CRS claro ---- */
+QStatusBar { background-color: #F5F7F2; color: #5E6A61; border-top: 1px solid #E2E5DE; }
+QStatusBar::item { border: none; }
+QStatusBar QLabel { color: #5E6A61; }
+QStatusBar QToolButton { color: #1A231D; }
+QStatusBar QToolButton:hover { background-color: rgba(16,40,30,0.06); }
+/* D2 (#017/A02 da distro): NAO reintroduzir `padding` aqui. O QGIS dimensiona o
+   campo de coordenadas pela metrica da fonte e FIXA a largura (min == max). Num
+   widget de largura fixa, padding do QSS e subtracao: os 2px 8px mais a borda
+   comiam 18 dos 24 px, deixando 6 px uteis para uma coordenada que precisa de
+   104 - cabia 1 caractere de 19. So a borda (2 px) fica; o resto e recuo que
+   o campo nao tem para dar. Na distro, o plugin de marca ainda reservava a
+   largura do texto; no IMAN Terra compilado esse ajuste nao existe (D-IMAN-040,
+   emenda de 2026-10-29, item 5), e a largura e a que o QGIS calcula. */
+QStatusBar QLineEdit, QStatusBar QComboBox {
+    background-color: #FFFFFF; color: #1A231D; border: 1px solid #D0D5C9; border-radius: 2px;
+}
+
+/* ---- Docks / paineis: header CLARO, texto verde de marca, cantos suaves ----
+   D1 (#017/A01 da distro): NAO reintroduzir `QDockWidget { titlebar-close-icon: none; }`.
+   Aquela linha nao escondia o botao de fechar - APAGAVA o icone dele, deixando
+   um alvo de clique invisivel de 4 px. Medido: tinta 0/80, altura 4 px contra
+   15 px do botao de flutuar ao lado.
+   D4 (#017/A04 da distro): o `padding: 6px 10px` cortava o glifo do titulo ao
+   meio. A altura da faixa de titulo o Qt calcula a partir da fonte, e padding
+   vertical nao a fazia crescer - so comia o espaco do texto. Vale a regra
+   derivada no contrato: propriedade que muda GEOMETRIA num widget que o QGIS ja
+   dimensionou e mudanca de comportamento disfarcada de cor.
+   O recuo horizontal fica (nao mexe na altura); o vertical sai. */
+QDockWidget::title { background-color: #F5F7F2; color: #155F3D; padding-left: 10px; padding-right: 10px; font-weight: 600; letter-spacing: .3px; border-bottom: 1px solid #E2E5DE; }
+QDockWidget > QWidget { background-color: #FFFFFF; }
+
+/* ---- Arvore/lista/tabela: conteudo CLARO, hover/selecao em verde pastel ---- */
+QTreeView, QListView, QTableView {
+    background-color: #FFFFFF; color: #1A231D; alternate-background-color: #F5F7F2;
+    selection-background-color: #E4F0E8; selection-color: #155F3D; border: none; outline: 0;
+}
+QTreeView::item, QListView::item { padding: 2px; border-radius: 2px; }
+QTreeView::item:hover, QListView::item:hover { background-color: #EFF2EC; }
+QTreeView::item:selected, QListView::item:selected { background-color: #E4F0E8; color: #155F3D; }
+QHeaderView::section {
+    background-color: #F5F7F2; color: #1A231D; padding: 5px 8px; border: none; border-right: 1px solid #E2E5DE; border-bottom: 1px solid #E2E5DE;
+}
+
+/* ---- Abas: sublinhado ativo verde, cantos arredondados ---- */
+QTabBar::tab {
+    background: #F5F7F2; color: #5E6A61; padding: 6px 14px; border: 1px solid #E2E5DE; border-bottom: none;
+    border-top-left-radius: 2px; border-top-right-radius: 2px;
+}
+QTabBar::tab:selected { background: #FFFFFF; color: #155F3D; border-bottom: 2px solid #1E7A4D; font-weight: 600; }
+QTabBar::tab:hover { background: #E4F0E8; color: #155F3D; }
+
+/* ---- Botoes: arredondados, verde de marca so no default ---- */
+QPushButton { background-color: #FFFFFF; color: #155F3D; border: 1px solid #1E7A4D; border-radius: 2px; padding: 5px 14px; }
+QPushButton:hover { background-color: #EFF2EC; }
+QPushButton:pressed { background-color: #E4F0E8; }
+QPushButton:default { background-color: #1E7A4D; color: #FFFFFF; border: 1px solid #155F3D; }
+QPushButton:default:hover { background-color: #155F3D; }
+QPushButton:disabled { color: #95A093; border-color: #E2E5DE; }
+
+/* ---- Campos de entrada (formularios) ---- */
+QLineEdit, QComboBox, QSpinBox, QDoubleSpinBox, QPlainTextEdit, QTextEdit {
+    background-color: #FFFFFF; color: #1A231D; border: 1px solid #E2E5DE; border-radius: 2px; padding: 3px 7px;
+    selection-background-color: #1E7A4D; selection-color: #FFFFFF;
+}
+QLineEdit:focus, QComboBox:focus, QSpinBox:focus, QDoubleSpinBox:focus,
+QPlainTextEdit:focus, QTextEdit:focus { border: 1px solid #1E7A4D; }
+
+/* ---- GroupBox ---- */
+QGroupBox { border: 1px solid #E2E5DE; border-radius: 2px; margin-top: 8px; }
+QGroupBox::title { subcontrol-origin: margin; left: 10px; color: #155F3D; font-weight: 600; }
+
+/* ---- Scrollbars finas e macias ---- */
+QScrollBar:vertical { background: transparent; width: 10px; margin: 2px; }
+QScrollBar::handle:vertical { background: #D0D5C9; border-radius: 2px; min-height: 28px; }
+QScrollBar::handle:vertical:hover { background: #1E7A4D; }
+QScrollBar:horizontal { background: transparent; height: 10px; margin: 2px; }
+QScrollBar::handle:horizontal { background: #D0D5C9; border-radius: 2px; min-width: 28px; }
+QScrollBar::handle:horizontal:hover { background: #1E7A4D; }
+QScrollBar::add-line, QScrollBar::sub-line { background: none; border: none; width: 0; height: 0; }
+QScrollBar::add-page, QScrollBar::sub-page { background: none; }
+
+/* ---- Tooltip: claro, borda verde de marca ---- */
+QToolTip { background-color: #FFFFFF; color: #1A231D; border: 1px solid #1E7A4D; padding: 4px 8px; border-radius: 2px; }

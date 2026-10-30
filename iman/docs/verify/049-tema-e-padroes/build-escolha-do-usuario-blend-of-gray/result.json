@@ -1,0 +1,33 @@
+{
+  "target": "Build",
+  "profileState": "UserTheme",
+  "userTheme": "Blend of Gray",
+  "run": "D:\\iman-terra-build\\smoke\\theme-build-usertheme-blend-of-gray-20261030-172552",
+  "seconds": 19,
+  "exitedClean": true,
+  "userIniHasUITheme": true,
+  "checks": {
+    "facts": {
+      "ok": true,
+      "detail": {
+        "written": true,
+        "exitedClean": true,
+        "errors": null
+      }
+    },
+    "T1:escolha-do-usuario": {
+      "ok": true,
+      "detail": {
+        "themeName": "Blend of Gray",
+        "styleSheetLength": 35624,
+        "settingUITheme": "Blend of Gray",
+        "global": "IMAN Terra"
+      }
+    },
+    "guard": {
+      "ok": true,
+      "detail": "GUARD OK: QGIS oficial, %USERPROFILE%\\AppData\\Roaming\\QGIS, %USERPROFILE%\\AppData\\Local\\QGIS, %USERPROFILE%\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\QGIS3.lnk, C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\QGIS 3.44.13, registro, associacoes e notificacoes do QGIS identicos ao retrato de 2026-10-30T17:24:42 (37473 itens)"
+    }
+  },
+  "ok": true
+}
