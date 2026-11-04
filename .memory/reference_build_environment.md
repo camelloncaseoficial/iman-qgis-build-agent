@@ -98,3 +98,17 @@ Medido na fatia 049 (2026-10-30), laudo `iman/docs/verify/049-tema-e-padroes/REA
 - **Tempos:** build incremental (so qgsversion.h) 51 s + install 173 s; arvore de runtime 85 s; ISCC 741 s; instalar
   89 s; desinstalar 11 s.
 
+
+Medido no patch 049p (2026-11-04), laudo `iman/docs/verify/049-tema-e-padroes/README.md`, secao "Patch 049p":
+
+- **Dados do produto da sessao 049 apagados** pelo `-ResetProductData` do `Test-Installed.ps1` (sim do sponsor); as
+  `.antes-*` ficaram. Depois do ciclo, `%APPDATA%\InstitutoIMAN\IMANTerra` voltou a existir (perfil da rodada, fica na
+  desinstalacao) e o cache do alvo Build tambem: o proximo `Test-Installed` precisa de novo do `-ResetProductData`.
+- **O gate pelo pwsh desta ferramenta caiu no titulo do console** (0xE9, rodada 1 da fatia 049): o build aninhado nao
+  tem console. A rodada do gate vai para o sponsor, num terminal com janela propria.
+- **Captura da tabela de atributos** saiu na escala 1,25 numa rodada (961x441 contra 769x353): comparar por regra, nao
+  por tamanho.
+- **`gh` sem `--repo` resolve para o upstream `qgis/QGIS`** (o remoto `upstream`): o `/deliver` da 049 leu "sem PR" assim, com o PR #5 aberto. Todo `gh` leva `--repo camelloncaseoficial/iman-qgis-build-agent`.
+- **Disco:** D: 92 GB livres no comeco; C: 226 GB.
+- **Tempos:** build incremental (so o qgsversion.h) 70 s + configure 185 s + install 153 s, 7 min no total; arvore de
+  runtime 62 s; ISCC 799 s; instalar 84 s; desinstalar 11 s.
