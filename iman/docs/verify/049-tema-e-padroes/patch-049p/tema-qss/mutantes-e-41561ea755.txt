@@ -1,0 +1,81 @@
+# Test-ThemeQss.ps1 (patch 049p) contra o style.qss da 41561ea755, o original da distro (df761da) e mutantes do portado
+== portado-049p
+  [1] border-radius 2px (12)             OK  {"declarations":12}
+  [2] QMenuBar::item padding 3px 4px     OK  {"padding":"3px 4px"}
+  [3] QStatusBar sem padding (D2)        OK  {"blocks":0}
+  [4] QDockWidget::title sem padding vert. OK  {"blocks":0}
+  [5] cantos da aba 2px (2)              OK  {"declarations":2}
+  [6] sem titlebar-close-icon (D1)       OK  {"found":0}
+  [7] zero hex orfao (V.5)               OK  {"palette":18,"usedDistinct":12,"used":["#155F3D","#1A231D","#1E7A4D","#5E6A61","#95A093","#CFE0D2","#D0D5C9","#E2E5DE","#E4F0E8","#EFF2EC","#F5F7F2","#FFFFFF"],"orphans":0}
+  [8] sem regras da camada de marca      OK  {"found":0}
+  [9] QStatusBar QLineEdit padding-h 0 (D2) OK  {"padding-left":"0","padding-right":"0"}
+TEMA QSS OK (9 de 9)
+exit=0
+== portado-41561ea755: o style.qss antes do patch (visto falhando da assercao 9)
+  [9] QStatusBar QLineEdit padding-h 0 (D2) FALHOU  {"padding-left":"<ausente>","padding-right":"<ausente>"}
+  [9] QStatusBar QLineEdit com padding-left '<ausente>'
+  [9] QStatusBar QLineEdit com padding-right '<ausente>'
+TEMA QSS FALHOU
+exit=1
+== distro-original
+  [1] border-radius 2px (12)             FALHOU  {"declarations":18}
+  [7] zero hex orfao (V.5)               FALHOU  {"palette":17,"usedDistinct":12,"used":["#155F3D","#1A231D","#1E7A4D","#5E6A61","#95A093","#CFE0D2","#D0D5C9","#E2E5DE","#E4F0E8","#EFF2EC","#F5F7F2","#FFFFFF"],"orphans":1}
+  [8] sem regras da camada de marca      FALHOU  {"found":6}
+  [9] QStatusBar QLineEdit padding-h 0 (D2) FALHOU  {"padding-left":"<ausente>","padding-right":"<ausente>"}
+  [7] linha 121: #95A093 fora da paleta
+  [8] linha 168: #qa
+  [8] linha 169: #qatile
+  [8] linha 170: #rec
+  [8] linha 171: #ImanHomeVersao
+  [8] linha 172: #ImanSobreCreditos
+  [8] linha 173: #ImanTerraMenuBtn
+  [9] QStatusBar QLineEdit com padding-left '<ausente>'
+  [9] QStatusBar QLineEdit com padding-right '<ausente>'
+TEMA QSS FALHOU
+exit=1
+== mutante-d1: QDockWidget { titlebar-close-icon: none; }
+  [6] sem titlebar-close-icon (D1)       FALHOU  {"found":1}
+  [6] linha 164: titlebar-close-icon
+TEMA QSS FALHOU
+exit=1
+== mutante-d2: QStatusBar { padding: 2px 8px; ... } (o mutante D2 que ja existia)
+  [3] QStatusBar sem padding (D2)        FALHOU  {"blocks":1}
+  [3] linha 76: QStatusBar com padding: 2px 8px
+TEMA QSS FALHOU
+exit=1
+== mutante-d4: QDockWidget::title { ... padding: 6px 10px; ... }
+  [4] QDockWidget::title sem padding vert. FALHOU  {"blocks":1}
+  [4] linha 109: QDockWidget::title com padding vertical
+TEMA QSS FALHOU
+exit=1
+== mutante-orfao: QMenu::separator { ... background: #0B2C1E; ... }
+  [7] zero hex orfao (V.5)               FALHOU  {"palette":18,"usedDistinct":13,"used":["#0B2C1E","#155F3D","#1A231D","#1E7A4D","#5E6A61","#95A093","#CFE0D2","#D0D5C9","#E2E5DE","#E4F0E8","#EFF2EC","#F5F7F2","#FFFFFF"],"orphans":1}
+  [7] linha 65: #0B2C1E fora da paleta
+TEMA QSS FALHOU
+exit=1
+== mutante-raio: QToolTip { ... border-radius: 8px; }
+  [1] border-radius 2px (12)             FALHOU  {"declarations":12}
+  [1] linha 163: border-radius 8px
+TEMA QSS FALHOU
+exit=1
+== mutante-sem-regra-049p: tira a linha 'QStatusBar QLineEdit { padding-left: 0; padding-right: 0; }'
+  [9] QStatusBar QLineEdit padding-h 0 (D2) FALHOU  {"padding-left":"<ausente>","padding-right":"<ausente>"}
+  [9] QStatusBar QLineEdit com padding-left '<ausente>'
+  [9] QStatusBar QLineEdit com padding-right '<ausente>'
+TEMA QSS FALHOU
+exit=1
+== mutante-padding-left-1px: QStatusBar QLineEdit { padding-left: 1px; padding-right: 0; }
+  [3] QStatusBar sem padding (D2)        FALHOU  {"blocks":1}
+  [9] QStatusBar QLineEdit padding-h 0 (D2) FALHOU  {"padding-left":"1px","padding-right":"0"}
+  [3] linha 96: QStatusBar QLineEdit com padding-left: 1px
+  [9] QStatusBar QLineEdit com padding-left '1px'
+TEMA QSS FALHOU
+exit=1
+== mutante-padding-0: QStatusBar QLineEdit { padding: 0; }
+  [3] QStatusBar sem padding (D2)        FALHOU  {"blocks":1}
+  [9] QStatusBar QLineEdit padding-h 0 (D2) FALHOU  {"padding-left":"<ausente>","padding-right":"<ausente>"}
+  [3] linha 96: QStatusBar QLineEdit com padding: 0
+  [9] QStatusBar QLineEdit com padding-left '<ausente>'
+  [9] QStatusBar QLineEdit com padding-right '<ausente>'
+TEMA QSS FALHOU
+exit=1

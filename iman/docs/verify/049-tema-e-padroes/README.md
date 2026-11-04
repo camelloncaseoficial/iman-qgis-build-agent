@@ -7,11 +7,17 @@ Máquina: Windows 11 Pro em espanhol, 24 processadores lógicos, 32 GB. Mediçõ
 Legenda: **medido** (rodado e observado nesta máquina, com a evidência indicada), **relatado** (dito por fonte externa
 ou não observável por este teste, com o motivo), **N/E** (não executado).
 
-Build medido: `51968a5220` (todas as capturas e medições do build e da árvore instalada saem dele, V.4). Os commits
-seguintes da branch só mexem nos testes desta fatia e neste laudo. Instalador:
+**Alvo do smoke do sponsor (desde o patch 049p, 2026-11-04):**
+`D:\iman-terra-build\dist\0.4.0-c086bde009\Instituto-IMAN-IMAN-Terra-Setup-0.4.0-c086bde009.exe` (512.782.201 bytes,
+SHA-256 `35802d4dd13a00f19735419c5e87ac32b7dd554d1ac40cd41e74adfcc6205f43`, Inno Setup 7.1.0;
+`patch-049p/instalador/BUILD_INFO.txt`). Ver a seção "Patch 049p", no fim.
+
+Build medido nas seções antes do patch: `51968a5220` (todas as capturas e medições do build e da árvore instalada
+dessas seções saem dele, V.4). Os commits seguintes da branch, até `41561ea755`, só mexem nos testes desta fatia e neste
+laudo. Instalador de então, substituído pelo de cima como alvo do smoke:
 `D:\iman-terra-build\dist\0.4.0-51968a5220\Instituto-IMAN-IMAN-Terra-Setup-0.4.0-51968a5220.exe` (512.779.274 bytes,
-SHA-256 `5e70e0e0f87e3b39884cf461e52ec0d6f7cc98db98be67aae1d968e78784f230`, Inno Setup 7.1.0; `instalador/BUILD_INFO.txt`).
-Ele **não entra no git**. Nos arquivos de texto da evidência, o caminho do perfil do Windows virou `%USERPROFILE%`; nas
+SHA-256 `5e70e0e0f87e3b39884cf461e52ec0d6f7cc98db98be67aae1d968e78784f230`; `instalador/BUILD_INFO.txt`).
+Nenhum instalador **entra no git**. Nos arquivos de texto da evidência, o caminho do perfil do Windows virou `%USERPROFILE%`; nas
 capturas, o painel Navegador fica escondido (ele lista as unidades da máquina, com nome e e-mail de conta).
 
 | Pasta | O que é |
@@ -27,6 +33,7 @@ capturas, o painel Navegador fica escondido (ele lista as unidades da máquina, 
 | `instalado/` | `Test-Installed.ps1` inteiro (T7) e a primeira rodada, que caiu no A2 (achado 2) |
 | `smoke-build/`, `smoke-instalado/`, `sem-ecw/`, `conjunto/` | smoke do 044, `Test-NoEcw.ps1` e `Test-RuntimeSet.ps1` (T7) |
 | `distro-referencia/` | a captura da distro usada no lado a lado da janela (origem abaixo) |
+| `patch-049p/` | o patch de 2026-11-04 (a coordenada inteira): guarda, mutantes, build, instalado, ciclo, instalador |
 | `SHA256SUMS.txt` | hash de cada arquivo desta pasta |
 
 ## Veredito
@@ -39,6 +46,10 @@ e na árvore instalada; nenhum arquivo do QGIS mudou; o QGIS oficial ficou intoc
 
 **STOP D2 (decisão do sponsor na sessão: "Não mexer; relatar e seguir"):** com o tema, o campo de coordenadas da barra de
 status corta o primeiro dígito do Leste (achado 1). O tema ficou como o aprovado; a decisão é do arquiteto.
+
+**Atualização do patch 049p (2026-11-04): o D2 fechou.** A regra nova `QStatusBar QLineEdit { padding-left: 0;
+padding-right: 0; }` (emenda de 2026-11-04 ao D-IMAN-040) devolve 161 px úteis ao campo, e a coordenada sai inteira no
+build e na árvore instalada da ponta `c086bde009`. Detalhe na seção "Patch 049p".
 
 ## Bloco A: o tema
 
@@ -257,7 +268,100 @@ no `/deliver`. Os testes novos desta fatia não fazem parte do gate (que é do a
 5. **O título nativo das docks não sai na cor `#155F3D` da regra** nem no build nem na distro (T2): o QSS do
    `QDockWidget::title` pinta a faixa, e o texto segue escuro.
 
+## Patch 049p: a coordenada volta a caber na barra de status
+
+Briefing `qgis-build #049` PATCH (emenda de 2026-11-04 ao D-IMAN-040), no mesmo PR #5. Ponta medida: `c086bde009`
+(V.4: toda captura e medição desta seção sai do build dela e do instalador dela). Medições de 2026-11-04. Evidência em
+`patch-049p/`, com o caminho do perfil do Windows trocado por `%USERPROFILE%` nos arquivos de texto.
+
+### O que mudou
+
+- `iman/brand/theme/IMAN Terra/style.qss`: a regra `QStatusBar QLineEdit { padding-left: 0; padding-right: 0; }`, logo
+  abaixo da regra `QStatusBar QLineEdit, QStatusBar QComboBox`, e uma frase a mais no comentário D2. O `QComboBox` da
+  barra de status, o padding vertical, as cores e os raios não mudaram.
+- `iman/build/Test-ThemeQss.ps1`: a asserção 9 nova (a regra `QStatusBar QLineEdit` zera `padding-left` e
+  `padding-right`) e a asserção 3 estreitada pela correção de 2026-11-04 do briefing (aceita só `padding-left` e
+  `padding-right` com valor `0` ou `0px` num bloco `QStatusBar`; segue reprovando o atalho `padding`, `padding-top`,
+  `padding-bottom` e lado com valor diferente de zero). A asserção 3 original reprovava a regra nova (STOP da Crew,
+  conferido pelo arquiteto).
+
+### P1 D2 no build: medido, OK
+
+- `T3:D2-coordenada` do `Test-ThemeDefaults.ps1` (que não mudou), o mesmo ponto (555519,9 9585490,5) e o mesmo campo de
+  167 px fixado pelo QGIS: **161 px úteis, 152 px de texto, cabe**, no perfil novo e no semeado
+  (`patch-049p/build-perfil-novo/result.json`, `patch-049p/build-perfil-semeado-0.4.0/result.json`).
+- Captura `patch-049p/build-perfil-novo/09b-campo-de-coordenadas.png`: `555519,90000  9585490,50000`, com o primeiro
+  dígito do Leste.
+- **Visto falhando:** a medição da `51968a5220`, acima (achado 1): 147 px úteis, o Leste cortado.
+
+### P2 Barra de status inteira: medido, mudou e segue legível
+
+Captura nova `patch-049p/build-perfil-novo/09-barra-de-status.png` contra a `build-perfil-novo/09-barra-de-status.png`
+da `51968a5220`, pixel a pixel por faixa da barra (1920x40, as duas):
+
+| Faixa | Pixels diferentes | O que mudou |
+|---|---|---|
+| localizador | 1228 | o texto de ajuda ("Escreva para localizar") começa 9 px mais à esquerda (primeira coluna de tinta: x 51 para 42), ainda depois da lupa, sem encostar; `09-comparacao-localizador-antes-depois.png` (4x) |
+| mensagem ("Carregando camada points") | 1307 | a mensagem começa 8 px mais à esquerda (x 325 para 317) |
+| coordenada | 1566 | a coordenada inteira (P1) |
+| escala | 0 | nada |
+| lupa | 0 | nada |
+| rotação | 235 | o `0,0 °` começa 9 px mais à esquerda (x 1598 para 1589); `09-comparacao-rotacao-antes-depois.png` (4x). O topo do glifo já saía rente à borda antes do patch, igual nas duas |
+| o resto (Renderizar, mensagens) | 0 | nada |
+
+Nada ficou ilegível: não é STOP. As outras capturas da ponta nova, contra as da `51968a5220`: iguais pixel a pixel no
+menu aberto, barra de menus, barra de ferramentas, título de dock, abas, Opções > SRC, barra de rolagem e dica; nas
+demais, só a barra de status (janela inteira), a cor sorteada do símbolo da camada de pontos, a data do exemplo e a pasta
+da rodada (Opções > Geral), e a tabela de atributos saiu na escala 1,25 (961x441 contra 769x353, o mesmo conteúdo).
+
+### P3 Nada mais mudou: medido, OK
+
+- `Test-ThemeQss.ps1` na árvore: **9 de 9** (`patch-049p/tema-qss/result.json`); 12 raios de 2px, os 2 cantos da aba, zero
+  hex órfão (T4), sem `titlebar-close-icon`, sem as regras da camada de marca.
+- **Visto falhando e mutantes** (`patch-049p/tema-qss/mutantes-e-41561ea755.txt`): o `style.qss` da `41561ea755` reprova
+  na asserção 9; o mutante que tira a regra nova reprova na 9; **o mutante D2 que já existia, o com `padding-left: 1px` e
+  o com `padding: 0` na regra nova têm 1 reprovação cada na asserção 3** (os dois últimos também na 9); D1, D4, órfão e
+  raio seguem caindo nas asserções 6, 4, 7 e 1.
+- Diff sem comentários do `style.qss` contra a `41561ea755`: só a linha da regra nova
+  (`diff <(git show '41561ea755:iman/brand/theme/IMAN Terra/style.qss' | strip) <(strip < style.qss)`, com `strip` =
+  `perl -0777 -pe 's{/\*.*?\*/}{}gs' | grep -v '^\s*$'`: `> QStatusBar QLineEdit { padding-left: 0; padding-right: 0; }`).
+- `Test-ThemeDefaults.ps1` no build: T1 perfil novo e semeado (`IMAN Terra`, folha de 10.929 caracteres: os 10.560 de antes
+  mais o comentário e a regra), T1 visto falhando (`UI/UITheme=default` gravado: `default`, folha vazia) e
+  `Blend of Gray` gravado (`Blend of Gray`); T5 (`EPSG:31984` no arranque e no projeto novo, Opções > SRC); T9 (os temas de
+  fábrica na lista e escolhíveis); D1 e D4 iguais aos de antes. Guarda OK em cada rodada.
+
+### P4 Instalado: medido, OK
+
+- **Máquina sem o IMAN Terra antes** (`patch-049p/ciclo/pre-ciclo.txt`): sem a pasta do produto, sem entrada de
+  desinstalação, sem processo da árvore. Os dados do produto da sessão do 049 (2026-10-30) existiam e foram apagados pelo
+  `-ResetProductData` do próprio `Test-Installed.ps1`, com o sim do sponsor na sessão (só as pastas e a chave do produto;
+  as `.antes-*` e o QGIS oficial não foram tocados).
+- Instalador desta ponta: `D:\iman-terra-build\dist\0.4.0-c086bde009\Instituto-IMAN-IMAN-Terra-Setup-0.4.0-c086bde009.exe`,
+  512.782.201 bytes, SHA-256 `35802d4dd13a00f19735419c5e87ac32b7dd554d1ac40cd41e74adfcc6205f43`, ISCC 799 s.
+- Instalar (`patch-049p/ciclo/result-install.json`): 84 s, sem elevação, perfil da distro intacto, guarda OK.
+- `Test-Installed.ps1` inteiro (`patch-049p/instalado/result.json`): A2, A3, A5, A7 e A9 OK, guarda OK.
+- `Test-ThemeDefaults.ps1 -Target Installed`, perfil novo (`patch-049p/instalado-perfil-novo/`): T1 (`IMAN Terra`), o
+  tema na árvore instalada com o sha256 do repo, T5, T9, D1, D4 e **P1: 161 px úteis, cabe**; capturas `09` e `09b`.
+- Desinstalar (`patch-049p/ciclo/result-uninstall.json`): 11 s, a árvore, os atalhos, as associações e a entrada saíram,
+  guarda OK. **A sessão terminou com o IMAN Terra desinstalado.**
+
+### P5 Regressões: medido
+
+- `Test-Patchset.ps1`: `PATCHSET OK`, 13 de 13, sem linha nova no `PATCHES.md` (`patch-049p/patchset.txt`).
+- `Test-NoEcw.ps1` na árvore instalada: OK, com o visto falhando no oficial (`patch-049p/sem-ecw/result.json`).
+- `Test-RuntimeSet.ps1`: reprova só pelo `gdal-ecw` (R1 do gate do `047p`); 152 pacotes com a mesma lista de arquivos; o
+  "só no nosso build" é a mesma lista do 049 (`patch-049p/conjunto/`).
+- A guarda passou em toda etapa: no build (antes de cada medição), na instalação, nos testes da árvore instalada e na
+  desinstalação.
+
+### P6 Gate: N/E nesta pasta
+
+A 2a e última rodada é do sponsor, num terminal com janela própria, depois do push; o resultado vai no `/deliver`.
+
 ## Testes pré-existentes
 
-Nenhum teste pré-existente mudou. Testes novos: `iman/build/Test-ThemeQss.ps1`, `iman/build/Test-ThemeDefaults.ps1`,
+Nenhum teste pré-existente mudou na fatia. Testes novos: `iman/build/Test-ThemeQss.ps1`, `iman/build/Test-ThemeDefaults.ps1`,
 `iman/build/smoke/theme_facts.py` e o fixture `iman/build/smoke/fixtures/profile-0.4.0/IMANTerra.ini`.
+
+No patch 049p, por ordem do briefing do patch (lista fechada): `Test-ThemeQss.ps1` ganhou a asserção 9 e teve a asserção
+3 estreitada (correção de 2026-11-04). Nenhuma outra asserção, nenhum outro teste e nenhum `smoke/expected/*.txt` mudou.
