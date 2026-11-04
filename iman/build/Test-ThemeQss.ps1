@@ -8,12 +8,15 @@
   sairam. "Screenshot nao distingue 2px de 5px": o que a captura nao mede, esta guarda mede. Assercoes:
     1. exatamente 12 declaracoes de border-radius, todas 2px;
     2. QMenuBar::item com padding exatamente 3px 4px;
-    3. QStatusBar sem padding (licao D2 do D-IMAN-033: o padding espremia o campo de coordenadas);
+    3. QStatusBar sem padding (licao D2 do D-IMAN-033: o padding espremia o campo de coordenadas), salvo
+       padding-left e padding-right com valor 0 ou 0px (patch 049p, emenda de 2026-11-04 ao D-IMAN-040);
     4. QDockWidget::title sem padding vertical (licao D4: cortava o titulo);
     5. os 2 cantos especificos da aba (border-top-*-radius) em 2px;
     6. sem titlebar-close-icon (licao D1: apagava o botao de fechar das docks);
     7. zero hex orfao (D-IMAN-026): todo hex das regras esta na paleta do cabecalho do proprio arquivo;
-    8. nenhuma das seis regras da camada de marca da distro (widgets do plugin de marca, que o fork nao tem).
+    8. nenhuma das seis regras da camada de marca da distro (widgets do plugin de marca, que o fork nao tem);
+    9. QStatusBar QLineEdit zera padding-left e padding-right (D2 no fork: sem o recuo horizontal da regra geral dos
+       campos, a coordenada cabe na largura que o QGIS da ao campo; patch 049p).
   -Out grava o resultado em JSON. Sai com 0 se tudo passa; com 1 nomeando a linha do que falhou.
 #>
 [CmdletBinding()]
@@ -57,8 +60,17 @@ $blocks = [regex]::Matches($rules, '([^{}]+)\{([^}]*)\}') | ForEach-Object {
   [pscustomobject]@{ Selector = ($_.Groups[1].Value -replace '\s+', ' ').Trim(); Body = $_.Groups[2].Value
     Line = ($rules.Substring(0, $_.Groups[2].Index) -split "`n").Count }
 }
-$status = @($blocks | Where-Object { $_.Selector -match 'QStatusBar' -and $_.Body -match '(?<![-\w])padding(-top|-bottom|-left|-right)?\s*:' })
-Add-Check 3 'QStatusBar sem padding (D2)' @($status | ForEach-Object { "linha $($_.Line): $($_.Selector) com padding" }) ([ordered]@{ blocks = $status.Count })
+# a unica excecao (patch 049p, emenda de 2026-11-04 ao D-IMAN-040): padding-left e padding-right com valor 0 ou 0px
+$status = @($blocks | Where-Object { $_.Selector -match 'QStatusBar' } | ForEach-Object {
+  $b = $_
+  foreach ($m in [regex]::Matches($b.Body, '(?<![-\w])padding(-top|-bottom|-left|-right)?\s*:\s*([^;}]*)')) {
+    $side = $m.Groups[1].Value; $value = $m.Groups[2].Value.Trim()
+    if (-not ($side -in '-left', '-right' -and $value -match '^0(px)?$')) {
+      [pscustomobject]@{ Line = $b.Line; Selector = $b.Selector; Declaration = "padding${side}: $value" }
+    }
+  }
+})
+Add-Check 3 'QStatusBar sem padding (D2)' @($status | ForEach-Object { "linha $($_.Line): $($_.Selector) com $($_.Declaration)" }) ([ordered]@{ blocks = @($status | Select-Object -Unique Line).Count })
 
 $dock = @($blocks | Where-Object { $_.Selector -match 'QDockWidget::title' -and $_.Body -match '(?<![-\w])padding(-top|-bottom)?\s*:' })
 Add-Check 4 'QDockWidget::title sem padding vert.' @($dock | ForEach-Object { "linha $($_.Line): $($_.Selector) com padding vertical" }) ([ordered]@{ blocks = $dock.Count })
@@ -83,6 +95,14 @@ Add-Check 7 'zero hex orfao (V.5)' $p ([ordered]@{ palette = $palette.Count; use
 
 $brandLayer = @(Get-Matches '#(qa|qatile|rec|ImanHomeVersao|ImanSobreCreditos|ImanTerraMenuBtn)\b')
 Add-Check 8 'sem regras da camada de marca' @($brandLayer | ForEach-Object { "linha $($_.Line): $($_.Match.Value)" }) ([ordered]@{ found = $brandLayer.Count })
+
+# o valor que vale e o da ultima declaracao, na ordem do arquivo, dos blocos cuja lista de seletores tem QStatusBar QLineEdit
+$coordinate = [ordered]@{ 'padding-left' = '<ausente>'; 'padding-right' = '<ausente>' }
+foreach ($b in $blocks | Where-Object { 'QStatusBar QLineEdit' -in @($_.Selector -split ',' | ForEach-Object { $_.Trim() }) }) {
+  foreach ($m in [regex]::Matches($b.Body, '(?<![-\w])(padding-left|padding-right)\s*:\s*([^;}]*)')) { $coordinate[$m.Groups[1].Value] = $m.Groups[2].Value.Trim() }
+}
+$p = @($coordinate.Keys | Where-Object { $coordinate[$_] -notmatch '^0(px)?$' } | ForEach-Object { "QStatusBar QLineEdit com $_ '$($coordinate[$_])'" })
+Add-Check 9 'QStatusBar QLineEdit padding-h 0 (D2)' $p $coordinate
 
 $ok = $failures.Count -eq 0
 [ordered]@{ qss = $Qss; sha256 = (Get-FileHash -Algorithm SHA256 $Qss).Hash.ToLowerInvariant(); ok = $ok; checks = $results } |
