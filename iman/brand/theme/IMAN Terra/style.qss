@@ -85,10 +85,15 @@ QStatusBar QToolButton:hover { background-color: rgba(16,40,30,0.06); }
    104 - cabia 1 caractere de 19. So a borda (2 px) fica; o resto e recuo que
    o campo nao tem para dar. Na distro, o plugin de marca ainda reservava a
    largura do texto; no IMAN Terra compilado esse ajuste nao existe (D-IMAN-040,
-   emenda de 2026-10-29, item 5), e a largura e a que o QGIS calcula. */
+   emenda de 2026-10-29, item 5), e a largura e a que o QGIS calcula. Por isso,
+   no fork, o tema zera no campo de texto da barra de status o recuo horizontal
+   que a regra geral dos campos (padding: 3px 7px) traria: com ele sobravam 147 px
+   para 152 de texto, sem ele sobram 161 (emenda de 2026-11-04 ao D-IMAN-040). O
+   padding vertical e o do QComboBox ficam como estao. */
 QStatusBar QLineEdit, QStatusBar QComboBox {
     background-color: #FFFFFF; color: #1A231D; border: 1px solid #D0D5C9; border-radius: 2px;
 }
+QStatusBar QLineEdit { padding-left: 0; padding-right: 0; }
 
 /* ---- Docks / paineis: header CLARO, texto verde de marca, cantos suaves ----
    D1 (#017/A01 da distro): NAO reintroduzir `QDockWidget { titlebar-close-icon: none; }`.
