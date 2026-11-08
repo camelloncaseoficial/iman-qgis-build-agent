@@ -14,7 +14,9 @@
     2. so no Build: qgis_process run native:buffer no fixture points.geojson; confere 3 feicoes na saida;
     3. qgis.exe (ou o qgis-ltr-bin.exe do oficial) abre a janela, carrega o smoke.qgz, coleta os fatos de marca
        (smoke_gui.py), exporta um PDF de layout, salva uma copia do projeto, grava capturas e fecha;
-    4. checagens de marca (marca:*), contra iman/brand/brand.json e iman/brand/derived;
+    4. checagens de marca (marca:*), contra iman/brand/brand.json e iman/brand/derived; desde a fatia 051,
+       marca:plugin-reurb: o plugin da trava (iman/plugin/plugin.lock.json) em qgis.utils.active_plugins, carregado
+       de python\plugins da arvore do alvo, na versao da trava (no oficial, sem o plugin, cai: visto falhando);
     5. guarda: Test-OfficialQgisUntouched.ps1 (o QGIS oficial, os dados e o registro dele nao mudaram).
   Veredito: no Build, todo passo tem de passar. No Official sem -Lang, os passos de comportamento e o controle do
   Sobre tem de passar e TODA checagem de marca tem de falhar: e a prova de que a checagem enxerga a marca.
@@ -133,6 +135,8 @@ Copy-Item "$fx\points.geojson" $work -Force
 Compress-Archive -Path "$stage\smoke.qgs" -DestinationPath $qgz -Force
 $env:IMAN_SMOKE_OUT = $run
 $env:IMAN_SMOKE_PROJECT = $qgz
+$pluginLock = Get-PluginLock
+$env:IMAN_SMOKE_PLUGIN_ID = $pluginLock.id
 $t0 = Get-Date
 $guiArgs = @('--profiles-path', "`"$profiles`"", '--profile', 'iman-smoke', '--nologo', '--noversioncheck')
 if ($Lang) { $guiArgs += @('--lang', $Lang) }
@@ -144,6 +148,7 @@ if ($Target -eq 'Installed') {
   foreach ($k in $plainEnv.Keys) { [Environment]::SetEnvironmentVariable($k, $plainEnv[$k], 'Process') }
   $env:IMAN_SMOKE_OUT = $run
   $env:IMAN_SMOKE_PROJECT = $qgz
+  $env:IMAN_SMOKE_PLUGIN_ID = $pluginLock.id
   $p = Start-Process -FilePath $guiExe -PassThru -ArgumentList $guiArgs
   foreach ($k in @([Environment]::GetEnvironmentVariables('Process').Keys)) { [Environment]::SetEnvironmentVariable($k, $null, 'Process') }
   foreach ($k in $runtimeEnv.Keys) { [Environment]::SetEnvironmentVariable($k, $runtimeEnv[$k], 'Process') }
@@ -234,6 +239,18 @@ if ($g) {
   $xmp = @($g.pdf.xmp_creator_tool) + @($g.pdf.xmp_producer)
   $pdfOk = $g.pdf.status -eq 0 -and $lastCreator -eq $creator -and $lastProducer -eq $creator -and $xmp.Count -gt 0 -and @($xmp | Where-Object { $_ -ne $creator }).Count -eq 0
   Add-Result 'marca:pdf' $pdfOk ([ordered]@{ expected = $creator; status = $g.pdf.status; creator = $lastCreator; producer = $lastProducer; xmp = $xmp; allInfoCreator = $g.pdf.creator; allInfoProducer = $g.pdf.producer })
+
+  # plugin embarcado (fatia 051): ativo, da pasta python\plugins do alvo (nao de um perfil), na versao da trava
+  $pl = $g.plugins
+  $pluginDir = Join-Path $app "python\plugins\$($pluginLock.id)"
+  $fromTree = $false
+  if ($pl.module_file -and (Test-Path $pl.module_file) -and (Test-Path $pluginDir)) {
+    # o QGIS instalado pode devolver o caminho na forma 8.3: compara as formas curtas
+    $fso = New-Object -ComObject Scripting.FileSystemObject
+    $fromTree = $fso.GetFolder((Split-Path $pl.module_file)).ShortPath -eq $fso.GetFolder($pluginDir).ShortPath
+  }
+  Add-Result 'marca:plugin-reurb' ($pluginLock.id -in @($pl.active) -and $fromTree -and $pl.version -eq $pluginLock.version) ([ordered]@{
+      id = $pluginLock.id; active = @($pl.active); moduleFile = $pl.module_file; fromTree = $fromTree; version = $pl.version; lockVersion = $pluginLock.version; setting = $pl.setting })
 
   # controle negativo do BL-1: o logo do Sobre e o do QGIS, byte a byte, nos dois alvos
   $fullSha = Get-Sha (Join-Path $RepoRoot 'images\icons\qgis-full.png')

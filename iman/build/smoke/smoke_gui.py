@@ -5,6 +5,7 @@ import hashlib
 import json
 import os
 import re
+import sys
 
 from qgis.core import (
     Qgis,
@@ -21,6 +22,7 @@ from qgis.core import (
 from qgis.PyQt.QtCore import QCoreApplication, QFile, QIODevice, QObject, QTimer, QUrl, pyqtSlot
 from qgis.PyQt.QtGui import QDesktopServices
 from qgis.PyQt.QtWidgets import QAction
+import qgis.utils
 from qgis.utils import iface
 
 out_dir = os.environ["IMAN_SMOKE_OUT"]
@@ -128,6 +130,17 @@ def collect_brand():
     result["help_actions"] = urls
 
 
+def collect_plugins():
+    """Plugins Python ativos (fatia 051) e, para o id de IMAN_SMOKE_PLUGIN_ID, de onde e qual versao carregou."""
+    plugin_id = os.environ.get("IMAN_SMOKE_PLUGIN_ID", "")
+    info = {"active": sorted(qgis.utils.active_plugins), "id": plugin_id}
+    module = sys.modules.get(plugin_id) if plugin_id else None
+    info["module_file"] = getattr(module, "__file__", None)
+    info["version"] = qgis.utils.pluginMetadata(plugin_id, "version") if plugin_id else None
+    info["setting"] = QgsSettings().value("PythonPlugins/%s" % plugin_id) if plugin_id else None
+    result["plugins"] = info
+
+
 def export_pdf():
     project = QgsProject.instance()
     layout = QgsPrintLayout(project)
@@ -215,7 +228,7 @@ def capture_and_exit():
     result["window_size"] = [window.width(), window.height()]
     window.grab().save(os.path.join(out_dir, "gui.png"))
     iface.mapCanvas().saveAsImage(os.path.join(out_dir, "canvas.png"))
-    for step in (collect_brand, export_pdf, save_project_copy):
+    for step in (collect_brand, collect_plugins, export_pdf, save_project_copy):
         try:
             step()
         except Exception as err:  # um passo que quebra vira fato, nao derruba o smoke
