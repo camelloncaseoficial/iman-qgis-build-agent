@@ -1,0 +1,8 @@
+pre-ciclo do patch 049p, 2026-11-04T19:18:18
+Programs\IMAN Terra existe: False
+Programs com IMAN: IMAN Terra.SOBRAS-GATE
+entradas de desinstalacao IMAN: 0
+processos da arvore: 0
+dado do produto %USERPROFILE%\AppData\Roaming\InstitutoIMAN\IMANTerra: True (da sessao 049, 2026-10-30; o -ResetProductData do Test-Installed o apaga, com o sim do sponsor)
+dado do produto %USERPROFILE%\AppData\Local\InstitutoIMAN\IMANTerra: True (da sessao 049, 2026-10-30; o -ResetProductData do Test-Installed o apaga, com o sim do sponsor)
+dado do produto HKCU:\Software\InstitutoIMAN\IMANTerra: True (da sessao 049, 2026-10-30; o -ResetProductData do Test-Installed o apaga, com o sim do sponsor)

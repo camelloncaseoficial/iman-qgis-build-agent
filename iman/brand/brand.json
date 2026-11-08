@@ -14,5 +14,9 @@
     "supportProvidersUrl": "product_url"
   },
   "qgis_news_feed": false,
-  "qgis_version_check": false
+  "qgis_version_check": false,
+  "ui_theme": "IMAN Terra",
+  "default_project_crs": "EPSG:31984",
+  "new_project_crs_behavior": "UsePresetCrs",
+  "layer_default_crs": "EPSG:31984"
 }

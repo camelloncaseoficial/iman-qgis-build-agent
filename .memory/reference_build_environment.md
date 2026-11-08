@@ -80,3 +80,35 @@ Medido no patch da fatia 047 (2026-10-29), laudo `iman/docs/verify/047-instalado
 - **Memoria:** um build em segundo plano foi interrompido pelo ambiente por pouca memoria (com ~9 GB livres); o
   Claude Code nao reinicia sozinho. O incremental retoma de onde parou.
 - **Tempos:** arvore de runtime 58 a 111 s; ISCC 709 s; instalar 88 s; desinstalar 11 a 15 s.
+
+Medido na fatia 049 (2026-10-30), laudo `iman/docs/verify/049-tema-e-padroes/README.md`:
+
+- **O 0.4.0 estava instalado de novo** (2026-10-29 15:10, smoke do sponsor). Desinstalado pelo `unins000.exe` (18 s) e
+  as sobras do produto renomeadas com o sufixo `.antes-049` (decisao do sponsor; `.reg` em
+  `D:\iman-terra-build\verify\049-pre-ciclo`). Ficaram tambem as `.antes-047-patch`. A sessao terminou desinstalado.
+- **Rodar o alvo Build cria `%LOCALAPPDATA%\InstitutoIMAN\IMANTerra\cache`**, mesmo com perfil descartavel (o
+  `Invoke-Smoke.ps1` tambem). O `A2:perfil-novo-antes` do `Test-Installed.ps1` exige a pasta ausente: rodar o
+  `Test-Installed` antes das medicoes do build, ou com `-ResetProductData`.
+- **O QGIS instalado devolve caminhos na forma 8.3** (`C:/Users/FRANCI~1/...`): comparar pastas pela forma curta.
+- **Captura da barra de status logo depois de mudar a coordenada sai com o layout velho** (rotulo e icone sobre o
+  campo, no oficial tambem): mudar antes da espera. O `QToolTip.showText` so aparece no ciclo de eventos seguinte.
+- **O painel Navegador lista as unidades da maquina com nome e e-mail de conta:** fora de captura que vai para o laudo.
+- **Disco:** D: com 33 GB livres no comeco (abaixo do teto de 50 GB do briefing; seguiu por decisao do sponsor), 31 GB
+  no fim; C: 254 GB.
+- **Tempos:** build incremental (so qgsversion.h) 51 s + install 173 s; arvore de runtime 85 s; ISCC 741 s; instalar
+  89 s; desinstalar 11 s.
+
+
+Medido no patch 049p (2026-11-04), laudo `iman/docs/verify/049-tema-e-padroes/README.md`, secao "Patch 049p":
+
+- **Dados do produto da sessao 049 apagados** pelo `-ResetProductData` do `Test-Installed.ps1` (sim do sponsor); as
+  `.antes-*` ficaram. Depois do ciclo, `%APPDATA%\InstitutoIMAN\IMANTerra` voltou a existir (perfil da rodada, fica na
+  desinstalacao) e o cache do alvo Build tambem: o proximo `Test-Installed` precisa de novo do `-ResetProductData`.
+- **O gate pelo pwsh desta ferramenta caiu no titulo do console** (0xE9, rodada 1 da fatia 049): o build aninhado nao
+  tem console. A rodada do gate vai para o sponsor, num terminal com janela propria.
+- **Captura da tabela de atributos** saiu na escala 1,25 numa rodada (961x441 contra 769x353): comparar por regra, nao
+  por tamanho.
+- **`gh` sem `--repo` resolve para o upstream `qgis/QGIS`** (o remoto `upstream`): o `/deliver` da 049 leu "sem PR" assim, com o PR #5 aberto. Todo `gh` leva `--repo camelloncaseoficial/iman-qgis-build-agent`.
+- **Disco:** D: 92 GB livres no comeco; C: 226 GB.
+- **Tempos:** build incremental (so o qgsversion.h) 70 s + configure 185 s + install 153 s, 7 min no total; arvore de
+  runtime 62 s; ISCC 799 s; instalar 84 s; desinstalar 11 s.

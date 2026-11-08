@@ -1,0 +1,192 @@
+{
+  "captures": {
+    "07-opcoes-src.png": [
+      1029,
+      734
+    ],
+    "08-opcoes-geral.png": [
+      1029,
+      734
+    ],
+    "11-barra-de-rolagem.png": [
+      17,
+      699
+    ],
+    "12-dica.png": [
+      250,
+      20
+    ],
+    "01-janela.png": [
+      1536,
+      940
+    ],
+    "03-barra-de-menus.png": [
+      1536,
+      22
+    ],
+    "04-barra-de-ferramentas.png": [
+      198,
+      34
+    ],
+    "02-menu-aberto.png": [
+      304,
+      465
+    ],
+    "05-dock-titulo.png": [
+      294,
+      32
+    ],
+    "05b-dock-inteiro.png": [
+      294,
+      823
+    ],
+    "09b-campo-de-coordenadas.png": [
+      167,
+      19
+    ],
+    "09-barra-de-status.png": [
+      1536,
+      27
+    ],
+    "10-tabela-de-atributos.png": [
+      563,
+      320
+    ],
+    "06-abas.png": [
+      294,
+      20
+    ],
+    "13-tema-blend-of-gray.png": [
+      1536,
+      940
+    ],
+    "13-tema-night-mapping.png": [
+      1536,
+      940
+    ]
+  },
+  "theme": {
+    "themeName": "default",
+    "styleSheetLength": 0,
+    "qtStyle": "QgsAppStyle",
+    "uiThemes": [
+      "Blend of Gray",
+      "IMAN Terra",
+      "Night Mapping",
+      "default"
+    ],
+    "themePaths": {
+      "Blend of Gray": "D:/iman-terra-build/install/apps/qgis-ltr/resources/themes/Blend of Gray",
+      "IMAN Terra": "D:/iman-terra-build/install/apps/qgis-ltr/resources/themes/IMAN Terra",
+      "Night Mapping": "D:/iman-terra-build/install/apps/qgis-ltr/resources/themes/Night Mapping"
+    },
+    "defaultThemesFolder": "D:/iman-terra-build/install/apps/qgis-ltr/./resources/themes",
+    "userThemesFolder": "D:\\iman-terra-build\\smoke\\theme-build-usertheme-default-20261030-173026\\profiles\\profiles\\iman-smoke//themes",
+    "settingUITheme": "default"
+  },
+  "crs": {
+    "atStart": "EPSG:31984",
+    "defaultProjectCrs": "EPSG:31984",
+    "newProjectCrsBehavior": "UsePresetCrs",
+    "layerDefaultCrs": "EPSG:31984",
+    "unknownCrsBehavior": "NoAction",
+    "defaultCrsForNewLayers": "EPSG:31984",
+    "afterNewProject": "EPSG:31984",
+    "afterNewProjectDescription": "SIRGAS 2000 / UTM zone 24S"
+  },
+  "distroLayerKey": {
+    "probe": "EPSG:5880",
+    "before": "EPSG:31984",
+    "withDistroKey_app_projections_layerDefaultCrs": "EPSG:31984",
+    "withKey_Projections_layerDefaultCrs": "EPSG:5880",
+    "after": "EPSG:31984"
+  },
+  "options": {
+    "found": true,
+    "projectGlobalCrs": "EPSG:31984",
+    "layerGlobalCrs": "EPSG:31984",
+    "radProjectUseCrsOfFirstLayer": {
+      "checked": false,
+      "text": "Use SRC para adicionar primeira camada"
+    },
+    "radProjectUseDefaultCrs": {
+      "checked": true,
+      "text": "&Usar um SRC padrão"
+    },
+    "cmbUITheme": {
+      "current": "default",
+      "items": [
+        "Blend of Gray",
+        "IMAN Terra",
+        "Night Mapping",
+        "default"
+      ]
+    },
+    "scrollBarWidth": 17
+  },
+  "projectRead": true,
+  "menuTitle": "Pro&jeto",
+  "dock": {
+    "title": "Camadas",
+    "buttons": {
+      "qt_dockwidget_floatbutton": {
+        "visible": true,
+        "size": [
+          21,
+          21
+        ],
+        "iconNull": false,
+        "ink": 168,
+        "pixels": 676
+      },
+      "qt_dockwidget_closebutton": {
+        "visible": true,
+        "size": [
+          21,
+          21
+        ],
+        "iconNull": false,
+        "ink": 152,
+        "pixels": 676
+      }
+    },
+    "titleBarHeight": 28,
+    "titleFontHeight": 12,
+    "titleTextWidth": 40,
+    "dockWidth": 294
+  },
+  "dockCloseReopen": {
+    "closedByButton": true,
+    "reopened": true
+  },
+  "coordinateField": {
+    "found": true,
+    "text": "555519,90000  9585490,50000",
+    "width": 167,
+    "minimumWidth": 167,
+    "maximumWidth": 167,
+    "contentsWidth": 165,
+    "available": 161,
+    "needed": 152,
+    "fits": true
+  },
+  "statusBarCrs": null,
+  "tabs": [
+    "Camadas",
+    "Navegador"
+  ],
+  "switchThemes": {
+    "Blend of Gray": {
+      "themeName": "Blend of Gray",
+      "styleSheetLength": 35624
+    },
+    "Night Mapping": {
+      "themeName": "Night Mapping",
+      "styleSheetLength": 37487
+    },
+    "default": {
+      "themeName": "default",
+      "styleSheetLength": 0
+    }
+  }
+}

@@ -1,0 +1,44 @@
+# git diff --no-index resources/qgis_global_settings.ini <instalacao do build>/resources/qgis_global_settings.ini (build 51968a5220)
+@@ -6 +6 @@
+-checkVersion=true
++checkVersion=false
+@@ -12 +12 @@ checkVersion=true
+-allowVersionCheck=true
++allowVersionCheck=false
+@@ -109 +109 @@ projections\promptWhenMultipleTransformsExist=true
+-projections\defaultProjectCrs=EPSG:4326
++projections\defaultProjectCrs=EPSG:31984
+@@ -114 +114 @@ projections\defaultProjectCrs=EPSG:4326
+-projections\newProjectCrsBehavior=UseCrsOfFirstLayerAdded
++projections\newProjectCrsBehavior=UsePresetCrs
+@@ -273,0 +274,21 @@ gpsbabelPath=gpsbabel
++
++# Chaves da marca do produto, geradas de iman/brand/brand.json por iman/brand/build_brand.py
++[locale]
++overrideFlag=true
++userLocale=pt_BR
++
++[core]
++httpsfeedqgisorg\disabled=true
++
++[qgis]
++helpQgisHomePageUrl=https://institutoiman.org.br
++reportaBugUrl=https://institutoiman.org.br
++supportProvidersUrl=https://institutoiman.org.br
++
++# tema de interface padrao (pasta em resources/themes, copiada pelo Build-Qgis.ps1 de iman/brand/theme)
++[UI]
++UITheme=IMAN Terra
++
++# SRC de camada sem SRC: lida sem a secao app (Projections/layerDefaultCrs em qgsproject.cpp e qgisapp.cpp)
++[Projections]
++layerDefaultCrs=EPSG:31984
+
+# contagem de cada chave no .ini gerado (T5: 1 = sem duplicata)
+1 projections\defaultProjectCrs=
+1 projections\newProjectCrsBehavior=
+1 UITheme=
+1 layerDefaultCrs=
+1 checkVersion=
+1 allowVersionCheck=
+# contagem: linhas do .ini da instalacao que comecam pela chave (count.py da sessao; equivale a grep -c -F no inicio da linha)

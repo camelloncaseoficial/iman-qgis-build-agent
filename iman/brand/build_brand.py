@@ -10,8 +10,9 @@ resources/qgis_global_settings.ini do proprio QGIS.
 Saidas (fora do repo, em --out):
   - iman_<locale>.ts: a traducao sobreposta (D-IMAN-041, regra 2), so com as mensagens das classes aplicativo e
     versao da curadoria e as superficies do Bloco D ('extra'); o Build-Qgis.ps1 compila com o lrelease fixado;
-  - qgis_global_settings.ini: o do QGIS com a checagem de versao desligada, mais o idioma padrao, o feed de
-    noticias desligado e os enderecos do menu Ajuda;
+  - qgis_global_settings.ini: o do QGIS com a checagem de versao desligada e o SRC padrao de projeto novo (trocados
+    no lugar), mais o idioma padrao, o feed de noticias desligado, os enderecos do menu Ajuda, o tema de interface
+    padrao e o SRC de camada sem SRC (fatia 049);
   - --header: iman_brand.h, os textos de marca para o C++ (Bloco D). So e regravado se o conteudo mudou, para nao
     recompilar a toa.
 
@@ -101,20 +102,34 @@ def write_global_settings(path, brand):
     with io.open(QGIS_GLOBAL_SETTINGS, "r", encoding="utf-8") as fh:
         lines = fh.read().split("\n")
     version_check = "true" if brand["qgis_version_check"] else "false"
-    replaced = set()
+    # chaves que o ini do QGIS ja tem, trocadas no lugar: (secao, chave) -> valor
+    in_place = {
+        ("qgis", "checkVersion"): version_check,
+        ("qgis", "allowVersionCheck"): version_check,
+        ("app", "projections\\defaultProjectCrs"): brand["default_project_crs"],
+        ("app", "projections\\newProjectCrsBehavior"): brand["new_project_crs_behavior"],
+    }
+    # chaves que o ini do QGIS nao tem e que vao no fim, em secao propria: se ele passar a te-las, duplicaria
+    appended = {("UI", "UITheme"), ("Projections", "layerDefaultCrs")}
+    replaced = []
+    present = []
     group = None
     for i, line in enumerate(lines):
         m = re.match(r"^\[(.+)\]$", line)
         if m:
             group = m.group(1)
             continue
-        if group == "qgis":
-            for key in ("checkVersion", "allowVersionCheck"):
-                if line.startswith(key + "="):
-                    lines[i] = "%s=%s" % (key, version_check)
-                    replaced.add(key)
-    if replaced != {"checkVersion", "allowVersionCheck"}:
-        raise SystemExit("qgis_global_settings.ini do QGIS mudou: chaves de versao achadas %s" % sorted(replaced))
+        for section, key in in_place:
+            if group == section and line.startswith(key + "="):
+                lines[i] = "%s=%s" % (key, in_place[(section, key)])
+                replaced.append((section, key))
+        for section, key in appended:
+            if group == section and line.startswith(key + "="):
+                present.append((section, key))
+    if sorted(replaced) != sorted(in_place):
+        raise SystemExit("qgis_global_settings.ini do QGIS mudou: chaves trocadas no lugar achadas %s" % sorted(replaced))
+    if present:
+        raise SystemExit("qgis_global_settings.ini do QGIS mudou: ja tem %s" % sorted(present))
     while lines and lines[-1] == "":
         lines.pop()
     urls = {k: brand[v] for k, v in brand["help_urls"].items()}
@@ -129,7 +144,17 @@ def write_global_settings(path, brand):
         "%s=%s" % (NEWS_FEED_KEY, "false" if brand["qgis_news_feed"] else "true"),
         "",
         "[qgis]",
-    ] + ["%s=%s" % (k, urls[k]) for k in sorted(urls)] + [""]
+    ] + ["%s=%s" % (k, urls[k]) for k in sorted(urls)] + [
+        "",
+        "# tema de interface padrao (pasta em resources/themes, copiada pelo Build-Qgis.ps1 de iman/brand/theme)",
+        "[UI]",
+        "UITheme=%s" % brand["ui_theme"],
+        "",
+        "# SRC de camada sem SRC: lida sem a secao app (Projections/layerDefaultCrs em qgsproject.cpp e qgisapp.cpp)",
+        "[Projections]",
+        "layerDefaultCrs=%s" % brand["layer_default_crs"],
+        "",
+    ]
     with io.open(path, "w", encoding="utf-8", newline="\n") as fh:
         fh.write("\n".join(lines))
 
