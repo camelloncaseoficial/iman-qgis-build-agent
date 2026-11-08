@@ -20,6 +20,13 @@ python3 iman/brand/derive_assets.py --check
 python3 iman/brand/build_brand.py --measure <qgis_pt_BR.ts convertido do .qm pelo lconvert>
 ```
 
+## A marca fica fora da GPL
+
+A GPL cobre o codigo. O nome e a marca IMAN e IMAN Terra, e a logo de folha e globo (o splash, os icones e o simbolo
+desta pasta), pertencem ao Instituto IMAN e nao sao licenciados pela GPL; o uso deles depende de autorizacao do
+Instituto IMAN. (Emenda de 2026-10-30 (b) ao D-IMAN-040, fatia 051; o mesmo aviso vai no `THIRD_PARTY_NOTICES.md`
+instalado, secao 7.)
+
 ## Assets aprovados (origem)
 
 Copiados de `../iman-qgis-distro-agent/app/assets/` (distro congelada, `HEAD` `59ac0ce`, ultimo commit dos quatro

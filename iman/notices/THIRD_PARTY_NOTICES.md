@@ -11,7 +11,8 @@ O instalador do IMAN Terra carrega uma árvore completa de programas: o QGIS 3.4
 a partir de um fork público do código-fonte do QGIS, com modificações** (seção 2), e o conjunto de pacotes OSGeo4W
 que o QGIS 3.44.13 oficial instala no Windows, na mesma versão de cada pacote (seção 3), mais dois arquivos das
 Debugging Tools for Windows da Microsoft (seção 5). O Instituto IMAN é **redistribuidor** desses componentes: eles
-não são obra do Instituto IMAN, pertencem aos seus autores e permanecem sob as suas próprias licenças.
+não são obra do Instituto IMAN, pertencem aos seus autores e permanecem sob as suas próprias licenças. O
+instalador leva também o plugin IMAN REURB, do Instituto IMAN, instalado e ligado (seção 6).
 
 **O driver ECW/JP2 não é distribuído.** O QGIS 3.44.13 oficial instala também o pacote `gdal-ecw` (o driver ECW/JP2
 do GDAL, com o SDK ECW/JP2 da Hexagon). O IMAN Terra não o distribui, por causa do termo da Hexagon ("ERDAS ECW/JP2
@@ -324,11 +325,24 @@ desses termos, como publicadas, estão na pasta `licencas\` da instalação.
 - As modificações nos arquivos do QGIS (seção 2) seguem a licença do arquivo do QGIS, GPL-2.0-or-later.
 - Os assets de marca (nome, logo, ícones, splash) são marca do **Instituto IMAN** e **não** são licenciados para
   reuso. Ver `LICENSE`.
+- **Plugin IMAN REURB**, do **Instituto IMAN**, instalado em `apps\qgis-ltr\python\plugins` e ligado por padrão
+  (quem usa pode desligá-lo no Gerenciador de complementos). Ele sai de uma tag fixada do repositório do plugin; a
+  licença, a tag e o commit estão na tabela abaixo e em `SOURCE_CODE.md`, e o texto da licença, na pasta do plugin.
+
+<!-- gerado: plugin (iman/notices/Update-Notices.ps1) -->
+| Plugin | Versão | Licença | Tag e commit do repo do plugin | Fonte da licença |
+|---|---|---|---|---|
+| IMAN REURB (`iman_plugin`) | 0.3.1 | GPL-2.0-or-later | `v0.3.1`, `a307801e3f4649c08a5d1be16abcef345fd53fbb` | arquivo no pacote: `apps/qgis-ltr/python/plugins/iman_plugin/LICENSE` |
+<!-- gerado: fim -->
 
 ## 7. Marcas
 
 "QGIS" e o logotipo do QGIS são marcas da QGIS.ORG. O uso aqui é **nominativo** ("powered by QGIS") e não implica
 endosso. "IMAN" e "IMAN Terra" são marcas do Instituto IMAN. As demais marcas citadas pertencem aos seus titulares.
+
+**A marca IMAN fica fora da GPL.** A GPL cobre o código. O nome e a marca IMAN e IMAN Terra, e a logo de folha e
+globo (o splash, os ícones e o símbolo de `iman/brand/` no fork), pertencem ao Instituto IMAN e não são licenciados
+pela GPL; o uso deles depende de autorização do Instituto IMAN.
 
 ## 8. Validade
 
