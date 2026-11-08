@@ -1,0 +1,9 @@
+# qgis_global_settings.ini gerado pelo build_brand.py na 471fbc2cf4 (D:\iman-terra-build\brand), a secao nova da fatia 051
+295-
+296-# plugin embarcado ligado por padrao (fatia 051; id da trava iman/plugin/plugin.lock.json): QgsSettings::value
+297-# cai aqui quando o perfil nao tem a chave; a escolha gravada pelo usuario no perfil vence
+298:[PythonPlugins]
+299-iman_plugin=true
+
+# a mesma secao no qgis_global_settings.ini do QGIS (resources/), contagem:
+0

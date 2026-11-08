@@ -1,0 +1,9 @@
+{
+  "id": "iman_plugin",
+  "name": "IMAN REURB",
+  "version": "0.3.1",
+  "license": "GPL-2.0-or-later",
+  "tag": "v0.3.1",
+  "commit": "e9e2b57b3e4d4b1bfcbf3b538fd16883ba56fce8",
+  "path_in_repo": "src/iman_plugin"
+}

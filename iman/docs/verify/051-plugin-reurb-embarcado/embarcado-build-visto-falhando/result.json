@@ -1,0 +1,44 @@
+{
+  "run": "D:\\iman-terra-build\\verify\\plugin-embed-20261108-174431",
+  "root": "D:\\iman-terra-build\\install\\apps\\qgis-ltr",
+  "pluginRepo": "D:\\_projetos\\iman-webgeo\\iman-qgis-build-agent\\..\\iman-qgis-plugin-agent",
+  "lock": {
+    "id": "iman_plugin",
+    "version": "0.3.1",
+    "tag": "v0.3.1",
+    "commit": "a307801e3f4649c08a5d1be16abcef345fd53fbb"
+  },
+  "checks": {
+    "T2:archive-e-o-commit": {
+      "ok": true,
+      "detail": {
+        "commit": "a307801e3f4649c08a5d1be16abcef345fd53fbb",
+        "files": 121,
+        "lsTree": 121,
+        "blobMismatch": []
+      }
+    },
+    "T2:pasta-embarcada": {
+      "ok": true,
+      "detail": {
+        "dir": "D:\\iman-terra-build\\install\\apps\\qgis-ltr\\python\\plugins\\iman_plugin",
+        "files": 121,
+        "sha256Equal": 121,
+        "missing": [],
+        "extra": [],
+        "shaDiff": [],
+        "pycacheReported": 101,
+        "license": true
+      }
+    },
+    "falha:build-tag-em-outro-commit": {
+      "ok": true,
+      "detail": {
+        "exit": 1,
+        "message": "| PLUGIN: a tag v0.3.1 aponta para e9e2b57b3e4d4b1bfcbf3b538fd16883ba56fce8, e a trava fixa",
+        "log": "D:\\iman-terra-build\\verify\\plugin-embed-20261108-174431\\build-seen-failing.log"
+      }
+    }
+  },
+  "ok": true
+}

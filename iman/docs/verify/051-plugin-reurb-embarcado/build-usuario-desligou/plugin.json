@@ -1,0 +1,43 @@
+{
+  "version": "3.44.13-Solothurn",
+  "errors": {},
+  "boot": {
+    "active_plugins": [
+      "MetaSearch",
+      "db_manager",
+      "grassprovider",
+      "processing"
+    ],
+    "active": false,
+    "available": true,
+    "module_file": null,
+    "module_version": null,
+    "metadata": {
+      "name": "IMAN REURB",
+      "version": "0.3.1",
+      "author": "Instituto IMAN",
+      "email": "contato@example.org"
+    },
+    "plugin_paths": [
+      "D:\\iman-terra-build\\smoke\\plugin-build-useroff-20261108-182909\\profiles\\profiles\\iman-smoke/python/plugins",
+      "D:/iman-terra-build/install/apps/qgis-ltr/./python/plugins"
+    ],
+    "sys_plugin_path": "D:/iman-terra-build/install/apps/qgis-ltr/./python/plugins",
+    "home_plugin_path": "D:\\iman-terra-build\\smoke\\plugin-build-useroff-20261108-182909\\profiles\\profiles\\iman-smoke/python/plugins",
+    "setting_effective": "false",
+    "setting_in_user_ini": true,
+    "setting_user_value": "false",
+    "watchdog_left": false,
+    "user_ini": "D:/iman-terra-build/smoke/plugin-build-useroff-20261108-182909/profiles/profiles/iman-smoke/InstitutoIMAN/IMANTerra.ini",
+    "toolbar": {
+      "object_name": null,
+      "found": false,
+      "visible": false,
+      "title": null,
+      "actions": 0
+    },
+    "message_bar": [],
+    "log": []
+  },
+  "log": []
+}
