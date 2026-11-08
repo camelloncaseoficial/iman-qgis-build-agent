@@ -112,3 +112,17 @@ Medido no patch 049p (2026-11-04), laudo `iman/docs/verify/049-tema-e-padroes/RE
 - **Disco:** D: 92 GB livres no comeco; C: 226 GB.
 - **Tempos:** build incremental (so o qgsversion.h) 70 s + configure 185 s + install 153 s, 7 min no total; arvore de
   runtime 62 s; ISCC 799 s; instalar 84 s; desinstalar 11 s.
+
+Medido na fatia 051 (2026-11-08), laudo `iman/docs/verify/051-plugin-reurb-embarcado/README.md`:
+
+- **Clone do plugin** em `..\iman-qgis-plugin-agent` com `core.autocrlf=true`: o `git archive` converte o fim de linha,
+  e por isso o `Export-ImanPlugin` passa `-c core.autocrlf=false`. O build so le o clone (tag e objetos); as tags dos
+  testes de falha vivem num clone `--shared` descartavel.
+- **Dados do produto apagados** de novo pelo `-ResetProductData` (sim do sponsor); as `.antes-*` ficaram. Depois, o
+  alvo Build recriou o cache do produto: o proximo `Test-Installed` precisa do `-ResetProductData`. A sessao terminou
+  desinstalada.
+- **O `python3` da raiz OSGeo4W nao sobe fora do `o4w_env`** (sem `encodings`): para rodar o `build_brand.py` a mao,
+  qualquer Python 3 serve (so biblioteca padrao).
+- **Disco:** D: com 46 GB livres no comeco; C: 191 GB.
+- **Tempos:** build incremental + install 4 a 7 min; arvore de runtime 107 a 115 s; ISCC 949 s; instalar 253 s;
+  desinstalar 12 s; `Test-PluginBoot` 10 a 15 s por estado.
