@@ -15,9 +15,13 @@
   que o QGIS ja poe no include path), a traducao sobreposta iman_<idioma>.ts (compilada pelo lrelease fixado) e o
   qgis_global_settings.ini; depois do install, o .qm e o .ini vao para i18n e resources da instalacao, e o tema
   padrao (iman/brand/theme/<ui_theme>, fatia 049) para resources\themes.
+
+  Plugin IMAN REURB (fatia 051): depois do install, a pasta do plugin sai do commit da trava
+  (iman/plugin/plugin.lock.json) do clone -PluginRepo (padrao ..\iman-qgis-plugin-agent) para
+  python\plugins\<id> da instalacao (Export-ImanPlugin, Common.ps1); falha alto se a tag nao bate com a trava.
 #>
 [CmdletBinding()]
-param([string] $WorkRoot, [switch] $Clean, [switch] $SkipInstall, [int] $Jobs = 0, [switch] $KeepGoing)
+param([string] $WorkRoot, [switch] $Clean, [switch] $SkipInstall, [int] $Jobs = 0, [switch] $KeepGoing, [string] $PluginRepo)
 . "$PSScriptRoot\Common.ps1"
 
 $o4w = $Paths.Osgeo4w
@@ -175,6 +179,10 @@ if (-not $SkipInstall) {
   $themeDst = Join-Path $inst "resources\themes\$themeName"
   if (Test-Path $themeDst) { Remove-Item -Recurse -Force $themeDst }
   Copy-Item -Recurse $themeSrc $themeDst
+  # plugin IMAN REURB (fatia 051): a pasta do commit da trava, nunca a copia de trabalho do clone
+  $plugin = Export-ImanPlugin (Join-Path $inst 'python\plugins')
+  Write-Step "plugin $($plugin.id) $($plugin.version) da tag $($plugin.tag) ($($plugin.commit.Substring(0, 10)))"
+  $timings.plugin = "$($plugin.id) $($plugin.tag) $($plugin.commit)"
   $timings.installSeconds = [int]((Get-Date) - $t0).TotalSeconds
 }
 

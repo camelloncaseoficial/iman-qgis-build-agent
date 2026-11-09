@@ -4,15 +4,15 @@
     python3 iman/brand/build_brand.py --out <pasta> --header <arquivo.h>
     python3 iman/brand/build_brand.py --measure <qgis_pt_BR.ts>   # confere a curadoria contra o .qm do QGIS
 
-Entradas (versionadas): iman/brand/brand.json, iman/brand/i18n/curadoria_pt_BR.json e o
-resources/qgis_global_settings.ini do proprio QGIS.
+Entradas (versionadas): iman/brand/brand.json, iman/brand/i18n/curadoria_pt_BR.json, a trava do plugin embarcado
+(iman/plugin/plugin.lock.json, so o id) e o resources/qgis_global_settings.ini do proprio QGIS.
 
 Saidas (fora do repo, em --out):
   - iman_<locale>.ts: a traducao sobreposta (D-IMAN-041, regra 2), so com as mensagens das classes aplicativo e
     versao da curadoria e as superficies do Bloco D ('extra'); o Build-Qgis.ps1 compila com o lrelease fixado;
   - qgis_global_settings.ini: o do QGIS com a checagem de versao desligada e o SRC padrao de projeto novo (trocados
     no lugar), mais o idioma padrao, o feed de noticias desligado, os enderecos do menu Ajuda, o tema de interface
-    padrao e o SRC de camada sem SRC (fatia 049);
+    padrao e o SRC de camada sem SRC (fatia 049) e o plugin embarcado ligado por padrao (fatia 051);
   - --header: iman_brand.h, os textos de marca para o C++ (Bloco D). So e regravado se o conteudo mudou, para nao
     recompilar a toa.
 
@@ -30,6 +30,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.normpath(os.path.join(HERE, "..", ".."))
 BRAND = os.path.join(HERE, "brand.json")
 CURATION = os.path.join(HERE, "i18n", "curadoria_pt_BR.json")
+PLUGIN_LOCK = os.path.join(REPO, "iman", "plugin", "plugin.lock.json")
 QGIS_GLOBAL_SETTINGS = os.path.join(REPO, "resources", "qgis_global_settings.ini")
 
 TRANSLATED_CLASSES = ("aplicativo", "versao", "bloco-d")
@@ -98,7 +99,7 @@ def write_ts(path, brand, curation):
     return sum(len(v) for v in contexts.values())
 
 
-def write_global_settings(path, brand):
+def write_global_settings(path, brand, plugin_id):
     with io.open(QGIS_GLOBAL_SETTINGS, "r", encoding="utf-8") as fh:
         lines = fh.read().split("\n")
     version_check = "true" if brand["qgis_version_check"] else "false"
@@ -110,7 +111,7 @@ def write_global_settings(path, brand):
         ("app", "projections\\newProjectCrsBehavior"): brand["new_project_crs_behavior"],
     }
     # chaves que o ini do QGIS nao tem e que vao no fim, em secao propria: se ele passar a te-las, duplicaria
-    appended = {("UI", "UITheme"), ("Projections", "layerDefaultCrs")}
+    appended = {("UI", "UITheme"), ("Projections", "layerDefaultCrs"), ("PythonPlugins", plugin_id)}
     replaced = []
     present = []
     group = None
@@ -153,6 +154,11 @@ def write_global_settings(path, brand):
         "# SRC de camada sem SRC: lida sem a secao app (Projections/layerDefaultCrs em qgsproject.cpp e qgisapp.cpp)",
         "[Projections]",
         "layerDefaultCrs=%s" % brand["layer_default_crs"],
+        "",
+        "# plugin embarcado ligado por padrao (fatia 051; id da trava iman/plugin/plugin.lock.json): QgsSettings::value",
+        "# cai aqui quando o perfil nao tem a chave; a escolha gravada pelo usuario no perfil vence",
+        "[PythonPlugins]",
+        "%s=true" % plugin_id,
         "",
     ]
     with io.open(path, "w", encoding="utf-8", newline="\n") as fh:
@@ -251,7 +257,10 @@ def main(argv):
     os.makedirs(args.out, exist_ok=True)
     ts = os.path.join(args.out, "iman_%s.ts" % brand["default_locale"])
     n = write_ts(ts, brand, curation)
-    write_global_settings(os.path.join(args.out, "qgis_global_settings.ini"), brand)
+    plugin_id = load_json(PLUGIN_LOCK)["id"]
+    if not re.match(r"^[A-Za-z_][A-Za-z0-9_]*$", plugin_id):
+        raise SystemExit("id do plugin invalido na trava: %r" % plugin_id)
+    write_global_settings(os.path.join(args.out, "qgis_global_settings.ini"), brand, plugin_id)
     changed = write_header(args.header, brand)
     print("marca: %s; %d mensagens em %s; cabecalho %s" % (
         brand["product_name"], n, ts, "regravado" if changed else "sem mudanca"))

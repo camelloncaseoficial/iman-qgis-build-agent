@@ -15,7 +15,7 @@
   Saida: 2 ambiente, 3 integridade, 4 compilador.
 #>
 [CmdletBinding()]
-param([string] $WorkRoot, [switch] $ReuseTree, [string] $IsccPath)
+param([string] $WorkRoot, [switch] $ReuseTree, [string] $IsccPath, [string] $PluginRepo)
 . "$PSScriptRoot\..\build\Common.ps1"
 $ErrorActionPreference = 'Stop'
 $t0 = Get-Date
@@ -58,7 +58,9 @@ $tree = Join-Path $stage 'tree'
 $treeSummary = Join-Path $stage 'tree-summary.json'
 $reuse = $ReuseTree -and (Test-Path $treeSummary) -and ((Get-Content $treeSummary -Raw | ConvertFrom-Json).commit -eq $short)
 if (-not $reuse) {
-  & (Get-Process -Id $PID).Path -NoProfile -File (Join-Path $PSScriptRoot 'New-RuntimeTree.ps1') -WorkRoot $WorkRoot
+  $treeArgs = @('-WorkRoot', $WorkRoot)
+  if ($PluginRepo) { $treeArgs += @('-PluginRepo', $PluginRepo) }
+  & (Get-Process -Id $PID).Path -NoProfile -File (Join-Path $PSScriptRoot 'New-RuntimeTree.ps1') @treeArgs
   if ($LASTEXITCODE) { Stop-Build 2 'New-RuntimeTree.ps1 falhou' }
 }
 $treeInfo = Get-Content $treeSummary -Raw | ConvertFrom-Json
@@ -75,6 +77,7 @@ $info = @(
   "AUMI             : $aumi",
   "Lock OSGeo4W     : iman/build/osgeo4w.lock.tsv sha256 $lockSha",
   "Pacotes          : $($treeInfo.packages) do conjunto oficial + iman-terra",
+  "Plugin           : $($treeInfo.plugin.id) $($treeInfo.plugin.version), tag $($treeInfo.plugin.tag), commit $($treeInfo.plugin.commit)",
   "Compilador       : Inno Setup $isccVersion ($IsccPath)",
   "Gerado em        : $((Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ'))"
 )
@@ -88,7 +91,14 @@ $src = Join-Path $RepoRoot 'iman\notices'
 $bom = [Text.UTF8Encoding]::new($true)
 [IO.File]::WriteAllText((Join-Path $notices 'LICENSE'), [IO.File]::ReadAllText("$src\LICENSE"), $bom)
 Copy-Item "$src\THIRD_PARTY_NOTICES.md" $notices
+# o plugin IMAN REURB (fatia 051): nome, versao, tag e commit vem da trava; a arvore tem de ser da mesma trava
+$pluginLock = Get-PluginLock
+if ($treeInfo.plugin.commit -ne $pluginLock.commit) { Stop-Build 3 "a arvore tem o plugin $($treeInfo.plugin.commit) e a trava fixa $($pluginLock.commit): rode sem -ReuseTree" }
 $sourceCode = [IO.File]::ReadAllText("$src\SOURCE_CODE.md").Replace('@IMAN_COMMIT@', $head).Replace('@IMAN_PRODUCT_VERSION@', $brand.product_version)
+$pluginMarks = [ordered]@{ '@IMAN_PLUGIN_NAME@' = $pluginLock.name; '@IMAN_PLUGIN_VERSION@' = $pluginLock.version
+  '@IMAN_PLUGIN_TAG@' = $pluginLock.tag; '@IMAN_PLUGIN_COMMIT@' = $pluginLock.commit; '@IMAN_PLUGIN_ID@' = $pluginLock.id }
+foreach ($k in $pluginMarks.Keys) { $sourceCode = $sourceCode.Replace($k, $pluginMarks[$k]) }
+if ($sourceCode -match '@IMAN_[A-Z_]+@') { Stop-Build 3 "marcador sem valor no SOURCE_CODE.md: $($Matches[0])" }
 [IO.File]::WriteAllText((Join-Path $notices 'SOURCE_CODE.md'), $sourceCode, [Text.UTF8Encoding]::new($false))
 Copy-Item "$src\licencas\*.txt" (Join-Path $notices 'licencas')
 & (Get-Process -Id $PID).Path -NoProfile -File (Join-Path $RepoRoot 'iman\notices\Update-Notices.ps1') -WorkRoot $WorkRoot -Tree $tree -Check

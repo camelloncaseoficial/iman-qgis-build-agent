@@ -1,0 +1,77 @@
+{
+  "version": "3.44.13-Solothurn",
+  "errors": {},
+  "boot": {
+    "active_plugins": [
+      "MetaSearch",
+      "db_manager",
+      "grassprovider",
+      "iman_plugin",
+      "processing"
+    ],
+    "active": true,
+    "available": true,
+    "module_file": "%USERPROFILE%/AppData/Local/Programs/IMANTE~1/apps/qgis-ltr/./python/plugins\\iman_plugin\\__init__.py",
+    "module_version": "0.3.1",
+    "metadata": {
+      "name": "IMAN REURB",
+      "version": "0.3.1",
+      "author": "Instituto IMAN",
+      "email": "contato@example.org"
+    },
+    "plugin_paths": [
+      "D:\\iman-terra-build\\smoke\\plugin-installed-new-wizard-20261108-182448\\profiles\\profiles\\iman-smoke/python/plugins",
+      "%USERPROFILE%/AppData/Local/Programs/IMANTE~1/apps/qgis-ltr/./python/plugins"
+    ],
+    "sys_plugin_path": "%USERPROFILE%/AppData/Local/Programs/IMANTE~1/apps/qgis-ltr/./python/plugins",
+    "home_plugin_path": "D:\\iman-terra-build\\smoke\\plugin-installed-new-wizard-20261108-182448\\profiles\\profiles\\iman-smoke/python/plugins",
+    "setting_effective": "true",
+    "setting_in_user_ini": false,
+    "setting_user_value": null,
+    "watchdog_left": false,
+    "user_ini": "D:/iman-terra-build/smoke/plugin-installed-new-wizard-20261108-182448/profiles/profiles/iman-smoke/InstitutoIMAN/IMANTerra.ini",
+    "toolbar": {
+      "object_name": "imanReurbToolbar",
+      "found": true,
+      "visible": true,
+      "title": "IMAN REURB",
+      "actions": 14
+    },
+    "message_bar": [],
+    "log": []
+  },
+  "wizard": {
+    "dock_visible": true,
+    "opened": true,
+    "title": "Criar projeto REURB",
+    "proposed_crs": "EPSG:31984",
+    "accepted": true,
+    "error_label": "",
+    "workspace_files": [
+      "smoke_051.gpkg"
+    ],
+    "gpkg": [
+      "smoke_051.gpkg"
+    ],
+    "project_crs": "EPSG:31984",
+    "layers": [
+      "areas_publicas",
+      "confrontacoes",
+      "edificacoes",
+      "lote_pessoa",
+      "lotes",
+      "pessoas",
+      "quadras",
+      "vertices",
+      "vias"
+    ],
+    "seconds_waited": 0.5
+  },
+  "log": [
+    {
+      "tag": "Advertência do Python",
+      "level": 1,
+      "message": "warning:%USERPROFILE%/AppData/Local/Programs/IMANTE~1/apps/qgis-ltr/./python/plugins\\iman_plugin\\infrastructure\\processors\\field_mapping.py:47: DeprecationWarning: QgsField constructor is deprecated\n  qfield = QgsField(fd.name, _QVARIANT_BY_FIELD[fd.type])\n\ntraceback:  File \"%USERPROFILE%/AppData/Local/Programs/IMANTE~1/apps/qgis-ltr/./python/plugins\\iman_plugin\\ui\\tasks.py\", line 29, in run\n    self._result = self._fn()\n  File \"%USERPROFILE%/AppData/Local/Programs/IMANTE~1/apps/qgis-ltr/./python/plugins\\iman_plugin\\ui\\viewmodels\\project_viewmodel.py\", line 79, in <lambda>\n    lambda: self._create_service.build_and_persist(request),\n  File \"%USERPROFILE%/AppData/Local/Programs/IMANTE~1/apps/qgis-ltr/./python/plugins\\iman_plugin\\application\\create_project_service.py\", line 75, in build_and_persist\n    gpkg_path = self._store.create(project)\n  File \"%USERPROFILE%/AppData/Local/Programs/IMANTE~1/apps/qgis-ltr/./python/plugins\\iman_plugin\\infrastructure\\repositories\\geopackage_project_store.py\", line 64, in create\n    metadata_layer = self._build_metadata_layer(project, crs)\n  File \"%USERPROFILE%/AppData/Local/Programs/IMANTE~1/apps/qgis-ltr/./python/plugins\\iman_plugin\\infrastructure\\repositories\\geopackage_project_store.py\", line 171, in _build_metadata_layer\n    layer = self._build_empty_layer(\n  File \"%USERPROFILE%/AppData/Local/Programs/IMANTE~1/apps/qgis-ltr/./python/plugins\\iman_plugin\\infrastructure\\repositories\\geopackage_project_store.py\", line 208, in _build_empty_layer\n    return gpkg_io.build_empty_layer(name, geometry, field_defs, crs)\n  File \"%USERPROFILE%/AppData/Local/Programs/IMANTE~1/apps/qgis-ltr/./python/plugins\\iman_plugin\\infrastructure\\repositories\\gpkg_io.py\", line 45, in build_empty_layer\n    if not provider.addAttributes(list(build_qgs_fields(field_defs))):\n  File \"%USERPROFILE%/AppData/Local/Programs/IMANTE~1/apps/qgis-ltr/./python/plugins\\iman_plugin\\infrastructure\\processors\\field_mapping.py\", line 47, in"
+    }
+  ]
+}

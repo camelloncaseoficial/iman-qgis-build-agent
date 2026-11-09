@@ -1,14 +1,17 @@
 <#
 .SYNOPSIS
-  Gera os blocos do THIRD_PARTY_NOTICES.md (resumo, patchset e inventario) a partir da arvore do produto, do
-  inventario de licencas curado e do iman/PATCHES.md (fatia 047, L.1). -Check so confere.
+  Gera os blocos do THIRD_PARTY_NOTICES.md (resumo, patchset, inventario e, desde a fatia 051, plugin) a partir da
+  arvore do produto, do inventario de licencas curado, do iman/PATCHES.md e da trava do plugin embarcado (fatia 047,
+  L.1). -Check so confere.
 
 .DESCRIPTION
   Fontes:
     - -Tree (padrao $WorkRoot\stage\tree, a arvore do New-RuntimeTree.ps1; ou a instalada): o etc\setup\installed.db
       da a lista de pacotes e a versao; o <pacote>.lst.gz de cada um diz se o pacote traz arquivo de licenca;
     - iman/notices/licencas-upstream.tsv: licenca, categoria e URL do upstream de cada pacote;
-    - iman/PATCHES.md: os arquivos do QGIS modificados.
+    - iman/PATCHES.md: os arquivos do QGIS modificados;
+    - iman/plugin/plugin.lock.json: nome, versao, licenca, tag e commit do plugin IMAN REURB embarcado (fatia 051). O
+      plugin entra no pacote iman-terra (nao e pacote proprio); o LICENSE dele tem de estar na lista do iman-terra.lst.gz.
   Uma entrada por pacote do installed.db: os pacotes OSGeo4W e o iman-terra (o QGIS compilado). Pacote sem arquivo
   de licenca tem de ter URL do upstream; pacote sem linha no inventario curado e erro.
   Escreve so entre os marcadores "<!-- gerado: ... -->" e "<!-- gerado: fim -->" do THIRD_PARTY_NOTICES.md.
@@ -86,6 +89,19 @@ $patches = @(Get-Content (Join-Path $RepoRoot 'iman\PATCHES.md') -Encoding utf8 
     "- ``$([regex]::Match($_, '^\|\s*`([^`]+)`').Groups[1].Value)`` ($($cells[2].Trim()); fatia $($cells[3].Trim(' |')))"
   })
 
+# plugin embarcado (fatia 051): a linha sai da trava; o arquivo de licenca tem de estar na arvore, no pacote iman-terra
+$plugin = Get-PluginLock
+$pluginLicense = "apps/qgis-ltr/python/plugins/$($plugin.id)/LICENSE"
+$oursLst = Join-Path $Tree 'etc\setup\iman-terra.lst.gz'
+if (-not (Test-Path $oursLst) -or (Read-Gz $oursLst) -notcontains $pluginLicense) {
+  Write-Host "ERRO: $pluginLicense ausente do iman-terra.lst.gz de $Tree"; exit 1
+}
+$pluginRows = @(
+  '| Plugin | Versão | Licença | Tag e commit do repo do plugin | Fonte da licença |',
+  '|---|---|---|---|---|',
+  "| $($plugin.name) (``$($plugin.id)``) | $($plugin.version) | $($plugin.license) | ``$($plugin.tag)``, ``$($plugin.commit)`` | arquivo no pacote: ``$pluginLicense`` |"
+)
+
 $text = [IO.File]::ReadAllText($notices)
 function Set-Block([string] $name, [string[]] $lines) {
   $rx = "(?s)(<!-- gerado: $name \(iman/notices/Update-Notices\.ps1\) -->\r?\n).*?(<!-- gerado: fim -->)"
@@ -96,10 +112,11 @@ $before = $text
 Set-Block 'resumo' $summary
 Set-Block 'patchset' $patches
 Set-Block 'inventario' $rows
+Set-Block 'plugin' $pluginRows
 
 if ($Check) {
   $ok = $text -eq $before
-  Write-Step ("notices {0}: {1} entradas para {2} pacotes do installed.db de {3}" -f $(if ($ok) { 'em dia' } else { 'DESATUALIZADO' }), ($rows.Count - 2), $db.Count, $Tree)
+  Write-Step ("notices {0}: {1} entradas para {2} pacotes do installed.db de {3}; plugin {4} {5}" -f $(if ($ok) { 'em dia' } else { 'DESATUALIZADO' }), ($rows.Count - 2), $db.Count, $Tree, $plugin.id, $plugin.version)
   if (-not $ok) { exit 1 }
   return
 }

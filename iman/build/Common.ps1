@@ -63,6 +63,56 @@ $DebuggerRedist = [ordered]@{
   'symsrv.dll' = @{ Version = '10.0.26100.7705'; Sha256 = '89efaac07673f87a2862d6b163bc6626b51770ad1bd48c4f277e356df0a08c1d' }
 }
 
+# Plugin IMAN REURB embarcado (fatia 051): a trava (iman/plugin/plugin.lock.json) fixa tag e commit; o clone do repo
+# do plugin e parametro da bancada (-PluginRepo de quem faz o dot-source, ou IMAN_PLUGIN_REPO), com padrao no repo
+# irmao, relativo a raiz do fork. O git e resolvido aqui, antes de qualquer o4w_env trocar o PATH.
+$PluginLockFile = Join-Path $RepoRoot 'iman\plugin\plugin.lock.json'
+if (-not $PluginRepo) { $PluginRepo = if ($env:IMAN_PLUGIN_REPO) { $env:IMAN_PLUGIN_REPO } else { Join-Path $RepoRoot '..\iman-qgis-plugin-agent' } }
+$GitExe = (Get-Command git.exe -ErrorAction SilentlyContinue).Source
+
+function Get-PluginLock([string] $Path = $PluginLockFile) {
+  $lock = Get-Content $Path -Raw -Encoding utf8 | ConvertFrom-Json
+  foreach ($k in 'id', 'name', 'version', 'license', 'tag', 'commit', 'path_in_repo') {
+    if (-not $lock.$k) { throw "PLUGIN: trava sem '$k' em $Path" }
+  }
+  if ($lock.commit -notmatch '^[0-9a-f]{40}$') { throw "PLUGIN: o commit da trava nao tem 40 caracteres hexadecimais: $($lock.commit)" }
+  $lock
+}
+
+# Exporta a pasta do plugin do commit da trava para <PluginsDir>\<id>, refeita do zero; devolve a trava. Nunca le a
+# copia de trabalho do clone: git archive do commit, com core.autocrlf=false (o clone do plugin tem autocrlf=true, e
+# o archive converteria o fim de linha). Falha alto: clone ausente, tag ausente, tag em outro commit que nao o da
+# trava, LICENSE ausente ou version do metadata.txt diferente da trava.
+function Export-ImanPlugin([string] $PluginsDir, [string] $LockPath = $PluginLockFile, [string] $Repo = $PluginRepo) {
+  $lock = Get-PluginLock $LockPath
+  if (-not $GitExe) { throw 'PLUGIN: git.exe nao encontrado' }
+  if (-not $Repo -or -not (Test-Path (Join-Path $Repo '.git'))) { throw "PLUGIN: clone do plugin ausente em '$Repo' (-PluginRepo ou IMAN_PLUGIN_REPO)" }
+  $tagCommit = & $GitExe -C $Repo rev-parse --verify --quiet "refs/tags/$($lock.tag)^{commit}" 2>$null
+  if ($LASTEXITCODE -or -not $tagCommit) { throw "PLUGIN: a tag $($lock.tag) nao existe no clone $Repo" }
+  $tagCommit = "$tagCommit".Trim()
+  if ($tagCommit -ne $lock.commit) { throw "PLUGIN: a tag $($lock.tag) aponta para $tagCommit, e a trava fixa $($lock.commit)" }
+  $dest = Join-Path $PluginsDir $lock.id
+  $tmp = "$dest.iman-export"
+  $tar = "$tmp.tar"
+  if (Test-Path $tmp) { Remove-Item -Recurse -Force $tmp }
+  New-Item -ItemType Directory -Force $tmp | Out-Null
+  try {
+    & $GitExe -C $Repo -c core.autocrlf=false archive --format=tar -o $tar "$($lock.commit):$($lock.path_in_repo)"
+    if ($LASTEXITCODE) { throw "PLUGIN: git archive falhou em $($lock.commit):$($lock.path_in_repo)" }
+    $out = & $TarExe -xf $tar -C $tmp 2>&1
+    if ($LASTEXITCODE) { throw "PLUGIN: tar falhou: $out" }
+    if (-not (Test-Path (Join-Path $tmp 'LICENSE') -PathType Leaf)) { throw "PLUGIN: falta o LICENSE na pasta exportada de $($lock.tag) ($($lock.commit))" }
+    $metaVersion = (Get-Content (Join-Path $tmp 'metadata.txt') -Encoding utf8 | Where-Object { $_ -match '^version=' } | Select-Object -First 1) -replace '^version=', ''
+    if ("$metaVersion".Trim() -ne $lock.version) { throw "PLUGIN: o metadata.txt de $($lock.tag) diz version=$metaVersion, e a trava diz $($lock.version)" }
+    if (Test-Path $dest) { Remove-Item -Recurse -Force $dest }
+    Move-Item $tmp $dest
+  } finally {
+    if (Test-Path $tar) { Remove-Item -Force $tar }
+    if (Test-Path $tmp) { Remove-Item -Recurse -Force $tmp }
+  }
+  $lock
+}
+
 # Arquivo versionado sempre em UTF-8 sem BOM e LF (o Set-Content do Windows grava CRLF)
 function Write-LfFile([string] $path, [string[]] $lines) {
   [IO.File]::WriteAllText($path, (($lines -join "`n") + "`n"), [Text.UTF8Encoding]::new($false))

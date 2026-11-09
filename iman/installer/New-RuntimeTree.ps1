@@ -23,13 +23,16 @@
               crash handler montar a pilha, das Debugging Tools for Windows ($DebuggerRedist do Common.ps1);
     - bin\iman-terra.exe (o qgis.exe, decisao 11), bin\iman-terra.vars, bin\iman-terra-env.bat,
       bin\qgis_process-iman-terra.bat e iman\postinstall.cmd, de iman/installer/runtime;
-    - iman\icons: os icones de tipo de arquivo derivados (iman/brand/derived).
+    - iman\icons: os icones de tipo de arquivo derivados (iman/brand/derived);
+    - apps\qgis-ltr\python\plugins\<id>: o plugin IMAN REURB (fatia 051), exportado de novo do commit da trava
+      (iman/plugin/plugin.lock.json, clone -PluginRepo) e nunca copiado da instalacao do build. Entra no pacote
+      iman-terra (manifesto do passo 4), nao como pacote proprio.
   O VC++ que o cmake --install poe em apps\qgis-ltr\bin (o do compilador) fica, ao lado do qgis_process.exe; o do
   bin\ e o do pacote msvcrt2019 do conjunto oficial, ao lado do iman-terra.exe (decisao 9).
   Resumo em $WorkRoot\stage\tree-summary.json.
 #>
 [CmdletBinding()]
-param([string] $WorkRoot)
+param([string] $WorkRoot, [string] $PluginRepo)
 . "$PSScriptRoot\..\build\Common.ps1"
 $t0 = Get-Date
 
@@ -82,7 +85,8 @@ Write-Step "$($rows.Count) pacotes do conjunto oficial extraidos em $tree"
 
 # 2. o nosso build no lugar dos qgis-ltr*
 $dst = Join-Path $tree 'apps\qgis-ltr'
-$xd = @('include', 'lib', 'server', 'python\qgis\server', 'resources\server') | ForEach-Object { Join-Path $inst $_ }
+$pluginLock = Get-PluginLock
+$xd = @('include', 'lib', 'server', 'python\qgis\server', 'resources\server', "python\plugins\$($pluginLock.id)") | ForEach-Object { Join-Path $inst $_ }
 $xf = @('FindQGIS.cmake', 'bin\qgis.exe', 'bin\qgis_mapserv.fcgi.exe', 'bin\qgis_mapserver.exe', 'bin\qgis_server.dll',
   'python\qgis\_server.pyd', 'python\qgis\_server.pyi') | ForEach-Object { Join-Path $inst $_ }
 & robocopy.exe $inst $dst /E /NFL /NDL /NJH /NJS /NP /R:1 /W:1 /XD @xd /XF @xf '*.pyc' | Out-Null
@@ -105,6 +109,9 @@ foreach ($f in $DebuggerRedist.Keys) {
   if ($h -ne $DebuggerRedist[$f].Sha256) { throw "sha256 divergente em ${src}: fixado $($DebuggerRedist[$f].Sha256), obtido $h" }
   Copy-Item $src (Join-Path $dst $f)
 }
+# plugin IMAN REURB: do commit da trava, nao da instalacao do build (que pode ter __pycache__ ou ser de outra trava)
+$plugin = Export-ImanPlugin (Join-Path $dst 'python\plugins')
+Write-Step "plugin $($plugin.id) $($plugin.version) da tag $($plugin.tag) ($($plugin.commit.Substring(0, 10)))"
 
 # 3. lancador, postinstall e icones
 Copy-Item "$inst\bin\qgis.exe" (Join-Path $tree 'bin\iman-terra.exe')
@@ -132,6 +139,7 @@ $summary = [ordered]@{
   packages = $rows.Count; excluded = @($RuntimeExcluded.Keys); ourFiles = $ours.Count
   files = $files.Count; bytes = ($files | Measure-Object Length -Sum).Sum
   commit = $commit
+  plugin = [ordered]@{ id = $plugin.id; version = $plugin.version; tag = $plugin.tag; commit = $plugin.commit }
 }
 $summary | ConvertTo-Json | Set-Content (Join-Path $WorkRoot 'stage\tree-summary.json')
 Write-Step ("arvore pronta: {0} pacotes + iman-terra, {1} arquivos, {2:N2} GB, {3} s" -f $rows.Count, $files.Count, ($summary.bytes / 1GB), $summary.seconds)

@@ -1,0 +1,43 @@
+{
+  "version": "3.44.13-Solothurn",
+  "errors": {},
+  "boot": {
+    "active_plugins": [
+      "MetaSearch",
+      "db_manager",
+      "grassprovider",
+      "processing"
+    ],
+    "active": false,
+    "available": false,
+    "module_file": null,
+    "module_version": null,
+    "metadata": {
+      "name": "__error__",
+      "version": "__error__",
+      "author": "__error__",
+      "email": "__error__"
+    },
+    "plugin_paths": [
+      "D:\\iman-terra-build\\smoke\\plugin-official-new-20261108-182948\\profiles\\profiles\\iman-smoke/python/plugins",
+      "C:/PROGRA~1/QGIS34~1.13/apps/qgis-ltr/./python/plugins"
+    ],
+    "sys_plugin_path": "C:/PROGRA~1/QGIS34~1.13/apps/qgis-ltr/./python/plugins",
+    "home_plugin_path": "D:\\iman-terra-build\\smoke\\plugin-official-new-20261108-182948\\profiles\\profiles\\iman-smoke/python/plugins",
+    "setting_effective": null,
+    "setting_in_user_ini": false,
+    "setting_user_value": null,
+    "watchdog_left": false,
+    "user_ini": "D:/iman-terra-build/smoke/plugin-official-new-20261108-182948/profiles/profiles/iman-smoke/QGIS/QGIS3.ini",
+    "toolbar": {
+      "object_name": null,
+      "found": false,
+      "visible": false,
+      "title": null,
+      "actions": 0
+    },
+    "message_bar": [],
+    "log": []
+  },
+  "log": []
+}

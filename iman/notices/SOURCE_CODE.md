@@ -32,7 +32,21 @@ No fork:
   fixadas em `iman/build/osgeo4w.lock.tsv`;
 - `iman/installer/` é o instalador e o lançador; `iman/brand/` é a fonte de marca.
 
-## 3. Os pacotes OSGeo4W
+## 3. O plugin @IMAN_PLUGIN_NAME@
+
+O IMAN Terra leva o plugin @IMAN_PLUGIN_NAME@ @IMAN_PLUGIN_VERSION@, do Instituto IMAN, instalado em
+`apps\qgis-ltr\python\plugins\@IMAN_PLUGIN_ID@`. Ele sai de uma tag fixada do repositório do plugin:
+
+| | |
+|---|---|
+| Tag | `@IMAN_PLUGIN_TAG@` |
+| Commit | `@IMAN_PLUGIN_COMMIT@` |
+
+O plugin é escrito em Python: **o código-fonte completo dele é a própria pasta instalada**, a mesma árvore daquele
+commit, com o texto da licença em `LICENSE`, na mesma pasta. A tag e o commit também estão em
+`iman\BUILD_INFO.txt` e na trava `iman/plugin/plugin.lock.json` do fork.
+
+## 4. Os pacotes OSGeo4W
 
 Os demais componentes são os pacotes OSGeo4W do QGIS 3.44.13 oficial, na mesma versão (`THIRD_PARTY_NOTICES.md`,
 seção 3). Cada um foi baixado de https://download.osgeo.org/osgeo4w/v2 e conferido pelo SHA-256 registrado em
@@ -42,7 +56,7 @@ O pacote `<nome>-<versão>-src.tar.bz2` que o OSGeo4W publica ao lado de cada pa
 código-fonte: o fonte correspondente é o tarball do upstream que essa receita baixa e compila. A URL do upstream de
 cada pacote está em `THIRD_PARTY_NOTICES.md` e em `iman/notices/licencas-upstream.tsv` do fork.
 
-## 4. Como pedir
+## 5. Como pedir
 
 Escreva ao Instituto IMAN (https://institutoiman.org.br) informando a versão e o commit acima e de quais componentes
 deseja o fonte. O Instituto IMAN fornece o código-fonte correspondente por download ou em mídia física, sem custo
