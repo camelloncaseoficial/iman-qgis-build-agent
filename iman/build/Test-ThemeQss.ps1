@@ -17,6 +17,16 @@
     8. nenhuma das seis regras da camada de marca da distro (widgets do plugin de marca, que o fork nao tem);
     9. QStatusBar QLineEdit zera padding-left e padding-right (D2 no fork: sem o recuo horizontal da regra geral dos
        campos, a coordenada cabe na largura que o QGIS da ao campo; patch 049p).
+  Desde a fatia 058 (smoke do sponsor de 2026-11-11), por acrescimo, uma por regra nova:
+   10. B1: nenhum campo com recuo (QLineEdit, QComboBox, QSpinBox, QDoubleSpinBox, QAbstractSpinBox, QPlainTextEdit,
+       QTextEdit como alvo do seletor, sem subcontrole) declara padding diferente de 0: o da rotacao (QDoubleSpinBox)
+       e o da escala (QComboBox) do rodape, que o QGIS dimensiona, inclusive;
+   11. B2: QTabBar::tab:selected sem font-weight (o negrito cortava o texto da aba, medida no tamanho normal);
+   12. B3: o QToolButton fora das barras tem borda visivel (cor da paleta, nao transparent), e QToolBar QToolButton
+       segue com borda transparent em repouso;
+   13. B4: a regra geral dos campos tem borda 1px solid #D0D5C9 (border-strong);
+   14. B5: QToolBar sem spacing e com padding 4px, e QToolBar QToolButton com padding 1px: os valores que dao a
+       altura e o passo da barra do QGIS oficial (+-1 px), medidos na 058.
   -Out grava o resultado em JSON. Sai com 0 se tudo passa; com 1 nomeando a linha do que falhou.
 #>
 [CmdletBinding()]
@@ -103,6 +113,52 @@ foreach ($b in $blocks | Where-Object { 'QStatusBar QLineEdit' -in @($_.Selector
 }
 $p = @($coordinate.Keys | Where-Object { $coordinate[$_] -notmatch '^0(px)?$' } | ForEach-Object { "QStatusBar QLineEdit com $_ '$($coordinate[$_])'" })
 Add-Check 9 'QStatusBar QLineEdit padding-h 0 (D2)' $p $coordinate
+
+# fatia 058: os seletores de um bloco, um a um, e o alvo de cada um (o ultimo termo, sem pseudo-estado nem atributo)
+function Get-Selectors($b) { @($b.Selector -split ',' | ForEach-Object { $_.Trim() } | Where-Object { $_ }) }
+function Get-Subject([string] $sel) { (($sel -split '\s+')[-1]) }
+function Get-Declarations($b, [string] $prop) {
+  @([regex]::Matches($b.Body, "(?<![-\w])$([regex]::Escape($prop))\s*:\s*([^;}]*)") | ForEach-Object { $_.Groups[1].Value.Trim() })
+}
+
+$fieldTypes = 'QLineEdit', 'QComboBox', 'QSpinBox', 'QDoubleSpinBox', 'QAbstractSpinBox', 'QPlainTextEdit', 'QTextEdit'
+$p = @(foreach ($b in $blocks) {
+    $fieldSelectors = @(Get-Selectors $b | Where-Object { $_ -notmatch '::' -and ((Get-Subject $_) -replace '[:\[].*$', '') -in $fieldTypes })
+    if (-not $fieldSelectors) { continue }
+    foreach ($m in [regex]::Matches($b.Body, '(?<![-\w])(padding(?:-top|-bottom|-left|-right)?)\s*:\s*([^;}]*)')) {
+      $values = @($m.Groups[2].Value.Trim() -split '\s+' | Where-Object { $_ })
+      if (@($values | Where-Object { $_ -notmatch '^0(px)?$' }).Count) { "linha $($b.Line): $($b.Selector) com $($m.Groups[1].Value): $($m.Groups[2].Value.Trim())" }
+    }
+  })
+Add-Check 10 'campos sem padding (B1)' $p ([ordered]@{ fieldTypes = $fieldTypes; offending = $p.Count })
+
+$selectedTab = @($blocks | Where-Object { 'QTabBar::tab:selected' -in (Get-Selectors $_) })
+$p = @($selectedTab | Where-Object { Get-Declarations $_ 'font-weight' } | ForEach-Object { "linha $($_.Line): $($_.Selector) com font-weight $(Get-Declarations $_ 'font-weight')" })
+if (-not $selectedTab) { $p += 'regra QTabBar::tab:selected ausente' }
+Add-Check 11 'aba selecionada sem negrito (B2)' $p ([ordered]@{ blocks = $selectedTab.Count })
+
+$plainButton = @($blocks | Where-Object { (Get-Selectors $_) -contains 'QToolButton' -and @(Get-Selectors $_).Count -eq 1 })
+$barButton = @($blocks | Where-Object { (Get-Selectors $_) -contains 'QToolBar QToolButton' })
+$buttonBorder = @($plainButton | ForEach-Object { Get-Declarations $_ 'border' }) | Select-Object -Last 1
+$barBorder = @($barButton | ForEach-Object { Get-Declarations $_ 'border' }) | Select-Object -Last 1
+$p = @()
+if ($buttonBorder -notmatch '^1px solid #[0-9A-Fa-f]{6}$') { $p += "QToolButton com borda '$buttonBorder' (esperava 1px solid e uma cor da paleta)" }
+if ($barBorder -notmatch '^1px solid transparent$') { $p += "QToolBar QToolButton com borda '$barBorder' (esperava 1px solid transparent)" }
+Add-Check 12 'QToolButton fora da barra c/ borda (B3)' $p ([ordered]@{ toolButton = $buttonBorder; toolBarToolButton = $barBorder })
+
+$general = @($blocks | Where-Object { $s = Get-Selectors $_; 'QLineEdit' -in $s -and 'QComboBox' -in $s -and 'QSpinBox' -in $s })
+$fieldBorder = @($general | ForEach-Object { Get-Declarations $_ 'border' }) | Select-Object -Last 1
+Add-Check 13 'borda dos campos #D0D5C9 (B4)' @(if ($fieldBorder -ne '1px solid #D0D5C9') { "regra geral dos campos com borda '$fieldBorder' (esperava 1px solid #D0D5C9)" }) ([ordered]@{ border = $fieldBorder; blocks = $general.Count })
+
+$toolBar = @($blocks | Where-Object { (Get-Selectors $_) -contains 'QToolBar' })
+$barSpacing = @($toolBar | ForEach-Object { Get-Declarations $_ 'spacing' })
+$barPadding = @($toolBar | ForEach-Object { Get-Declarations $_ 'padding' }) | Select-Object -Last 1
+$barButtonPadding = @($barButton | ForEach-Object { Get-Declarations $_ 'padding' }) | Select-Object -Last 1
+$p = @()
+if ($barSpacing) { $p += "QToolBar com spacing $($barSpacing -join ', ')" }
+if ($barPadding -ne '4px') { $p += "QToolBar com padding '$barPadding' (esperava 4px)" }
+if ($barButtonPadding -ne '1px') { $p += "QToolBar QToolButton com padding '$barButtonPadding' (esperava 1px)" }
+Add-Check 14 'barras como no oficial (B5)' $p ([ordered]@{ spacing = $barSpacing; toolBarPadding = $barPadding; toolBarToolButtonPadding = $barButtonPadding })
 
 $ok = $failures.Count -eq 0
 [ordered]@{ qss = $Qss; sha256 = (Get-FileHash -Algorithm SHA256 $Qss).Hash.ToLowerInvariant(); ok = $ok; checks = $results } |
