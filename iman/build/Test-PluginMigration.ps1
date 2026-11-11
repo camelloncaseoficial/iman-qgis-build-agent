@@ -12,7 +12,9 @@
   -Phase Migrate -SeedRun <rodada da fase Seed>: copia so o GeoPackage semente para uma pasta nova e abre a GUI duas
     vezes, cada uma reabrindo o projeto pelo caminho do botao "Reabrir projeto" do painel do plugin:
       M1 a primeira abertura migra: o schema sai do da semente para o do plugin, a copia de seguranca (<gpkg>.bak)
-         fica ao lado com o SHA-256 da semente, lotes, pessoas e vinculos com as mesmas contagens, a pessoa pelo nome;
+         fica ao lado com o conteudo da semente (todas as tabelas iguais; nao os mesmos bytes: o GDAL tira o arquivo
+         do modo WAL ao abri-lo, antes da copia, e isso muda 4 bytes do cabecalho do SQLite, medido na 061; os SHA-256
+         vao no relato), lotes, pessoas e vinculos com as mesmas contagens, a pessoa pelo nome;
       M1 a aba Pessoas do painel esta habilitada e lista a pessoa migrada (T3; e o T2 da aba, no perfil do -ProfileState);
       M2 a segunda abertura nao migra: o schema ja e o novo antes, nenhuma copia nova, a copia de antes intacta, as
          mesmas contagens;
@@ -138,8 +140,11 @@ if ($Phase -eq 'Seed') {
     $wantSchema = "$($f1.after.schema_version)"
     Add-Check 'M1:migrou' ($f1.read.ok -and $f1.before.schema_version -eq $seedJson.seed.schemaVersion -and [int]$wantSchema -gt [int]$seedJson.seed.schemaVersion) ([ordered]@{
         read = $f1.read; before = $f1.before.schema_version; after = $f1.after.schema_version; seed = $seedJson.seed.schemaVersion })
-    Add-Check 'M1:copia-de-seguranca' ((@($f1.backupsBefore).Count -eq 0) -and (@($f1.backupsAfter) -join ',') -eq "$($seedJson.seed.file).bak" -and $bakSha1 -eq $seedSha) ([ordered]@{
-        before = @($f1.backupsBefore); after = @($f1.backupsAfter); bakSha256 = $bakSha1; seedSha256 = $seedSha })
+    $bakName = "$($seedJson.seed.file).bak"
+    $bakDigest1 = $f1.backupDigests.$bakName
+    Add-Check 'M1:copia-de-seguranca' ((@($f1.backupsBefore).Count -eq 0) -and (@($f1.backupsAfter) -join ',') -eq $bakName -and $bakDigest1 -and $bakDigest1 -eq $f1.before.contentDigest) ([ordered]@{
+        before = @($f1.backupsBefore); after = @($f1.backupsAfter); bakContent = $bakDigest1; seedContent = $f1.before.contentDigest
+        bakSha256 = $bakSha1; seedSha256 = $seedSha })
     Add-Check 'M1:dados-preservados' ($same1 -and $personName -in @($f1.after.person_names)) ([ordered]@{
         seed = $seedCounts; after = $c1; persons = $f1.after.person_names; newPessoasColumns = @($f1.after.pessoas_columns | Where-Object { $_ -notin @($f1.before.pessoas_columns) }) })
     $tab = $f1.personsTab

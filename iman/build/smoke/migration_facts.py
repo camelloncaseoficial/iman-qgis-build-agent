@@ -51,6 +51,25 @@ def gpkg_facts(path):
         con.close()
 
 
+def content_digest(path):
+    """SHA-256 do conteudo de todas as tabelas (sqlite_master e linhas por rowid), so leitura. A copia de seguranca
+    nao sai byte a byte igual a semente: o GDAL tira o arquivo do modo WAL ao abri-lo, antes da copia, e isso muda o
+    cabecalho do SQLite (bytes 18, 19, 27 e 95, medido na 061), sem mudar dado."""
+    import hashlib
+
+    con = sqlite3.connect("file:%s?mode=ro" % path.replace("\\", "/"), uri=True)
+    try:
+        h = hashlib.sha256()
+        master = con.execute("SELECT type, name, tbl_name, sql FROM sqlite_master ORDER BY type, name").fetchall()
+        h.update(repr(master).encode("utf-8"))
+        for (name,) in con.execute("SELECT name FROM sqlite_master WHERE type='table' ORDER BY name").fetchall():
+            for row in con.execute('SELECT * FROM "%s" ORDER BY rowid' % name):
+                h.update(repr(row).encode("utf-8"))
+        return h.hexdigest()
+    finally:
+        con.close()
+
+
 def find_gpkg():
     found = sorted(glob.glob(os.path.join(workspace, "*.gpkg")))
     return found[0] if found else None
@@ -123,6 +142,7 @@ def open_project():
     vm = dock._vm
     gpkg = find_gpkg()
     result["before"] = gpkg_facts(gpkg)
+    result["before"]["contentDigest"] = content_digest(gpkg)
     result["backupsBefore"] = backups()
     # o mesmo que o botao "Reabrir projeto": le (migrando, se precisar) e ativa no painel
     read = vm._open_service.read(gpkg)
@@ -131,7 +151,8 @@ def open_project():
     QApplication.processEvents()
     result["after"] = gpkg_facts(gpkg)
     result["backupsAfter"] = backups()
-    tabs = dock.findChild(QTabWidget, "imanTabs")
+    result["backupDigests"] = {b: content_digest(os.path.join(workspace, b)) for b in result["backupsAfter"]}
+    tabs =dock.findChild(QTabWidget, "imanTabs")
     info = {"found": tabs is not None}
     if tabs is not None:
         info["texts"] = [tabs.tabText(i) for i in range(tabs.count())]
