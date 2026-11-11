@@ -55,6 +55,7 @@ $work = Join-Path $run 'work'
 New-Item -ItemType Directory -Force $profiles, $work | Out-Null
 $cacheDir = (Join-Path $run 'cache') -replace '\\', '/'
 New-DisposableProfile $profiles $cacheDir $Target
+$productData = Get-ProductDataSnapshot $Target   # A3 da fatia 058: o que a rodada deixar na pasta do produto sai no fim
 $name = Get-InternalName $Target
 $userIni = Join-Path $profiles "profiles\iman-smoke\$($name.Organization)\$($name.Application).ini"
 if ($ProfileState -eq 'Seeded') {
@@ -148,6 +149,8 @@ if ($f) {
   }
 }
 
+$restored = Restore-ProductData $productData
+if ($restored) { Add-Check 'dados-do-produto' $restored.ok $restored }
 $guard = & $pwshExe -NoProfile -File (Join-Path $PSScriptRoot 'Test-OfficialQgisUntouched.ps1') -WorkRoot $WorkRoot 2>&1 | Out-String
 Add-Check 'guard' ($LASTEXITCODE -eq 0) ($guard.Trim() -split "`r?`n" | Select-Object -Last 1)
 $result.ok = @($result.checks.Values | Where-Object { -not $_.ok }).Count -eq 0

@@ -54,12 +54,8 @@ function Write-GzLines([string] $path, [string[]] $lines) {
   $gz.Write($bytes, 0, $bytes.Length); $gz.Dispose(); $fs.Dispose()
 }
 
-# Pacotes do conjunto oficial que nao entram na arvore, cada um com o motivo. Lugar unico da exclusao (emenda de
-# 2026-10-29 ao D-IMAN-043, decisao 3: o runtime e o conjunto do oficial menos os qgis-ltr* e menos estes). O lock
-# segue com Runtime=official para eles: diz o que o oficial instala, nao o que o produto leva.
-$RuntimeExcluded = [ordered]@{
-  'gdal-ecw' = 'o termo da Hexagon (ERDAS ECW/JP2 Server Read-Only End-user SDK License Agreement v5.5, secao 2.2) nao permite distribuir aplicacao desktop com o SDK'
-}
+# Pacotes do conjunto oficial que nao entram na arvore: o $RuntimeExcluded do Common.ps1, lugar unico da exclusao,
+# com o motivo de cada um (desde a fatia 058, A1: o Test-RuntimeSet.ps1 le a mesma lista).
 
 # 1. pacotes do conjunto oficial
 $official = @(Get-Content $LockFile | Where-Object { -not $_.StartsWith('#') } | ConvertFrom-Csv -Delimiter "`t" | Where-Object Runtime -eq 'official')
