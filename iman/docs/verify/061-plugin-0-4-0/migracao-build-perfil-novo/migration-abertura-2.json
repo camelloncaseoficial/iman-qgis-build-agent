@@ -1,0 +1,127 @@
+{
+  "phase": "open",
+  "errors": {},
+  "pluginLoaded": true,
+  "before": {
+    "path": "D:\\iman-terra-build\\verify\\plugin-migration-migrate-build-20261111-150317\\work\\reurb\\projeto_de_teste_061.gpkg",
+    "schema_version": "4",
+    "lotes": 1,
+    "pessoas": 1,
+    "lote_pessoa": 1,
+    "person_names": [
+      "Pessoa de Teste 061"
+    ],
+    "pessoas_columns": [
+      "fid",
+      "id",
+      "project_id",
+      "person_type",
+      "name",
+      "cpf_cnpj",
+      "id_doc",
+      "marital_status",
+      "profession",
+      "nationality",
+      "address",
+      "district",
+      "cep",
+      "phone",
+      "email",
+      "status",
+      "notes",
+      "created_at",
+      "updated_at",
+      "issuing_agency",
+      "mother_name",
+      "father_name",
+      "municipality_name",
+      "municipality_state",
+      "spouse_id",
+      "property_regime",
+      "married_before_law_6515"
+    ],
+    "contentDigest": "9889b28a9ca7ac156d7d668dfeebe59e264d2a1fc71d2d37d4eac2187cf90576"
+  },
+  "backupsBefore": [
+    "projeto_de_teste_061.gpkg.bak"
+  ],
+  "read": {
+    "ok": true,
+    "error": null
+  },
+  "after": {
+    "path": "D:\\iman-terra-build\\verify\\plugin-migration-migrate-build-20261111-150317\\work\\reurb\\projeto_de_teste_061.gpkg",
+    "schema_version": "4",
+    "lotes": 1,
+    "pessoas": 1,
+    "lote_pessoa": 1,
+    "person_names": [
+      "Pessoa de Teste 061"
+    ],
+    "pessoas_columns": [
+      "fid",
+      "id",
+      "project_id",
+      "person_type",
+      "name",
+      "cpf_cnpj",
+      "id_doc",
+      "marital_status",
+      "profession",
+      "nationality",
+      "address",
+      "district",
+      "cep",
+      "phone",
+      "email",
+      "status",
+      "notes",
+      "created_at",
+      "updated_at",
+      "issuing_agency",
+      "mother_name",
+      "father_name",
+      "municipality_name",
+      "municipality_state",
+      "spouse_id",
+      "property_regime",
+      "married_before_law_6515"
+    ]
+  },
+  "backupsAfter": [
+    "projeto_de_teste_061.gpkg.bak"
+  ],
+  "backupDigests": {
+    "projeto_de_teste_061.gpkg.bak": "0d7f62cc75ba9770cf054af9d0d317fcd5308cf4e934f1d8e09ba965cdccbc71"
+  },
+  "personsTab": {
+    "found": true,
+    "texts": [
+      "Projeto",
+      "Confrontações",
+      "Pessoas",
+      "Memorial"
+    ],
+    "personsIndex": 2,
+    "personsEnabled": true,
+    "mode": "table",
+    "counter": "1 pessoa",
+    "rows": 1,
+    "tableRows": 1,
+    "tableNames": [
+      "Pessoa de Teste 061"
+    ]
+  },
+  "plugin": {
+    "version": "0.4.0",
+    "author": "Instituto IMAN",
+    "name": "IMAN REURB",
+    "active": true,
+    "manager": {
+      "name": "IMAN REURB",
+      "version_installed": "0.4.0",
+      "author_name": "Instituto IMAN",
+      "installed": true
+    }
+  }
+}

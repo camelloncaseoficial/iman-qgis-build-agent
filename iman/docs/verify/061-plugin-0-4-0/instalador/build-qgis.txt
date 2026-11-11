@@ -1,0 +1,24 @@
+[14:56:24] MSVC 14.44.35207, SDK 10.0.26100.0, Python D:\iman-terra-build\osgeo4w\apps\Python312, GRASS D:\iman-terra-build\osgeo4w\apps\grass\grass85
+marca: IMAN Terra; 83 mensagens em D:\iman-terra-build\brand\iman_pt_BR.ts; cabecalho sem mudanca
+[14:56:25] flex/bison em serie
+[1/1] Generating qgsversion.h, qgsversion.inc
+
+D:\_projetos\iman-webgeo\iman-qgis-build-agent>echo #define QGSVERSION "ee83c9c7b7"   1>D:/iman-terra-build/build/qgsversion.h.temp  && for /F "usebackq tokens=1" %a in (`"C:/Program Files/Git/mingw64/bin/git.exe" log -n1 --oneline`) do echo PROJECT_NUMBER = "3.44.13-Solothurn (ee83c9c7b7)"   1>D:/iman-terra-build/build/qgsversion.inc  && D:\iman-terra-build\tools\cmake\bin\cmake.exe -DSRC=D:/iman-terra-build/build/qgsversion.h.temp -DDST=D:/iman-terra-build/build/qgsversion.h -P D:/_projetos/iman-webgeo/iman-qgis-build-agent/cmake/CopyIfChanged.cmake 
+
+D:\_projetos\iman-webgeo\iman-qgis-build-agent>echo PROJECT_NUMBER = "3.44.13-Solothurn (ee83c9c7b7)"   1>D:/iman-terra-build/build/qgsversion.inc  && D:\iman-terra-build\tools\cmake\bin\cmake.exe -DSRC=D:/iman-terra-build/build/qgsversion.h.temp -DDST=D:/iman-terra-build/build/qgsversion.h -P D:/_projetos/iman-webgeo/iman-qgis-build-agent/cmake/CopyIfChanged.cmake 
+[14:56:25] cmake --build
+
+[8/19] Building CXX object src\core\CMakeFiles\qgis_core.dir\qgs[7merror[0m.cpp.obj
+[14:57:00] cmake --install
+[14:59:38] plugin iman_plugin 0.4.0 da tag v0.4.0 (4f7cff8998)
+{
+  "started": "2026-11-11T14:56:23",
+  "buildSeconds": 35,
+  "plugin": "iman_plugin v0.4.0 4f7cff89988b2af2f03dc6da6f116d7e53c5b224",
+  "installSeconds": 159,
+  "finished": "2026-11-11T14:59:38",
+  "msvc": "14.44.35207",
+  "log": "D:\\iman-terra-build\\logs\\build-20261111-145623.log"
+}
+
+exit=0

@@ -1,0 +1,36 @@
+{
+  "run": "D:\\iman-terra-build\\verify\\plugin-embed-20261111-151747",
+  "root": "%USERPROFILE%\\AppData\\Local\\Programs\\IMAN Terra\\apps\\qgis-ltr",
+  "pluginRepo": "D:\\_projetos\\iman-webgeo\\iman-qgis-build-agent\\..\\iman-qgis-plugin-agent",
+  "lock": {
+    "id": "iman_plugin",
+    "version": "0.4.0",
+    "tag": "v0.4.0",
+    "commit": "4f7cff89988b2af2f03dc6da6f116d7e53c5b224"
+  },
+  "checks": {
+    "T2:archive-e-o-commit": {
+      "ok": true,
+      "detail": {
+        "commit": "4f7cff89988b2af2f03dc6da6f116d7e53c5b224",
+        "files": 132,
+        "lsTree": 132,
+        "blobMismatch": []
+      }
+    },
+    "T2:pasta-embarcada": {
+      "ok": true,
+      "detail": {
+        "dir": "%USERPROFILE%\\AppData\\Local\\Programs\\IMAN Terra\\apps\\qgis-ltr\\python\\plugins\\iman_plugin",
+        "files": 132,
+        "sha256Equal": 132,
+        "missing": [],
+        "extra": [],
+        "shaDiff": [],
+        "pycacheReported": 0,
+        "license": true
+      }
+    }
+  },
+  "ok": true
+}

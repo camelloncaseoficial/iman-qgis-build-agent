@@ -1,0 +1,55 @@
+{
+  "phase": "seed",
+  "errors": {},
+  "pluginLoaded": true,
+  "seed": {
+    "project": "Projeto de Teste 061",
+    "gpkg": "D:\\iman-terra-build\\verify\\plugin-migration-seed-build-20261111-145407\\work\\reurb\\projeto_de_teste_061.gpkg",
+    "parcel_id": "e0ac22a0-a9c5-4935-8148-651cd52f65ae",
+    "person_id": "6558f16a-9e16-4f6f-8f1f-8cb775d56bbf",
+    "link_id": "7bf493eb-2c4f-4f7f-aef8-dc1e44549ab6"
+  },
+  "after": {
+    "path": "D:\\iman-terra-build\\verify\\plugin-migration-seed-build-20261111-145407\\work\\reurb\\projeto_de_teste_061.gpkg",
+    "schema_version": "3",
+    "lotes": 1,
+    "pessoas": 1,
+    "lote_pessoa": 1,
+    "person_names": [
+      "Pessoa de Teste 061"
+    ],
+    "pessoas_columns": [
+      "fid",
+      "id",
+      "project_id",
+      "person_type",
+      "name",
+      "cpf_cnpj",
+      "id_doc",
+      "marital_status",
+      "profession",
+      "nationality",
+      "address",
+      "district",
+      "cep",
+      "phone",
+      "email",
+      "status",
+      "notes",
+      "created_at",
+      "updated_at"
+    ]
+  },
+  "plugin": {
+    "version": "0.3.1",
+    "author": "Instituto IMAN",
+    "name": "IMAN REURB",
+    "active": true,
+    "manager": {
+      "name": "IMAN REURB",
+      "version_installed": "0.3.1",
+      "author_name": "Instituto IMAN",
+      "installed": true
+    }
+  }
+}
