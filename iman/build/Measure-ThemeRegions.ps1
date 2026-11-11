@@ -205,7 +205,9 @@ if (-not $SkipSplash) {
     $entry = [ordered]@{ frame = $file; size = @($shot.Width, $shot.Height); band = "$top..$($shot.Height - 1)"; textPixels = $count
       meanLuminance = $(if ($count) { [math]::Round($lum / $count, 1) } else { $null })
       medianLuminance = $(if ($count) { $s = @($lums | Sort-Object); [math]::Round($s[[int]($s.Count / 2)], 1) } else { $null }) }
-    if (-not $best -or $count -gt $best.textPixels) { $best = $entry }
+    # quadro em que mais de 30% da faixa difere do splash nao e o splash (janela preta ao abrir ou ao fechar)
+    $entry.isSplash = $count -le 0.3 * $shot.Width * ($shot.Height - $top)
+    if ($entry.isSplash -and (-not $best -or $count -gt $best.textPixels)) { $best = $entry }
     if ($ref2 -ne $derived) { $ref2.Dispose() }
     $shot.Dispose()
   }
