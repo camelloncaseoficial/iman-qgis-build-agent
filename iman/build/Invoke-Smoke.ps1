@@ -17,6 +17,9 @@
     4. checagens de marca (marca:*), contra iman/brand/brand.json e iman/brand/derived; desde a fatia 051,
        marca:plugin-reurb: o plugin da trava (iman/plugin/plugin.lock.json) em qgis.utils.active_plugins, carregado
        de python\plugins da arvore do alvo, na versao da trava (no oficial, sem o plugin, cai: visto falhando);
+       desde a fatia 058, marca:splash-texto: no commit do binario, o qgisapp.cpp pinta o texto do splash com
+       IMAN_SPLASH_TEXT_COLOR (nao Qt::black) e o brand.json tem o splash_text_color; no Build, o iman_brand.h do
+       build define a constante com esse valor (no oficial, a revisao e a do QGIS: cai);
     5. so no Build, desde a fatia 058 (A3): dados-do-produto, o que a rodada deixou em %LOCALAPPDATA%\<org>\<app>
        (o armazenamento HSTS do Qt cria a pasta cache ali) sai no fim, se forem pastas vazias (Common.ps1);
     6. guarda: Test-OfficialQgisUntouched.ps1 (o QGIS oficial, os dados e o registro dele nao mudaram).
@@ -196,6 +199,25 @@ if ($g) {
   $splashSha = Get-Sha "$derived\splash.png"
   Add-Result 'marca:splash' ($g.resources.':/images/splash/splash.png' -eq $splashSha -and (T 'QgisApp|QGIS Ready!') -eq "$product pronto!") ([ordered]@{
       resource = $g.resources.':/images/splash/splash.png'; derived = $splashSha; message = (T 'QgisApp|QGIS Ready!') })
+
+  # T4 da fatia 058 (C1): a cor do texto do splash e a da marca. No commit de que o binario saiu (a revisao dele), o
+  # qgisapp.cpp usa IMAN_SPLASH_TEXT_COLOR e nao o Qt::black, e o brand.json tem o splash_text_color; no Build, o
+  # iman_brand.h do build define a constante com esse valor. No oficial, a revisao e a do QGIS: cai (controle).
+  $splashText = [ordered]@{ revision = $rev }
+  $appSrc = & $gitExe -C $RepoRoot show "${rev}:src/app/qgisapp.cpp" 2>$null
+  $colorLine = @($appSrc | Where-Object { $_ -match 'QColor splashTextColor\s*=' }) | Select-Object -First 1
+  $splashText.qgisappLine = $(if ($colorLine) { $colorLine.Trim() })
+  $usesBrand = [bool]($colorLine -and $colorLine -match 'IMAN_SPLASH_TEXT_COLOR' -and $colorLine -notmatch 'Qt::black')
+  $brandAtRev = try { (& $gitExe -C $RepoRoot show "${rev}:iman/brand/brand.json" 2>$null | Out-String) | ConvertFrom-Json } catch { $null }
+  $splashText.brandSplashTextColor = $brandAtRev.splash_text_color
+  $headerOk = $true
+  if ($Target -eq 'Build') {
+    $header = Join-Path $Paths.Build 'iman_brand.h'
+    $define = @(Get-Content $header -ErrorAction SilentlyContinue | Where-Object { $_ -match '^#define IMAN_SPLASH_TEXT_COLOR ' }) | Select-Object -First 1
+    $splashText.header = $define
+    $headerOk = [bool]($define -and $brandAtRev.splash_text_color -and $define -eq "#define IMAN_SPLASH_TEXT_COLOR `"$($brandAtRev.splash_text_color.ToUpperInvariant())`"")
+  }
+  Add-Result 'marca:splash-texto' ($usesBrand -and [bool]$brandAtRev.splash_text_color -and $headerOk) $splashText
 
   $iconMap = [ordered]@{
     ':/images/icons/qgis_icon.svg' = 'qgis_icon.svg'; ':/images/icons/qgis-icon-16x16.png' = 'qgis-icon-16x16.png'
