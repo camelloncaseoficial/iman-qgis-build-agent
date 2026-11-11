@@ -83,7 +83,8 @@ QMenu::separator { height: 1px; background: #E2E5DE; margin: 5px 10px; }
    31, medido). Ficam as cores.
    B3 (fatia 058, "botoes ... sumiram, devem estar flat"): o QToolButton fora das barras (o "..." ao lado dos campos
    dos dialogos) volta a ter borda e fundo em repouso, com o border-strong dos campos (B4), e o `padding: 3px` de
-   antes (26 x 24, como no oficial; sem ele, 20 x 18 e o texto espremido). Nas barras e nos botoes autoRaise (os que
+   antes (26 x 24, o tamanho de antes da 058; no oficial, 23 x 20 e 23 x 22; sem padding, 20 x 18 e o texto
+   espremido). Nas barras e nos botoes autoRaise (os que
    o QGIS ja desenha planos, como o iterar e o de opcoes avancadas do Processamento), segue sem borda em repouso,
    como antes; a regra plana vem antes do :hover para o hover continuar valendo. */
 QToolBar { background-color: #F5F7F2; border: none; border-bottom: 1px solid #E2E5DE; padding: 4px; }
