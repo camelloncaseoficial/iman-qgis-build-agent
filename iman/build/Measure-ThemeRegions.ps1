@@ -10,7 +10,8 @@
      texto, cabe ou nao.
   2. splash real (C1, T4): o QGIS abre sem --nologo e a janela do splash e capturada da tela enquanto carrega, em
      quadros; a faixa do rodape (onde o QGIS escreve a mensagem) e comparada pixel a pixel com o splash derivado
-     (iman/brand/derived/splash.png): os pixels que mudaram sao o texto, e a luminancia media deles diz a cor.
+     (iman/brand/derived/splash.png): os pixels que mudaram sao o texto, e a luminancia mediana deles diz a cor (a
+     media sai puxada pela borda suavizada das letras).
   Vereditos (result.json, regions):
     B1 o texto inteiro da rotacao (359,9 °), da escala e da lupa cabe na largura e na altura uteis;
     B2 o texto de cada aba do dialogo, nas duas abas selecionadas, cabe na largura util (a aba menos padding e borda),
@@ -20,7 +21,7 @@
     B4 a borda dos campos em repouso e a cor esperada (-FieldBorder, padrao #D0D5C9, token border-strong);
     B5 so com -Reference (o result.json de uma rodada do oficial): passo entre os dois primeiros icones e altura das
        barras iguais aos do oficial, com tolerancia de 1 px;
-    splash: texto claro (luminancia media dos pixels de texto acima de 200) ou escuro, contra -SplashText; no
+    splash: texto claro (luminancia mediana dos pixels de texto acima de 200) ou escuro, contra -SplashText; no
        oficial, que tem outro splash, so as capturas.
   Medicao, nao gate: sai com 0 mesmo com veredito falho; quem le e o laudo. A guarda do QGIS oficial roda no fim, e o
   alvo Build remove o que a rodada deixar na pasta do produto (A3, Common.ps1).
@@ -192,24 +193,25 @@ if (-not $SkipSplash) {
   foreach ($file in $frames) {
     $shot = [Drawing.Bitmap]::new((Join-Path $run $file))
     $ref2 = if ($shot.Width -ne $derived.Width -or $shot.Height -ne $derived.Height) { [Drawing.Bitmap]::new($derived, $shot.Width, $shot.Height) } else { $derived }
-    $top = [int]($shot.Height * 0.85); $count = 0; $lum = 0.0
+    $top = [int]($shot.Height * 0.85); $count = 0; $lum = 0.0; $lums = [Collections.Generic.List[double]]::new()
     for ($y = $top; $y -lt $shot.Height; $y++) {
       for ($x = 0; $x -lt $shot.Width; $x++) {
         $a = $shot.GetPixel($x, $y); $b = $ref2.GetPixel($x, $y)
         if ([math]::Abs($a.R - $b.R) + [math]::Abs($a.G - $b.G) + [math]::Abs($a.B - $b.B) -gt 90) {
-          $count++; $lum += 0.2126 * $a.R + 0.7152 * $a.G + 0.0722 * $a.B
+          $l = 0.2126 * $a.R + 0.7152 * $a.G + 0.0722 * $a.B; $count++; $lum += $l; $lums.Add($l)
         }
       }
     }
     $entry = [ordered]@{ frame = $file; size = @($shot.Width, $shot.Height); band = "$top..$($shot.Height - 1)"; textPixels = $count
-      meanLuminance = $(if ($count) { [math]::Round($lum / $count, 1) } else { $null }) }
+      meanLuminance = $(if ($count) { [math]::Round($lum / $count, 1) } else { $null })
+      medianLuminance = $(if ($count) { $s = @($lums | Sort-Object); [math]::Round($s[[int]($s.Count / 2)], 1) } else { $null }) }
     if (-not $best -or $count -gt $best.textPixels) { $best = $entry }
     if ($ref2 -ne $derived) { $ref2.Dispose() }
     $shot.Dispose()
   }
   $derived.Dispose()
   if ($Target -eq 'Official') { $best = [ordered]@{ note = 'o oficial tem outro splash: so as capturas'; frames = $frames } }
-  $splashOk = $best -and $best.textPixels -gt 50 -and $(if ($SplashText -eq 'Light') { $best.meanLuminance -gt 200 } else { $best.meanLuminance -lt 60 })
+  $splashOk = $best -and $best.textPixels -gt 50 -and $(if ($SplashText -eq 'Light') { $best.medianLuminance -gt 200 } else { $best.medianLuminance -lt 60 })
   Add-Region 'C1:splash' $(if ($Target -eq 'Official') { $true } else { [bool] $splashOk }) ([ordered]@{ expectedText = $SplashText; frames = $frames; best = $best })
 }
 
