@@ -57,6 +57,14 @@ $ExpectedMsvc = '14.44'
 # apps\qgis-ltr, para o crash handler montar a pilha, e o New-RuntimeTree.ps1 os poe no mesmo lugar (patch de
 # 2026-10-29 da fatia 047). Distribuiveis pela lista REDIST do Windows SDK, secao "Debugging Tools for Windows"
 # (https://learn.microsoft.com/legal/windows-sdk/redist). Instalados pelo Install-BuildTools.ps1.
+# Pacotes do conjunto oficial que nao entram na arvore do produto, cada um com o motivo. Lugar unico da exclusao
+# (emenda de 2026-10-29 ao D-IMAN-043, decisao 3: o runtime e o conjunto do oficial menos os qgis-ltr* e menos
+# estes): o New-RuntimeTree.ps1 monta a arvore com ela e o Test-RuntimeSet.ps1 a le daqui (fatia 058, A1). O lock
+# segue com Runtime=official para eles: diz o que o oficial instala, nao o que o produto leva.
+$RuntimeExcluded = [ordered]@{
+  'gdal-ecw' = 'o termo da Hexagon (ERDAS ECW/JP2 Server Read-Only End-user SDK License Agreement v5.5, secao 2.2) nao permite distribuir aplicacao desktop com o SDK'
+}
+
 $DebuggersDir = Join-Path ${env:ProgramFiles(x86)} 'Windows Kits\10\Debuggers\x64'
 $DebuggerRedist = [ordered]@{
   'dbghelp.dll' = @{ Version = '10.0.26100.7705'; Sha256 = '23d33e01020b6d1de7dd29cd737287042476a6e0a8deafdab68f01e61a801fcf' }
@@ -148,7 +156,11 @@ function Import-VsEnvironment {
   $vs = Get-VsInstallPath
   if (-not $vs) { throw 'VS 2022 Build Tools nao encontrado; rode Install-BuildTools.ps1' }
   $bat = Join-Path $vs 'VC\Auxiliary\Build\vcvarsall.bat'
-  $lines = & cmd.exe /c "`"$bat`" amd64 $VsSdkVersion >nul && set"
+  # O VsDevCmd.bat (Common7\Tools, linha 181) faz pushd na pasta do Installer e chama "vswhere.exe" pelo nome, contando
+  # com a busca na pasta atual. Com NoDefaultCurrentDirectoryInExePath no ambiente (o terminal do agente o define), o
+  # cmd nao procura na pasta atual e imprime '"vswhere.exe" no se reconoce...' (fatia 058, A2). A variavel sai so
+  # neste cmd filho; o processo segue com ela.
+  $lines = & cmd.exe /c "set `"NoDefaultCurrentDirectoryInExePath=`" && `"$bat`" amd64 $VsSdkVersion >nul && set"
   if ($LASTEXITCODE) { throw "vcvarsall falhou ($LASTEXITCODE)" }
   foreach ($l in $lines) { if ($l -match '^([^=]+)=(.*)$') { Set-Item -Path "env:$($Matches[1])" -Value $Matches[2] } }
   $env:VSLANG = '1033'
@@ -182,6 +194,49 @@ function New-DisposableProfile([string] $Profiles, [string] $CacheDir, [string] 
     New-Item -ItemType Directory -Force (Split-Path $ini) | Out-Null
     Write-LfFile $ini @('[cache]', "directory=$($CacheDir -replace '\\', '/')")
   }
+}
+
+# Dados do produto que uma medicao do alvo Build nao pode deixar (fatia 058, A3). O perfil e o cache de rede ja sao
+# descartaveis (New-DisposableProfile), mas o QgsNetworkAccessManager liga o armazenamento HSTS do Qt sem diretorio
+# (src/core/network/qgsnetworkaccessmanager.cpp:223, enableStrictTransportSecurityStore), e o Qt usa entao o
+# CacheLocation padrao, %LOCALAPPDATA%\<org>\<app>\cache, sem ler o [cache] directory do perfil. O mkpath acontece no
+# destrutor do gerenciador, na saida de todo qgis_process e de toda GUI (medido com o cdb na fatia 058). Perfil e
+# ambiente nao redirecionam o CacheLocation; corrigir no QGIS mudaria o comportamento do produto. Decisao do sponsor
+# na fatia 058: o alvo Build anota o que existia antes e, no fim, remove so o que a rodada criou, se forem pastas
+# vazias; se a rodada deixou arquivo la, nada e removido e a checagem falha. Os outros alvos nao entram: o Installed
+# grava na pasta dele por definicao, e a do oficial e da guarda.
+function Get-ProductDataSnapshot([string] $Target = 'Build') {
+  if ($Target -ne 'Build') { return $null }
+  $name = Get-InternalName $Target
+  $org = Join-Path $env:LOCALAPPDATA $name.Organization
+  $dir = Join-Path $org $name.Application
+  [pscustomobject]@{
+    Organization = $org; Directory = $dir; OrganizationExisted = (Test-Path $org); Existed = (Test-Path $dir)
+    Items = @(if (Test-Path $dir) { Get-ChildItem $dir -Recurse -Force | ForEach-Object FullName })
+  }
+}
+
+# Devolve o fato da checagem 'dados-do-produto' (ok, o que foi criado, o que foi removido); $null fora do alvo Build.
+function Restore-ProductData($Snapshot) {
+  if (-not $Snapshot) { return $null }
+  $dir = $Snapshot.Directory
+  $fact = [ordered]@{ ok = $true; directory = $dir; existedBefore = $Snapshot.Existed; created = @(); removed = @(); files = @() }
+  if (-not (Test-Path $dir)) { return $fact }
+  $before = [Collections.Generic.HashSet[string]]::new([string[]]@($Snapshot.Items), [StringComparer]::OrdinalIgnoreCase)
+  $new = @(Get-ChildItem $dir -Recurse -Force | Where-Object { -not $before.Contains($_.FullName) })
+  if (-not $Snapshot.Existed) { $new = @(Get-Item $dir -Force) + $new }
+  $fact.created = @($new | ForEach-Object FullName)
+  $fact.files = @($new | Where-Object { -not $_.PSIsContainer } | ForEach-Object FullName)
+  if ($fact.files.Count) { $fact.ok = $false; return $fact }
+  # as pastas novas, da mais funda para a mais rasa; cada uma so sai se estiver vazia
+  foreach ($d in @($new | Sort-Object { $_.FullName.Length } -Descending)) {
+    if (-not @(Get-ChildItem $d.FullName -Force).Count) { Remove-Item $d.FullName -Force; $fact.removed += $d.FullName }
+  }
+  if (-not $Snapshot.OrganizationExisted -and (Test-Path $Snapshot.Organization) -and -not @(Get-ChildItem $Snapshot.Organization -Force).Count) {
+    Remove-Item $Snapshot.Organization -Force; $fact.removed += $Snapshot.Organization
+  }
+  $fact.ok = @($fact.created | Where-Object { Test-Path -LiteralPath $_ }).Count -eq 0
+  $fact
 }
 
 # Ambiente de runtime no processo atual: o mesmo de bin\qgis_process-qgis-ltr.bat do oficial (o4w_env, GRASS,

@@ -48,6 +48,7 @@ function Add-Fact([string] $name, $detail) {
 
 $profiles = Join-Path $run 'profiles'
 New-DisposableProfile $profiles (Join-Path $run 'cache') $Target
+$productData = Get-ProductDataSnapshot $Target   # A3 da fatia 058: o que a rodada deixar na pasta do produto sai no fim
 Import-QgisRuntime $o4w $app $profiles
 $runtimePath = $env:PATH
 
@@ -138,10 +139,12 @@ if ($h) {
 if (-not $p.WaitForExit(30000)) { Stop-Process -Id $p.Id -Force }
 Add-Fact 'erro-de-carga' $errFacts
 
+$restored = Restore-ProductData $productData
+if ($restored) { Add-Fact 'dados-do-produto' $restored }
 $guard = & $pwshExe -NoProfile -File (Join-Path $PSScriptRoot 'Test-OfficialQgisUntouched.ps1') -WorkRoot $WorkRoot 2>&1 | Out-String
 $summary.guard = ($guard.Trim() -split "`r?`n" | Select-Object -Last 1)
 $summary.guardOk = $LASTEXITCODE -eq 0
 $summary.captures = @(Get-ChildItem $run -Filter '*.png' | ForEach-Object Name)
 $summary | ConvertTo-Json -Depth 8 | Set-Content -Encoding utf8 (Join-Path $run 'summary.json')
 Write-Step "capturas $Target ${Lang}: $run (guarda $(if ($summary.guardOk) { 'OK' } else { 'FALHOU' }))"
-if (-not $summary.guardOk) { exit 1 }
+if (-not $summary.guardOk -or ($restored -and -not $restored.ok)) { exit 1 }

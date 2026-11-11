@@ -1,0 +1,18 @@
+[12:47:20] pacotes: arvore 153 (sem o nosso build 152), oficial 159 (sem qgis-ltr* 153), diferencas 1, -devel 0
+[12:47:20] conjunto do produto: 152 pacotes (excluidos: gdal-ecw), fora dele 0
+[12:47:20] arquivos por pacote: 152 comparados, 0 com diferenca
+[12:47:20] nosso build x qgis-ltr*: 131 so nosso, 1 so do oficial
+[12:47:20] tamanho: arvore 2,21 GB (37455 arquivos), oficial 2,23 GB (37421 arquivos)
+[12:47:20] conjunto OK: D:\iman-terra-build\verify\runtime-set-20261111-124653
+exit=0
+--- copia descartavel sem gdal-ecw no $RuntimeExcluded:
+64:$RuntimeExcluded = [ordered]@{
+65-}
+66-
+[12:47:52] pacotes: arvore 153 (sem o nosso build 152), oficial 159 (sem qgis-ltr* 153), diferencas 1, -devel 0
+[12:47:52] conjunto do produto: 153 pacotes (excluidos: ), fora dele 1
+[12:47:52] arquivos por pacote: 152 comparados, 0 com diferenca
+[12:47:52] nosso build x qgis-ltr*: 131 so nosso, 1 so do oficial
+[12:47:52] tamanho: arvore 2,21 GB (37455 arquivos), oficial 2,23 GB (37421 arquivos)
+[12:47:52] conjunto FALHOU: D:\iman-terra-build\verify\runtime-set-20261111-124723
+exit=1

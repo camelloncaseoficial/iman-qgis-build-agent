@@ -204,6 +204,7 @@
 
 #include "qgscrashhandler.h"
 
+#include "iman_brand.h" // IMAN: marca da fonte unica, gerado no build a partir de iman/brand
 #include "qgisapp.h"
 #include "moc_qgisapp.cpp"
 #include "qgisappinterface.h"
@@ -985,7 +986,8 @@ QgisApp::QgisApp( QSplashScreen *splash, AppOptions options, const QString &root
   sInstance = this;
   QgsRuntimeProfiler *profiler = QgsApplication::profiler();
 
-  QColor splashTextColor = Qgis::releaseName() == QLatin1String( "Master" ) ? QColor( 93, 153, 51 ) : Qt::black;
+  // IMAN: a cor do texto de carregamento do splash vem da marca (splash_text_color do brand.json), no lugar do preto (fatia 058)
+  QColor splashTextColor = Qgis::releaseName() == QLatin1String( "Master" ) ? QColor( 93, 153, 51 ) : QColor( IMAN_SPLASH_TEXT_COLOR );
 
   startProfile( tr( "Create user profile manager" ) );
   mUserProfileManager = new QgsUserProfileManager( QString(), this );

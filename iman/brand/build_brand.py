@@ -178,6 +178,14 @@ def c_string(value):
     return '"%s"' % "".join(out)
 
 
+def splash_text_color(brand):
+    """#RRGGBB, que o QColor(const char *) do Qt le; outro formato para o build em vez de virar uma cor invalida."""
+    value = brand["splash_text_color"]
+    if not re.match(r"^#[0-9A-Fa-f]{6}$", value):
+        raise SystemExit("splash_text_color tem de ser #RRGGBB: %r" % value)
+    return value.upper()
+
+
 def write_header(path, brand):
     defs = [
         ("IMAN_PRODUCT_NAME", brand["product_name"]),
@@ -189,6 +197,8 @@ def write_header(path, brand):
         ("IMAN_INTERNAL_ORGANIZATION_NAME", brand["internal_organization_name"]),
         ("IMAN_INTERNAL_ORGANIZATION_DOMAIN", brand["internal_organization_domain"]),
         ("IMAN_INTERNAL_APPLICATION_NAME", brand["internal_application_name"]),
+        # cor do texto de carregamento do splash (fatia 058, C1); o qgisapp.cpp a usa no lugar do Qt::black
+        ("IMAN_SPLASH_TEXT_COLOR", splash_text_color(brand)),
     ]
     text = "\n".join(
         ["// Gerado por iman/brand/build_brand.py a partir de iman/brand/brand.json. Nao editar.",

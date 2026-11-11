@@ -6,8 +6,12 @@
 .DESCRIPTION
   -Root: a arvore a medir (padrao: a instalada, %LOCALAPPDATA%\Programs\IMAN Terra; para a montada pelo
   New-RuntimeTree.ps1, $WorkRoot\stage\tree).
-    1. pacotes: etc\setup\installed.db da arvore, menos o pacote iman-terra (o nosso build), tem de ser igual ao do
-       oficial menos os qgis-ltr*, nome e arquivo (versao); nenhum -devel;
+    1. pacotes: etc\setup\installed.db da arvore, menos o pacote iman-terra (o nosso build), tem de ser igual ao
+       conjunto do produto, nome e arquivo (versao): o do oficial menos os qgis-ltr* e menos o $RuntimeExcluded do
+       Common.ps1, a mesma lista com que o New-RuntimeTree.ps1 monta a arvore (fatia 058, A1; ate a 051 o alvo era o
+       oficial menos os qgis-ltr*, e o gdal-ecw reprovava o produto, ressalva R1 do 047p); nenhum -devel. Pacote
+       excluido que aparece na arvore reprova. O result.json segue trazendo em packages.differences a diferenca
+       contra o oficial menos os qgis-ltr* (o relato, que o Test-NoEcw.ps1 le); o veredito e o packages.unexpected;
     2. arquivos de cada pacote: a lista do <pacote>.lst.gz da arvore contra a do oficial (o oficial grava a saida
        verbosa do tar; compara-se so o caminho);
     3. o nosso build contra os pacotes qgis-ltr* do oficial: arquivos de apps\qgis-ltr que so um dos lados tem
@@ -63,6 +67,11 @@ $pkgDiff = @(Get-ListDiff @($oursPk.Keys | ForEach-Object { "$_ $($oursPk[$_])" 
   ForEach-Object { $_ -replace '^<= ', 'so-na-arvore ' -replace '^=> ', 'so-no-oficial ' })
 $devel = @($ours.Keys | Where-Object { $_ -match '-devel$' })
 $pkgDiff | Set-Content (Join-Path $out 'pacotes-diff.txt')
+# o conjunto do produto: o oficial menos os qgis-ltr* e menos o $RuntimeExcluded (Common.ps1)
+$productPk = [ordered]@{}; foreach ($k in $offPk.Keys) { if (-not $RuntimeExcluded.Contains($k)) { $productPk[$k] = $offPk[$k] } }
+$unexpected = @(Get-ListDiff @($oursPk.Keys | ForEach-Object { "$_ $($oursPk[$_])" }) @($productPk.Keys | ForEach-Object { "$_ $($productPk[$_])" }) |
+  ForEach-Object { $_ -replace '^<= ', 'so-na-arvore ' -replace '^=> ', 'so-no-conjunto-do-produto ' })
+$unexpected | Set-Content (Join-Path $out 'pacotes-fora-do-conjunto-do-produto.txt')
 
 $fileDiffs = [ordered]@{}
 foreach ($k in $oursPk.Keys) {
@@ -89,11 +98,12 @@ function Get-TreeSize([string] $r) {
   [ordered]@{ files = $f.Count; bytes = ($f | Measure-Object Length -Sum).Sum }
 }
 
-$ok = $pkgDiff.Count -eq 0 -and $devel.Count -eq 0 -and $fileDiffs.Count -eq 0
+$ok = $unexpected.Count -eq 0 -and $devel.Count -eq 0 -and $fileDiffs.Count -eq 0
 $result = [ordered]@{
   ok = $ok; root = $Root; official = $OfficialRoot
   packages = [ordered]@{ tree = $ours.Count; treeWithoutOurBuild = $oursPk.Count; official = $official.Count
-    officialWithoutQgisLtr = $offPk.Count; ourBuildEntry = $ours['iman-terra']; differences = $pkgDiff; devel = $devel }
+    officialWithoutQgisLtr = $offPk.Count; excluded = @($RuntimeExcluded.Keys); productSet = $productPk.Count
+    ourBuildEntry = $ours['iman-terra']; differences = $pkgDiff; unexpected = $unexpected; devel = $devel }
   filesPerPackage = [ordered]@{ compared = $oursPk.Count; withDifferences = $fileDiffs.Count; differences = $fileDiffs }
   ourBuildVsQgisLtr = [ordered]@{ ourFiles = $oursQgis.Count; officialFiles = $offFiles.Count
     onlyOurs = $onlyOurs; onlyOfficial = $onlyOfficial }
@@ -102,6 +112,7 @@ $result = [ordered]@{
 $result | ConvertTo-Json -Depth 6 | Set-Content -Encoding utf8 (Join-Path $out 'result.json')
 Write-Step ("pacotes: arvore {0} (sem o nosso build {1}), oficial {2} (sem qgis-ltr* {3}), diferencas {4}, -devel {5}" -f
   $ours.Count, $oursPk.Count, $official.Count, $offPk.Count, $pkgDiff.Count, $devel.Count)
+Write-Step ("conjunto do produto: {0} pacotes (excluidos: {1}), fora dele {2}" -f $productPk.Count, (@($RuntimeExcluded.Keys) -join ', '), $unexpected.Count)
 Write-Step ("arquivos por pacote: {0} comparados, {1} com diferenca" -f $oursPk.Count, $fileDiffs.Count)
 Write-Step ("nosso build x qgis-ltr*: {0} so nosso, {1} so do oficial" -f $onlyOurs.Count, $onlyOfficial.Count)
 Write-Step ("tamanho: arvore {0:N2} GB ({1} arquivos), oficial {2:N2} GB ({3} arquivos)" -f ($result.size.tree.bytes / 1GB), $result.size.tree.files, ($result.size.official.bytes / 1GB), $result.size.official.files)

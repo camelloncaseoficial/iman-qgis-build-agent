@@ -1,0 +1,4 @@
+2026-11-11T12:49:22 depois do Invoke-Smoke, do Test-ThemeDefaults (New e Seeded), do Test-PluginBoot (4 estados e assistente) e das medicoes no alvo Build da 961da7e559:
+  %USERPROFILE%\AppData\Local\InstitutoIMAN\IMANTerra existe: False
+  %USERPROFILE%\AppData\Roaming\InstitutoIMAN\IMANTerra existe: False
+  HKCU:\Software\InstitutoIMAN\IMANTerra existe: False

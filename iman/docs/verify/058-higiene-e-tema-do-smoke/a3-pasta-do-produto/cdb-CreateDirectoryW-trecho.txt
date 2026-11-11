@@ -1,0 +1,52 @@
+0000007e`5c1ff930 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+000001df`63707868  "\\?\%USERPROFILE%\AppData\L"
+000001df`637078a8  "ocal\InstitutoIMAN\IMANTerra\cac"
+000001df`637078e8  "he"
+Child-SP          RetAddr               Call Site
+0000007e`5c1ff188 00007ffa`27d9341f     KERNELBASE!CreateDirectoryW
+0000007e`5c1ff190 00007ffa`27d348db     Qt5Core!QLockFile::unlock+0xf7f
+0000007e`5c1ff230 00007ffa`27d84b6b     Qt5Core!QDir::mkpath+0x8b
+0000007e`5c1ff2a0 00007ffa`9f86f388     Qt5Core!QSettings::isAtomicSyncRequired+0xdb
+0000007e`5c1ff320 00007ffa`9f86ee9e     Qt5Network!QNetworkDiskCache::updateMetaData+0x788
+0000007e`5c1ff3b0 00007ffa`9f843815     Qt5Network!QNetworkDiskCache::updateMetaData+0x29e
+0000007e`5c1ff3e0 00007ffa`9f843f84     Qt5Network!QNetworkAccessManager::~QNetworkAccessManager+0x135
+0000007e`5c1ff410 00007ffa`27e05631     Qt5Network!QNetworkCookieJar::`default constructor closure'+0xa4
+0000007e`5c1ff440 00007ffa`1dfde320     Qt5Core!QObject::~QObject+0x5d1
+0000007e`5c1ff510 00007ffa`27c4acc0     qgis_core!QgsNetworkAccessManager::`vector deleting destructor'+0x60
+0000007e`5c1ff540 00007ffa`27de3c6c     Qt5Core!QThreadStorageData::finish+0x1c0
+*** WARNING: Unable to verify checksum for D:\iman-terra-build\osgeo4w\apps\qt5\bin\Qt5Gui.dll
+0000007e`5c1ff5b0 00007ffa`275ed2c2     Qt5Core!QCoreApplicationPrivate::cleanupThreadData+0x3c
+0000007e`5c1ff600 00007ffa`644bdb53     Qt5Gui!QGuiApplicationPrivate::~QGuiApplicationPrivate+0x112
+0000007e`5c1ff630 00007ffa`27e05631     Qt5Widgets!QToolTip::operator=+0x2f3
+0000007e`5c1ff660 00007ff6`3a9d2066     Qt5Core!QObject::~QObject+0x5d1
+0000007e`5c1ff730 00007ff6`3a9e528c     qgis_process+0x2066
+0000007e`5c1ff8c0 00007ffa`f3e7dda7     qgis_process+0x1528c
+0000007e`5c1ff900 00007ffa`f545ee4c     KERNEL32!BaseThreadInitThunk+0x17
+0000007e`5c1ff930 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+000001df`636fc4a8  "\\?\%USERPROFILE%\AppData\L"
+000001df`636fc4e8  "ocal\InstitutoIMAN\IMANTerra"
+Child-SP          RetAddr               Call Site
+0000007e`5c1ff0a8 00007ffa`27d93595     KERNELBASE!CreateDirectoryW
+0000007e`5c1ff0b0 00007ffa`27d93623     Qt5Core!QLockFile::unlock+0x10f5
+0000007e`5c1ff120 00007ffa`27d93486     Qt5Core!QLockFile::unlock+0x1183
+0000007e`5c1ff190 00007ffa`27d348db     Qt5Core!QLockFile::unlock+0xfe6
+0000007e`5c1ff230 00007ffa`27d84b6b     Qt5Core!QDir::mkpath+0x8b
+0000007e`5c1ff2a0 00007ffa`9f86f388     Qt5Core!QSettings::isAtomicSyncRequired+0xdb
+0000007e`5c1ff320 00007ffa`9f86ee9e     Qt5Network!QNetworkDiskCache::updateMetaData+0x788
+0000007e`5c1ff3b0 00007ffa`9f843815     Qt5Network!QNetworkDiskCache::updateMetaData+0x29e
+0000007e`5c1ff3e0 00007ffa`9f843f84     Qt5Network!QNetworkAccessManager::~QNetworkAccessManager+0x135
+0000007e`5c1ff410 00007ffa`27e05631     Qt5Network!QNetworkCookieJar::`default constructor closure'+0xa4
+0000007e`5c1ff440 00007ffa`1dfde320     Qt5Core!QObject::~QObject+0x5d1
+0000007e`5c1ff510 00007ffa`27c4acc0     qgis_core!QgsNetworkAccessManager::`vector deleting destructor'+0x60
+0000007e`5c1ff540 00007ffa`27de3c6c     Qt5Core!QThreadStorageData::finish+0x1c0
+0000007e`5c1ff5b0 00007ffa`275ed2c2     Qt5Core!QCoreApplicationPrivate::cleanupThreadData+0x3c
+0000007e`5c1ff600 00007ffa`644bdb53     Qt5Gui!QGuiApplicationPrivate::~QGuiApplicationPrivate+0x112
+0000007e`5c1ff630 00007ffa`27e05631     Qt5Widgets!QToolTip::operator=+0x2f3
+0000007e`5c1ff660 00007ff6`3a9d2066     Qt5Core!QObject::~QObject+0x5d1
+0000007e`5c1ff730 00007ff6`3a9e528c     qgis_process+0x2066
+0000007e`5c1ff8c0 00007ffa`f3e7dda7     qgis_process+0x1528c
+0000007e`5c1ff900 00007ffa`f545ee4c     KERNEL32!BaseThreadInitThunk+0x17
+0000007e`5c1ff930 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+000001df`636fc4a8  "\\?\%USERPROFILE%\AppData\L"
+000001df`636fc4e8  "ocal\InstitutoIMAN\IMANTerra\cac"
+000001df`636fc528  "he"

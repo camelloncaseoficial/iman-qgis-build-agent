@@ -23,6 +23,14 @@
    #1E7A4D / #155F3D vira ACENTO (selecao, item ativo, sublinhado de aba, botao default,
    foco). Mesma identidade/paleta D-IMAN-026 - so muda QUAIS superficies recebem o verde
    escuro. O token #103D29 (brand) permanece na paleta para acentos pequenos.
+   MUDANCAS DA FATIA 058 (smoke do sponsor no 0.4.0, 2026-11-11; medidas no laudo
+   iman/docs/verify/058-higiene-e-tema-do-smoke/; o comentario de cada regra conta o porque):
+     B1 campos: sem padding (era 3px 7px), recuos do QGIS original; a rotacao do rodape cabe.
+     B2 abas: a selecionada sem font-weight 600; o negrito cortava o texto nas laterais.
+     B3 botoes: QToolButton fora das barras com borda border-strong e fundo panel em repouso.
+     B4 campos: borda border-strong #D0D5C9 (era border #E2E5DE).
+     B5 barras: QToolBar sem spacing e com padding 4px (era 4px 6px e spacing 3px), botao de barra
+        com padding 1px (era 3px): altura e passo da barra iguais aos do QGIS oficial, +-1 px.
    LIMITE HONESTO: QSS COLORE, nao troca icone nativo (icon-theme = fora de escopo)
    nem reestrutura layout.
    Paleta ATIVA D-IMAN-026 (fonte: docs/design-system.md da distro, "Tema claro"):
@@ -64,10 +72,26 @@ QMenu::item { padding: 6px 26px 6px 22px; border-radius: 2px; }
 QMenu::item:selected { background-color: #E4F0E8; color: #155F3D; }
 QMenu::separator { height: 1px; background: #E2E5DE; margin: 5px 10px; }
 
-/* ---- Toolbars: fundo panel-2, densidade limpa, separadores sutis ---- */
-QToolBar { background-color: #F5F7F2; border: none; border-bottom: 1px solid #E2E5DE; spacing: 3px; padding: 4px 6px; }
+/* ---- Toolbars: fundo panel-2, separadores sutis; espacos do QGIS original ----
+   B5 (fatia 058, smoke do sponsor de 2026-11-11, "retirar o espacamento ao redor dos icones das barras ... como no
+   original"): o criterio e o QGIS oficial, medido na barra "Arquivo de projeto": altura 39 e passo 33 entre dois
+   icones vizinhos. Com `spacing: 3px; padding: 4px 6px` no QToolBar e `padding: 3px` no botao, eram 47 e 38. Sem
+   nenhum, 33 e 30: o tema troca o estilo do Qt para fusion, de margens menores que as do estilo do Windows do
+   oficial. Ficam o `padding: 4px` da barra (sem `spacing`) e o `padding: 1px` do botao de barra, que dao 39 e 32
+   (decisao do sponsor na sessao da 058: igual ao oficial, com tolerancia de 1 px). O padding do QToolBar vai em
+   valor unico: o Qt le so o lado esquerdo e o aplica nos quatro (com `2px 0` a barra ficou com margem zero e altura
+   31, medido). Ficam as cores.
+   B3 (fatia 058, "botoes ... sumiram, devem estar flat"): o QToolButton fora das barras (o "..." ao lado dos campos
+   dos dialogos) volta a ter borda e fundo em repouso, com o border-strong dos campos (B4), e o `padding: 3px` de
+   antes (26 x 24, o tamanho de antes da 058; no oficial, 23 x 20 e 23 x 22; sem padding, 20 x 18 e o texto
+   espremido). Nas barras e nos botoes autoRaise (os que
+   o QGIS ja desenha planos, como o iterar e o de opcoes avancadas do Processamento), segue sem borda em repouso,
+   como antes; a regra plana vem antes do :hover para o hover continuar valendo. */
+QToolBar { background-color: #F5F7F2; border: none; border-bottom: 1px solid #E2E5DE; padding: 4px; }
 QToolBar::separator { background: #E2E5DE; width: 1px; margin: 5px 5px; }
-QToolButton { background: transparent; border: 1px solid transparent; border-radius: 2px; padding: 3px; }
+QToolButton { background-color: #FFFFFF; border: 1px solid #D0D5C9; border-radius: 2px; padding: 3px; }
+QToolBar QToolButton, QToolButton[autoRaise="true"] { background: transparent; border: 1px solid transparent; }
+QToolBar QToolButton { padding: 1px; }
 QToolButton:hover { background-color: #EFF2EC; border: 1px solid #CFE0D2; }
 QToolButton:checked, QToolButton:pressed { background-color: #E4F0E8; border: 1px solid #1E7A4D; }
 QToolButton::menu-button { border: none; }
@@ -89,7 +113,9 @@ QStatusBar QToolButton:hover { background-color: rgba(16,40,30,0.06); }
    no fork, o tema zera no campo de texto da barra de status o recuo horizontal
    que a regra geral dos campos (padding: 3px 7px) traria: com ele sobravam 147 px
    para 152 de texto, sem ele sobram 161 (emenda de 2026-11-04 ao D-IMAN-040). O
-   padding vertical e o do QComboBox ficam como estao. */
+   padding vertical e o do QComboBox ficam como estao. Desde a fatia 058 (B1) a
+   regra geral dos campos nao tem padding; esta regra fica, e a guarda (assercao 9)
+   a exige, para o recuo do campo de coordenadas nao voltar com outra regra geral. */
 QStatusBar QLineEdit, QStatusBar QComboBox {
     background-color: #FFFFFF; color: #1A231D; border: 1px solid #D0D5C9; border-radius: 2px;
 }
@@ -121,12 +147,16 @@ QHeaderView::section {
     background-color: #F5F7F2; color: #1A231D; padding: 5px 8px; border: none; border-right: 1px solid #E2E5DE; border-bottom: 1px solid #E2E5DE;
 }
 
-/* ---- Abas: sublinhado ativo verde, cantos arredondados ---- */
+/* ---- Abas: sublinhado ativo verde, cantos arredondados ----
+   B2 (fatia 058, "abas ... com texto cortado nas laterais"): saiu o `font-weight: 600` da aba selecionada. O Qt
+   da a aba a largura do texto normal e desenhava a selecionada em negrito: no dialogo do Processamento, "Parametros"
+   tinha 51 px uteis e o negrito precisava de 58, e o texto cortava dos dois lados. A selecionada segue marcada pelo
+   fundo branco, o texto verde e o sublinhado verde. */
 QTabBar::tab {
     background: #F5F7F2; color: #5E6A61; padding: 6px 14px; border: 1px solid #E2E5DE; border-bottom: none;
     border-top-left-radius: 2px; border-top-right-radius: 2px;
 }
-QTabBar::tab:selected { background: #FFFFFF; color: #155F3D; border-bottom: 2px solid #1E7A4D; font-weight: 600; }
+QTabBar::tab:selected { background: #FFFFFF; color: #155F3D; border-bottom: 2px solid #1E7A4D; }
 QTabBar::tab:hover { background: #E4F0E8; color: #155F3D; }
 
 /* ---- Botoes: arredondados, verde de marca so no default ---- */
@@ -137,9 +167,16 @@ QPushButton:default { background-color: #1E7A4D; color: #FFFFFF; border: 1px sol
 QPushButton:default:hover { background-color: #155F3D; }
 QPushButton:disabled { color: #95A093; border-color: #E2E5DE; }
 
-/* ---- Campos de entrada (formularios) ---- */
+/* ---- Campos de entrada (formularios) ----
+   B1 (fatia 058, "texto no campo rotacao no rodape ... cortado ao meio"): saiu o `padding: 3px 7px`; os campos
+   ficam com os recuos do QGIS original (decisao do sponsor na sessao da 058: "campos e barras"). O QGIS fixa a altura
+   dos campos da barra de status, e o padding vertical comia o texto: na rotacao (359,9) sobravam 8 px de altura para
+   um texto de 13, cortado ao meio; sem ele, 16 px, como no oficial. Vale para todo campo, nao so os do rodape.
+   B4 (fatia 058, "bordas externas dos campos de input sumiram"): a borda passa do border #E2E5DE (contraste 43 sobre
+   o fundo do dialogo) ao border-strong #D0D5C9, o mesmo dos campos da barra de status (proposta do arquiteto, que o
+   smoke do sponsor ratifica). O foco segue brand-2 #1E7A4D. */
 QLineEdit, QComboBox, QSpinBox, QDoubleSpinBox, QPlainTextEdit, QTextEdit {
-    background-color: #FFFFFF; color: #1A231D; border: 1px solid #E2E5DE; border-radius: 2px; padding: 3px 7px;
+    background-color: #FFFFFF; color: #1A231D; border: 1px solid #D0D5C9; border-radius: 2px;
     selection-background-color: #1E7A4D; selection-color: #FFFFFF;
 }
 QLineEdit:focus, QComboBox:focus, QSpinBox:focus, QDoubleSpinBox:focus,
