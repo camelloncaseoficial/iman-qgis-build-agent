@@ -1,0 +1,4 @@
+10:40:02.524 APARECEU local %USERPROFILE%\AppData\Local\InstitutoIMAN\IMANTerra
+  processos: 
+  itens: %USERPROFILE%\AppData\Local\InstitutoIMAN\IMANTerra\cache
+10:40:25.985 fim; vistos: local

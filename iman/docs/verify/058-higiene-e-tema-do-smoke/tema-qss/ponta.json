@@ -1,0 +1,135 @@
+{
+  "qss": "D:\\_projetos\\iman-webgeo\\iman-qgis-build-agent\\iman\\brand\\theme\\IMAN Terra\\style.qss",
+  "sha256": "246482dc88543f7ee95a3a5e975d58e433443f0b01c499dd6143ac5bc72c5767",
+  "ok": true,
+  "checks": {
+    "1": {
+      "check": "border-radius 2px (12)",
+      "ok": true,
+      "detail": {
+        "declarations": 12
+      }
+    },
+    "2": {
+      "check": "QMenuBar::item padding 3px 4px",
+      "ok": true,
+      "detail": {
+        "padding": "3px 4px"
+      }
+    },
+    "3": {
+      "check": "QStatusBar sem padding (D2)",
+      "ok": true,
+      "detail": {
+        "blocks": 0
+      }
+    },
+    "4": {
+      "check": "QDockWidget::title sem padding vert.",
+      "ok": true,
+      "detail": {
+        "blocks": 0
+      }
+    },
+    "5": {
+      "check": "cantos da aba 2px (2)",
+      "ok": true,
+      "detail": {
+        "declarations": 2
+      }
+    },
+    "6": {
+      "check": "sem titlebar-close-icon (D1)",
+      "ok": true,
+      "detail": {
+        "found": 0
+      }
+    },
+    "7": {
+      "check": "zero hex orfao (V.5)",
+      "ok": true,
+      "detail": {
+        "palette": 18,
+        "usedDistinct": 12,
+        "used": [
+          "#155F3D",
+          "#1A231D",
+          "#1E7A4D",
+          "#5E6A61",
+          "#95A093",
+          "#CFE0D2",
+          "#D0D5C9",
+          "#E2E5DE",
+          "#E4F0E8",
+          "#EFF2EC",
+          "#F5F7F2",
+          "#FFFFFF"
+        ],
+        "orphans": 0
+      }
+    },
+    "8": {
+      "check": "sem regras da camada de marca",
+      "ok": true,
+      "detail": {
+        "found": 0
+      }
+    },
+    "9": {
+      "check": "QStatusBar QLineEdit padding-h 0 (D2)",
+      "ok": true,
+      "detail": {
+        "padding-left": "0",
+        "padding-right": "0"
+      }
+    },
+    "10": {
+      "check": "campos sem padding (B1)",
+      "ok": true,
+      "detail": {
+        "fieldTypes": [
+          "QLineEdit",
+          "QComboBox",
+          "QSpinBox",
+          "QDoubleSpinBox",
+          "QAbstractSpinBox",
+          "QPlainTextEdit",
+          "QTextEdit"
+        ],
+        "offending": 0
+      }
+    },
+    "11": {
+      "check": "aba selecionada sem negrito (B2)",
+      "ok": true,
+      "detail": {
+        "blocks": 1
+      }
+    },
+    "12": {
+      "check": "QToolButton fora da barra c/ borda (B3)",
+      "ok": true,
+      "detail": {
+        "toolButton": "1px solid #D0D5C9",
+        "toolBarToolButton": "1px solid transparent"
+      }
+    },
+    "13": {
+      "check": "borda dos campos #D0D5C9 (B4)",
+      "ok": true,
+      "detail": {
+        "border": "1px solid #D0D5C9",
+        "blocks": 1
+      }
+    },
+    "14": {
+      "check": "barras como no oficial (B5)",
+      "ok": true,
+      "detail": {
+        "spacing": [],
+        "toolBarPadding": "4px",
+        "toolBarToolButtonPadding": "1px"
+      }
+    }
+  }
+}

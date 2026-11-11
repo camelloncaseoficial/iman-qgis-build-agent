@@ -1,0 +1,4 @@
+10:46:39.342 APARECEU local %USERPROFILE%\AppData\Local\InstitutoIMAN\IMANTerra
+  processos: qgis#2348 D:\iman-terra-build\install\apps\qgis-ltr\bin\qgis.exe
+  itens: %USERPROFILE%\AppData\Local\InstitutoIMAN\IMANTerra\cache
+10:46:42.060 fim; vistos: local

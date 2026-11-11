@@ -1,0 +1,583 @@
+{
+  "captures": {
+    "b1-barra-de-status.png": [
+      1536,
+      28
+    ],
+    "b1-escala-lupa-rotacao.png": [
+      402,
+      28
+    ],
+    "b5-barra-arquivo-de-projeto.png": [
+      214,
+      39
+    ],
+    "b5-barra-navegacao.png": [
+      544,
+      39
+    ],
+    "b2-abas-parametros.png": [
+      115,
+      24
+    ],
+    "b2-dialogo-parametros.png": [
+      900,
+      720
+    ],
+    "b2-abas-registro.png": [
+      115,
+      24
+    ],
+    "b2-dialogo-registro.png": [
+      900,
+      720
+    ],
+    "b4-combo-em-repouso.png": [
+      594,
+      51
+    ],
+    "b4-campo-em-repouso.png": [
+      558,
+      26
+    ]
+  },
+  "projectRead": true,
+  "statusBar": {
+    "rotationValue": 359.9,
+    "rotation": {
+      "text": "359,9 °",
+      "width": 61,
+      "height": 16,
+      "contentsWidth": 61,
+      "contentsHeight": 16,
+      "available": 57,
+      "needed": 36,
+      "fitsWidth": true,
+      "availableHeight": 16,
+      "textHeight": 13,
+      "fitsHeight": true,
+      "class": "QgsDoubleSpinBox",
+      "objectName": "mRotationEdit",
+      "outerWidth": 81,
+      "outerHeight": 22,
+      "minimumWidth": 81,
+      "maximumWidth": 120,
+      "lineEditX": 3
+    },
+    "scale": {
+      "text": "1:6002",
+      "width": 54,
+      "height": 18,
+      "contentsWidth": 54,
+      "contentsHeight": 18,
+      "available": 50,
+      "needed": 34,
+      "fitsWidth": true,
+      "availableHeight": 18,
+      "textHeight": 13,
+      "fitsHeight": true,
+      "class": "QgsScaleComboBox",
+      "outerWidth": 77,
+      "outerHeight": 22,
+      "minimumWidth": 77,
+      "maximumWidth": 16777215
+    },
+    "magnifier": {
+      "text": "100%",
+      "width": 61,
+      "height": 16,
+      "contentsWidth": 61,
+      "contentsHeight": 16,
+      "available": 57,
+      "needed": 29,
+      "fitsWidth": true,
+      "availableHeight": 16,
+      "textHeight": 13,
+      "fitsHeight": true,
+      "class": "QgsDoubleSpinBox",
+      "objectName": "",
+      "outerWidth": 81,
+      "outerHeight": 22,
+      "minimumWidth": 81,
+      "maximumWidth": 120,
+      "lineEditX": 3
+    }
+  },
+  "toolbars": {
+    "mFileToolBar": {
+      "objectName": "mFileToolBar",
+      "height": 39,
+      "iconSize": [
+        24,
+        24
+      ],
+      "layoutSpacing": 1,
+      "buttons": 6,
+      "firstStep": 33,
+      "steps": [
+        33,
+        33,
+        33,
+        33,
+        33
+      ],
+      "firstButton": [
+        13,
+        4,
+        32,
+        31
+      ],
+      "geometry": [
+        [
+          13,
+          4,
+          32,
+          31
+        ],
+        [
+          46,
+          4,
+          32,
+          31
+        ],
+        [
+          79,
+          4,
+          32,
+          31
+        ],
+        [
+          112,
+          4,
+          32,
+          31
+        ],
+        [
+          145,
+          4,
+          32,
+          31
+        ],
+        [
+          178,
+          4,
+          32,
+          31
+        ]
+      ]
+    },
+    "mMapNavToolBar": {
+      "objectName": "mMapNavToolBar",
+      "height": 39,
+      "iconSize": [
+        24,
+        24
+      ],
+      "layoutSpacing": 1,
+      "buttons": 16,
+      "firstStep": 33,
+      "steps": [
+        33,
+        33,
+        33,
+        33,
+        33,
+        33,
+        33,
+        33,
+        33,
+        33,
+        33,
+        33,
+        33,
+        33,
+        33
+      ],
+      "firstButton": [
+        13,
+        4,
+        32,
+        31
+      ],
+      "geometry": [
+        [
+          13,
+          4,
+          32,
+          31
+        ],
+        [
+          46,
+          4,
+          32,
+          31
+        ],
+        [
+          79,
+          4,
+          32,
+          31
+        ],
+        [
+          112,
+          4,
+          32,
+          31
+        ],
+        [
+          145,
+          4,
+          32,
+          31
+        ],
+        [
+          178,
+          4,
+          32,
+          31
+        ],
+        [
+          211,
+          4,
+          32,
+          31
+        ],
+        [
+          244,
+          4,
+          32,
+          31
+        ],
+        [
+          277,
+          4,
+          32,
+          31
+        ],
+        [
+          310,
+          4,
+          32,
+          31
+        ],
+        [
+          343,
+          4,
+          32,
+          31
+        ],
+        [
+          376,
+          4,
+          32,
+          31
+        ],
+        [
+          409,
+          4,
+          32,
+          31
+        ],
+        [
+          442,
+          4,
+          32,
+          31
+        ],
+        [
+          475,
+          4,
+          32,
+          31
+        ],
+        [
+          508,
+          4,
+          32,
+          31
+        ]
+      ]
+    }
+  },
+  "dialog": {
+    "title": "Geometria do vetor - Buffer",
+    "size": [
+      900,
+      720
+    ],
+    "tabs": {
+      "first": [
+        {
+          "text": "Parâmetros",
+          "selected": true,
+          "tabWidth": 75,
+          "tabHeight": 24,
+          "normalWidth": 50,
+          "boldWidth": 58
+        },
+        {
+          "text": "Log",
+          "selected": false,
+          "tabWidth": 40,
+          "tabHeight": 24,
+          "normalWidth": 16,
+          "boldWidth": 18
+        }
+      ],
+      "second": [
+        {
+          "text": "Parâmetros",
+          "selected": false,
+          "tabWidth": 75,
+          "tabHeight": 24,
+          "normalWidth": 50,
+          "boldWidth": 58
+        },
+        {
+          "text": "Log",
+          "selected": true,
+          "tabWidth": 40,
+          "tabHeight": 24,
+          "normalWidth": 16,
+          "boldWidth": 18
+        }
+      ]
+    },
+    "toolButtons": [
+      {
+        "class": "QgsGroupBoxCollapseButton",
+        "objectName": "collapseButton",
+        "parentClass": "QgsCollapsibleGroupBox",
+        "toolTip": "",
+        "text": "",
+        "autoRaise": true,
+        "size": [
+          16,
+          16
+        ],
+        "background": "#F0F0F0",
+        "borderLeftMiddle": "#F0F0F0",
+        "borderTopMiddle": "#F0F0F0",
+        "contrastLeft": 0,
+        "ringVisible": 0,
+        "ringPixels": 64
+      },
+      {
+        "class": "QToolButton",
+        "objectName": "",
+        "parentClass": "QgsProcessingMapLayerComboBox",
+        "toolTip": "Iterar sobre esta camada, criando uma saída separada para ca",
+        "text": "",
+        "autoRaise": true,
+        "size": [
+          30,
+          26
+        ],
+        "background": "#F0F0F0",
+        "borderLeftMiddle": "#F0F0F0",
+        "borderTopMiddle": "#F0F0F0",
+        "contrastLeft": 0,
+        "ringVisible": 0,
+        "ringPixels": 112
+      },
+      {
+        "class": "QToolButton",
+        "objectName": "",
+        "parentClass": "QgsProcessingMapLayerComboBox",
+        "toolTip": "Opções avançadas",
+        "text": "",
+        "autoRaise": true,
+        "size": [
+          30,
+          26
+        ],
+        "background": "#F0F0F0",
+        "borderLeftMiddle": "#F0F0F0",
+        "borderTopMiddle": "#F0F0F0",
+        "contrastLeft": 0,
+        "ringVisible": 0,
+        "ringPixels": 112
+      },
+      {
+        "class": "QToolButton",
+        "objectName": "",
+        "parentClass": "QgsProcessingMapLayerComboBox",
+        "toolTip": "Selecionar entrada",
+        "text": "…",
+        "autoRaise": false,
+        "size": [
+          23,
+          20
+        ],
+        "background": "#F0F0F0",
+        "borderLeftMiddle": "#ABABAB",
+        "borderTopMiddle": "#ABABAB",
+        "contrastLeft": 207,
+        "ringVisible": 82,
+        "ringPixels": 86
+      },
+      {
+        "class": "QgsPropertyOverrideButton",
+        "objectName": "",
+        "parentClass": "QWidget",
+        "toolTip": "<b><u>Substituição especificada de dado</u></b><br><b>Ative:",
+        "text": "",
+        "autoRaise": false,
+        "size": [
+          30,
+          26
+        ],
+        "background": "#F0F0F0",
+        "borderLeftMiddle": "#F0F0F0",
+        "borderTopMiddle": "#F0F0F0",
+        "contrastLeft": 0,
+        "ringVisible": 0,
+        "ringPixels": 112
+      },
+      {
+        "class": "QToolButton",
+        "objectName": "mSelectButton",
+        "parentClass": "QgsProcessingLayerOutputDestinationWidget",
+        "toolTip": "",
+        "text": "…",
+        "autoRaise": false,
+        "size": [
+          23,
+          22
+        ],
+        "background": "#F0F0F0",
+        "borderLeftMiddle": "#ABABAB",
+        "borderTopMiddle": "#ABABAB",
+        "contrastLeft": 207,
+        "ringVisible": 86,
+        "ringPixels": 90
+      },
+      {
+        "class": "QToolButton",
+        "objectName": "",
+        "parentClass": "QSplitterHandle",
+        "toolTip": "",
+        "text": "",
+        "autoRaise": true,
+        "size": [
+          12,
+          12
+        ],
+        "background": "#F0F0F0",
+        "borderLeftMiddle": "#F0F0F0",
+        "borderTopMiddle": "#F0F0F0",
+        "contrastLeft": 0,
+        "ringVisible": 0,
+        "ringPixels": 48
+      }
+    ],
+    "fields": [
+      {
+        "class": "QgsHighlightableLineEdit",
+        "objectName": "leText",
+        "hasFocus": false,
+        "size": [
+          565,
+          22
+        ],
+        "background": "#F0F0F0",
+        "borderLeftMiddle": "#ABABAB",
+        "borderTopMiddle": "#ABABAB",
+        "contrastLeft": 207,
+        "ringVisible": 1170,
+        "ringPixels": 1174
+      },
+      {
+        "class": "QgsMapLayerComboBox",
+        "objectName": "",
+        "hasFocus": false,
+        "size": [
+          493,
+          24
+        ],
+        "background": "#F0F0F0",
+        "borderLeftMiddle": "#ABABAB",
+        "borderTopMiddle": "#ABABAB",
+        "contrastLeft": 207,
+        "ringVisible": 1026,
+        "ringPixels": 1034
+      },
+      {
+        "class": "QComboBox",
+        "objectName": "",
+        "hasFocus": false,
+        "size": [
+          594,
+          24
+        ],
+        "background": "#F0F0F0",
+        "borderLeftMiddle": "#ABABAB",
+        "borderTopMiddle": "#ABABAB",
+        "contrastLeft": 207,
+        "ringVisible": 1228,
+        "ringPixels": 1236
+      },
+      {
+        "class": "QComboBox",
+        "objectName": "",
+        "hasFocus": false,
+        "size": [
+          594,
+          24
+        ],
+        "background": "#F0F0F0",
+        "borderLeftMiddle": "#ABABAB",
+        "borderTopMiddle": "#ABABAB",
+        "contrastLeft": 207,
+        "ringVisible": 1228,
+        "ringPixels": 1236
+      },
+      {
+        "class": "QgsDoubleSpinBox",
+        "objectName": "",
+        "hasFocus": false,
+        "size": [
+          494,
+          22
+        ],
+        "background": "#F0F0F0",
+        "borderLeftMiddle": "#ABABAB",
+        "borderTopMiddle": "#F0F0F0",
+        "contrastLeft": 207,
+        "ringVisible": 526,
+        "ringPixels": 1032
+      },
+      {
+        "class": "QgsSpinBox",
+        "objectName": "",
+        "hasFocus": false,
+        "size": [
+          594,
+          22
+        ],
+        "background": "#F0F0F0",
+        "borderLeftMiddle": "#ABABAB",
+        "borderTopMiddle": "#F0F0F0",
+        "contrastLeft": 207,
+        "ringVisible": 626,
+        "ringPixels": 1232
+      },
+      {
+        "class": "QgsDoubleSpinBox",
+        "objectName": "",
+        "hasFocus": false,
+        "size": [
+          594,
+          22
+        ],
+        "background": "#F0F0F0",
+        "borderLeftMiddle": "#ABABAB",
+        "borderTopMiddle": "#F0F0F0",
+        "contrastLeft": 207,
+        "ringVisible": 626,
+        "ringPixels": 1232
+      }
+    ]
+  },
+  "themeName": "default"
+}
