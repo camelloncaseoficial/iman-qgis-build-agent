@@ -21,8 +21,8 @@
     B4 a borda dos campos em repouso e a cor esperada (-FieldBorder, padrao #D0D5C9, token border-strong);
     B5 so com -Reference (o result.json de uma rodada do oficial): passo entre os dois primeiros icones e altura das
        barras iguais aos do oficial, com tolerancia de 1 px;
-    splash: texto claro (luminancia mediana dos pixels de texto acima de 200) ou escuro, contra -SplashText; no
-       oficial, que tem outro splash, so as capturas.
+    splash: texto claro (luminancia mediana dos pixels de texto acima de 128, mais perto do branco que do preto) ou
+       escuro (abaixo de 128), contra -SplashText; no oficial, que tem outro splash, so as capturas.
   Medicao, nao gate: sai com 0 mesmo com veredito falho; quem le e o laudo. A guarda do QGIS oficial roda no fim, e o
   alvo Build remove o que a rodada deixar na pasta do produto (A3, Common.ps1).
   Saida: $WorkRoot\smoke\regions-<target>-<data>\ (regions.json, result.json, PNGs).
@@ -211,7 +211,7 @@ if (-not $SkipSplash) {
   }
   $derived.Dispose()
   if ($Target -eq 'Official') { $best = [ordered]@{ note = 'o oficial tem outro splash: so as capturas'; frames = $frames } }
-  $splashOk = $best -and $best.textPixels -gt 50 -and $(if ($SplashText -eq 'Light') { $best.medianLuminance -gt 200 } else { $best.medianLuminance -lt 60 })
+  $splashOk = $best -and $best.textPixels -gt 50 -and $(if ($SplashText -eq 'Light') { $best.medianLuminance -gt 128 } else { $best.medianLuminance -lt 128 })
   Add-Region 'C1:splash' $(if ($Target -eq 'Official') { $true } else { [bool] $splashOk }) ([ordered]@{ expectedText = $SplashText; frames = $frames; best = $best })
 }
 
