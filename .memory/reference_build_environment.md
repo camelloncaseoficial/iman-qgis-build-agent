@@ -126,3 +126,29 @@ Medido na fatia 051 (2026-11-08), laudo `iman/docs/verify/051-plugin-reurb-embar
 - **Disco:** D: com 46 GB livres no comeco; C: 191 GB.
 - **Tempos:** build incremental + install 4 a 7 min; arvore de runtime 107 a 115 s; ISCC 949 s; instalar 253 s;
   desinstalar 12 s; `Test-PluginBoot` 10 a 15 s por estado.
+
+Medido na fatia 058 (2026-11-11), laudo `iman/docs/verify/058-higiene-e-tema-do-smoke/README.md`:
+
+- **O 0.4.0 estava instalado** (smoke do sponsor, 2026-11-09) e **aberto** pelo sponsor no comeco: renomear os dados do
+  produto com ele aberto falha no perfil (`%APPDATA%`, em uso). Conferir `Get-Process` pelo caminho de
+  `Programs\IMAN Terra` antes e pedir ao sponsor para fechar; nunca fechar processo dele.
+- **Sobras `.antes-058`** (sim do sponsor): `%APPDATA%` e `%LOCALAPPDATA%\InstitutoIMAN\IMANTerra.antes-058`,
+  `HKCU\Software\InstitutoIMAN\IMANTerra.antes-058` e a chave de notificacao do AUMI com `.antes-058`; `.reg` em
+  `D:\iman-terra-build\verify\058-pre-ciclo`. A sessao terminou desinstalada; `%APPDATA%\InstitutoIMAN\IMANTerra` voltou
+  a existir (perfil do `Test-Installed`).
+- **A pasta `cache` do produto** vem do HSTS do Qt (`qgsnetworkaccessmanager.cpp:223`), no fechamento de todo
+  `qgis_process` e de toda GUI; os testes do alvo Build a removem no fim (`Restore-ProductData`, `Common.ps1`). O
+  `Test-Installed` depois das medicoes do build passa sem `-ResetProductData`. O `qgis_process` (o oficial tambem)
+  grava em `%LOCALAPPDATA%\qgis_process\cache\http-ranges`.
+- **`NoDefaultCurrentDirectoryInExePath=1`** no ambiente do terminal do agente: o `cmd` nao acha executavel na pasta
+  atual (o `vswhere` do `VsDevCmd.bat`). O `Import-VsEnvironment` limpa a variavel so no `cmd` do `vcvarsall`.
+- **`cdb.exe`** das Debugging Tools (`C:\Program Files (x86)\Windows Kits\10\Debuggers\x64`) com
+  `bp KERNELBASE!CreateDirectoryW "du @rcx; k 40; gc"` acha quem cria uma pasta; os PDB do build ficam em
+  `D:\iman-terra-build\build\apps\qgis-ltr\pdb`.
+- **Notificacao do AUMI:** com a chave `Notifications\Settings\InstitutoIMAN.IMANTerra...` renomeada, o Windows nao a
+  recriou e o toast caiu na barra de mensagens (`A3:notificacao` do `Test-Installed` reprovado nas rodadas 2 e 3).
+- **Tema:** o `QToolBar` le o padding do QSS so pelo lado esquerdo e o aplica nos quatro; `0` sem unidade nao serve. O
+  `grab()` de widget de fundo transparente sai sobre preto: medir pela janela.
+- **Disco:** D: com 35 GB livres no comeco; C: 176 GB.
+- **Tempos:** build incremental 98 s + install 285 s; arvore de runtime 91 a 94 s; ISCC 744 s; instalar 290 s;
+  desinstalar 12 s; `Measure-ThemeRegions` 25 a 35 s.
