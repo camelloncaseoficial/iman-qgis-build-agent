@@ -46,7 +46,7 @@ SDK. Sem ele, o IMAN Terra não abre arquivos ECW; o JPEG 2000 segue pelo driver
 
 <!-- gerado: patchset (iman/notices/Update-Notices.ps1) -->
 - `src/core/qgsapplication.cpp` (D-IMAN-041 (regra 2), D-IMAN-043; fatia 044, 047)
-- `src/app/qgisapp.cpp` (D-IMAN-039 (regra 4); fatia 044)
+- `src/app/qgisapp.cpp` (D-IMAN-039 (regra 4), D-IMAN-040 (emenda de 2026-11-11); fatia 044, 058)
 - `src/core/layout/qgslayoutexporter.cpp` (D-IMAN-041 (regra 3); fatia 044)
 - `src/crashhandler/main.cpp` (D-IMAN-041 (regra 3), D-IMAN-043; fatia 044, 047)
 - `src/crashhandler/qgscrashreport.cpp` (D-IMAN-041 (regra 3); fatia 044)
