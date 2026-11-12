@@ -13,8 +13,8 @@ Saidas (fora do repo, em --out):
   - qgis_global_settings.ini: o do QGIS com a checagem de versao desligada e o SRC padrao de projeto novo (trocados
     no lugar), mais o idioma padrao, o feed de noticias desligado, os enderecos do menu Ajuda, o tema de interface
     padrao e o SRC de camada sem SRC (fatia 049) e o plugin embarcado ligado por padrao (fatia 051);
-  - --header: iman_brand.h, os textos de marca para o C++ (Bloco D). So e regravado se o conteudo mudou, para nao
-    recompilar a toa.
+  - --header: iman_brand.h, os textos de marca para o C++ (Bloco D), a versao do produto e, desde a fatia 059, a
+    paleta do cabecalho do style.qss do tema padrao. So e regravado se o conteudo mudou, para nao recompilar a toa.
 
 Marcadores dos textos da curadoria: {product}, {PRODUCT}, {engine}, {org}, {url}.
 """
@@ -186,10 +186,33 @@ def splash_text_color(brand):
     return value.upper()
 
 
+def theme_palette(brand):
+    """Paleta D-IMAN-026 lida do cabecalho do style.qss do tema padrao (as linhas 'nome #RRGGBB | ...' depois de
+    'Paleta ATIVA'), a mesma que o Test-ThemeQss.ps1 usa como fonte: a pagina inicial e o Sobre da marca (fatia 059)
+    pintam com estes tokens, sem hex proprio no C++."""
+    qss = os.path.join(HERE, "theme", brand["ui_theme"], "style.qss")
+    with io.open(qss, "r", encoding="utf-8") as fh:
+        text = fh.read()
+    start = text.find("Paleta ATIVA")
+    if start < 0:
+        raise SystemExit("paleta do cabecalho nao encontrada em %s" % qss)
+    palette = {}
+    for line in text[start:].split("\n")[1:]:
+        if "|" not in line:
+            break
+        for name, value in re.findall(r"([a-z][a-z0-9-]*) (#[0-9A-Fa-f]{6})\b", line):
+            palette[name] = value.upper()
+    if not palette:
+        raise SystemExit("paleta do cabecalho vazia em %s" % qss)
+    return palette
+
+
 def write_header(path, brand):
     defs = [
         ("IMAN_PRODUCT_NAME", brand["product_name"]),
+        ("IMAN_PRODUCT_VERSION", brand["product_version"]),
         ("IMAN_ORGANIZATION_NAME", brand["organization_name"]),
+        ("IMAN_ORGANIZATION_FULL_NAME", brand["organization_full_name"]),
         ("IMAN_PRODUCT_URL", brand["product_url"]),
         ("IMAN_ENGINE_LABEL", brand["engine_label"]),
         ("IMAN_DEFAULT_LOCALE", brand["default_locale"]),
@@ -200,6 +223,8 @@ def write_header(path, brand):
         # cor do texto de carregamento do splash (fatia 058, C1); o qgisapp.cpp a usa no lugar do Qt::black
         ("IMAN_SPLASH_TEXT_COLOR", splash_text_color(brand)),
     ]
+    # paleta do tema (fatia 059): IMAN_COLOR_BRAND_2, IMAN_COLOR_TEXT_MUTED, ...
+    defs += [("IMAN_COLOR_" + k.upper().replace("-", "_"), v) for k, v in sorted(theme_palette(brand).items())]
     text = "\n".join(
         ["// Gerado por iman/brand/build_brand.py a partir de iman/brand/brand.json. Nao editar.",
          "// Textos de marca e nome interno do produto para o C++ (UTF-8; use QString::fromUtf8).",
