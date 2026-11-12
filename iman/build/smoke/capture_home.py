@@ -5,8 +5,8 @@ import json
 import os
 import traceback
 
-from qgis.core import Qgis, QgsApplication, QgsProject
-from qgis.PyQt.QtCore import QCoreApplication, QEvent, QPoint, QPointF, QRect, Qt, QTimer
+from qgis.core import Qgis, QgsApplication, QgsProject, QgsSettings
+from qgis.PyQt.QtCore import QCoreApplication, QEvent, QPoint, QPointF, QRect, Qt, QTimer, QUrl
 from qgis.PyQt.QtGui import QColor, QFont, QImage, QMouseEvent, QPainter
 from qgis.PyQt.QtWidgets import (
     QAction,
@@ -15,6 +15,7 @@ from qgis.PyQt.QtWidgets import (
     QFrame,
     QLabel,
     QListView,
+    QListWidget,
     QMenu,
     QPushButton,
     QStackedWidget,
@@ -205,7 +206,22 @@ def step_card_open_project():
     fact = {}
     # o dialogo nativo do Windows nao e um QWidget: so o do Qt pode ser fotografado e fechado por este script
     QCoreApplication.setAttribute(Qt.AA_DontUseNativeDialogs, True)
-    QTimer.singleShot(1500, handle_modal(fact, "07b-cartao-abrir-projeto.png", lambda m: m.reject()))
+    # o dialogo abre na ultima pasta de projeto (padrao: a pasta pessoal do Windows, que nao vai para o laudo): a dos
+    # projetos descartaveis desta rodada
+    QgsSettings().setValue("UI/lastProjectDir", os.path.dirname(projects[0]))
+    def only_this_run(modal):
+        # a barra lateral do dialogo do Qt lista a pasta pessoal pelo nome da conta do Windows: so a pasta da rodada
+        if hasattr(modal, "setSidebarUrls"):
+            modal.setSidebarUrls([QUrl.fromLocalFile(os.path.dirname(projects[0]))])
+            QApplication.processEvents()
+
+    def grab_and_close():
+        modal = QApplication.activeModalWidget()
+        if modal:
+            only_this_run(modal)
+        handle_modal(fact, "07b-cartao-abrir-projeto.png", lambda m: m.reject())()
+
+    QTimer.singleShot(1500, grab_and_close)
     click(card("mActionOpenProject"))
     QCoreApplication.setAttribute(Qt.AA_DontUseNativeDialogs, False)
     fact["after"] = central_state()
@@ -225,6 +241,14 @@ def step_card_data_capture():
     dialogs = top_level("QgsDataSourceManagerDialog")
     fact["dialogs"] = [d.windowTitle() for d in dialogs]
     if dialogs:
+        # a pagina Navegador, que abre primeiro, lista as unidades da maquina com o nome e o e-mail das contas: a foto
+        # e da pagina Vetor do mesmo dialogo
+        pages = dialogs[0].findChild(QListWidget, "mOptionsListWidget")
+        fact["first_page"] = pages.currentItem().text() if pages else None
+        if pages:
+            pages.setCurrentRow(1)
+            QApplication.processEvents()
+            fact["captured_page"] = pages.currentItem().text()
         fact["capture"] = save(dialogs[0], "07c-cartao-carregar-dados.png")
         dialogs[0].close()
 
@@ -309,6 +333,8 @@ def step_open_recent():
     title = index.data(Qt.UserRole + 1)
     click(view.viewport(), view.visualRect(index).center())
     QApplication.processEvents()
+    iface.mapCanvas().zoomToFullExtent()
+    iface.mapCanvas().refresh()
     facts["steps"]["recente_aberto"] = {
         "clicked_title": title,
         "project_title": QgsProject.instance().title(),
