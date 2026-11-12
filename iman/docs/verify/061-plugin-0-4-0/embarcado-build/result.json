@@ -1,0 +1,76 @@
+{
+  "run": "D:\\iman-terra-build\\verify\\plugin-embed-20261111-150018",
+  "root": "D:\\iman-terra-build\\install\\apps\\qgis-ltr",
+  "pluginRepo": "D:\\_projetos\\iman-webgeo\\iman-qgis-build-agent\\..\\iman-qgis-plugin-agent",
+  "lock": {
+    "id": "iman_plugin",
+    "version": "0.4.0",
+    "tag": "v0.4.0",
+    "commit": "4f7cff89988b2af2f03dc6da6f116d7e53c5b224"
+  },
+  "checks": {
+    "T2:archive-e-o-commit": {
+      "ok": true,
+      "detail": {
+        "commit": "4f7cff89988b2af2f03dc6da6f116d7e53c5b224",
+        "files": 132,
+        "lsTree": 132,
+        "blobMismatch": []
+      }
+    },
+    "T2:pasta-embarcada": {
+      "ok": true,
+      "detail": {
+        "dir": "D:\\iman-terra-build\\install\\apps\\qgis-ltr\\python\\plugins\\iman_plugin",
+        "files": 132,
+        "sha256Equal": 132,
+        "missing": [],
+        "extra": [],
+        "shaDiff": [],
+        "pycacheReported": 69,
+        "license": true
+      }
+    },
+    "falha:clone-ausente": {
+      "ok": true,
+      "detail": {
+        "message": "PLUGIN: clone do plugin ausente em 'D:\\iman-terra-build\\verify\\plugin-embed-20261111-150018\\nao-existe' (-PluginRepo ou IMAN_PLUGIN_REPO)",
+        "expected": "clone do plugin ausente",
+        "filesLeftInDest": 0
+      }
+    },
+    "falha:tag-ausente": {
+      "ok": true,
+      "detail": {
+        "message": "PLUGIN: a tag v0.0.0-iman-inexistente nao existe no clone D:\\_projetos\\iman-webgeo\\iman-qgis-build-agent\\..\\iman-qgis-plugin-agent",
+        "expected": "nao existe no clone",
+        "filesLeftInDest": 0
+      }
+    },
+    "falha:trava-em-outro-commit": {
+      "ok": true,
+      "detail": {
+        "message": "PLUGIN: a tag v0.4.0 aponta para 4f7cff89988b2af2f03dc6da6f116d7e53c5b224, e a trava fixa e77ce2d1d790eaeee9b4361278ee8fe73c8aa772",
+        "expected": "aponta para",
+        "filesLeftInDest": 0
+      }
+    },
+    "falha:licenca-ausente": {
+      "ok": true,
+      "detail": {
+        "message": "PLUGIN: falta o LICENSE na pasta exportada de iman-caso-sem-licenca (e7582560baf9da3963cb3d203d99d1d953af45ef)",
+        "expected": "falta o LICENSE",
+        "filesLeftInDest": 0
+      }
+    },
+    "falha:versao-diferente": {
+      "ok": true,
+      "detail": {
+        "message": "PLUGIN: o metadata.txt de v0.4.0 diz version=0.4.0, e a trava diz 9.9.9",
+        "expected": "metadata.txt",
+        "filesLeftInDest": 0
+      }
+    }
+  },
+  "ok": true
+}

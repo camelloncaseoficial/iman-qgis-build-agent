@@ -1,0 +1,95 @@
+{
+  "phase": "open",
+  "errors": {},
+  "pluginLoaded": true,
+  "before": {
+    "path": "D:\\iman-terra-build\\verify\\plugin-migration-migrate-build-20261111-145427\\work\\reurb\\projeto_de_teste_061.gpkg",
+    "schema_version": "3",
+    "lotes": 1,
+    "pessoas": 1,
+    "lote_pessoa": 1,
+    "person_names": [
+      "Pessoa de Teste 061"
+    ],
+    "pessoas_columns": [
+      "fid",
+      "id",
+      "project_id",
+      "person_type",
+      "name",
+      "cpf_cnpj",
+      "id_doc",
+      "marital_status",
+      "profession",
+      "nationality",
+      "address",
+      "district",
+      "cep",
+      "phone",
+      "email",
+      "status",
+      "notes",
+      "created_at",
+      "updated_at"
+    ]
+  },
+  "backupsBefore": [],
+  "read": {
+    "ok": true,
+    "error": null
+  },
+  "after": {
+    "path": "D:\\iman-terra-build\\verify\\plugin-migration-migrate-build-20261111-145427\\work\\reurb\\projeto_de_teste_061.gpkg",
+    "schema_version": "3",
+    "lotes": 1,
+    "pessoas": 1,
+    "lote_pessoa": 1,
+    "person_names": [
+      "Pessoa de Teste 061"
+    ],
+    "pessoas_columns": [
+      "fid",
+      "id",
+      "project_id",
+      "person_type",
+      "name",
+      "cpf_cnpj",
+      "id_doc",
+      "marital_status",
+      "profession",
+      "nationality",
+      "address",
+      "district",
+      "cep",
+      "phone",
+      "email",
+      "status",
+      "notes",
+      "created_at",
+      "updated_at"
+    ]
+  },
+  "backupsAfter": [],
+  "personsTab": {
+    "found": true,
+    "texts": [
+      "Projeto",
+      "Confrontações",
+      "Memorial"
+    ],
+    "personsIndex": -1,
+    "personsEnabled": false
+  },
+  "plugin": {
+    "version": "0.3.1",
+    "author": "Instituto IMAN",
+    "name": "IMAN REURB",
+    "active": true,
+    "manager": {
+      "name": "IMAN REURB",
+      "version_installed": "0.3.1",
+      "author_name": "Instituto IMAN",
+      "installed": true
+    }
+  }
+}

@@ -332,7 +332,7 @@ desses termos, como publicadas, estão na pasta `licencas\` da instalação.
 <!-- gerado: plugin (iman/notices/Update-Notices.ps1) -->
 | Plugin | Versão | Licença | Tag e commit do repo do plugin | Fonte da licença |
 |---|---|---|---|---|
-| IMAN REURB (`iman_plugin`) | 0.3.1 | GPL-2.0-or-later | `v0.3.1`, `a307801e3f4649c08a5d1be16abcef345fd53fbb` | arquivo no pacote: `apps/qgis-ltr/python/plugins/iman_plugin/LICENSE` |
+| IMAN REURB (`iman_plugin`) | 0.4.0 | GPL-2.0-or-later | `v0.4.0`, `4f7cff89988b2af2f03dc6da6f116d7e53c5b224` | arquivo no pacote: `apps/qgis-ltr/python/plugins/iman_plugin/LICENSE` |
 <!-- gerado: fim -->
 
 ## 7. Marcas

@@ -1,0 +1,9 @@
+[14:59:56] removendo D:\iman-terra-build\stage\tree
+[14:59:59] fora da arvore: gdal-ecw (o termo da Hexagon (ERDAS ECW/JP2 Server Read-Only End-user SDK License Agreement v5.5, secao 2.2) nao permite distribuir aplicacao desktop com o SDK)
+[15:00:50] 152 pacotes do conjunto oficial extraidos em D:\iman-terra-build\stage\tree
+[15:00:53] plugin iman_plugin 0.4.0 da tag v0.4.0 (4f7cff8998)
+[15:00:54] arvore pronta: 152 pacotes + iman-terra, 37465 arquivos, 2,21 GB, 58 s
+[15:00:57] notices em dia: 153 entradas para 153 pacotes do installed.db de D:\iman-terra-build\stage\tree; plugin iman_plugin 0.4.0
+[15:00:57] ISCC 7.1.0 -> D:\iman-terra-build\dist\0.4.0-ee83c9c7b7\Instituto-IMAN-IMAN-Terra-Setup-0.4.0-ee83c9c7b7.exe
+[15:13:48] instalador pronto: D:\iman-terra-build\dist\0.4.0-ee83c9c7b7\Instituto-IMAN-IMAN-Terra-Setup-0.4.0-ee83c9c7b7.exe (489 MB, ISCC 770 s, total 833 s)
+exit=0

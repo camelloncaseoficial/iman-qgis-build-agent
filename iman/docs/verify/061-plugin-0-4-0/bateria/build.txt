@@ -1,0 +1,96 @@
+=== iman/build/Test-Patchset.ps1
+patchset: 13 arquivo(s) do QGIS alterado(s) desde final-3_44_13; 13 listado(s) em iman/PATCHES.md
+PATCHSET OK
+exit=0
+=== iman/build/Invoke-Smoke.ps1
+[14:59:57] version                OK  {"revision":"ee83c9c7b7","lines":["QGIS 3.44.13-Solothurn 'Solothurn' (ee83c9c7b7)","QGIS code revision ee83c9c7b7","Qt version 5.15.13"]}
+[14:59:59] providers              OK  {"providers":["3d","gdal","model","native","pdal","qgis","script"],"algorithms":426,"differences":[]}
+[14:59:59] plugins                OK  {"plugins":["grassprovider","processing"],"differences":[]}
+[15:00:00] native:buffer          OK  {"exit":0,"features":3,"geometry":"Multi Polygon"}
+[15:00:15] gui+qgz                OK  {"seconds":14,"exitedClean":true,"exitCode":0,"title":"smoke - IMAN Terra [iman-smoke]","layers":[{"name":"points","valid":true,"features":3,"crs":"EPSG:4326"}],"errors":null,"capture":"gui.png"}
+[15:00:15] projeto-salvo          OK  {"written":true,"qgis_version_attribute":"3.44.13-Solothurn"}
+[15:00:15] marca:titulo           OK  {"atStart":"Projeto sem t�tulo - IMAN Terra [iman-smoke]","afterLoad":"smoke - IMAN Terra [iman-smoke]","caption":"IMAN Terra - motor QGIS %1 ('%2')"}
+[15:00:15] marca:traducao         OK  {"QgisApp|QGIS":"IMAN Terra","MainWindow|Exit QGIS":"Sair do IMAN Terra"}
+[15:00:15] marca:idioma           OK  {"translation":"pt_BR","userLocale":"pt_BR","overrideFlag":true,"QgsAbout|About QGIS":"Sobre o QGIS"}
+[15:00:15] marca:splash           OK  {"resource":"aa403d13adf373a32aef83c4fb99c70a4bb41038d199fefdd428bf4dbe4ff877","derived":"aa403d13adf373a32aef83c4fb99c70a4bb41038d199fefdd428bf4dbe4ff877","message":"IMAN Terra pronto!"}
+[15:00:15] marca:splash-texto     OK  {"revision":"ee83c9c7b7","qgisappLine":"QColor splashTextColor = Qgis::releaseName() == QLatin1String( \"Master\" ) ? QColor( 93, 153, 51 ) : QColor( IMAN_SPLASH_TEXT_COLOR );","brandSplashTextColor":"#FFFFFF","header":"#define IMAN_SPLASH_TEXT_COLOR \"#FFFFFF\""}
+[15:00:15] marca:icones           OK  {":/images/icons/qgis_icon.svg":true,":/images/icons/qgis-icon-16x16.png":true,":/images/icons/qgis-icon-60x60.png":true,":/images/themes/default/providerQgis.svg":true,"disco:qgis-icon-60x60.png":true,"IDI_ICON1:qgis.exe":true,"IDI_ICON1:qgiscrashhandler.exe":true}
+[15:00:15] marca:enderecos        OK  {"mActionQgisHomePage":["https://institutoiman.org.br"],"mActionReportaBug":["https://institutoiman.org.br"],"mActionNeedSupport":["https://institutoiman.org.br"],"mActionDonate":["https://qgis.org/funding/donate/"],"mActionGetInvolved":["https://qgis.org/community/involve/"],"mActionSponsors":["https://qgis.org/funding/membership/members/"]}
+[15:00:15] marca:noticias-versao  OK  {"feedDisabled":true,"allowVersionCheck":false,"checkVersion":false,"checkVersionActionVisible":false,"feedInNetworkCache":[]}
+[15:00:15] marca:pdf              OK  {"expected":"IMAN Terra (motor QGIS 3.44.13-Solothurn)","status":0,"creator":"IMAN Terra (motor QGIS 3.44.13-Solothurn)","producer":"IMAN Terra (motor QGIS 3.44.13-Solothurn)","xmp":["IMAN Terra (motor QGIS 3.44.13-Solothurn)","IMAN Terra (motor QGIS 3.44.13-Solothurn)"],"allInfoCreator":["","IMAN Terra (motor QGIS 3.44.13-Solothurn)"],"allInfoProducer":["Qt 5.15.13","IMAN Terra (motor QGIS 3.44.13-Solothurn)"]}
+[15:00:15] marca:plugin-reurb     OK  {"id":"iman_plugin","active":["MetaSearch","db_manager","grassprovider","iman_plugin","processing"],"moduleFile":"D:\\iman-terra-build/install/apps/qgis-ltr/./python/plugins\\iman_plugin\\__init__.py","fromTree":true,"version":"0.4.0","lockVersion":"0.4.0","setting":"true"}
+[15:00:15] controle:sobre         OK  {"resource":"3e5ebce122ca6d955535313210abbe37b9d1343a157c7f5b51af4ab368d94d5d","qgisSource":"3e5ebce122ca6d955535313210abbe37b9d1343a157c7f5b51af4ab368d94d5d"}
+[15:00:15] dados-do-produto       OK  {"ok":true,"directory":"%USERPROFILE%\\AppData\\Local\\InstitutoIMAN\\IMANTerra","existedBefore":true,"created":[],"removed":[],"files":[]}
+[15:00:18] guard                  OK  "GUARD OK: QGIS oficial, %USERPROFILE%\\AppData\\Roaming\\QGIS, %USERPROFILE%\\AppData\\Local\\QGIS, %USERPROFILE%\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\QGIS3.lnk, C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\QGIS 3.44.13, registro, associacoes e notificacoes do QGIS identicos ao retrato de 2026-11-11T14:09:14 (37625 itens)"
+[15:00:18] smoke Build OK: D:\iman-terra-build\smoke\build-20261111-145956
+exit=0
+=== iman/build/Test-PluginEmbed.ps1 -SeenFailing
+[15:00:19] T2:archive-e-o-commit          OK  {"commit":"4f7cff89988b2af2f03dc6da6f116d7e53c5b224","files":132,"lsTree":132,"blobMismatch":[]}
+[15:00:20] T2:pasta-embarcada             OK  {"dir":"D:\\iman-terra-build\\install\\apps\\qgis-ltr\\python\\plugins\\iman_plugin","files":132,"sha256Equal":132,"missing":[],"extra":[],"shaDiff":[],"pycacheReported":69,"license":true}
+[15:00:21] falha:clone-ausente            OK  {"message":"PLUGIN: clone do plugin ausente em 'D:\\iman-terra-build\\verify\\plugin-embed-20261111-150018\\nao-existe' (-PluginRepo ou IMAN_PLUGIN_REPO)","expected":"clone do plugin ausente","filesLeftInDest":0}
+[15:00:21] falha:tag-ausente              OK  {"message":"PLUGIN: a tag v0.0.0-iman-inexistente nao existe no clone D:\\_projetos\\iman-webgeo\\iman-qgis-build-agent\\..\\iman-qgis-plugin-agent","expected":"nao existe no clone","filesLeftInDest":0}
+[15:00:21] falha:trava-em-outro-commit    OK  {"message":"PLUGIN: a tag v0.4.0 aponta para 4f7cff89988b2af2f03dc6da6f116d7e53c5b224, e a trava fixa e77ce2d1d790eaeee9b4361278ee8fe73c8aa772","expected":"aponta para","filesLeftInDest":0}
+[15:00:21] falha:licenca-ausente          OK  {"message":"PLUGIN: falta o LICENSE na pasta exportada de iman-caso-sem-licenca (e7582560baf9da3963cb3d203d99d1d953af45ef)","expected":"falta o LICENSE","filesLeftInDest":0}
+[15:00:21] falha:versao-diferente         OK  {"message":"PLUGIN: o metadata.txt de v0.4.0 diz version=0.4.0, e a trava diz 9.9.9","expected":"metadata.txt","filesLeftInDest":0}
+[15:00:21] plugin embarcado OK: D:\iman-terra-build\verify\plugin-embed-20261111-150018
+exit=0
+=== iman/build/Test-PluginBoot.ps1 -ProfileState New
+[15:00:28] facts                      OK  {"written":true,"exitedClean":true,"errors":null}
+[15:00:29] T1:new-ativo               OK  {"active":true,"moduleFile":"D:\\iman-terra-build/install/apps/qgis-ltr/./python/plugins\\iman_plugin\\__init__.py","fromTree":true,"version":"0.4.0","author":"Instituto IMAN","settingEffective":"true","settingInUserIni":false,"settingUserValue":null,"toolbar":{"object_name":"imanReurbToolbar","found":true,"visible":true,"title":"IMAN REURB","actions":14},"messageBar":[],"bootErrors":[],"bootWarnings":[],"watchdogLeft":false}
+[15:00:29] dados-do-produto           OK  {"ok":true,"directory":"%USERPROFILE%\\AppData\\Local\\InstitutoIMAN\\IMANTerra","existedBefore":true,"created":[],"removed":[],"files":[]}
+[15:00:31] guard                      OK  "GUARD OK: QGIS oficial, %USERPROFILE%\\AppData\\Roaming\\QGIS, %USERPROFILE%\\AppData\\Local\\QGIS, %USERPROFILE%\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\QGIS3.lnk, C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\QGIS 3.44.13, registro, associacoes e notificacoes do QGIS identicos ao retrato de 2026-11-11T14:09:14 (37625 itens)"
+[15:00:31] plugin Build/new OK: D:\iman-terra-build\smoke\plugin-build-new-20261111-150021
+exit=0
+=== iman/build/Test-PluginBoot.ps1 -ProfileState Seeded
+[15:00:38] facts                      OK  {"written":true,"exitedClean":true,"errors":null}
+[15:00:38] T1:seeded-ativo            OK  {"active":true,"moduleFile":"D:\\iman-terra-build/install/apps/qgis-ltr/./python/plugins\\iman_plugin\\__init__.py","fromTree":true,"version":"0.4.0","author":"Instituto IMAN","settingEffective":"true","settingInUserIni":false,"settingUserValue":null,"toolbar":{"object_name":"imanReurbToolbar","found":true,"visible":true,"title":"IMAN REURB","actions":14},"messageBar":[],"bootErrors":[],"bootWarnings":[],"watchdogLeft":false}
+[15:00:39] dados-do-produto           OK  {"ok":true,"directory":"%USERPROFILE%\\AppData\\Local\\InstitutoIMAN\\IMANTerra","existedBefore":true,"created":[],"removed":[],"files":[]}
+[15:00:41] guard                      OK  "GUARD OK: QGIS oficial, %USERPROFILE%\\AppData\\Roaming\\QGIS, %USERPROFILE%\\AppData\\Local\\QGIS, %USERPROFILE%\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\QGIS3.lnk, C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\QGIS 3.44.13, registro, associacoes e notificacoes do QGIS identicos ao retrato de 2026-11-11T14:09:14 (37625 itens)"
+[15:00:41] plugin Build/seeded OK: D:\iman-terra-build\smoke\plugin-build-seeded-20261111-150032
+exit=0
+=== iman/build/Test-PluginBoot.ps1 -ProfileState UserOff
+[15:00:48] facts                      OK  {"written":true,"exitedClean":true,"errors":null}
+[15:00:48] T1:usuario-desligou        OK  {"active":false,"moduleFile":null,"fromTree":false,"version":"0.4.0","author":"Instituto IMAN","settingEffective":"false","settingInUserIni":true,"settingUserValue":"false","toolbar":{"object_name":null,"found":false,"visible":false,"title":null,"actions":0},"messageBar":[],"bootErrors":[],"bootWarnings":[],"watchdogLeft":false}
+[15:00:48] dados-do-produto           OK  {"ok":true,"directory":"%USERPROFILE%\\AppData\\Local\\InstitutoIMAN\\IMANTerra","existedBefore":true,"created":[],"removed":[],"files":[]}
+[15:00:51] guard                      OK  "GUARD OK: QGIS oficial, %USERPROFILE%\\AppData\\Roaming\\QGIS, %USERPROFILE%\\AppData\\Local\\QGIS, %USERPROFILE%\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\QGIS3.lnk, C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\QGIS 3.44.13, registro, associacoes e notificacoes do QGIS identicos ao retrato de 2026-11-11T14:09:14 (37625 itens)"
+[15:00:51] plugin Build/useroff OK: D:\iman-terra-build\smoke\plugin-build-useroff-20261111-150042
+exit=0
+=== iman/build/Test-PluginBoot.ps1 -ProfileState OwnCopy
+[15:01:00] facts                      OK  {"written":true,"exitedClean":true,"errors":null}
+[15:01:00] T1:copia-no-perfil (relato) OK  {"active":true,"moduleFile":"D:\\iman-terra-build\\smoke\\plugin-build-owncopy-20261111-150051\\profiles\\profiles\\iman-smoke/python/plugins\\iman_plugin\\__init__.py","fromTree":false,"version":"0.4.0","author":"Instituto IMAN","settingEffective":"true","settingInUserIni":false,"settingUserValue":null,"toolbar":{"object_name":"imanReurbToolbar","found":true,"visible":true,"title":"IMAN REURB","actions":14},"messageBar":[],"bootErrors":[],"bootWarnings":[],"watchdogLeft":false,"fromProfileCopy":true,"profileCopy":"D:\\iman-terra-build\\smoke\\plugin-build-owncopy-20261111-150051\\profiles\\profiles\\iman-smoke\\python\\plugins\\iman_plugin","profileCopyCommit":"4f7cff89988b2af2f03dc6da6f116d7e53c5b224","profileCopyDirty":false,"pluginPaths":["D:\\iman-terra-build\\smoke\\plugin-build-owncopy-20261111-150051\\profiles\\profiles\\iman-smoke/python/plugins","D:/iman-terra-build/install/apps/qgis-ltr/./python/plugins"],"loadedFrom":"copia do perfil"}
+[15:01:00] dados-do-produto           OK  {"ok":true,"directory":"%USERPROFILE%\\AppData\\Local\\InstitutoIMAN\\IMANTerra","existedBefore":true,"created":[],"removed":[],"files":[]}
+[15:01:03] guard                      OK  "GUARD OK: QGIS oficial, %USERPROFILE%\\AppData\\Roaming\\QGIS, %USERPROFILE%\\AppData\\Local\\QGIS, %USERPROFILE%\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\QGIS3.lnk, C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\QGIS 3.44.13, registro, associacoes e notificacoes do QGIS identicos ao retrato de 2026-11-11T14:09:14 (37625 itens)"
+[15:01:03] plugin Build/owncopy OK: D:\iman-terra-build\smoke\plugin-build-owncopy-20261111-150051
+exit=0
+=== iman/build/Test-PluginBoot.ps1 -ProfileState New -Wizard
+[15:01:12] facts                      OK  {"written":true,"exitedClean":true,"errors":null}
+[15:01:12] T1:new-ativo               OK  {"active":true,"moduleFile":"D:\\iman-terra-build/install/apps/qgis-ltr/./python/plugins\\iman_plugin\\__init__.py","fromTree":true,"version":"0.4.0","author":"Instituto IMAN","settingEffective":"true","settingInUserIni":false,"settingUserValue":null,"toolbar":{"object_name":"imanReurbToolbar","found":true,"visible":true,"title":"IMAN REURB","actions":14},"messageBar":[],"bootErrors":[],"bootWarnings":[],"watchdogLeft":false}
+[15:01:12] T3:assistente              OK  {"title":"Criar projeto REURB","proposedCrs":"EPSG:31984","wantCrs":"EPSG:31984","accepted":true,"errorLabel":"","workspace":"D:\\iman-terra-build\\smoke\\plugin-build-new-wizard-20261111-150103\\work\\reurb","files":["smoke_051.gpkg"],"projectCrs":"EPSG:31984","layers":["areas_publicas","confrontacoes","edificacoes","lote_pessoa","lotes","pessoas","quadras","vertices","vias"],"secondsWaited":0.5,"sessionLog":["[Advert�ncia do Python 1] warning:D:\\iman-terra-build/install/apps/qgis-ltr/./python/plugins\\iman_plugin\\infrastructure\\processors\\field_mapping.py:47: DeprecationWarning: QgsField constructor is deprecated"],"captures":["wizard.png","toolbar.png","dock.png"]}
+[15:01:12] dados-do-produto           OK  {"ok":true,"directory":"%USERPROFILE%\\AppData\\Local\\InstitutoIMAN\\IMANTerra","existedBefore":true,"created":[],"removed":[],"files":[]}
+[15:01:15] guard                      OK  "GUARD OK: QGIS oficial, %USERPROFILE%\\AppData\\Roaming\\QGIS, %USERPROFILE%\\AppData\\Local\\QGIS, %USERPROFILE%\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\QGIS3.lnk, C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\QGIS 3.44.13, registro, associacoes e notificacoes do QGIS identicos ao retrato de 2026-11-11T14:09:14 (37625 itens)"
+[15:01:15] plugin Build/new-wizard OK: D:\iman-terra-build\smoke\plugin-build-new-wizard-20261111-150103
+exit=0
+=== iman/build/Test-PluginMigration.ps1 -Phase Migrate -SeedRun D:\iman-terra-build\verify\plugin-migration-seed-build-20261111-145407
+[15:01:33] facts                        OK  {"exitedClean":[true,true],"errors":[]}
+[15:01:33] M1:migrou                    OK  {"read":{"ok":true,"error":null},"before":"3","after":"4","seed":"3"}
+[15:01:33] M1:copia-de-seguranca        FALHOU  {"before":[],"after":["projeto_de_teste_061.gpkg.bak"],"bakSha256":"a861786b86118ec2b7754b16a293fd0fe69ca56e58cfa027666afceac1ab72d9","seedSha256":"0a56eef8df0e3353f990ec686bf18104cd503f8d3e044299909baef08841e8fe"}
+[15:01:33] M1:dados-preservados         OK  {"seed":{"lotes":1,"pessoas":1,"lote_pessoa":1},"after":{"lotes":1,"pessoas":1,"lote_pessoa":1},"persons":["Pessoa de Teste 061"],"newPessoasColumns":["issuing_agency","mother_name","father_name","municipality_name","municipality_state","spouse_id","property_regime","married_before_law_6515"]}
+[15:01:33] M1:aba-pessoas               OK  {"found":true,"texts":["Projeto","Confronta��es","Pessoas","Memorial"],"personsIndex":2,"personsEnabled":true,"mode":"table","counter":"1 pessoa","rows":1,"tableRows":1,"tableNames":["Pessoa de Teste 061"]}
+[15:01:33] M2:nao-migra-de-novo         OK  {"before":"4","after":"4","backups":["projeto_de_teste_061.gpkg.bak"],"bakSha256":"a861786b86118ec2b7754b16a293fd0fe69ca56e58cfa027666afceac1ab72d9","gpkgSha256AfterFirst":"e1975194400d5be38bcc95fe131b4caf0817966b247308e3b34a2881bbd36112","counts":{"lotes":1,"pessoas":1,"lote_pessoa":1},"personsTab":{"found":true,"texts":["Projeto","Confronta��es","Pessoas","Memorial"],"personsIndex":2,"personsEnabled":true,"mode":"table","counter":"1 pessoa","rows":1,"tableRows":1,"tableNames":["Pessoa de Teste 061"]}}
+[15:01:33] T4:gerenciador               OK  {"version":"0.4.0","author":"Instituto IMAN","name":"IMAN REURB","active":true,"manager":{"name":"IMAN REURB","version_installed":"0.4.0","author_name":"Instituto IMAN","installed":true}}
+[15:01:33] dados-do-produto             OK  {"ok":true,"directory":"%USERPROFILE%\\AppData\\Local\\InstitutoIMAN\\IMANTerra","existedBefore":true,"created":[],"removed":[],"files":[]}
+[15:01:36] guard                        OK  "GUARD OK: QGIS oficial, %USERPROFILE%\\AppData\\Roaming\\QGIS, %USERPROFILE%\\AppData\\Local\\QGIS, %USERPROFILE%\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\QGIS3.lnk, C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\QGIS 3.44.13, registro, associacoes e notificacoes do QGIS identicos ao retrato de 2026-11-11T14:09:14 (37625 itens)"
+[15:01:36] migracao Migrate Build/New FALHOU: D:\iman-terra-build\verify\plugin-migration-migrate-build-20261111-150115
+exit=1
+=== iman/build/Test-PluginMigration.ps1 -Phase Migrate -SeedRun D:\iman-terra-build\verify\plugin-migration-seed-build-20261111-145407 -ProfileState Seeded
+[15:01:55] facts                        OK  {"exitedClean":[true,true],"errors":[]}
+[15:01:55] M1:migrou                    OK  {"read":{"ok":true,"error":null},"before":"3","after":"4","seed":"3"}
+[15:01:55] M1:copia-de-seguranca        FALHOU  {"before":[],"after":["projeto_de_teste_061.gpkg.bak"],"bakSha256":"a861786b86118ec2b7754b16a293fd0fe69ca56e58cfa027666afceac1ab72d9","seedSha256":"0a56eef8df0e3353f990ec686bf18104cd503f8d3e044299909baef08841e8fe"}
+[15:01:55] M1:dados-preservados         OK  {"seed":{"lotes":1,"pessoas":1,"lote_pessoa":1},"after":{"lotes":1,"pessoas":1,"lote_pessoa":1},"persons":["Pessoa de Teste 061"],"newPessoasColumns":["issuing_agency","mother_name","father_name","municipality_name","municipality_state","spouse_id","property_regime","married_before_law_6515"]}
+[15:01:55] M1:aba-pessoas               OK  {"found":true,"texts":["Projeto","Confronta��es","Pessoas","Memorial"],"personsIndex":2,"personsEnabled":true,"mode":"table","counter":"1 pessoa","rows":1,"tableRows":1,"tableNames":["Pessoa de Teste 061"]}
+[15:01:55] M2:nao-migra-de-novo         OK  {"before":"4","after":"4","backups":["projeto_de_teste_061.gpkg.bak"],"bakSha256":"a861786b86118ec2b7754b16a293fd0fe69ca56e58cfa027666afceac1ab72d9","gpkgSha256AfterFirst":"c0f5d16ac439b17364d83d1b8e59c0cad49f5023079742caacdbe88cad0d65af","counts":{"lotes":1,"pessoas":1,"lote_pessoa":1},"personsTab":{"found":true,"texts":["Projeto","Confronta��es","Pessoas","Memorial"],"personsIndex":2,"personsEnabled":true,"mode":"table","counter":"1 pessoa","rows":1,"tableRows":1,"tableNames":["Pessoa de Teste 061"]}}
+[15:01:55] T4:gerenciador               OK  {"version":"0.4.0","author":"Instituto IMAN","name":"IMAN REURB","active":true,"manager":{"name":"IMAN REURB","version_installed":"0.4.0","author_name":"Instituto IMAN","installed":true}}
+[15:01:55] dados-do-produto             OK  {"ok":true,"directory":"%USERPROFILE%\\AppData\\Local\\InstitutoIMAN\\IMANTerra","existedBefore":true,"created":[],"removed":[],"files":[]}
+[15:01:57] guard                        OK  "GUARD OK: QGIS oficial, %USERPROFILE%\\AppData\\Roaming\\QGIS, %USERPROFILE%\\AppData\\Local\\QGIS, %USERPROFILE%\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\QGIS3.lnk, C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\QGIS 3.44.13, registro, associacoes e notificacoes do QGIS identicos ao retrato de 2026-11-11T14:09:14 (37625 itens)"
+[15:01:57] migracao Migrate Build/Seeded FALHOU: D:\iman-terra-build\verify\plugin-migration-migrate-build-20261111-150136
+exit=1

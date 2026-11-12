@@ -152,3 +152,16 @@ Medido na fatia 058 (2026-11-11), laudo `iman/docs/verify/058-higiene-e-tema-do-
 - **Disco:** D: com 35 GB livres no comeco; C: 176 GB.
 - **Tempos:** build incremental 98 s + install 285 s; arvore de runtime 91 a 94 s; ISCC 744 s; instalar 290 s;
   desinstalar 12 s; `Measure-ThemeRegions` 25 a 35 s.
+
+Medido na fatia 061 (2026-11-11), laudo `iman/docs/verify/061-plugin-0-4-0/README.md`:
+
+- **Plugin 0.4.0 embarcado** (tag `v0.4.0`, `4f7cff8998`). O sponsor instalou o IMAN Terra da 058 as 14:20; a 061 foi
+  instalada por cima e **ficou instalada** para o smoke dele (sem desinstalar). Pasta e chave do produto nao foram
+  renomeadas (briefing); o `Test-Installed.ps1` nao roda com o perfil do sponsor no lugar.
+- **Projeto REURB v3 descartavel:** `D:\iman-terra-build\verify\plugin-migration-seed-build-20261111-145407\semente`
+  (plugin 0.3.1, um lote, uma pessoa sem documento, um vinculo). `Test-PluginMigration.ps1 -Phase Migrate -SeedRun`
+  reusa a semente.
+- **A migracao so dispara ao reabrir pelo plugin** (`OpenReurbProjectService.read`, o botao "Reabrir projeto"); abrir o
+  `.qgz` nao migra. A copia `<gpkg>.bak` nao e byte a byte o arquivo: o GDAL tira o modo WAL ao abrir (bytes 18, 19,
+  27 e 95 do cabecalho).
+- **Tempos:** build incremental + install 4 a 5 min; arvore 59 s; ISCC 770 s; instalar 159 s.

@@ -1,0 +1,17 @@
+31a32,33
+> apps/qgis-ltr/python/plugins/iman_plugin/application/person_registry_dto.py
+> apps/qgis-ltr/python/plugins/iman_plugin/application/person_registry_service.py
+46a49
+> apps/qgis-ltr/python/plugins/iman_plugin/domain/document_number.py
+55a59
+> apps/qgis-ltr/python/plugins/iman_plugin/domain/spouse_link.py
+78a83
+> apps/qgis-ltr/python/plugins/iman_plugin/infrastructure/repositories/geopackage_person_repository.py
+114a120,122
+> apps/qgis-ltr/python/plugins/iman_plugin/ui/person_form_dialog.py
+> apps/qgis-ltr/python/plugins/iman_plugin/ui/persons_panel.py
+> apps/qgis-ltr/python/plugins/iman_plugin/ui/spouse_picker_dialog.py
+125a134,136
+> apps/qgis-ltr/python/plugins/iman_plugin/ui/viewmodels/person_display.py
+> apps/qgis-ltr/python/plugins/iman_plugin/ui/viewmodels/person_form_viewmodel.py
+> apps/qgis-ltr/python/plugins/iman_plugin/ui/viewmodels/persons_viewmodel.py
