@@ -191,6 +191,33 @@ títulos de janela medidos do programa: `"smoke [U+2014] IMAN Terra [iman-smoke]
 caractere é decisão do sponsor em aberto (fora de escopo). Como evidência, fica como foi medida. O código, os scripts,
 o `style.qss`, o `README.md` da marca, a memória e este laudo: zero e zero.
 
+## Depois do merge da develop com a 059 (medido)
+
+O sponsor mergeou a 059 (PR #9) na `develop` depois do PR desta fatia. O merge `0499450a35` trouxe a `develop` para
+esta branch.
+
+Conflitos de texto:
+- `Build-Qgis.ps1`: ficaram a remoção do tema (063) e a cópia do `THIRD_PARTY_NOTICES.md` para a raiz do install
+  (059).
+- `.memory/`: ficaram as duas fatias.
+
+Conflito sem marca do git: o `build_brand.py` da 059 lia a paleta do `iman_brand.h` (`IMAN_COLOR_*`, da página
+inicial e do Sobre) pelo `ui_theme` do `brand.json`, que esta fatia tirou. Agora ele acha o `style.qss` pela pasta de
+`iman/brand/theme`, como o `Test-ThemeQss.ps1`. A paleta segue com as mesmas 18 cores. O tema continua fora do build:
+as telas da 059 têm folha de estilo própria, no C++, e não dependem do tema.
+
+No build do merge `0499450a35`, pasta `merge-0499450a35/`:
+
+| Verificação | Resultado |
+|---|---|
+| Smoke | 19 de 19 OK |
+| `Test-Patchset.ps1` | 18 de 18: os 13 de antes e os 5 da 059 |
+| `Test-ThemeQss.ps1` | 14 de 14 |
+| Setas | todas visíveis |
+| `Test-ThemeDefaults.ps1`, perfil novo | OK |
+| Guarda do QGIS oficial | OK |
+| `resources\themes` | só `Blend of Gray` e `Night Mapping`, os temas de fábrica |
+
 ## Achados
 
 1. **O `qgis/style=fusion` dos perfis é o comportamento do QGIS.** O oficial grava a mesma chave num perfil novo

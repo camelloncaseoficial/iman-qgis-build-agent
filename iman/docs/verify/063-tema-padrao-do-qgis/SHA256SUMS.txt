@@ -1,6 +1,11 @@
-179a1d64ccbd90c24bc6df020925d802dc1e1d8b29befc365ccc817ef1aaa544 *iman/docs/verify/063-tema-padrao-do-qgis/README.md
+0b954b5dd2c9b27719bff30f51a9a0273a96d82dc4311bdd10756632044dfe4c *iman/docs/verify/063-tema-padrao-do-qgis/README.md
 5b4e931d3ca783998a8484476ea8b5b708e499449aaeb5f779e357ecd4c9c294 *iman/docs/verify/063-tema-padrao-do-qgis/bateria/patchset.txt
 d9d3beb54ba0e84fccc1a158f26e13b2665b5eda526a1e97b75458758722192b *iman/docs/verify/063-tema-padrao-do-qgis/bateria/tema-qss.txt
+497f1e4d507cd85ba0c30025832b7aa66b57a463b0521971b597ac4f7528e54c *iman/docs/verify/063-tema-padrao-do-qgis/merge-0499450a35/setas/01-janela.png
+90c10d42280ddfd79b8fa3541186a230139f94219790770ca0cf280d750500c4 *iman/docs/verify/063-tema-padrao-do-qgis/merge-0499450a35/setas/arrows.json
+4c3c0d2584efaeeb3450dd6c6cd0454bfa8940dc7e79187ce587cba8b092237b *iman/docs/verify/063-tema-padrao-do-qgis/merge-0499450a35/setas/result.json
+a48499b669e250daddb602e26f7997452b94cd34e2e4ee82460708c670e80508 *iman/docs/verify/063-tema-padrao-do-qgis/merge-0499450a35/smoke-build/summary.json
+3da1c484fc0d621497b89e04b7a2bb1cbffd6f9ca4947d6266e16a7157d033c0 *iman/docs/verify/063-tema-padrao-do-qgis/merge-0499450a35/tema-padrao/result.json
 c804241c4d618a82002df11b28eb4f037f6505fdd607e81cd12df07e76de2ecd *iman/docs/verify/063-tema-padrao-do-qgis/perfis/perfil-antes-develop/profile.json
 21389cea3719e846ed427aee93d4d5e0b6509b3ce465e5174f5e2ef1a79569e5 *iman/docs/verify/063-tema-padrao-do-qgis/perfis/perfil-antes-develop/result.json
 c804241c4d618a82002df11b28eb4f037f6505fdd607e81cd12df07e76de2ecd *iman/docs/verify/063-tema-padrao-do-qgis/perfis/perfil-antes-fixture/profile.json
