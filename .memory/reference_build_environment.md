@@ -106,6 +106,9 @@ Medido no patch 049p (2026-11-04), laudo `iman/docs/verify/049-tema-e-padroes/RE
   desinstalacao) e o cache do alvo Build tambem: o proximo `Test-Installed` precisa de novo do `-ResetProductData`.
 - **O gate pelo pwsh desta ferramenta caiu no titulo do console** (0xE9, rodada 1 da fatia 049): o build aninhado nao
   tem console. A rodada do gate vai para o sponsor, num terminal com janela propria.
+  **Vencida pela fatia 061** (briefing 063, correcao de 2026-11-13): a 061 rodou o gate por esta ferramenta
+  (`pass_e0c555b4f2`, 2026-11-11 15:26, 268 s). A Crew roda o gate depois do PR aberto; se cair, a rodada conta e o
+  `/deliver` cola a saida do erro.
 - **Captura da tabela de atributos** saiu na escala 1,25 numa rodada (961x441 contra 769x353): comparar por regra, nao
   por tamanho.
 - **`gh` sem `--repo` resolve para o upstream `qgis/QGIS`** (o remoto `upstream`): o `/deliver` da 049 leu "sem PR" assim, com o PR #5 aberto. Todo `gh` leva `--repo camelloncaseoficial/iman-qgis-build-agent`.
