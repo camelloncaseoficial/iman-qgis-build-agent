@@ -1,0 +1,2 @@
+patchset: 18 arquivo(s) do QGIS alterado(s) desde final-3_44_13; 18 listado(s) em iman/PATCHES.md
+PATCHSET OK

@@ -2296,6 +2296,167 @@
    "class": "bloco-d",
    "why": "crash handler (Bloco D): sem traducao pt_BR no QGIS e manda relatar no QGIS; passa a levar ao endereco do produto",
    "text": "Quer ajudar a corrigir este problema? Use o botão 'Copiar relatório' abaixo e envie o relatório ao {org} pela página <a href=\"{url}\">{url}</a>."
+  },
+  {
+   "context": "ImanHomePage",
+   "source": "TERRITORIAL INTELLIGENCE, CADASTRE AND REURB, CEARA",
+   "class": "marca-059",
+   "why": "pagina inicial do produto (fatia 059, prototipo): texto da pagina inicial da distro congelada, sem travessao",
+   "text": "INTELIGÊNCIA TERRITORIAL · CADASTRO E REURB · CEARÁ"
+  },
+  {
+   "context": "ImanHomePage",
+   "source": "Welcome to %1",
+   "class": "marca-059",
+   "why": "pagina inicial do produto (fatia 059, prototipo): texto da pagina inicial da distro congelada, sem travessao",
+   "text": "Bem-vindo ao %1"
+  },
+  {
+   "context": "ImanHomePage",
+   "source": "Land regularization, territorial cadastre and cartography in a single geospatial platform.",
+   "class": "marca-059",
+   "why": "pagina inicial do produto (fatia 059, prototipo): texto da pagina inicial da distro congelada, sem travessao",
+   "text": "Regularização fundiária, cadastro territorial e cartografia em uma só plataforma geoespacial."
+  },
+  {
+   "context": "ImanHomePage",
+   "source": "version %1",
+   "class": "marca-059",
+   "why": "pagina inicial do produto (fatia 059, prototipo): texto da pagina inicial da distro congelada, sem travessao",
+   "text": "versão %1"
+  },
+  {
+   "context": "ImanHomePage",
+   "source": "New project",
+   "class": "marca-059",
+   "why": "pagina inicial do produto (fatia 059, prototipo): texto da pagina inicial da distro congelada, sem travessao",
+   "text": "Novo projeto"
+  },
+  {
+   "context": "ImanHomePage",
+   "source": "Start from scratch",
+   "class": "marca-059",
+   "why": "pagina inicial do produto (fatia 059, prototipo): texto da pagina inicial da distro congelada, sem travessao",
+   "text": "Comece do zero"
+  },
+  {
+   "context": "ImanHomePage",
+   "source": "Open project",
+   "class": "marca-059",
+   "why": "pagina inicial do produto (fatia 059, prototipo): texto da pagina inicial da distro congelada, sem travessao",
+   "text": "Abrir projeto"
+  },
+  {
+   "context": "ImanHomePage",
+   "source": "Files .qgz / .qgs",
+   "class": "marca-059",
+   "why": "pagina inicial do produto (fatia 059, prototipo): texto da pagina inicial da distro congelada, sem travessao",
+   "text": "Arquivos .qgz / .qgs"
+  },
+  {
+   "context": "ImanHomePage",
+   "source": "Load data",
+   "class": "marca-059",
+   "why": "pagina inicial do produto (fatia 059, prototipo): texto da pagina inicial da distro congelada, sem travessao",
+   "text": "Carregar dados"
+  },
+  {
+   "context": "ImanHomePage",
+   "source": "Raster, vector, mesh",
+   "class": "marca-059",
+   "why": "pagina inicial do produto (fatia 059, prototipo): texto da pagina inicial da distro congelada, sem travessao",
+   "text": "Raster · Vetor · Malha"
+  },
+  {
+   "context": "ImanHomePage",
+   "source": "New layout",
+   "class": "marca-059",
+   "why": "pagina inicial do produto (fatia 059, prototipo): texto da pagina inicial da distro congelada, sem travessao",
+   "text": "Novo layout"
+  },
+  {
+   "context": "ImanHomePage",
+   "source": "Print composition",
+   "class": "marca-059",
+   "why": "pagina inicial do produto (fatia 059, prototipo): texto da pagina inicial da distro congelada, sem travessao",
+   "text": "Composição de impressão"
+  },
+  {
+   "context": "ImanHomePage",
+   "source": "Recent projects",
+   "class": "marca-059",
+   "why": "pagina inicial do produto (fatia 059, prototipo): texto da pagina inicial da distro congelada, sem travessao",
+   "text": "Projetos recentes"
+  },
+  {
+   "context": "ImanHomePage",
+   "source": "No recent projects yet. Start with \"New project\" or open an existing project: the ones you use will show up here.",
+   "class": "marca-059",
+   "why": "pagina inicial do produto (fatia 059, prototipo): texto da pagina inicial da distro congelada, sem travessao",
+   "text": "Nenhum projeto recente ainda. Comece por “Novo projeto” ou abra um projeto existente: os que você usar aparecem aqui."
+  },
+  {
+   "context": "ImanHomePage",
+   "source": "Project templates",
+   "class": "marca-059",
+   "why": "pagina inicial do produto (fatia 059, prototipo): texto da pagina inicial da distro congelada, sem travessao",
+   "text": "Modelos de projeto"
+  },
+  {
+   "context": "ImanAboutDialog",
+   "source": "%1 is an independent desktop geospatial experience, powered by QGIS.",
+   "class": "marca-059",
+   "why": "Sobre do produto (fatia 059, prototipo): texto do Sobre da distro congelada, sem travessao",
+   "text": "%1 é uma experiência geoespacial desktop independente, powered by QGIS."
+  },
+  {
+   "context": "ImanAboutDialog",
+   "source": "QGIS is a free and open source geographic information system, developed by QGIS.ORG and contributors.",
+   "class": "marca-059",
+   "why": "Sobre do produto (fatia 059, prototipo): texto do Sobre da distro congelada, sem travessao",
+   "text": "O QGIS é um sistema de informação geográfica livre e de código aberto, desenvolvido por QGIS.ORG e contribuidores."
+  },
+  {
+   "context": "ImanAboutDialog",
+   "source": "This project is not an official QGIS product and is not endorsed by QGIS.ORG.",
+   "class": "marca-059",
+   "why": "Sobre do produto (fatia 059, prototipo): texto do Sobre da distro congelada, sem travessao",
+   "text": "Este projeto não é um produto oficial do QGIS e não é endossado pela QGIS.ORG."
+  },
+  {
+   "context": "ImanAboutDialog",
+   "source": "About %1",
+   "class": "marca-059",
+   "why": "Sobre do produto (fatia 059, prototipo): texto do Sobre da distro congelada, sem travessao",
+   "text": "Sobre o %1"
+  },
+  {
+   "context": "ImanAboutDialog",
+   "source": "A customized geospatial experience, powered by QGIS.",
+   "class": "marca-059",
+   "why": "Sobre do produto (fatia 059, prototipo): texto do Sobre da distro congelada, sem travessao",
+   "text": "Uma experiência geoespacial customizada, powered by QGIS."
+  },
+  {
+   "context": "ImanAboutDialog",
+   "source": "Version %1",
+   "class": "marca-059",
+   "why": "Sobre do produto (fatia 059, prototipo): texto do Sobre da distro congelada, sem travessao",
+   "text": "Versão %1"
+  },
+  {
+   "context": "ImanAboutDialog",
+   "source": "Third-party licenses",
+   "class": "marca-059",
+   "why": "Sobre do produto (fatia 059, prototipo): texto do Sobre da distro congelada, sem travessao",
+   "text": "Licenças de terceiros"
+  },
+  {
+   "context": "ImanAboutDialog",
+   "source": "The THIRD_PARTY_NOTICES.md file was not found in this installation (%1). It is delivered in the product folder, next to LICENSE.",
+   "class": "marca-059",
+   "why": "Sobre do produto (fatia 059, prototipo): texto do Sobre da distro congelada, sem travessao",
+   "text": "O arquivo THIRD_PARTY_NOTICES.md não foi encontrado nesta instalação (%1). Ele é entregue na pasta do produto, ao lado do LICENSE."
   }
  ]
 }

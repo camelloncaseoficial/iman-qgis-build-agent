@@ -75,6 +75,8 @@ set(QGIS_APP_SRCS
   qgsrecentprojectsmenueventfilter.cpp
   qgsvectorlayerdigitizingproperties.cpp
   qgswelcomepage.cpp
+  iman/imanaboutdialog.cpp
+  iman/imanhomepage.cpp
 
   qgsmaptooladdfeature.cpp
   qgsmaptooladdpart.cpp

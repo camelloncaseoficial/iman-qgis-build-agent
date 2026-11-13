@@ -165,3 +165,18 @@ Medido na fatia 061 (2026-11-11), laudo `iman/docs/verify/061-plugin-0-4-0/READM
   `.qgz` nao migra. A copia `<gpkg>.bak` nao e byte a byte o arquivo: o GDAL tira o modo WAL ao abrir (bytes 18, 19,
   27 e 95 do cabecalho).
 - **Tempos:** build incremental + install 4 a 5 min; arvore 59 s; ISCC 770 s; instalar 159 s.
+
+Medido na fatia 059 (2026-11-12), laudo `iman/docs/verify/059-prototipo-pagina-inicial-e-sobre/README.md`:
+
+- **Pagina inicial e Sobre do produto** em `src/app/iman/` (C++ do `qgis_app`); a `QgsWelcomePage` segue criada, fora
+  da tela. O estilo delas fica no C++ com as cores `IMAN_COLOR_*` do `iman_brand.h` (paleta do cabecalho do
+  `style.qss`): o `Test-ThemeQss.ps1` exige 12 `border-radius` no tema, regra nova la o derruba.
+- **`THIRD_PARTY_NOTICES.md` na raiz do install** (`D:\iman-terra-build\install`), copiado pelo `Build-Qgis.ps1`: o
+  Sobre o le dois niveis acima do prefixo, como no instalado (`{app}`).
+- **Captura com dado da maquina:** o painel Navegador e a pagina Navegador do gerenciador de fontes listam as unidades
+  com o e-mail das contas; o dialogo de abrir projeto abre na pasta pessoal e mostra o nome da conta na barra
+  lateral. O `capture_home.py` esconde o painel, troca a pagina e aponta o dialogo para a pasta da rodada.
+- **Escala da tela 125%:** tamanhos de janela do Qt sao logicos (maximizada 1536x889, imagem 1920x1111).
+- **Nada instalado** nesta fatia; o IMAN Terra da 061 segue instalado para o smoke do sponsor.
+- **Tempos:** configure + build 289 s, install 372 s; incremental so com o commit 100 s + install 378 s; capturas da
+  059 cerca de 70 s; smoke 30 s. D: com 33 GB livres.
