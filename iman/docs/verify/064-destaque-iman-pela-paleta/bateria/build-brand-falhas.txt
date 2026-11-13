@@ -1,0 +1,5 @@
+build_brand.brand_palette: tokens usados pelo C++ (src/app/iman): ACTIVE_BG, BG, BORDER, BRAND, BRAND_2, PANEL, PANEL_2, TEXT, TEXT_FAINT, TEXT_MUTED
+paleta valida do brand.json: 18 tokens
+cor invalida (brand-2 = #1E7A4) -> falha: cor do token brand-2 no brand.json nao e #RRGGBB: '#1E7A4'
+token usado pelo C++ faltando (sem brand-2) -> falha: paleta do brand.json sem tokens usados pelo C++ (src/app/iman): IMAN_COLOR_BRAND_2
+sem a chave palette -> falha: brand.json sem a paleta (chave 'palette', token -> '#RRGGBB')

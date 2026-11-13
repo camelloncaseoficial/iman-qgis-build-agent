@@ -1,0 +1,4 @@
+diff das linhas '#define IMAN_COLOR_' do iman_brand.h: gerado pela develop 5ad96bf92d (paleta do style.qss) contra o do build desta branch (paleta do brand.json)
+saida do diff: 0 (0 = vazio)
+linhas IMAN_COLOR_ nos dois: 18 e 18
+iman_brand.h inteiro: diff 0 (0 = identico)

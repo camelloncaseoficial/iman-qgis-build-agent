@@ -1,0 +1,26 @@
+setas: build da develop 5ad96bf92d (antes) contra o desta branch 90be6f900f (depois); rect logico e tinta por seta
+toolButtonMenu     visivel antes True depois True; medidas iguais: True
+     ('arrow', [34, 2, 8, 27], 25)
+layerTreeBranches  visivel antes True depois True; medidas iguais: True
+     ('Grupo de teste 063', [0, 0, 20, 18], 34)
+     ('Grupo fechado 063', [0, 36, 20, 18], 30)
+scrollBar          visivel antes True depois True; medidas iguais: True
+     ('up', [2, 2, 10, 10], 32)
+     ('down', [2, 629, 10, 10], 32)
+toolboxBranches    visivel antes True depois True; medidas iguais: True
+     ('Análise de dados Raster ', [0, 0, 20, 18], 30)
+     ('Análise de rede', [0, 18, 20, 18], 30)
+     ('Análise vetorial', [0, 36, 20, 18], 30)
+     ('Cartografia', [0, 54, 20, 18], 30)
+     ('Análise de dados Raster ', [0, 0, 20, 18], 34)
+comboBox           visivel antes True depois True; medidas iguais: True
+     ('arrow', [924, 2, 15, 20], 35)
+spinBox            visivel antes True depois True; medidas iguais: True
+     ('up', [831, 4, 12, 6], 39)
+     ('down', [831, 12, 12, 6], 35)
+processingTabs     visivel antes True depois True; medidas iguais: True
+     ('Parâmetros', [75, 24], 50)
+     ('Log', [40, 24], 16)
+     ('Parâmetros', [75, 24], 50)
+     ('Log', [40, 24], 16)
+RESULTADO: todas as medidas iguais
