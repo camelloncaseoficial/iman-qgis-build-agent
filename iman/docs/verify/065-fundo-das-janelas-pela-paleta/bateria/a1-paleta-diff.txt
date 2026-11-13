@@ -1,0 +1,12 @@
+A1: paleta inteira de qApp->palette() (theme_facts.py, chave paletteAll, #AARRGGBB), perfil novo
+ANTES: build da develop 7531597800 (tema-padrao/visto-falhando-develop-7531597800/theme.json)
+DEPOIS: build desta branch 269aa0f2cd (tema-padrao/depois-perfil-novo/theme.json)
+
+- Active Window #FFF0F0F0
++ Active Window #FFEBEEE8
+- Inactive Window #FFF0F0F0
++ Inactive Window #FFEBEEE8
+- Disabled Window #FFF0F0F0
++ Disabled Window #FFEBEEE8
+
+papeis diferentes: 3 de 60 (3 grupos x 20 papeis)

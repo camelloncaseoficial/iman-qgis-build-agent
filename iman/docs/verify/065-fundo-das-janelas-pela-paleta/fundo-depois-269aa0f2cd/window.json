@@ -1,0 +1,487 @@
+{
+  "captures": {
+    "a2-1-janela.png": [
+      1920,
+      1111
+    ],
+    "a2-1-barra-de-menus.png": [
+      1920,
+      26
+    ],
+    "a2-1-barra-de-ferramentas.png": [
+      268,
+      49
+    ],
+    "a2-1-barra-de-status.png": [
+      1920,
+      35
+    ],
+    "a2-2-camadas-titulo.png": [
+      368,
+      23
+    ],
+    "a2-2-painel-camadas.png": [
+      368,
+      880
+    ],
+    "a2-6-menu-aberto.png": [
+      428,
+      588
+    ],
+    "a2-7-tabela-de-atributos.png": [
+      617,
+      329
+    ],
+    "a2-3-propriedades-simbologia.png": [
+      1375,
+      950
+    ],
+    "a2-3-propriedades-lista.png": [
+      188,
+      915
+    ],
+    "a2-3-propriedades-pagina.png": [
+      1179,
+      909
+    ],
+    "a2-4-opcoes-geral.png": [
+      1375,
+      950
+    ],
+    "a2-4-opcoes-lista.png": [
+      188,
+      915
+    ],
+    "a2-4-opcoes-pagina.png": [
+      1179,
+      909
+    ],
+    "a2-5-algoritmo-parametros.png": [
+      1125,
+      900
+    ],
+    "a2-5-algoritmo-log.png": [
+      1125,
+      900
+    ],
+    "a2-6-lista-aberta.png": [
+      743,
+      78
+    ],
+    "a2-7-campo.png": [
+      706,
+      28
+    ]
+  },
+  "regions": {
+    "menuBar": {
+      "size": [
+        1536,
+        21
+      ],
+      "pixels": 49920,
+      "excluded": 0,
+      "background": "#EBEEE8",
+      "backgroundShare": 0.834,
+      "backgroundMean": "#EBEEE8",
+      "backgroundBand": [
+        "#EBEEE8",
+        "#EBEEE8"
+      ],
+      "bandShare": 0.834,
+      "field": null,
+      "frame": null
+    },
+    "toolBar": {
+      "size": [
+        214,
+        39
+      ],
+      "pixels": 13132,
+      "excluded": 0,
+      "background": "#ECEFE9",
+      "backgroundShare": 0.102,
+      "backgroundMean": "#F0F2ED",
+      "backgroundBand": [
+        "#E1E2E3",
+        "#FBF8EA"
+      ],
+      "bandShare": 0.7,
+      "field": null,
+      "frame": null
+    },
+    "statusBar": {
+      "size": [
+        1536,
+        28
+      ],
+      "pixels": 27405,
+      "excluded": 9,
+      "background": "#EBEEE8",
+      "backgroundShare": 0.888,
+      "backgroundMean": "#EBEEE8",
+      "backgroundBand": [
+        "#E1E1E1",
+        "#F5F5F5"
+      ],
+      "bandShare": 0.893,
+      "field": {
+        "class": "QLineEdit",
+        "name": "",
+        "color": "#A8AAA6"
+      },
+      "frame": null
+    },
+    "layersTitle": {
+      "background": "#EBEEE8",
+      "backgroundShare": 0.935,
+      "backgroundMean": "#EBEEE8",
+      "bandShare": 0.935,
+      "titleBarHeight": 19
+    },
+    "layersPanel": {
+      "size": [
+        294,
+        704
+      ],
+      "pixels": 18496,
+      "excluded": 1,
+      "background": "#EBEEE8",
+      "backgroundShare": 0.901,
+      "backgroundMean": "#EBEEE8",
+      "backgroundBand": [
+        "#DFE1E3",
+        "#F0F5F1"
+      ],
+      "bandShare": 0.919,
+      "field": null,
+      "frame": {
+        "class": "QgsLayerTreeView",
+        "name": "theLayerTreeView",
+        "color": "#B5B8B3"
+      }
+    },
+    "menu": {
+      "size": [
+        342,
+        470
+      ],
+      "pixels": 251664,
+      "excluded": 0,
+      "background": "#FFFFFF",
+      "backgroundShare": 0.93,
+      "backgroundMean": "#FFFFFF",
+      "backgroundBand": [
+        "#E9FFFF",
+        "#FFFFFF"
+      ],
+      "bandShare": 0.931,
+      "field": null,
+      "frame": null,
+      "menu": "Pro&jeto"
+    },
+    "attributeTable": {
+      "size": [
+        604,
+        247
+      ],
+      "pixels": 149188,
+      "excluded": 0,
+      "background": "#FFFFFF",
+      "backgroundShare": 0.937,
+      "backgroundMean": "#FFFFFF",
+      "backgroundBand": [
+        "#FFFFFF",
+        "#FFFFFF"
+      ],
+      "bandShare": 0.937,
+      "field": null,
+      "frame": null,
+      "view": "QgsAttributeTableView"
+    },
+    "attributeTableDialog": {
+      "size": [
+        617,
+        329
+      ],
+      "pixels": 37020,
+      "excluded": 3,
+      "background": "#EBEEE8",
+      "backgroundShare": 0.783,
+      "backgroundMean": "#EBEEE8",
+      "backgroundBand": [
+        "#DDE3E3",
+        "#F7F8EE"
+      ],
+      "bandShare": 0.834,
+      "field": null,
+      "frame": null
+    },
+    "layerPropertiesList": {
+      "size": [
+        150,
+        732
+      ],
+      "pixels": 172020,
+      "excluded": 0,
+      "background": "#5C5D5C",
+      "backgroundShare": 0.742,
+      "backgroundMean": "#5C5D5C",
+      "backgroundBand": [
+        "#4B5560",
+        "#7A5D5C"
+      ],
+      "bandShare": 0.754,
+      "field": null,
+      "frame": null,
+      "name": "mOptionsListWidget"
+    },
+    "layerPropertiesSymbology": {
+      "size": [
+        943,
+        727
+      ],
+      "pixels": 313246,
+      "excluded": 12,
+      "background": "#EBEEE8",
+      "backgroundShare": 0.815,
+      "backgroundMean": "#EBEEE8",
+      "backgroundBand": [
+        "#DEE1E4",
+        "#FAF5EA"
+      ],
+      "bandShare": 0.841,
+      "field": {
+        "class": "QgsDoubleSpinBox",
+        "name": "spinAngle",
+        "color": "#A8AAA6"
+      },
+      "frame": {
+        "class": "QTreeView",
+        "name": "layersTree",
+        "color": "#B5B8B3"
+      },
+      "page": "mOptsPage_Style"
+    },
+    "layerPropertiesDialog": {
+      "size": [
+        1100,
+        760
+      ],
+      "pixels": 373004,
+      "excluded": 14,
+      "background": "#EBEEE8",
+      "backgroundShare": 0.802,
+      "backgroundMean": "#EBEEE8",
+      "backgroundBand": [
+        "#DDE5E1",
+        "#FAF5EA"
+      ],
+      "bandShare": 0.842,
+      "field": null,
+      "frame": null,
+      "title": "Layer Properties - points — Simbologia"
+    },
+    "optionsList": {
+      "size": [
+        150,
+        732
+      ],
+      "pixels": 172020,
+      "excluded": 0,
+      "background": "#5C5D5C",
+      "backgroundShare": 0.771,
+      "backgroundMean": "#5C5D5C",
+      "backgroundBand": [
+        "#4A525C",
+        "#7A5D5C"
+      ],
+      "bandShare": 0.783,
+      "field": null,
+      "frame": null,
+      "name": "mOptionsTreeView"
+    },
+    "optionsGeneral": {
+      "size": [
+        943,
+        727
+      ],
+      "pixels": 942176,
+      "excluded": 16,
+      "background": "#E8EBE5",
+      "backgroundShare": 0.81,
+      "backgroundMean": "#E8EBE5",
+      "backgroundBand": [
+        "#DEDFDE",
+        "#F6EEE9"
+      ],
+      "bandShare": 0.925,
+      "field": {
+        "class": "QLineEdit",
+        "name": "mProjectOnLaunchLineEdit",
+        "color": "#A8AAA6"
+      },
+      "frame": {
+        "class": "QgsCollapsibleGroupBox",
+        "name": "grpLocale",
+        "color": "#D4D6D2"
+      },
+      "page": "mOptionsPageGeneral"
+    },
+    "algorithmParameters": {
+      "size": [
+        602,
+        600
+      ],
+      "pixels": 425344,
+      "excluded": 10,
+      "background": "#EBEEE8",
+      "backgroundShare": 0.956,
+      "backgroundMean": "#EBEEE8",
+      "backgroundBand": [
+        "#D9EEE8",
+        "#F5F6F4"
+      ],
+      "bandShare": 0.958,
+      "field": {
+        "class": "QgsHighlightableLineEdit",
+        "name": "leText",
+        "color": "#A8AAA6"
+      },
+      "frame": null,
+      "tab": "Parâmetros"
+    },
+    "algorithmDialog": {
+      "size": [
+        900,
+        720
+      ],
+      "pixels": 621792,
+      "excluded": 11,
+      "background": "#EBEEE8",
+      "backgroundShare": 0.885,
+      "backgroundMean": "#EBEEE8",
+      "backgroundBand": [
+        "#D9EEE8",
+        "#F6F6E2"
+      ],
+      "bandShare": 0.903,
+      "field": null,
+      "frame": null,
+      "title": "Geometria do vetor - Buffer"
+    },
+    "algorithmLog": {
+      "size": [
+        602,
+        600
+      ],
+      "pixels": 24814,
+      "excluded": 1,
+      "background": "#FCFCFC",
+      "backgroundShare": 0.941,
+      "backgroundMean": "#FCFCFC",
+      "backgroundBand": [
+        "#F2F2F2",
+        "#FFFFFF"
+      ],
+      "bandShare": 0.943,
+      "field": null,
+      "frame": {
+        "class": "QTextBrowser",
+        "name": "txtLog",
+        "color": "#B5B8B3"
+      },
+      "tab": "Log"
+    },
+    "algorithmLogText": {
+      "size": [
+        600,
+        573
+      ],
+      "pixels": 537000,
+      "excluded": 0,
+      "background": "#FFFFFF",
+      "backgroundShare": 1.0,
+      "backgroundMean": "#FFFFFF",
+      "backgroundBand": [
+        "#FFFFFF",
+        "#FFFFFF"
+      ],
+      "bandShare": 1.0,
+      "field": null,
+      "frame": null,
+      "what": "txtLog (Base)"
+    },
+    "comboPopup": {
+      "size": [
+        592,
+        60
+      ],
+      "pixels": 55500,
+      "excluded": 0,
+      "background": "#EBEEE8",
+      "backgroundShare": 0.984,
+      "backgroundMean": "#EBEEE8",
+      "backgroundBand": [
+        "#EBEEE8",
+        "#EBEEE8"
+      ],
+      "bandShare": 0.984,
+      "field": null,
+      "frame": null,
+      "combo": ""
+    },
+    "lineEdit": {
+      "size": [
+        565,
+        22
+      ],
+      "pixels": 19768,
+      "excluded": 0,
+      "background": "#FFFFFF",
+      "backgroundShare": 0.778,
+      "backgroundMean": "#FFFFFF",
+      "backgroundBand": [
+        "#EBFFFF",
+        "#FFFFFF"
+      ],
+      "bandShare": 0.817,
+      "field": {
+        "class": "QgsHighlightableLineEdit",
+        "name": "leText",
+        "color": "#A8AAA6"
+      },
+      "frame": null,
+      "class": "QgsHighlightableLineEdit"
+    }
+  },
+  "projectRead": true,
+  "theme": {
+    "themeName": "default",
+    "styleSheetLength": 0,
+    "qtStyle": "QgsAppStyle",
+    "palette": {
+      "Active": {
+        "Window": "#EBEEE8",
+        "WindowText": "#000000",
+        "Base": "#FFFFFF",
+        "Button": "#F0F0F0",
+        "Highlight": "#1E7A4D"
+      },
+      "Inactive": {
+        "Window": "#EBEEE8",
+        "WindowText": "#000000",
+        "Base": "#FFFFFF",
+        "Button": "#F0F0F0",
+        "Highlight": "#1E7A4D"
+      },
+      "Disabled": {
+        "Window": "#EBEEE8",
+        "WindowText": "#787878",
+        "Base": "#F0F0F0",
+        "Button": "#F0F0F0",
+        "Highlight": "#0078D7"
+      }
+    }
+  }
+}

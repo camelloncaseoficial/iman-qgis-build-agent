@@ -1,0 +1,21 @@
+setas: build 7531597800 (antes) contra 269aa0f2cd (depois); rect logico e tinta por seta, e o fundo em volta
+/comboBox/arrow                               iguais    rect [924, 2, 15, 20] tinta 35 -> rect [924, 2, 15, 20] tinta 35; fundo #fcfcfc -> #fcfcfc
+/layerTreeBranches/rows[0]                    iguais   Grupo de teste 063 rect [0, 0, 20, 18] tinta 34 -> rect [0, 0, 20, 18] tinta 34; fundo #ffffff -> #ffffff
+/layerTreeBranches/rows[1]                    iguais   Grupo fechado 063 rect [0, 36, 20, 18] tinta 30 -> rect [0, 36, 20, 18] tinta 30; fundo #ffffff -> #ffffff
+/processingTabs/ink                           MUDOU     rect [0, 0, 115, 24] tinta 892 -> rect [0, 0, 115, 24] tinta 893; fundo #fcfcfc -> #fcfcfc
+/scrollBar/down                               iguais    rect [2, 629, 10, 10] tinta 32 -> rect [2, 629, 10, 10] tinta 32; fundo #fbfbfb -> #fbfbfb
+/scrollBar/toolboxBranches[0]                 iguais   Análise de dados Raster  rect [0, 0, 20, 18] tinta 30 -> rect [0, 0, 20, 18] tinta 30; fundo #ffffff -> #ffffff
+/scrollBar/toolboxBranches[1]                 iguais   Análise de rede rect [0, 18, 20, 18] tinta 30 -> rect [0, 18, 20, 18] tinta 30; fundo #ffffff -> #ffffff
+/scrollBar/toolboxBranches[2]                 iguais   Análise vetorial rect [0, 36, 20, 18] tinta 30 -> rect [0, 36, 20, 18] tinta 30; fundo #ffffff -> #ffffff
+/scrollBar/toolboxBranches[3]                 iguais   Cartografia rect [0, 54, 20, 18] tinta 30 -> rect [0, 54, 20, 18] tinta 30; fundo #ffffff -> #ffffff
+/scrollBar/toolboxBranches[4]                 iguais   Análise de dados Raster  rect [0, 0, 20, 18] tinta 34 -> rect [0, 0, 20, 18] tinta 34; fundo #ffffff -> #ffffff
+/scrollBar/up                                 iguais    rect [2, 2, 10, 10] tinta 32 -> rect [2, 2, 10, 10] tinta 32; fundo #fbfbfb -> #fbfbfb
+/spinBox/down                                 iguais    rect [831, 12, 12, 6] tinta 35 -> rect [831, 12, 12, 6] tinta 35; fundo #f0f0f0 -> #f0f0f0
+/spinBox/up                                   iguais    rect [831, 4, 12, 6] tinta 39 -> rect [831, 4, 12, 6] tinta 39; fundo #fcfcfc -> #fcfcfc
+/toolButtonMenu/arrow                         iguais    rect [34, 2, 8, 27] tinta 25 -> rect [34, 2, 8, 27] tinta 25; fundo #f7f7f7 -> #eef1eb
+RESULTADO: HA SETA QUE MUDOU (14 setas)
+
+A3, abas do Processamento: pixels que mudaram entre a captura ANTES (7531597800) e a DEPOIS (269aa0f2cd)
+07-abas-do-processamento.png (298x70 px fisicos): 4456 mudaram; 2872 eram o fundo #F0F0F0 (agora #EBEEE8); 1584 eram cinza de contorno ou degrade (#90 a #EF), agora cinza esverdeado; 0 eram tinta escura (letra, menor que #909090); maior diferenca por canal 8
+07b-abas-do-processamento-registro.png (298x70 px fisicos): 5364 mudaram; 3228 eram o fundo #F0F0F0 (agora #EBEEE8); 2136 eram cinza de contorno ou degrade (#90 a #EF), agora cinza esverdeado; 0 eram tinta escura (letra, menor que #909090); maior diferenca por canal 8
+tamanhos das abas e larguras de texto (arrows.json, processingTabs.tabs e tabsSecond): iguais

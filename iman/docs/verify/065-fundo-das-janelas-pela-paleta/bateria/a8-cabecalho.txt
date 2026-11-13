@@ -1,0 +1,4 @@
+A8: iman_brand.h gerado pelo build_brand.py da develop 7531597800 (git archive) e desta branch
+c4b8f57d8cc041eb8a2fe2df22d68eb6ed422bdf0e6932850cac7295191da661 *dev/iman_brand.h
+c4b8f57d8cc041eb8a2fe2df22d68eb6ed422bdf0e6932850cac7295191da661 *head/iman_brand.h
+IDENTICOS

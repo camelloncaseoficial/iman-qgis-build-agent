@@ -206,7 +206,7 @@ Medido na fatia 064 (2026-11-13), laudo `iman/docs/verify/064-destaque-iman-pela
 
 - **Paleta da marca no `brand.json`** (`palette`, 18 tokens); o `build_brand.py` valida e falha se faltar token que
   o C++ usa (varre as `IMAN_COLOR_*` de `src/app/iman`). O `style.qss` nao e mais lido pelo build.
-- **Destaque pela paleta:** `ImanPalette::applyHighlight` no `main.cpp`, depois do `setStyle`; precisa de `APP_EXPORT`
+- **Destaque pela paleta:** `ImanPalette::applyHighlight` (desde a 065, `ImanPalette::apply`) no `main.cpp`, depois do `setStyle`; precisa de `APP_EXPORT`
   porque o `main.cpp` vai no executavel e o `imanpalette.cpp` no `qgis_app`. O `QgisAppStyleSheet` monta a cor de
   selecao da `QTableView` com a paleta do momento: a tabela pega o verde sem QSS novo.
 - **Fusion pinta a selecao das arvores em degrade** em torno da cor da paleta (`#1D784C` a `#1E7E4F` para
@@ -219,3 +219,21 @@ Medido na fatia 064 (2026-11-13), laudo `iman/docs/verify/064-destaque-iman-pela
 - **Estilo `windowsvista`** desenha a selecao com a cor do Windows (`#CCE8FF`) e ignora o `Highlight` da paleta.
 - **Tempos:** build desta branch 147 s + install 319 s; destaque 30 s; casos 10 a 30 s; capturas da 059 50 s.
 - Nada instalado; o IMAN Terra da 061 segue instalado (com o tema antigo) para o smoke do sponsor.
+
+Medido na fatia 065 (2026-11-13), laudo `iman/docs/verify/065-fundo-das-janelas-pela-paleta/README.md`:
+
+- **Fundo pela paleta:** `ImanPalette::apply` aplica o destaque e o `Window` = `bg` (Active, Inactive e Disabled) num
+  unico `setPalette`; a proxima cor de paleta entra no mesmo lugar, sem segunda linha no `main.cpp`.
+- **O que segue o `Window` no Fusion:** barra de menus, barra de status, titulo dos paineis, fundo de dialogos, a
+  barra de ferramentas (em degrade que clareia), a caixa de lista aberta (nao fica branca) e o contorno de campos,
+  quadros e abas (mais escuro, levemente esverdeado). O menu aberto segue branco.
+- **O que nao segue:** o painel das abas (`QTabWidget`) fica `#FCFCFC`, derivado do `Button`; as listas laterais das
+  Propriedades, das Opcoes e do QgsAbout tem folha propria do QGIS (`qgisappstylesheet.cpp`, cinza semitransparente;
+  o item selecionado usa `palette(window)`).
+- **Medida por regiao:** mascarar os filhos de `Base` (listas, arvores, tabelas, campos) antes da cor mais comum; a
+  arvore lateral das Opcoes e `mOptionsTreeView`, a lista das Propriedades e `mOptionsListWidget`; grupo recolhido
+  nao serve de quadro.
+- **Pagina inicial:** comparar so a area dela (pixels `bg` do ANTES); os recentes levam o carimbo de hora da pasta da
+  rodada no caminho e o selo leva o commit.
+- **Tempos:** build incremental 210 s a 255 s; regioes 30 s; casos 10 a 25 s.
+- Nada instalado; o IMAN Terra da 061 segue instalado para o smoke do sponsor.

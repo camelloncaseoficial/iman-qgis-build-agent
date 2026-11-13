@@ -1,0 +1,13 @@
+A7: check A7:fundo-iman do Test-ThemeDefaults.ps1, perfil novo
+visto falhando, build da develop 7531597800:
+[13:44:38] A7:destaque-iman           OK  {"expected":{"Highlight":"#1E7A4D","HighlightedText":"#FFFFFF"},"palette":{"Active":{"Highlight":"#1E7A4D","HighlightedText":"#FFFFFF"},"Inactive":{"Highlight":"#1E7A4D","HighlightedText":"#FFFFFF"},"Disabled":{"Highlight":"#0078D7","HighlightedText":"#FFFFFF"}}}
+[13:44:38] A7:fundo-iman              FALHOU  {"expected":"#FFEBEEE8","Window":{"Active":"#FFF0F0F0","Inactive":"#FFF0F0F0","Disabled":"#FFF0F0F0"}}
+[13:44:40] tema e padroes Build/new FALHOU: D:\iman-terra-build\smoke\theme-build-new-20261113-134421
+
+verde, build desta branch 269aa0f2cd (perfil novo e semeado):
+[13:50:35] A7:destaque-iman           OK  {"expected":{"Highlight":"#1E7A4D","HighlightedText":"#FFFFFF"},"palette":{"Active":{"Highlight":"#1E7A4D","HighlightedText":"#FFFFFF"},"Inactive":{"Highlight":"#1E7A4D","HighlightedText":"#FFFFFF"},"Disabled":{"Highlight":"#0078D7","HighlightedText":"#FFFFFF"}}}
+[13:50:35] A7:fundo-iman              OK  {"expected":"#FFEBEEE8","Window":{"Active":"#FFEBEEE8","Inactive":"#FFEBEEE8","Disabled":"#FFEBEEE8"}}
+[13:50:38] tema e padroes Build/new OK: D:\iman-terra-build\smoke\theme-build-new-20261113-135018
+[13:50:55] A7:destaque-iman           OK  {"expected":{"Highlight":"#1E7A4D","HighlightedText":"#FFFFFF"},"palette":{"Active":{"Highlight":"#1E7A4D","HighlightedText":"#FFFFFF"},"Inactive":{"Highlight":"#1E7A4D","HighlightedText":"#FFFFFF"},"Disabled":{"Highlight":"#0078D7","HighlightedText":"#FFFFFF"}}}
+[13:50:55] A7:fundo-iman              OK  {"expected":"#FFEBEEE8","Window":{"Active":"#FFEBEEE8","Inactive":"#FFEBEEE8","Disabled":"#FFEBEEE8"}}
+[13:50:57] tema e padroes Build/seeded OK: D:\iman-terra-build\smoke\theme-build-seeded-20261113-135038

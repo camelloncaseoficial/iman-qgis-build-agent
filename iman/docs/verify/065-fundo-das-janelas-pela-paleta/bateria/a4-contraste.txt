@@ -1,0 +1,3 @@
+normal        ANTES #FF000000 sobre #FFF0F0F0: 18,43:1   DEPOIS #FF000000 sobre #FFEBEEE8: 17,93:1   variacao -2,7%
+desabilitado  ANTES #FF787878 sobre #FFF0F0F0: 3,87:1   DEPOIS #FF787878 sobre #FFEBEEE8: 3,77:1   variacao -2,6%
+veredito: nenhuma queda maior que 10%
