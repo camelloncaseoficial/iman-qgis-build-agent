@@ -1,7 +1,7 @@
 <#
 .SYNOPSIS
-  Tema padrao e padroes de projeto (fatia 049): o QGIS abre no tema e no SRC da fonte unica, em tres estados de
-  perfil, e a escolha do usuario vence a global.
+  Tema padrao e padroes de projeto (fatia 049): o QGIS abre no tema default do QGIS (desde a 063) e no SRC da fonte
+  unica, em tres estados de perfil, e a escolha do usuario vence a global.
 
 .DESCRIPTION
   Abre a GUI do alvo com perfil descartavel numa pasta nova e o smoke\theme_facts.py (via --code), que grava os
@@ -14,12 +14,15 @@
               (smoke\fixtures\profile-0.4.0, sem a chave UI/UITheme);
     UserTheme perfil com UI/UITheme=<-UserTheme> gravado pelo usuario (padrao 'default').
   Veredito:
-    Build/Installed, New ou Seeded: o tema e o ui_theme do brand.json, com folha de estilo; projeto
-      novo no default_project_crs, com o new_project_crs_behavior; camada sem SRC no layer_default_crs; Opcoes > SRC
-      com o SRC e "usar SRC predefinido"; os temas de fabrica na lista e escolhiveis (T9); botao de fechar da dock com
-      icone e funcionando (D1), coordenada inteira no campo da barra de status (D2), titulo da dock sem corte (D4).
+    Build/Installed, New ou Seeded: desde a fatia 063 (emenda de 2026-11-12 ao D-IMAN-040), o tema default do QGIS,
+      sem folha de estilo, e a pasta do tema do produto (o nome da pasta de iman/brand/theme) fora de
+      resources\themes e da lista de temas; projeto novo no default_project_crs, com o new_project_crs_behavior; camada
+      sem SRC no layer_default_crs; Opcoes > SRC com o SRC e "usar SRC predefinido"; os temas de fabrica na lista e
+      escolhiveis, e Opcoes > Geral no default (T9); botao de fechar da dock com icone e funcionando (D1), coordenada
+      inteira no campo da barra de status (D2), titulo da dock sem corte (D4).
     UserTheme: o tema e o do usuario (default: sem folha de estilo), nao o da global.
-    Official (visto falhando): tema default, projeto novo em EPSG:4326 e o tema do produto ausente da lista.
+    Official (controle): tema default, projeto novo em EPSG:4326 e o tema do produto ausente da lista. O visto falhando
+      do tema, desde a 063, e o build ou o instalado de antes dela (com o tema).
   Ao fim, a guarda (Test-OfficialQgisUntouched.ps1). Saida em $WorkRoot\smoke\theme-<alvo>-<estado>-<data>\
   (result.json, theme.json, capturas). Sai com 1 se o veredito falhar.
 #>
@@ -105,7 +108,9 @@ $f = if (Test-Path $json) { Get-Content $json -Raw -Encoding utf8 | ConvertFrom-
 Add-Check 'facts' ($null -ne $f -and $exited -and -not $f.errors) ([ordered]@{ written = ($null -ne $f); exitedClean = $exited; errors = $f.errors })
 if ($f) {
   $th = $f.theme; $crs = $f.crs; $opt = $f.options
-  $product = $brand.ui_theme
+  # o tema do produto que saiu do build na fatia 063: o nome da pasta em iman/brand/theme (o brand.json nao tem mais
+  # ui_theme); os vereditos abaixo afirmam o tema default do QGIS e esse nome fora do alvo
+  $product = @(Get-ChildItem (Join-Path $RepoRoot 'iman\brand\theme') -Directory | ForEach-Object Name)[0]
   $productTheme = $Target -ne 'Official' -and $ProfileState -ne 'UserTheme'
   if ($ProfileState -eq 'UserTheme') {
     $wantStyle = $UserTheme -ne 'default'
@@ -113,16 +118,14 @@ if ($f) {
         themeName = $th.themeName; styleSheetLength = $th.styleSheetLength; settingUITheme = $th.settingUITheme; global = $product })
   } elseif ($productTheme) {
     $themeDir = Join-Path $app "resources\themes\$product"
-    Add-Check 'T1:tema-padrao' ($th.themeName -eq $product -and $th.styleSheetLength -gt 0 -and $th.settingUITheme -eq $product -and -not $seededHasTheme) ([ordered]@{
-        themeName = $th.themeName; styleSheetLength = $th.styleSheetLength; qtStyle = $th.qtStyle; settingUITheme = $th.settingUITheme; userIniHasUITheme = $seededHasTheme })
-    $shaRepo = (Get-FileHash -Algorithm SHA256 (Join-Path $RepoRoot "iman\brand\theme\$product\style.qss")).Hash
-    $shaApp = if (Test-Path "$themeDir\style.qss") { (Get-FileHash -Algorithm SHA256 "$themeDir\style.qss").Hash } else { $null }
-    $loaded = $th.themePaths.$product
-    # o QGIS instalado devolve o caminho na forma 8.3 (C:/Users/FRANCI~1/...): compara as formas curtas das duas pastas
-    $fso = New-Object -ComObject Scripting.FileSystemObject
-    $sameDir = $loaded -and (Test-Path $loaded) -and (Test-Path $themeDir) -and ($fso.GetFolder($loaded).ShortPath -eq $fso.GetFolder($themeDir).ShortPath)
-    Add-Check 'tema-na-arvore' ($shaApp -eq $shaRepo -and $sameDir) ([ordered]@{
-        themeDir = $themeDir; loadedFrom = $loaded; sameAsRepo = ($shaApp -eq $shaRepo) })
+    # fatia 063: o tema e o default do QGIS, sem folha de estilo, e a global nao escolhe tema (como no oficial)
+    Add-Check 'T1:tema-padrao' ($th.themeName -eq 'default' -and $th.styleSheetLength -eq 0 -and $th.settingUITheme -in @($null, '', 'default') -and -not $seededHasTheme) ([ordered]@{
+        themeName = $th.themeName; styleSheetLength = $th.styleSheetLength; qtStyle = $th.qtStyle; qtStyleBase = $th.qtStyleBase
+        settingUITheme = $th.settingUITheme; settingQgisStyle = $th.settingQgisStyle; userIniHasUITheme = $seededHasTheme })
+    # fatia 063 (correcao de 2026-11-13 ao briefing): a pasta do tema do produto NAO esta em resources\themes do alvo,
+    # nem o QGIS a acha em pasta nenhuma
+    Add-Check 'tema-na-arvore' (-not (Test-Path -LiteralPath $themeDir) -and $product -notin $th.uiThemes) ([ordered]@{
+        product = $product; themeDir = $themeDir; inTree = (Test-Path -LiteralPath $themeDir); loadedFrom = $th.themePaths.$product })
     $want = $brand.default_project_crs
     Add-Check 'T5:src-projeto-novo' ($crs.atStart -eq $want -and $crs.afterNewProject -eq $want -and $crs.defaultProjectCrs -eq $want -and $crs.newProjectCrsBehavior -eq $brand.new_project_crs_behavior) ([ordered]@{
         atStart = $crs.atStart; afterNewProject = $crs.afterNewProject; description = $crs.afterNewProjectDescription; defaultProjectCrs = $crs.defaultProjectCrs; newProjectCrsBehavior = $crs.newProjectCrsBehavior; statusBar = $f.statusBarCrs })
@@ -132,7 +135,8 @@ if ($f) {
     $factory = @('Blend of Gray', 'Night Mapping')
     $sw = $f.switchThemes
     $t9 = @($factory | Where-Object { $_ -notin $opt.cmbUITheme.items -or $sw.$_.themeName -ne $_ -or $sw.$_.styleSheetLength -le 0 }).Count -eq 0
-    Add-Check 'T9:temas-de-fabrica' ($t9 -and $opt.cmbUITheme.current -eq $product -and $sw.$product.themeName -eq $product) ([ordered]@{
+    # fatia 063: Opcoes > Geral no default, sem o tema do produto na caixa; a volta ao tema de partida e ao default
+    Add-Check 'T9:temas-de-fabrica' ($t9 -and $opt.cmbUITheme.current -eq 'default' -and $product -notin $opt.cmbUITheme.items -and $sw.default.themeName -eq 'default' -and $sw.default.styleSheetLength -eq 0) ([ordered]@{
         optionsItems = $opt.cmbUITheme.items; optionsCurrent = $opt.cmbUITheme.current; switched = $sw })
     $close = $f.dock.buttons.qt_dockwidget_closebutton
     Add-Check 'T3:D1-fechar-dock' ($close.visible -and -not $close.iconNull -and $close.ink -gt 0 -and $f.dockCloseReopen.closedByButton -and $f.dockCloseReopen.reopened) ([ordered]@{

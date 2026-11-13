@@ -1,6 +1,7 @@
 <#
 .SYNOPSIS
-  Guarda estatica do tema padrao (fatia 049): o style.qss de iman/brand/theme/<ui_theme> e o aprovado na distro.
+  Guarda estatica do tema (fatia 049): o style.qss de iman/brand/theme/<pasta> e o aprovado na distro. Desde a 063 o
+  arquivo fica no repositorio e fora do build (emenda de 2026-11-12 ao D-IMAN-040); a guarda segue sobre ele.
 
 .DESCRIPTION
   Porte da guarda tools/test-tema-qss.ps1 da distro congelada (../iman-qgis-distro-agent, commit df761da), sem a
@@ -34,8 +35,11 @@ param([string] $Qss, [string] $Out)
 . "$PSScriptRoot\Common.ps1"
 
 if (-not $Qss) {
-  $themeName = (Get-Content (Join-Path $RepoRoot 'iman\brand\brand.json') -Raw -Encoding utf8 | ConvertFrom-Json).ui_theme
-  $Qss = Join-Path $RepoRoot "iman\brand\theme\$themeName\style.qss"
+  # desde a fatia 063 o tema esta fora do build e o brand.json nao tem ui_theme: o arquivo e o da unica pasta de
+  # iman/brand/theme com style.qss
+  $themeDirs = @(Get-ChildItem (Join-Path $RepoRoot 'iman\brand\theme') -Directory | Where-Object { Test-Path (Join-Path $_.FullName 'style.qss') })
+  if ($themeDirs.Count -ne 1) { Write-Host "esperada uma pasta com style.qss em iman\brand\theme, achadas $($themeDirs.Count)"; exit 2 }
+  $Qss = Join-Path $themeDirs[0].FullName 'style.qss'
 }
 if (-not (Test-Path -LiteralPath $Qss)) { Write-Host "style.qss ausente: $Qss"; exit 2 }
 
