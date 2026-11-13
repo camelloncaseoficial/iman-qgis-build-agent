@@ -1,4 +1,4 @@
-245b4cd72dbdb711a64db40e29d840ceef4954d986ff66db705904dbc064f6a1 *iman/docs/verify/059-prototipo-pagina-inicial-e-sobre/README.md
+8632110eddaede71effe71a7a733caf1b46d7666c9b2bc806aafb158041b57e4 *iman/docs/verify/059-prototipo-pagina-inicial-e-sobre/README.md
 99f3a2bc81d118b8a1a55d9e415aada67037b3fa00e868533d9b6642d0291e53 *iman/docs/verify/059-prototipo-pagina-inicial-e-sobre/bateria/patchset.txt
 d9d3beb54ba0e84fccc1a158f26e13b2665b5eda526a1e97b75458758722192b *iman/docs/verify/059-prototipo-pagina-inicial-e-sobre/bateria/tema-qss.txt
 47d5fcc7ba759d0dc335390020eda31158a96c511f50a07eb36ccb9817789e98 *iman/docs/verify/059-prototipo-pagina-inicial-e-sobre/capturas/01-inicio-sem-recentes.png

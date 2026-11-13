@@ -85,9 +85,10 @@ ladrilho `active-bg`, sobretítulo `brand-2`, textos `text`, `text-muted`, `text
 textos de apoio; os recentes reais do QGIS e o estado vazio explícito.
 
 **Página inicial, mudou e por quê:**
-- Travessão fora (D-IMAN-034): o sobretítulo "... CADASTRO & REURB — CEARÁ" virou "INTELIGÊNCIA TERRITORIAL ·
-  CADASTRO E REURB · CEARÁ"; o subtítulo "... cartografia — em uma só ..." virou "... cartografia em uma só ..."; o
-  rodapé "powered by QGIS — IMAN Terra é ..." virou "powered by QGIS: IMAN Terra é ...".
+- Travessão fora (D-IMAN-034): o sobretítulo "... CADASTRO & REURB [travessão] CEARÁ" virou "INTELIGÊNCIA
+  TERRITORIAL · CADASTRO E REURB · CEARÁ"; o subtítulo "... cartografia [travessão] em uma só ..." virou "...
+  cartografia em uma só ..."; o rodapé "powered by QGIS [travessão] IMAN Terra é ..." virou "powered by QGIS: IMAN
+  Terra é ...".
 - Ícones dos cartões: do tema de ícones do QGIS (`mActionFileNew`, `mActionFileOpen`, `mActionDataSourceManager`,
   `mActionNewLayout`) no lugar dos caracteres e do emoji da distro (briefing).
 - Selo de versão sem o "●" (sem ícone em texto); a versão é a do produto com o commit do binário.
@@ -130,11 +131,18 @@ chamam os slots públicos da `QgsWelcomePage`, que são os do QGIS. Fica para o 
 
 ## T4 Sem travessão (medido)
 
-U+2014 e U+2013 contados nos arquivos novos (`src/app/iman/*`, `Invoke-HomeCaptures.ps1`, `capture_home.py`) e nas
-linhas acrescentadas do diff (curadoria, `qgisapp.cpp`, `CMakeLists.txt`, `Build-Qgis.ps1`, `PATCHES.md`,
-`build_brand.py`, `brand.json`): zero e zero. O `build_brand.py` já recusa travessão e meia-risca na tradução
-sobreposta, e passou. Os únicos travessões nas capturas são de terceiros: "GDAL version 3.13.2 — Iowa City" no
-`QgsAbout` (texto do QGIS).
+U+2014 e U+2013 contados nos arquivos novos do fonte e dos scripts (`src/app/iman/*`, `Invoke-HomeCaptures.ps1`,
+`capture_home.py`), nas linhas acrescentadas do fonte (`qgisapp.cpp`, `CMakeLists.txt`, `Build-Qgis.ps1`,
+`PATCHES.md`, `build_brand.py`, `brand.json`), na curadoria e neste README: zero e zero. O `build_brand.py` já recusa
+travessão e meia-risca na tradução sobreposta, e passou.
+
+Os únicos U+2014 da pasta deste laudo estão nos `.json` de evidência (`capturas/home-captures.json`,
+`capturas/summary.json`, `smoke-build/summary.json`): títulos de janela que o QGIS monta com U+2014
+(`src/app/qgisapp.cpp:604`) e texto de terceiros, medidos do programa e mantidos como foram medidos. Nas capturas, o
+único travessão é de terceiros: "GDAL version 3.13.2 [travessão] Iowa City", no `QgsAbout` (texto do QGIS).
+
+(Corrigido em 2026-11-13, na fatia 064, pelo patch do arquiteto de 2026-11-12: a versão anterior desta seção dizia
+zero nas linhas acrescentadas, e o README tinha 4 U+2014 nas citações.)
 
 ## T5 Nada regride (medido)
 
