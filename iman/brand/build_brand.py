@@ -14,8 +14,8 @@ Saidas (fora do repo, em --out):
     no lugar), mais o idioma padrao, o feed de noticias desligado, os enderecos do menu Ajuda, o SRC de camada sem
     SRC (fatia 049) e o plugin embarcado ligado por padrao (fatia 051); sem tema de interface desde a fatia 063;
   - --header: iman_brand.h, os textos de marca para o C++ (Bloco D), a versao do produto e, desde a fatia 059, a
-    paleta do cabecalho do style.qss de iman/brand/theme (que, desde a 063, fica fora do build: so a paleta dele e
-    lida aqui). So e regravado se o conteudo mudou, para nao recompilar a toa.
+    paleta da marca (IMAN_COLOR_*; do brand.json desde a fatia 064, que deixou de ler o style.qss). So e regravado
+    se o conteudo mudou, para nao recompilar a toa.
 
 Marcadores dos textos da curadoria: {product}, {PRODUCT}, {engine}, {org}, {url}.
 """
@@ -186,31 +186,44 @@ def splash_text_color(brand):
     return value.upper()
 
 
-def theme_palette(brand):
-    """Paleta D-IMAN-026 lida do cabecalho do style.qss de iman/brand/theme (as linhas 'nome #RRGGBB | ...' depois de
-    'Paleta ATIVA'), a mesma que o Test-ThemeQss.ps1 usa como fonte: a pagina inicial e o Sobre da marca (fatia 059)
-    pintam com estes tokens, sem hex proprio no C++. Desde a fatia 063 o brand.json nao tem ui_theme e o tema fica
-    fora do build: o arquivo e o da unica pasta de iman/brand/theme com style.qss, como no Test-ThemeQss.ps1."""
-    root = os.path.join(HERE, "theme")
-    found = [os.path.join(root, d, "style.qss") for d in sorted(os.listdir(root))
-             if os.path.isfile(os.path.join(root, d, "style.qss"))]
-    if len(found) != 1:
-        raise SystemExit("esperado um style.qss em %s, achados %d" % (root, len(found)))
-    qss = found[0]
-    with io.open(qss, "r", encoding="utf-8") as fh:
-        text = fh.read()
-    start = text.find("Paleta ATIVA")
-    if start < 0:
-        raise SystemExit("paleta do cabecalho nao encontrada em %s" % qss)
-    palette = {}
-    for line in text[start:].split("\n")[1:]:
-        if "|" not in line:
-            break
-        for name, value in re.findall(r"([a-z][a-z0-9-]*) (#[0-9A-Fa-f]{6})\b", line):
-            palette[name] = value.upper()
-    if not palette:
-        raise SystemExit("paleta do cabecalho vazia em %s" % qss)
-    return palette
+def color_macro(token):
+    """Nome da macro do iman_brand.h para um token da paleta: brand-2 -> IMAN_COLOR_BRAND_2."""
+    return "IMAN_COLOR_" + token.upper().replace("-", "_")
+
+
+def tokens_used_by_cpp():
+    """Tokens da paleta que o C++ do IMAN usa (IMAN_COLOR_* em src/app/iman), lidos do fonte: a lista nao e escrita a
+    mao, para nao ficar para tras quando uma tela nova usar outro token."""
+    used = set()
+    root = os.path.join(REPO, "src", "app", "iman")
+    for name in sorted(os.listdir(root)) if os.path.isdir(root) else []:
+        if name.endswith((".cpp", ".h")):
+            with io.open(os.path.join(root, name), "r", encoding="utf-8") as fh:
+                used.update(re.findall(r"\bIMAN_COLOR_([A-Z0-9_]+)\b", fh.read()))
+    return used
+
+
+def brand_palette(brand):
+    """Paleta D-IMAN-026 da marca, do brand.json (chave 'palette', token -> '#RRGGBB'; fatia 064). Antes da 064 ela
+    era lida do cabecalho do style.qss de iman/brand/theme, que desde a 063 fica fora do build e desde a 064 nao e
+    mais lido aqui. Falha alto se um valor nao for #RRGGBB ou se faltar token que o C++ usa (IMAN_COLOR_*): a pagina
+    inicial e o Sobre (fatia 059) e o destaque da paleta do Qt (fatia 064) pintam so com estes tokens."""
+    palette = brand.get("palette")
+    if not isinstance(palette, dict) or not palette:
+        raise SystemExit("brand.json sem a paleta (chave 'palette', token -> '#RRGGBB')")
+    out = {}
+    for token, value in palette.items():
+        if not re.match(r"^[a-z][a-z0-9-]*$", token):
+            raise SystemExit("token de paleta invalido no brand.json: %r" % token)
+        if not isinstance(value, str) or not re.match(r"^#[0-9A-Fa-f]{6}$", value):
+            raise SystemExit("cor do token %s no brand.json nao e #RRGGBB: %r" % (token, value))
+        out[token] = value.upper()
+    defined = {color_macro(t)[len("IMAN_COLOR_"):] for t in out}
+    missing = sorted(tokens_used_by_cpp() - defined)
+    if missing:
+        raise SystemExit("paleta do brand.json sem tokens usados pelo C++ (src/app/iman): %s"
+                         % ", ".join("IMAN_COLOR_" + m for m in missing))
+    return out
 
 
 def write_header(path, brand):
@@ -229,8 +242,8 @@ def write_header(path, brand):
         # cor do texto de carregamento do splash (fatia 058, C1); o qgisapp.cpp a usa no lugar do Qt::black
         ("IMAN_SPLASH_TEXT_COLOR", splash_text_color(brand)),
     ]
-    # paleta do tema (fatia 059): IMAN_COLOR_BRAND_2, IMAN_COLOR_TEXT_MUTED, ...
-    defs += [("IMAN_COLOR_" + k.upper().replace("-", "_"), v) for k, v in sorted(theme_palette(brand).items())]
+    # paleta da marca (fatia 059; do brand.json desde a 064): IMAN_COLOR_BRAND_2, IMAN_COLOR_TEXT_MUTED, ...
+    defs += [(color_macro(k), v) for k, v in sorted(brand_palette(brand).items())]
     text = "\n".join(
         ["// Gerado por iman/brand/build_brand.py a partir de iman/brand/brand.json. Nao editar.",
          "// Textos de marca e nome interno do produto para o C++ (UTF-8; use QString::fromUtf8).",
