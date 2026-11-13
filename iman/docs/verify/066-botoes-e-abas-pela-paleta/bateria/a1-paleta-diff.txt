@@ -1,0 +1,30 @@
+A1: paleta inteira de qApp->palette() (theme_facts.py, chave paletteAll, #AARRGGBB), perfil novo, tres builds:
+  develop 4a97fec449: tema-padrao/visto-falhando-develop-4a97fec449/theme.json
+  cor ed5468fa16: tema-padrao/cor-perfil-novo-ed5468fa16/theme.json
+  final 5fd95d905d: tema-padrao/final-perfil-novo-5fd95d905d/theme.json
+
+develop 4a97fec449 -> cor ed5468fa16:
+- Active Button #FFF0F0F0
++ Active Button #FFF5F7F2
+- Inactive Button #FFF0F0F0
++ Inactive Button #FFF5F7F2
+- Disabled Button #FFF0F0F0
++ Disabled Button #FFF5F7F2
+papeis diferentes: 3 de 60 (3 grupos x 20 papeis)
+
+cor ed5468fa16 -> final 5fd95d905d:
+  (nenhuma linha diferente)
+papeis diferentes: 0 de 60 (3 grupos x 20 papeis)
+
+develop 4a97fec449 -> final 5fd95d905d:
+- Active Button #FFF0F0F0
++ Active Button #FFF5F7F2
+- Inactive Button #FFF0F0F0
++ Inactive Button #FFF5F7F2
+- Disabled Button #FFF0F0F0
++ Disabled Button #FFF5F7F2
+papeis diferentes: 3 de 60 (3 grupos x 20 papeis)
+
+develop 4a97fec449: tema default, folha de estilo 0, estilo QgsAppStyle (base QFusionStyle), Highlight #1E7A4D, HighlightedText #FFFFFF
+cor ed5468fa16: tema default, folha de estilo 0, estilo QgsAppStyle (base QFusionStyle), Highlight #1E7A4D, HighlightedText #FFFFFF
+final 5fd95d905d: tema default, folha de estilo 0, estilo ImanAppStyle (base QFusionStyle), Highlight #1E7A4D, HighlightedText #FFFFFF

@@ -1,0 +1,50 @@
+{
+  "steps": [
+    "measure"
+  ],
+  "measures": [
+    {
+      "label": "passo 0",
+      "themeName": "default",
+      "styleSheetLength": 0,
+      "qtStyle": "QgsAppStyle",
+      "qtStyleBase": "QWindowsVistaStyle",
+      "settingUITheme": "default",
+      "settingQgisStyle": "windowsvista",
+      "palette": {
+        "Active": [
+          "#0078D7",
+          "#FFFFFF"
+        ],
+        "Inactive": [
+          "#F0F0F0",
+          "#000000"
+        ]
+      },
+      "drawnHighlight": "#CCE8FF",
+      "window": {
+        "Active": "#F0F0F0",
+        "Inactive": "#F0F0F0",
+        "Disabled": "#F0F0F0"
+      },
+      "drawnWindow": "#F0F0F0",
+      "button": {
+        "Active": "#F0F0F0",
+        "Inactive": "#F0F0F0",
+        "Disabled": "#F0F0F0"
+      },
+      "drawnButton": {
+        "color": "#FDFDFD",
+        "radius": 8.348,
+        "corners": [
+          8.608,
+          8.38,
+          8.38,
+          8.026
+        ],
+        "style": "QgsAppStyle"
+      }
+    }
+  ],
+  "actions": []
+}

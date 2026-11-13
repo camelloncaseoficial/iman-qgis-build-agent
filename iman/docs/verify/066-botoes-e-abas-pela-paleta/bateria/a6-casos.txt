@@ -1,0 +1,36 @@
+A6: escolha do usuario, Measure-HighlightCases.ps1, build final 5fd95d905d e o QGIS oficial 3.44.13 (controle)
+
+=== caso a
+[18:43:01] caso a, abertura 1, passo 0: tema 'default', folha 0, estilo ImanAppStyle (QFusionStyle), Highlight #1E7A4D/#1E7A4D, desenhado #1E7D4F; Window #EBEEE8/#EBEEE8/#EBEEE8, desenhado #EBEEE8
+[18:43:01] caso a, abertura 1, passo 0: Button #F5F7F2/#F5F7F2/#F5F7F2; botao desenhado #18623E, raio 4,152 (quinas 4,149/4,153/4,15/4,155), estilo do botao ImanAppStyle
+[18:43:05] casos Build/a: medido (guarda OK): D:\iman-terra-build\smoke\cases-build-a-20261113-184242
+exit=0
+=== caso b
+[18:43:29] caso b, abertura 1, passo 1: tema 'default', folha 0, estilo ImanAppStyle (QFusionStyle), Highlight #1E7A4D/#1E7A4D, desenhado #1E7D4F; Window #EBEEE8/#EBEEE8/#EBEEE8, desenhado #EBEEE8
+[18:43:29] caso b, abertura 1, passo 1: Button #F5F7F2/#F5F7F2/#F5F7F2; botao desenhado #18623E, raio 4,152 (quinas 4,149/4,153/4,15/4,155), estilo do botao ImanAppStyle
+[18:43:29] caso b, abertura 1: theme default -> Night Mapping (itens default, Night Mapping, Blend of Gray)
+[18:43:44] caso b, abertura 2, passo 0: tema 'Night Mapping', folha 37487, estilo QStyleSheetStyle (), Highlight #D7801A/#D7801A, desenhado #0F6E00; Window #535353/#535353/#535353, desenhado #323232
+[18:43:44] caso b, abertura 2, passo 0: Button #F0F0F0/#F0F0F0/#F0F0F0; botao desenhado #505050, raio -0,5 (quinas -0,5/-0,5/-0,5/-0,5), estilo do botao QStyleSheetStyle
+[18:43:47] casos Build/b: medido (guarda OK): D:\iman-terra-build\smoke\cases-build-b-20261113-184306
+exit=0
+=== caso d
+[18:44:11] caso d, abertura 1, passo 1: tema 'default', folha 0, estilo ImanAppStyle (QFusionStyle), Highlight #1E7A4D/#1E7A4D, desenhado #1E7D4F; Window #EBEEE8/#EBEEE8/#EBEEE8, desenhado #EBEEE8
+[18:44:11] caso d, abertura 1, passo 1: Button #F5F7F2/#F5F7F2/#F5F7F2; botao desenhado #18623E, raio 4,152 (quinas 4,149/4,153/4,15/4,155), estilo do botao ImanAppStyle
+[18:44:12] caso d, abertura 1: style Fusion -> windowsvista (itens windowsvista, Windows, Fusion)
+[18:44:25] caso d, abertura 2, passo 0: tema 'default', folha 0, estilo ImanAppStyle (QWindowsVistaStyle), Highlight #1E7A4D/#1E7A4D, desenhado #CCE8FF; Window #EBEEE8/#EBEEE8/#EBEEE8, desenhado #EBEEE8
+[18:44:25] caso d, abertura 2, passo 0: Button #F5F7F2/#F5F7F2/#F5F7F2; botao desenhado #FDFDFD, raio 8,348 (quinas 8,608/8,38/8,38/8,026), estilo do botao ImanAppStyle
+[18:44:29] casos Build/d: medido (guarda OK): D:\iman-terra-build\smoke\cases-build-d-20261113-184347
+exit=0
+=== oficial caso b
+[18:45:31] caso b, abertura 1, passo 1: tema 'default', folha 0, estilo QgsAppStyle (QFusionStyle), Highlight #0078D7/#F0F0F0, desenhado #FFFFFF; Window #F0F0F0/#F0F0F0/#F0F0F0, desenhado #F0F0F0
+[18:45:31] caso b, abertura 1, passo 1: Button #F0F0F0/#F0F0F0/#F0F0F0; botao desenhado #41ADFF, raio 2,133 (quinas 2,131/2,133/2,133/2,136), estilo do botao QgsAppStyle
+[18:45:31] caso b, abertura 1: theme default -> Night Mapping (itens Blend of Gray, Night Mapping, default)
+[18:45:51] caso b, abertura 2, passo 0: tema 'Night Mapping', folha 37327, estilo QStyleSheetStyle (), Highlight #D7801A/#D7801A, desenhado #0F6E00; Window #535353/#535353/#535353, desenhado #323232
+[18:45:51] caso b, abertura 2, passo 0: Button #F0F0F0/#F0F0F0/#F0F0F0; botao desenhado #505050, raio -0,5 (quinas -0,5/-0,5/-0,5/-0,5), estilo do botao QStyleSheetStyle
+[18:45:54] casos Official/b: medido (guarda OK): D:\iman-terra-build\smoke\cases-official-b-20261113-184429
+exit=0
+
+=== oficial caso d (QGIS oficial 3.44.13, so lido)
+abertura 1: tema default, folha 0, estilo QgsAppStyle (QFusionStyle), Button #F0F0F0, botao desenhado raio 2.133 (quinas 2.131/2.133/2.133/2.136), estilo do botao QgsAppStyle
+abertura 1: style Fusion -> windowsvista
+abertura 2: tema default, folha 0, estilo QgsAppStyle (QWindowsVistaStyle), Button #F0F0F0, botao desenhado raio 8.348 (quinas 8.608/8.38/8.38/8.026), estilo do botao QgsAppStyle

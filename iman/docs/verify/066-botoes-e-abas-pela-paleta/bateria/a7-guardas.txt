@@ -1,0 +1,29 @@
+A7: Test-ThemeDefaults.ps1, os checks da 064, da 065 e os dois da 066
+
+--- develop 4a97fec449, perfil novo (visto falhando)
+[17:57:19] A7:destaque-iman           OK  {"expected":{"Highlight":"#1E7A4D","HighlightedText":"#FFFFFF"},"palette":{"Active":{"Highlight":"#1E7A4D","HighlightedText":"#FFFFFF"},"Inactive":{"Highlight":"#1E7A4D","HighlightedText":"#FFFFFF"},"Disabled":{"Highlight":"#0078D7","HighlightedText":"#FFFFFF"}}}
+[17:57:19] A7:fundo-iman              OK  {"expected":"#FFEBEEE8","Window":{"Active":"#FFEBEEE8","Inactive":"#FFEBEEE8","Disabled":"#FFEBEEE8"}}
+[17:57:19] A7:botoes-iman             FALHOU  {"expected":"#FFF5F7F2","Button":{"Active":"#FFF0F0F0","Inactive":"#FFF0F0F0","Disabled":"#FFF0F0F0"}}
+[17:57:19] A7:estilo-iman             FALHOU  {"expected":"ImanAppStyle","qtStyle":"QgsAppStyle","qtStyleBase":"QFusionStyle"}
+[17:57:21] tema e padroes Build/new FALHOU: D:\iman-terra-build\smoke\theme-build-new-20261113-175701
+
+--- cor ed5468fa16, perfil novo
+[18:05:07] A7:destaque-iman           OK  {"expected":{"Highlight":"#1E7A4D","HighlightedText":"#FFFFFF"},"palette":{"Active":{"Highlight":"#1E7A4D","HighlightedText":"#FFFFFF"},"Inactive":{"Highlight":"#1E7A4D","HighlightedText":"#FFFFFF"},"Disabled":{"Highlight":"#0078D7","HighlightedText":"#FFFFFF"}}}
+[18:05:07] A7:fundo-iman              OK  {"expected":"#FFEBEEE8","Window":{"Active":"#FFEBEEE8","Inactive":"#FFEBEEE8","Disabled":"#FFEBEEE8"}}
+[18:05:07] A7:botoes-iman             OK  {"expected":"#FFF5F7F2","Button":{"Active":"#FFF5F7F2","Inactive":"#FFF5F7F2","Disabled":"#FFF5F7F2"}}
+[18:05:07] A7:estilo-iman             FALHOU  {"expected":"ImanAppStyle","qtStyle":"QgsAppStyle","qtStyleBase":"QFusionStyle"}
+[18:05:10] tema e padroes Build/new FALHOU: D:\iman-terra-build\smoke\theme-build-new-20261113-180448
+
+--- final 5fd95d905d, perfil novo
+[18:42:17] A7:destaque-iman           OK  {"expected":{"Highlight":"#1E7A4D","HighlightedText":"#FFFFFF"},"palette":{"Active":{"Highlight":"#1E7A4D","HighlightedText":"#FFFFFF"},"Inactive":{"Highlight":"#1E7A4D","HighlightedText":"#FFFFFF"},"Disabled":{"Highlight":"#0078D7","HighlightedText":"#FFFFFF"}}}
+[18:42:17] A7:fundo-iman              OK  {"expected":"#FFEBEEE8","Window":{"Active":"#FFEBEEE8","Inactive":"#FFEBEEE8","Disabled":"#FFEBEEE8"}}
+[18:42:17] A7:botoes-iman             OK  {"expected":"#FFF5F7F2","Button":{"Active":"#FFF5F7F2","Inactive":"#FFF5F7F2","Disabled":"#FFF5F7F2"}}
+[18:42:17] A7:estilo-iman             OK  {"expected":"ImanAppStyle","qtStyle":"ImanAppStyle","qtStyleBase":"QFusionStyle"}
+[18:42:20] tema e padroes Build/new OK: D:\iman-terra-build\smoke\theme-build-new-20261113-184159
+
+--- final 5fd95d905d, perfil semeado
+[18:42:39] A7:destaque-iman           OK  {"expected":{"Highlight":"#1E7A4D","HighlightedText":"#FFFFFF"},"palette":{"Active":{"Highlight":"#1E7A4D","HighlightedText":"#FFFFFF"},"Inactive":{"Highlight":"#1E7A4D","HighlightedText":"#FFFFFF"},"Disabled":{"Highlight":"#0078D7","HighlightedText":"#FFFFFF"}}}
+[18:42:39] A7:fundo-iman              OK  {"expected":"#FFEBEEE8","Window":{"Active":"#FFEBEEE8","Inactive":"#FFEBEEE8","Disabled":"#FFEBEEE8"}}
+[18:42:39] A7:botoes-iman             OK  {"expected":"#FFF5F7F2","Button":{"Active":"#FFF5F7F2","Inactive":"#FFF5F7F2","Disabled":"#FFF5F7F2"}}
+[18:42:39] A7:estilo-iman             OK  {"expected":"ImanAppStyle","qtStyle":"ImanAppStyle","qtStyleBase":"QFusionStyle"}
+[18:42:42] tema e padroes Build/seeded OK: D:\iman-terra-build\smoke\theme-build-seeded-20261113-184221

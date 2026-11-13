@@ -1,0 +1,5 @@
+=== qss
+  [13] borda dos campos #D0D5C9 (B4)      OK  {"border":"1px solid #D0D5C9","blocks":1}
+  [14] barras como no oficial (B5)        OK  {"spacing":[],"toolBarPadding":"4px","toolBarToolButtonPadding":"1px"}
+TEMA QSS OK (14 de 14)
+exit=0

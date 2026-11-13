@@ -1,0 +1,50 @@
+{
+  "steps": [
+    "measure"
+  ],
+  "measures": [
+    {
+      "label": "passo 0",
+      "themeName": "Night Mapping",
+      "styleSheetLength": 37487,
+      "qtStyle": "QStyleSheetStyle",
+      "qtStyleBase": null,
+      "settingUITheme": "Night Mapping",
+      "settingQgisStyle": "fusion",
+      "palette": {
+        "Active": [
+          "#D7801A",
+          "#323232"
+        ],
+        "Inactive": [
+          "#D7801A",
+          "#323232"
+        ]
+      },
+      "drawnHighlight": "#0F6E00",
+      "window": {
+        "Active": "#535353",
+        "Inactive": "#535353",
+        "Disabled": "#535353"
+      },
+      "drawnWindow": "#323232",
+      "button": {
+        "Active": "#F0F0F0",
+        "Inactive": "#F0F0F0",
+        "Disabled": "#F0F0F0"
+      },
+      "drawnButton": {
+        "color": "#505050",
+        "radius": -0.5,
+        "corners": [
+          -0.5,
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        "style": "QStyleSheetStyle"
+      }
+    }
+  ],
+  "actions": []
+}

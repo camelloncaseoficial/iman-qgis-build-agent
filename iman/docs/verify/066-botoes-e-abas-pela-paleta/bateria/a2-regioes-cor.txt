@@ -1,0 +1,70 @@
+A2: regioes do papel Button, build da cor ed5468fa16 contra a develop 4a97fec449 (Invoke-ButtonCaptures.ps1 -Reference -Expect Color; a rodada da develop e botoes-antes-4a97fec449)
+
+=== buttons cor contra develop
+[18:04:18] facts                              OK  {"written":true,"exitedClean":true,"errors":null}
+[18:04:18] estilo QgsAppStyle (objectName QgsAppStyle, base QFusionStyle); Button #FFF5F7F2; o Fusion deriva buttonColor #F8F9F6 e tabFrameColor #FFFFFF
+[18:04:18] raio: escala 1,25, quina de 10 px; calibracao (raio conhecido -> estimado) 1.0->1.021 2.0->2.133 3.0->3.178 4.0->4.152 5.0->5.171 6.0->6.112
+[18:04:18] raio normal    estimado 2,133; referencia mais parecida 2; fora das quinas, diferente do fusion: 0 px (nas quinas 0)
+[18:04:18] raio hover     estimado 2,133; referencia mais parecida 2; fora das quinas, diferente do fusion: 0 px (nas quinas 0)
+[18:04:18] raio pressed   estimado 2,133; referencia mais parecida 2; fora das quinas, diferente do fusion: 0 px (nas quinas 0)
+[18:04:18] raio disabled  estimado 2,133; referencia mais parecida 2; fora das quinas, diferente do fusion: 0 px (nas quinas 0)
+[18:04:18] raio default   estimado 2,133; referencia mais parecida 2; fora das quinas, diferente do fusion: 0 px (nas quinas 0)
+[18:04:18] raio focus     estimado 2,133; referencia mais parecida 2; fora das quinas, diferente do fusion: 0 px (nas quinas 0)
+[18:04:18] raio menu      estimado 2,133; referencia mais parecida 2; fora das quinas, diferente do fusion: 0 px (nas quinas 0)
+[18:04:18] regiao header         media da faixa #F8F9F7 (mais comum #F4F5F2, fatia 0,111) 
+[18:04:18] regiao scrollHandle   media da faixa #FBFCFA (mais comum #FAFBF9, fatia 0,154) 
+[18:04:18] regiao scrollTrack    media da faixa #ECEDEA (mais comum #ECEDEA, fatia 1) 
+[18:04:18] regiao styleButton    media da faixa #F9F9F8 (mais comum #F6F7F5, fatia 0,096) 'Estilo'
+[18:04:18] regiao colorButton    media da faixa #F9F9F8 (mais comum #F6F7F5, fatia 0,083) 
+[18:04:18] regiao optionsOk      media da faixa #E6EEE9 (mais comum #E1EAE4, fatia 0,056) 'OK'
+[18:04:18] regiao optionsCancel  media da faixa #F9F9F8 (mais comum #F6F7F5, fatia 0,088) 'Cancelar'
+[18:04:18] regiao tabSelected    media da faixa #FFFFFF (mais comum #FFFFFF, fatia 0,811) 
+[18:04:18] regiao tabUnselected  media da faixa #ECECEC (mais comum #ECECEC, fatia 0,774) 
+[18:04:18] regiao runButton      media da faixa #E6EEE8 (mais comum #E1EAE4, fatia 0,056) 'Executar'
+[18:04:18] regiao comboClosed    media da faixa #F9F9F8 (mais comum #F5F6F4, fatia 0,091) 
+[18:04:18] regiao spinButtons    media da faixa #F9FAF8 (mais comum #F9FAF8, fatia 0,063) '10,000000'
+[18:04:18] regiao tabPane        media da faixa #FFFFFF (mais comum #FFFFFF, fatia 0,942) 
+[18:04:18] componente pushButton               diferentes 5280 de 6000 px (quinas 284, fora 4996)
+[18:04:18] componente pushButtonMenu           diferentes 5297 de 6000 px (quinas 284, fora 5013)
+[18:04:18] componente comboBox                 diferentes 6262 de 7000 px (quinas 300, fora 5962)
+[18:04:18] componente comboBoxEditable         diferentes 797 de 7000 px (quinas 150, fora 647)
+[18:04:18] componente toolButton               diferentes 3871 de 4375 px (quinas 300, fora 3571)
+[18:04:18] componente toolButtonAutoRaise      diferentes 0 de 3500 px (quinas 0, fora 0)
+[18:04:18] componente toolButtonMenuPopup      diferentes 4224 de 4830 px (quinas 300, fora 3924)
+[18:04:18] componente toolButtonInstantPopup   diferentes 3516 de 3955 px (quinas 296, fora 3220)
+[18:04:18] componente colorButton              diferentes 1122 de 3500 px (quinas 257, fora 865)
+[18:04:18] componente spinBox                  diferentes 508 de 3955 px (quinas 119, fora 389)
+[18:04:18] componente lineEdit                 diferentes 0 de 7000 px (quinas 0, fora 0)
+[18:04:18] componente tabBar                   diferentes 0 de 10450 px (quinas 0, fora 0)
+[18:04:18] componente tabWidget                diferentes 24585 de 31075 px (quinas 147, fora 24438)
+[18:04:18] componente header                   diferentes 7726 de 41250 px (quinas 81, fora 7645)
+[18:04:18] componente groupBox                 diferentes 0 de 20000 px (quinas 0, fora 0)
+[18:04:18] componente collapsibleGroupBox      diferentes 0 de 20000 px (quinas 0, fora 0)
+[18:04:18] componente scrollBar                diferentes 4551 de 4600 px (quinas 400, fora 4151)
+[18:04:18] componente progressBar              diferentes 0 de 6000 px (quinas 0, fora 0)
+[18:04:18] componente checkBox                 diferentes 0 de 4140 px (quinas 0, fora 0)
+[18:04:18] componente radioButton              diferentes 0 de 4140 px (quinas 0, fora 0)
+[18:04:18] botao normal    diferentes 5280 de 6000 px (quinas 284, fora 4996)
+[18:04:18] botao hover     diferentes 5426 de 6000 px (quinas 304, fora 5122)
+[18:04:18] botao pressed   diferentes 5584 de 6000 px (quinas 320, fora 5264)
+[18:04:18] botao disabled  diferentes 5278 de 6000 px (quinas 284, fora 4994)
+[18:04:18] botao default   diferentes 5576 de 6000 px (quinas 317, fora 5259)
+[18:04:18] botao focus     diferentes 5278 de 6000 px (quinas 282, fora 4996)
+[18:04:18] botao menu      diferentes 5276 de 6000 px (quinas 284, fora 4992)
+[18:04:18] regiao header         #F2F2F2 -> #F8F9F7 (mais comum #EEEEEE -> #F4F5F2) mudou
+[18:04:18] regiao scrollHandle   #F8F8F8 -> #FBFCFA (mais comum #F7F7F7 -> #FAFBF9) mudou
+[18:04:18] regiao scrollTrack    #E6E6E6 -> #ECEDEA (mais comum #E6E6E6 -> #ECEDEA) mudou
+[18:04:18] regiao styleButton    #F5F5F5 -> #F9F9F8 (mais comum #F1F1F1 -> #F6F7F5) mudou
+[18:04:18] regiao colorButton    #F6F6F6 -> #F9F9F8 (mais comum #F8F8F8 -> #F6F7F5) mudou
+[18:04:18] regiao optionsOk      #E2E8E5 -> #E6EEE9 (mais comum #DCE4E1 -> #E1EAE4) mudou
+[18:04:18] regiao optionsCancel  #F5F5F5 -> #F9F9F8 (mais comum #F1F1F1 -> #F6F7F5) mudou
+[18:04:18] regiao tabSelected    #FDFDFD -> #FFFFFF (mais comum #FEFEFE -> #FFFFFF) mudou
+[18:04:18] regiao tabUnselected  #E9E9E9 -> #ECECEC (mais comum #E9E9E9 -> #ECECEC) mudou
+[18:04:18] regiao runButton      #E1E8E5 -> #E6EEE8 (mais comum #DCE4E1 -> #E1EAE4) mudou
+[18:04:18] regiao comboClosed    #F4F4F4 -> #F9F9F8 (mais comum #F0F0F0 -> #F5F6F4) mudou
+[18:04:18] regiao spinButtons    #F6F6F6 -> #F9FAF8 (mais comum #F6F6F6 -> #F9FAF8) mudou
+[18:04:18] regiao tabPane        #FCFCFC -> #FFFFFF (mais comum #FCFCFC -> #FFFFFF) mudou
+[18:04:18] dados-do-produto                   OK  {"ok":true,"directory":"%USERPROFILE%\\AppData\\Local\\Institu toIMAN\\IMANTerra","existedBefore":true,"created":[],"removed":[],"files":[]}
+[18:04:21] guard                              OK  "GUARD OK: QGIS oficial, %USERPROFILE%\\AppData\\Roaming\\QGIS, %USERPROFILE%\\AppData\\Local\\QGIS, %USERPROFILE%\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\QGIS3.lnk, C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\QGIS 3.44.13, registro, associacoes e notificacoes do QGIS identicos ao retrato de 2026-11-13T17:58:26 (37626 itens)"
+[18:04:21] botoes Build OK: D:\iman-terra-build\smoke\buttons-build-20261113-180341
+exit=0

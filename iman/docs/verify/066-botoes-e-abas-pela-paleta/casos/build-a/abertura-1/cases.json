@@ -1,0 +1,50 @@
+{
+  "steps": [
+    "measure"
+  ],
+  "measures": [
+    {
+      "label": "passo 0",
+      "themeName": "default",
+      "styleSheetLength": 0,
+      "qtStyle": "ImanAppStyle",
+      "qtStyleBase": "QFusionStyle",
+      "settingUITheme": null,
+      "settingQgisStyle": "fusion",
+      "palette": {
+        "Active": [
+          "#1E7A4D",
+          "#FFFFFF"
+        ],
+        "Inactive": [
+          "#1E7A4D",
+          "#FFFFFF"
+        ]
+      },
+      "drawnHighlight": "#1E7D4F",
+      "window": {
+        "Active": "#EBEEE8",
+        "Inactive": "#EBEEE8",
+        "Disabled": "#EBEEE8"
+      },
+      "drawnWindow": "#EBEEE8",
+      "button": {
+        "Active": "#F5F7F2",
+        "Inactive": "#F5F7F2",
+        "Disabled": "#F5F7F2"
+      },
+      "drawnButton": {
+        "color": "#18623E",
+        "radius": 4.152,
+        "corners": [
+          4.149,
+          4.153,
+          4.15,
+          4.155
+        ],
+        "style": "ImanAppStyle"
+      }
+    }
+  ],
+  "actions": []
+}

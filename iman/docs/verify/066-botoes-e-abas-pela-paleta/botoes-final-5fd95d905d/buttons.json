@@ -1,0 +1,1770 @@
+{
+  "captures": {
+    "a5-botao-normal.png": [
+      600,
+      160
+    ],
+    "raw-botao-normal.png": [
+      150,
+      40
+    ],
+    "a5-quinas-normal.png": [
+      516,
+      120
+    ],
+    "a5-botao-hover.png": [
+      600,
+      160
+    ],
+    "raw-botao-hover.png": [
+      150,
+      40
+    ],
+    "a5-quinas-hover.png": [
+      516,
+      120
+    ],
+    "a5-botao-pressed.png": [
+      600,
+      160
+    ],
+    "raw-botao-pressed.png": [
+      150,
+      40
+    ],
+    "a5-quinas-pressed.png": [
+      516,
+      120
+    ],
+    "a5-botao-disabled.png": [
+      600,
+      160
+    ],
+    "raw-botao-disabled.png": [
+      150,
+      40
+    ],
+    "a5-quinas-disabled.png": [
+      516,
+      120
+    ],
+    "a5-botao-default.png": [
+      600,
+      160
+    ],
+    "raw-botao-default.png": [
+      150,
+      40
+    ],
+    "a5-quinas-default.png": [
+      516,
+      120
+    ],
+    "a5-botao-focus.png": [
+      600,
+      160
+    ],
+    "raw-botao-focus.png": [
+      150,
+      40
+    ],
+    "a5-quinas-focus.png": [
+      516,
+      120
+    ],
+    "a5-botao-menu.png": [
+      600,
+      160
+    ],
+    "raw-botao-menu.png": [
+      150,
+      40
+    ],
+    "a5-quinas-menu.png": [
+      516,
+      120
+    ],
+    "a5c-pushButton.png": [
+      150,
+      40
+    ],
+    "a5c-pushButtonMenu.png": [
+      150,
+      40
+    ],
+    "a5c-comboBox.png": [
+      200,
+      35
+    ],
+    "a5c-comboBoxEditable.png": [
+      200,
+      35
+    ],
+    "a5c-toolButton.png": [
+      125,
+      35
+    ],
+    "a5c-toolButtonAutoRaise.png": [
+      100,
+      35
+    ],
+    "a5c-toolButtonMenuPopup.png": [
+      138,
+      35
+    ],
+    "a5c-toolButtonInstantPopup.png": [
+      113,
+      35
+    ],
+    "a5c-colorButton.png": [
+      100,
+      35
+    ],
+    "a5c-spinBox.png": [
+      113,
+      35
+    ],
+    "a5c-lineEdit.png": [
+      200,
+      35
+    ],
+    "a5c-tabBar.png": [
+      275,
+      38
+    ],
+    "a5c-tabWidget.png": [
+      275,
+      113
+    ],
+    "a5c-header.png": [
+      275,
+      150
+    ],
+    "a5c-groupBox.png": [
+      200,
+      100
+    ],
+    "a5c-collapsibleGroupBox.png": [
+      200,
+      100
+    ],
+    "a5c-scrollBar.png": [
+      23,
+      200
+    ],
+    "a5c-progressBar.png": [
+      200,
+      30
+    ],
+    "a5c-checkBox.png": [
+      138,
+      30
+    ],
+    "a5c-radioButton.png": [
+      138,
+      30
+    ],
+    "a2-cabecalho.png": [
+      1821,
+      72
+    ],
+    "a2-barra-de-rolagem.png": [
+      60,
+      2412
+    ],
+    "a2-botao-estilo.png": [
+      315,
+      93
+    ],
+    "a2-botao-de-cor.png": [
+      3318,
+      99
+    ],
+    "a2-propriedades-simbologia.png": [
+      1375,
+      950
+    ],
+    "a2-opcoes-ok.png": [
+      315,
+      93
+    ],
+    "a2-opcoes-cancelar.png": [
+      315,
+      93
+    ],
+    "a2-opcoes.png": [
+      1375,
+      950
+    ],
+    "a2-algoritmo-parametros.png": [
+      1125,
+      900
+    ],
+    "a2-abas.png": [
+      453,
+      114
+    ],
+    "a2-botao-executar.png": [
+      315,
+      93
+    ],
+    "a2-caixa-de-selecao.png": [
+      2244,
+      105
+    ],
+    "a2-caixa-numerica.png": [
+      1869,
+      99
+    ],
+    "a2-algoritmo-log.png": [
+      1125,
+      900
+    ]
+  },
+  "paths": {
+    "pushButton": {
+      "class": "QPushButton",
+      "calls": [
+        [
+          "control",
+          "CE_PushButton",
+          "QPushButton",
+          true
+        ],
+        [
+          "control",
+          "CE_PushButtonBevel",
+          "QPushButton",
+          true
+        ],
+        [
+          "primitive",
+          "PE_PanelButtonCommand",
+          "QPushButton",
+          true
+        ],
+        [
+          "control",
+          "CE_PushButtonLabel",
+          "QPushButton",
+          true
+        ]
+      ],
+      "panelButtonCommand": true,
+      "panelButtonCommandWidgets": [
+        "QPushButton"
+      ],
+      "panelButtonCommandWithPushButton": true
+    },
+    "pushButtonMenu": {
+      "class": "QPushButton",
+      "calls": [
+        [
+          "control",
+          "CE_PushButton",
+          "QPushButton",
+          true
+        ],
+        [
+          "control",
+          "CE_PushButtonBevel",
+          "QPushButton",
+          true
+        ],
+        [
+          "primitive",
+          "PE_PanelButtonCommand",
+          "QPushButton",
+          true
+        ],
+        [
+          "primitive",
+          "PE_IndicatorArrowDown",
+          "QPushButton",
+          true
+        ],
+        [
+          "control",
+          "CE_PushButtonLabel",
+          "QPushButton",
+          true
+        ]
+      ],
+      "panelButtonCommand": true,
+      "panelButtonCommandWidgets": [
+        "QPushButton"
+      ],
+      "panelButtonCommandWithPushButton": true
+    },
+    "comboBox": {
+      "class": "QComboBox",
+      "calls": [
+        [
+          "complex",
+          "CC_ComboBox",
+          "QComboBox",
+          false
+        ],
+        [
+          "control",
+          "CE_ComboBoxLabel",
+          "QComboBox",
+          false
+        ]
+      ],
+      "panelButtonCommand": false,
+      "panelButtonCommandWidgets": [],
+      "panelButtonCommandWithPushButton": false
+    },
+    "comboBoxEditable": {
+      "class": "QComboBox",
+      "calls": [
+        [
+          "complex",
+          "CC_ComboBox",
+          "QComboBox",
+          false
+        ],
+        [
+          "control",
+          "CE_ComboBoxLabel",
+          "QComboBox",
+          false
+        ],
+        [
+          "primitive",
+          "PE_PanelLineEdit",
+          "QLineEdit",
+          false
+        ]
+      ],
+      "panelButtonCommand": false,
+      "panelButtonCommandWidgets": [],
+      "panelButtonCommandWithPushButton": false
+    },
+    "toolButton": {
+      "class": "QToolButton",
+      "calls": [
+        [
+          "complex",
+          "CC_ToolButton",
+          "QToolButton",
+          false
+        ],
+        [
+          "primitive",
+          "PE_PanelButtonTool",
+          "QToolButton",
+          false
+        ],
+        [
+          "primitive",
+          "PE_PanelButtonCommand",
+          "QToolButton",
+          false
+        ],
+        [
+          "control",
+          "CE_ToolButtonLabel",
+          "QToolButton",
+          false
+        ]
+      ],
+      "panelButtonCommand": true,
+      "panelButtonCommandWidgets": [
+        "QToolButton"
+      ],
+      "panelButtonCommandWithPushButton": false
+    },
+    "toolButtonAutoRaise": {
+      "class": "QToolButton",
+      "calls": [
+        [
+          "complex",
+          "CC_ToolButton",
+          "QToolButton",
+          false
+        ],
+        [
+          "control",
+          "CE_ToolButtonLabel",
+          "QToolButton",
+          false
+        ]
+      ],
+      "panelButtonCommand": false,
+      "panelButtonCommandWidgets": [],
+      "panelButtonCommandWithPushButton": false
+    },
+    "toolButtonMenuPopup": {
+      "class": "QToolButton",
+      "calls": [
+        [
+          "complex",
+          "CC_ToolButton",
+          "QToolButton",
+          false
+        ],
+        [
+          "primitive",
+          "PE_PanelButtonTool",
+          "QToolButton",
+          false
+        ],
+        [
+          "primitive",
+          "PE_PanelButtonCommand",
+          "QToolButton",
+          false
+        ],
+        [
+          "control",
+          "CE_ToolButtonLabel",
+          "QToolButton",
+          false
+        ],
+        [
+          "primitive",
+          "PE_IndicatorButtonDropDown",
+          "QToolButton",
+          false
+        ],
+        [
+          "primitive",
+          "PE_IndicatorArrowDown",
+          "QToolButton",
+          false
+        ]
+      ],
+      "panelButtonCommand": true,
+      "panelButtonCommandWidgets": [
+        "QToolButton"
+      ],
+      "panelButtonCommandWithPushButton": false
+    },
+    "toolButtonInstantPopup": {
+      "class": "QToolButton",
+      "calls": [
+        [
+          "complex",
+          "CC_ToolButton",
+          "QToolButton",
+          false
+        ],
+        [
+          "primitive",
+          "PE_PanelButtonTool",
+          "QToolButton",
+          false
+        ],
+        [
+          "primitive",
+          "PE_PanelButtonCommand",
+          "QToolButton",
+          false
+        ],
+        [
+          "control",
+          "CE_ToolButtonLabel",
+          "QToolButton",
+          false
+        ],
+        [
+          "primitive",
+          "PE_IndicatorArrowDown",
+          "QToolButton",
+          false
+        ]
+      ],
+      "panelButtonCommand": true,
+      "panelButtonCommandWidgets": [
+        "QToolButton"
+      ],
+      "panelButtonCommandWithPushButton": false
+    },
+    "colorButton": {
+      "class": "QgsColorButton",
+      "calls": [
+        [
+          "complex",
+          "CC_ToolButton",
+          "QgsColorButton",
+          false
+        ],
+        [
+          "primitive",
+          "PE_PanelButtonTool",
+          "QgsColorButton",
+          false
+        ],
+        [
+          "primitive",
+          "PE_PanelButtonCommand",
+          "QgsColorButton",
+          false
+        ],
+        [
+          "control",
+          "CE_ToolButtonLabel",
+          "QgsColorButton",
+          false
+        ],
+        [
+          "primitive",
+          "PE_IndicatorButtonDropDown",
+          "QgsColorButton",
+          false
+        ],
+        [
+          "primitive",
+          "PE_IndicatorArrowDown",
+          "QgsColorButton",
+          false
+        ]
+      ],
+      "panelButtonCommand": true,
+      "panelButtonCommandWidgets": [
+        "QgsColorButton"
+      ],
+      "panelButtonCommandWithPushButton": false
+    },
+    "spinBox": {
+      "class": "QSpinBox",
+      "calls": [
+        [
+          "complex",
+          "CC_SpinBox",
+          "QSpinBox",
+          false
+        ],
+        [
+          "primitive",
+          "PE_PanelLineEdit",
+          "QLineEdit",
+          false
+        ]
+      ],
+      "panelButtonCommand": false,
+      "panelButtonCommandWidgets": [],
+      "panelButtonCommandWithPushButton": false
+    },
+    "lineEdit": {
+      "class": "QLineEdit",
+      "calls": [
+        [
+          "primitive",
+          "PE_PanelLineEdit",
+          "QLineEdit",
+          false
+        ],
+        [
+          "primitive",
+          "PE_FrameLineEdit",
+          "QLineEdit",
+          false
+        ]
+      ],
+      "panelButtonCommand": false,
+      "panelButtonCommandWidgets": [],
+      "panelButtonCommandWithPushButton": false
+    },
+    "tabBar": {
+      "class": "QTabBar",
+      "calls": [
+        [
+          "primitive",
+          "PE_FrameTabBarBase",
+          "QTabBar",
+          false
+        ],
+        [
+          "control",
+          "CE_TabBarTab",
+          "QTabBar",
+          false
+        ],
+        [
+          "control",
+          "CE_TabBarTabShape",
+          "QTabBar",
+          false
+        ],
+        [
+          "control",
+          "CE_TabBarTabLabel",
+          "QTabBar",
+          false
+        ]
+      ],
+      "panelButtonCommand": false,
+      "panelButtonCommandWidgets": [],
+      "panelButtonCommandWithPushButton": false
+    },
+    "tabWidget": {
+      "class": "QTabWidget",
+      "calls": [
+        [
+          "primitive",
+          "PE_FrameTabWidget",
+          "QTabWidget",
+          false
+        ],
+        [
+          "control",
+          "CE_ShapedFrame",
+          "QStackedWidget",
+          false
+        ],
+        [
+          "control",
+          "CE_ShapedFrame",
+          "QLabel",
+          false
+        ],
+        [
+          "control",
+          "CE_TabBarTab",
+          "QTabBar",
+          false
+        ],
+        [
+          "control",
+          "CE_TabBarTabShape",
+          "QTabBar",
+          false
+        ],
+        [
+          "control",
+          "CE_TabBarTabLabel",
+          "QTabBar",
+          false
+        ]
+      ],
+      "panelButtonCommand": false,
+      "panelButtonCommandWidgets": [],
+      "panelButtonCommandWithPushButton": false
+    },
+    "header": {
+      "class": "QTableWidget",
+      "calls": [
+        [
+          "control",
+          "CE_HeaderSection",
+          "QHeaderView",
+          false
+        ],
+        [
+          "control",
+          "CE_HeaderLabel",
+          "QHeaderView",
+          false
+        ],
+        [
+          "control",
+          "CE_HeaderEmptyArea",
+          "QHeaderView",
+          false
+        ]
+      ],
+      "panelButtonCommand": false,
+      "panelButtonCommandWidgets": [],
+      "panelButtonCommandWithPushButton": false
+    },
+    "groupBox": {
+      "class": "QGroupBox",
+      "calls": [
+        [
+          "primitive",
+          "PE_FrameGroupBox",
+          "QGroupBox",
+          false
+        ],
+        [
+          "control",
+          "CE_ShapedFrame",
+          "QLabel",
+          false
+        ]
+      ],
+      "panelButtonCommand": false,
+      "panelButtonCommandWidgets": [],
+      "panelButtonCommandWithPushButton": false
+    },
+    "collapsibleGroupBox": {
+      "class": "QgsCollapsibleGroupBox",
+      "calls": [
+        [
+          "primitive",
+          "PE_FrameGroupBox",
+          "QgsCollapsibleGroupBox",
+          false
+        ],
+        [
+          "control",
+          "CE_ToolButtonLabel",
+          "QgsGroupBoxCollapseButton",
+          false
+        ],
+        [
+          "control",
+          "CE_ShapedFrame",
+          "QLabel",
+          false
+        ]
+      ],
+      "panelButtonCommand": false,
+      "panelButtonCommandWidgets": [],
+      "panelButtonCommandWithPushButton": false
+    },
+    "scrollBar": {
+      "class": "QScrollBar",
+      "calls": [
+        [
+          "complex",
+          "CC_ScrollBar",
+          "QScrollBar",
+          false
+        ]
+      ],
+      "panelButtonCommand": false,
+      "panelButtonCommandWidgets": [],
+      "panelButtonCommandWithPushButton": false
+    },
+    "progressBar": {
+      "class": "QProgressBar",
+      "calls": [
+        [
+          "control",
+          "CE_ProgressBarGroove",
+          "QProgressBar",
+          false
+        ],
+        [
+          "control",
+          "CE_ProgressBarContents",
+          "QProgressBar",
+          false
+        ],
+        [
+          "control",
+          "CE_ProgressBarLabel",
+          "QProgressBar",
+          false
+        ]
+      ],
+      "panelButtonCommand": false,
+      "panelButtonCommandWidgets": [],
+      "panelButtonCommandWithPushButton": false
+    },
+    "checkBox": {
+      "class": "QCheckBox",
+      "calls": [
+        [
+          "control",
+          "CE_CheckBox",
+          "QCheckBox",
+          false
+        ],
+        [
+          "primitive",
+          "PE_IndicatorCheckBox",
+          "QCheckBox",
+          false
+        ],
+        [
+          "control",
+          "CE_CheckBoxLabel",
+          "QCheckBox",
+          false
+        ]
+      ],
+      "panelButtonCommand": false,
+      "panelButtonCommandWidgets": [],
+      "panelButtonCommandWithPushButton": false
+    },
+    "radioButton": {
+      "class": "QRadioButton",
+      "calls": [
+        [
+          "control",
+          "CE_RadioButton",
+          "QRadioButton",
+          false
+        ],
+        [
+          "primitive",
+          "PE_IndicatorRadioButton",
+          "QRadioButton",
+          false
+        ],
+        [
+          "control",
+          "CE_RadioButtonLabel",
+          "QRadioButton",
+          false
+        ]
+      ],
+      "panelButtonCommand": false,
+      "panelButtonCommandWidgets": [],
+      "panelButtonCommandWithPushButton": false
+    }
+  },
+  "radius": {
+    "scale": 1.25,
+    "boxPixels": 10,
+    "calibration": {
+      "1.0": 1.021,
+      "2.0": 2.133,
+      "3.0": 3.178,
+      "4.0": 4.152,
+      "5.0": 5.171,
+      "6.0": 6.112
+    },
+    "states": {
+      "normal": {
+        "corners": {
+          "topLeft": {
+            "estimate": 4.149,
+            "fit": 4.0
+          },
+          "topRight": {
+            "estimate": 4.153,
+            "fit": 4.0
+          },
+          "bottomLeft": {
+            "estimate": 4.15,
+            "fit": 4.0
+          },
+          "bottomRight": {
+            "estimate": 4.155,
+            "fit": 4.0
+          }
+        },
+        "estimate": 4.152,
+        "fit": [
+          4.0
+        ],
+        "diffFromFusionOutsideCorners": 0,
+        "diffFromFusionInCorners": 90
+      },
+      "hover": {
+        "corners": {
+          "topLeft": {
+            "estimate": 4.149,
+            "fit": 4.0
+          },
+          "topRight": {
+            "estimate": 4.153,
+            "fit": 4.0
+          },
+          "bottomLeft": {
+            "estimate": 4.15,
+            "fit": 4.0
+          },
+          "bottomRight": {
+            "estimate": 4.155,
+            "fit": 4.0
+          }
+        },
+        "estimate": 4.152,
+        "fit": [
+          4.0
+        ],
+        "diffFromFusionOutsideCorners": 0,
+        "diffFromFusionInCorners": 84
+      },
+      "pressed": {
+        "corners": {
+          "topLeft": {
+            "estimate": 4.149,
+            "fit": 4.0
+          },
+          "topRight": {
+            "estimate": 4.153,
+            "fit": 4.0
+          },
+          "bottomLeft": {
+            "estimate": 4.15,
+            "fit": 4.0
+          },
+          "bottomRight": {
+            "estimate": 4.155,
+            "fit": 4.0
+          }
+        },
+        "estimate": 4.152,
+        "fit": [
+          4.0
+        ],
+        "diffFromFusionOutsideCorners": 0,
+        "diffFromFusionInCorners": 112
+      },
+      "disabled": {
+        "corners": {
+          "topLeft": {
+            "estimate": 4.149,
+            "fit": 4.0
+          },
+          "topRight": {
+            "estimate": 4.153,
+            "fit": 4.0
+          },
+          "bottomLeft": {
+            "estimate": 4.15,
+            "fit": 4.0
+          },
+          "bottomRight": {
+            "estimate": 4.155,
+            "fit": 4.0
+          }
+        },
+        "estimate": 4.152,
+        "fit": [
+          4.0
+        ],
+        "diffFromFusionOutsideCorners": 0,
+        "diffFromFusionInCorners": 90
+      },
+      "default": {
+        "corners": {
+          "topLeft": {
+            "estimate": 4.149,
+            "fit": 4.0
+          },
+          "topRight": {
+            "estimate": 4.153,
+            "fit": 4.0
+          },
+          "bottomLeft": {
+            "estimate": 4.15,
+            "fit": 4.0
+          },
+          "bottomRight": {
+            "estimate": 4.155,
+            "fit": 4.0
+          }
+        },
+        "estimate": 4.152,
+        "fit": [
+          4.0
+        ],
+        "diffFromFusionOutsideCorners": 0,
+        "diffFromFusionInCorners": 104
+      },
+      "focus": {
+        "corners": {
+          "topLeft": {
+            "estimate": 4.149,
+            "fit": 4.0
+          },
+          "topRight": {
+            "estimate": 4.153,
+            "fit": 4.0
+          },
+          "bottomLeft": {
+            "estimate": 4.15,
+            "fit": 4.0
+          },
+          "bottomRight": {
+            "estimate": 4.155,
+            "fit": 4.0
+          }
+        },
+        "estimate": 4.152,
+        "fit": [
+          4.0
+        ],
+        "diffFromFusionOutsideCorners": 0,
+        "diffFromFusionInCorners": 90
+      },
+      "menu": {
+        "corners": {
+          "topLeft": {
+            "estimate": 4.149,
+            "fit": 4.0
+          },
+          "topRight": {
+            "estimate": 4.153,
+            "fit": 4.0
+          },
+          "bottomLeft": {
+            "estimate": 4.15,
+            "fit": 4.0
+          },
+          "bottomRight": {
+            "estimate": 4.155,
+            "fit": 4.0
+          }
+        },
+        "estimate": 4.152,
+        "fit": [
+          4.0
+        ],
+        "diffFromFusionOutsideCorners": 0,
+        "diffFromFusionInCorners": 90
+      }
+    }
+  },
+  "components": {
+    "pushButton": {
+      "class": "QPushButton",
+      "size": [
+        120,
+        32
+      ],
+      "image": "a5c-pushButton.png"
+    },
+    "pushButtonMenu": {
+      "class": "QPushButton",
+      "size": [
+        120,
+        32
+      ],
+      "image": "a5c-pushButtonMenu.png"
+    },
+    "comboBox": {
+      "class": "QComboBox",
+      "size": [
+        160,
+        28
+      ],
+      "image": "a5c-comboBox.png"
+    },
+    "comboBoxEditable": {
+      "class": "QComboBox",
+      "size": [
+        160,
+        28
+      ],
+      "image": "a5c-comboBoxEditable.png"
+    },
+    "toolButton": {
+      "class": "QToolButton",
+      "size": [
+        100,
+        28
+      ],
+      "image": "a5c-toolButton.png"
+    },
+    "toolButtonAutoRaise": {
+      "class": "QToolButton",
+      "size": [
+        80,
+        28
+      ],
+      "image": "a5c-toolButtonAutoRaise.png"
+    },
+    "toolButtonMenuPopup": {
+      "class": "QToolButton",
+      "size": [
+        110,
+        28
+      ],
+      "image": "a5c-toolButtonMenuPopup.png"
+    },
+    "toolButtonInstantPopup": {
+      "class": "QToolButton",
+      "size": [
+        90,
+        28
+      ],
+      "image": "a5c-toolButtonInstantPopup.png"
+    },
+    "colorButton": {
+      "class": "QgsColorButton",
+      "size": [
+        80,
+        28
+      ],
+      "image": "a5c-colorButton.png"
+    },
+    "spinBox": {
+      "class": "QSpinBox",
+      "size": [
+        90,
+        28
+      ],
+      "image": "a5c-spinBox.png"
+    },
+    "lineEdit": {
+      "class": "QLineEdit",
+      "size": [
+        160,
+        28
+      ],
+      "image": "a5c-lineEdit.png"
+    },
+    "tabBar": {
+      "class": "QTabBar",
+      "size": [
+        220,
+        30
+      ],
+      "image": "a5c-tabBar.png"
+    },
+    "tabWidget": {
+      "class": "QTabWidget",
+      "size": [
+        220,
+        90
+      ],
+      "image": "a5c-tabWidget.png"
+    },
+    "header": {
+      "class": "QTableWidget",
+      "size": [
+        220,
+        120
+      ],
+      "image": "a5c-header.png"
+    },
+    "groupBox": {
+      "class": "QGroupBox",
+      "size": [
+        160,
+        80
+      ],
+      "image": "a5c-groupBox.png"
+    },
+    "collapsibleGroupBox": {
+      "class": "QgsCollapsibleGroupBox",
+      "size": [
+        160,
+        80
+      ],
+      "image": "a5c-collapsibleGroupBox.png"
+    },
+    "scrollBar": {
+      "class": "QScrollBar",
+      "size": [
+        18,
+        160
+      ],
+      "image": "a5c-scrollBar.png"
+    },
+    "progressBar": {
+      "class": "QProgressBar",
+      "size": [
+        160,
+        24
+      ],
+      "image": "a5c-progressBar.png"
+    },
+    "checkBox": {
+      "class": "QCheckBox",
+      "size": [
+        110,
+        24
+      ],
+      "image": "a5c-checkBox.png"
+    },
+    "radioButton": {
+      "class": "QRadioButton",
+      "size": [
+        110,
+        24
+      ],
+      "image": "a5c-radioButton.png"
+    }
+  },
+  "regions": {
+    "header": {
+      "background": "#F4F5F2",
+      "backgroundShare": 0.111,
+      "pixels": 3564,
+      "backgroundMean": "#F8F9F7",
+      "backgroundBand": [
+        "#EBECE9",
+        "#FEFEFD"
+      ],
+      "bandShare": 0.827,
+      "rect": [
+        1,
+        1,
+        198,
+        18
+      ],
+      "class": "QHeaderView",
+      "text": null
+    },
+    "scrollHandle": {
+      "background": "#FAFBF9",
+      "backgroundShare": 0.154,
+      "pixels": 5304,
+      "backgroundMean": "#FBFCFA",
+      "backgroundBand": [
+        "#F9FAF7",
+        "#FEFEFE"
+      ],
+      "bandShare": 1.0,
+      "rect": [
+        2,
+        16,
+        10,
+        326
+      ],
+      "class": "QScrollBar",
+      "text": null
+    },
+    "scrollTrack": {
+      "background": "#ECEDEA",
+      "backgroundShare": 1.0,
+      "pixels": 4433,
+      "backgroundMean": "#ECEDEA",
+      "backgroundBand": [
+        "#ECEDEA",
+        "#ECEDEA"
+      ],
+      "bandShare": 1.0,
+      "rect": [
+        2,
+        348,
+        10,
+        273
+      ],
+      "class": "QScrollBar",
+      "text": null
+    },
+    "styleButton": {
+      "background": "#F6F7F5",
+      "backgroundShare": 0.096,
+      "pixels": 1656,
+      "backgroundMean": "#F9F9F8",
+      "backgroundBand": [
+        "#EDEEEC",
+        "#FDFDFC"
+      ],
+      "bandShare": 0.888,
+      "rect": [
+        3,
+        3,
+        74,
+        15
+      ],
+      "class": "QPushButton",
+      "text": "Estilo"
+    },
+    "colorButton": {
+      "background": "#F6F7F5",
+      "backgroundShare": 0.083,
+      "pixels": 230,
+      "backgroundMean": "#F9F9F8",
+      "backgroundBand": [
+        "#EDEEEC",
+        "#FEFEFD"
+      ],
+      "bandShare": 0.852,
+      "rect": [
+        871,
+        2,
+        8,
+        18
+      ],
+      "class": "QgsColorButton",
+      "text": ""
+    },
+    "optionsOk": {
+      "background": "#E1EAE4",
+      "backgroundShare": 0.056,
+      "pixels": 1656,
+      "backgroundMean": "#E6EEE9",
+      "backgroundBand": [
+        "#E1EAE4",
+        "#ECF2EE"
+      ],
+      "bandShare": 0.466,
+      "rect": [
+        3,
+        3,
+        74,
+        15
+      ],
+      "isDefault": true,
+      "class": "QPushButton",
+      "text": "OK"
+    },
+    "optionsCancel": {
+      "background": "#F6F7F5",
+      "backgroundShare": 0.088,
+      "pixels": 1656,
+      "backgroundMean": "#F9F9F8",
+      "backgroundBand": [
+        "#F4F5F3",
+        "#FDFDFC"
+      ],
+      "bandShare": 0.85,
+      "rect": [
+        3,
+        3,
+        74,
+        15
+      ],
+      "isDefault": false,
+      "class": "QPushButton",
+      "text": "Cancelar"
+    },
+    "tabSelected": {
+      "background": "#FFFFFF",
+      "backgroundShare": 0.811,
+      "pixels": 1892,
+      "backgroundMean": "#FFFFFF",
+      "backgroundBand": [
+        "#FFFFFF",
+        "#FFFFFF"
+      ],
+      "bandShare": 0.811,
+      "rect": [
+        3,
+        3,
+        69,
+        18
+      ],
+      "class": "QTabBar",
+      "text": null,
+      "tab": "Parâmetros"
+    },
+    "tabUnselected": {
+      "background": "#ECECEC",
+      "backgroundShare": 0.774,
+      "pixels": 924,
+      "backgroundMean": "#ECECEC",
+      "backgroundBand": [
+        "#EBEBEB",
+        "#EEEEEE"
+      ],
+      "bandShare": 0.865,
+      "rect": [
+        78,
+        3,
+        34,
+        18
+      ],
+      "tab": "Log"
+    },
+    "runButton": {
+      "background": "#E1EAE4",
+      "backgroundShare": 0.056,
+      "pixels": 1656,
+      "backgroundMean": "#E6EEE8",
+      "backgroundBand": [
+        "#E1EAE4",
+        "#ECF2EE"
+      ],
+      "bandShare": 0.396,
+      "rect": [
+        3,
+        3,
+        74,
+        15
+      ],
+      "class": "QPushButton",
+      "text": "Executar"
+    },
+    "comboClosed": {
+      "background": "#F5F6F4",
+      "backgroundShare": 0.091,
+      "pixels": 16170,
+      "backgroundMean": "#F9F9F8",
+      "backgroundBand": [
+        "#EDEDEB",
+        "#FDFDFD"
+      ],
+      "bandShare": 0.972,
+      "rect": [
+        3,
+        3,
+        588,
+        18
+      ],
+      "class": "QComboBox",
+      "text": null
+    },
+    "spinButtons": {
+      "background": "#F9FAF8",
+      "backgroundShare": 0.063,
+      "pixels": 255,
+      "backgroundMean": "#F9FAF8",
+      "backgroundBand": [
+        "#F1F2EF",
+        "#FDFDFD"
+      ],
+      "bandShare": 0.749,
+      "rect": [
+        480,
+        4,
+        12,
+        14
+      ],
+      "class": "QgsDoubleSpinBox",
+      "text": "10,000000"
+    },
+    "tabPane": {
+      "background": "#FFFFFF",
+      "backgroundShare": 0.942,
+      "pixels": 24814,
+      "backgroundMean": "#FFFFFF",
+      "backgroundBand": [
+        "#F5F5F5",
+        "#FFFFFF"
+      ],
+      "bandShare": 0.943,
+      "class": "QWidget",
+      "text": null,
+      "tab": "Log"
+    }
+  },
+  "theme": {
+    "themeName": "default",
+    "styleSheetLength": 0,
+    "qtStyle": "ImanAppStyle",
+    "qtStyleObjectName": "QgsAppStyle",
+    "qtStyleBase": "QFusionStyle",
+    "settingUITheme": null,
+    "settingQgisStyle": "fusion",
+    "devicePixelRatio": 1.25,
+    "palette": {
+      "Active": {
+        "Button": "#FFF5F7F2",
+        "ButtonText": "#FF000000",
+        "Window": "#FFEBEEE8",
+        "Highlight": "#FF1E7A4D"
+      },
+      "Inactive": {
+        "Button": "#FFF5F7F2",
+        "ButtonText": "#FF000000",
+        "Window": "#FFEBEEE8",
+        "Highlight": "#FF1E7A4D"
+      },
+      "Disabled": {
+        "Button": "#FFF5F7F2",
+        "ButtonText": "#FF787878",
+        "Window": "#FFEBEEE8",
+        "Highlight": "#FF0078D7"
+      }
+    },
+    "fusionDerived": {
+      "Button": "#F5F7F2",
+      "buttonColor": "#F8F9F6",
+      "tabFrameColor": "#FFFFFF"
+    }
+  },
+  "projectRead": true,
+  "componentsCursorInside": false,
+  "styleButtonCandidates": [
+    "Avançado",
+    "Estilo"
+  ],
+  "compare": {
+    "reference": "buttons-build-20261113-180341",
+    "components": {
+      "pushButton": {
+        "found": true,
+        "sameSize": true,
+        "pixels": 6000,
+        "different": 86,
+        "differentInCorners": 86,
+        "differentOutsideCorners": 0
+      },
+      "pushButtonMenu": {
+        "found": true,
+        "sameSize": true,
+        "pixels": 6000,
+        "different": 86,
+        "differentInCorners": 86,
+        "differentOutsideCorners": 0
+      },
+      "comboBox": {
+        "found": true,
+        "sameSize": true,
+        "pixels": 7000,
+        "different": 0,
+        "differentInCorners": 0,
+        "differentOutsideCorners": 0
+      },
+      "comboBoxEditable": {
+        "found": true,
+        "sameSize": true,
+        "pixels": 7000,
+        "different": 0,
+        "differentInCorners": 0,
+        "differentOutsideCorners": 0
+      },
+      "toolButton": {
+        "found": true,
+        "sameSize": true,
+        "pixels": 4375,
+        "different": 0,
+        "differentInCorners": 0,
+        "differentOutsideCorners": 0
+      },
+      "toolButtonAutoRaise": {
+        "found": true,
+        "sameSize": true,
+        "pixels": 3500,
+        "different": 0,
+        "differentInCorners": 0,
+        "differentOutsideCorners": 0
+      },
+      "toolButtonMenuPopup": {
+        "found": true,
+        "sameSize": true,
+        "pixels": 4830,
+        "different": 0,
+        "differentInCorners": 0,
+        "differentOutsideCorners": 0
+      },
+      "toolButtonInstantPopup": {
+        "found": true,
+        "sameSize": true,
+        "pixels": 3955,
+        "different": 0,
+        "differentInCorners": 0,
+        "differentOutsideCorners": 0
+      },
+      "colorButton": {
+        "found": true,
+        "sameSize": true,
+        "pixels": 3500,
+        "different": 0,
+        "differentInCorners": 0,
+        "differentOutsideCorners": 0
+      },
+      "spinBox": {
+        "found": true,
+        "sameSize": true,
+        "pixels": 3955,
+        "different": 0,
+        "differentInCorners": 0,
+        "differentOutsideCorners": 0
+      },
+      "lineEdit": {
+        "found": true,
+        "sameSize": true,
+        "pixels": 7000,
+        "different": 0,
+        "differentInCorners": 0,
+        "differentOutsideCorners": 0
+      },
+      "tabBar": {
+        "found": true,
+        "sameSize": true,
+        "pixels": 10450,
+        "different": 0,
+        "differentInCorners": 0,
+        "differentOutsideCorners": 0
+      },
+      "tabWidget": {
+        "found": true,
+        "sameSize": true,
+        "pixels": 31075,
+        "different": 0,
+        "differentInCorners": 0,
+        "differentOutsideCorners": 0
+      },
+      "header": {
+        "found": true,
+        "sameSize": true,
+        "pixels": 41250,
+        "different": 0,
+        "differentInCorners": 0,
+        "differentOutsideCorners": 0
+      },
+      "groupBox": {
+        "found": true,
+        "sameSize": true,
+        "pixels": 20000,
+        "different": 0,
+        "differentInCorners": 0,
+        "differentOutsideCorners": 0
+      },
+      "collapsibleGroupBox": {
+        "found": true,
+        "sameSize": true,
+        "pixels": 20000,
+        "different": 0,
+        "differentInCorners": 0,
+        "differentOutsideCorners": 0
+      },
+      "scrollBar": {
+        "found": true,
+        "sameSize": true,
+        "pixels": 4600,
+        "different": 0,
+        "differentInCorners": 0,
+        "differentOutsideCorners": 0
+      },
+      "progressBar": {
+        "found": true,
+        "sameSize": true,
+        "pixels": 6000,
+        "different": 0,
+        "differentInCorners": 0,
+        "differentOutsideCorners": 0
+      },
+      "checkBox": {
+        "found": true,
+        "sameSize": true,
+        "pixels": 4140,
+        "different": 0,
+        "differentInCorners": 0,
+        "differentOutsideCorners": 0
+      },
+      "radioButton": {
+        "found": true,
+        "sameSize": true,
+        "pixels": 4140,
+        "different": 0,
+        "differentInCorners": 0,
+        "differentOutsideCorners": 0
+      }
+    },
+    "buttons": {
+      "normal": {
+        "found": true,
+        "sameSize": true,
+        "pixels": 6000,
+        "different": 86,
+        "differentInCorners": 86,
+        "differentOutsideCorners": 0
+      },
+      "hover": {
+        "found": true,
+        "sameSize": true,
+        "pixels": 6000,
+        "different": 80,
+        "differentInCorners": 80,
+        "differentOutsideCorners": 0
+      },
+      "pressed": {
+        "found": true,
+        "sameSize": true,
+        "pixels": 6000,
+        "different": 108,
+        "differentInCorners": 108,
+        "differentOutsideCorners": 0
+      },
+      "disabled": {
+        "found": true,
+        "sameSize": true,
+        "pixels": 6000,
+        "different": 86,
+        "differentInCorners": 86,
+        "differentOutsideCorners": 0
+      },
+      "default": {
+        "found": true,
+        "sameSize": true,
+        "pixels": 6000,
+        "different": 104,
+        "differentInCorners": 104,
+        "differentOutsideCorners": 0
+      },
+      "focus": {
+        "found": true,
+        "sameSize": true,
+        "pixels": 6000,
+        "different": 90,
+        "differentInCorners": 90,
+        "differentOutsideCorners": 0
+      },
+      "menu": {
+        "found": true,
+        "sameSize": true,
+        "pixels": 6000,
+        "different": 86,
+        "differentInCorners": 86,
+        "differentOutsideCorners": 0
+      }
+    },
+    "regions": {
+      "header": {
+        "before": "#F8F9F7",
+        "after": "#F8F9F7",
+        "beforeMostCommon": "#F4F5F2",
+        "afterMostCommon": "#F4F5F2"
+      },
+      "scrollHandle": {
+        "before": "#FBFCFA",
+        "after": "#FBFCFA",
+        "beforeMostCommon": "#FAFBF9",
+        "afterMostCommon": "#FAFBF9"
+      },
+      "scrollTrack": {
+        "before": "#ECEDEA",
+        "after": "#ECEDEA",
+        "beforeMostCommon": "#ECEDEA",
+        "afterMostCommon": "#ECEDEA"
+      },
+      "styleButton": {
+        "before": "#F9F9F8",
+        "after": "#F9F9F8",
+        "beforeMostCommon": "#F6F7F5",
+        "afterMostCommon": "#F6F7F5"
+      },
+      "colorButton": {
+        "before": "#F9F9F8",
+        "after": "#F9F9F8",
+        "beforeMostCommon": "#F6F7F5",
+        "afterMostCommon": "#F6F7F5"
+      },
+      "optionsOk": {
+        "before": "#E6EEE9",
+        "after": "#E6EEE9",
+        "beforeMostCommon": "#E1EAE4",
+        "afterMostCommon": "#E1EAE4"
+      },
+      "optionsCancel": {
+        "before": "#F9F9F8",
+        "after": "#F9F9F8",
+        "beforeMostCommon": "#F6F7F5",
+        "afterMostCommon": "#F6F7F5"
+      },
+      "tabSelected": {
+        "before": "#FFFFFF",
+        "after": "#FFFFFF",
+        "beforeMostCommon": "#FFFFFF",
+        "afterMostCommon": "#FFFFFF"
+      },
+      "tabUnselected": {
+        "before": "#ECECEC",
+        "after": "#ECECEC",
+        "beforeMostCommon": "#ECECEC",
+        "afterMostCommon": "#ECECEC"
+      },
+      "runButton": {
+        "before": "#E6EEE8",
+        "after": "#E6EEE8",
+        "beforeMostCommon": "#E1EAE4",
+        "afterMostCommon": "#E1EAE4"
+      },
+      "comboClosed": {
+        "before": "#F9F9F8",
+        "after": "#F9F9F8",
+        "beforeMostCommon": "#F5F6F4",
+        "afterMostCommon": "#F5F6F4"
+      },
+      "spinButtons": {
+        "before": "#F9FAF8",
+        "after": "#F9FAF8",
+        "beforeMostCommon": "#F9FAF8",
+        "afterMostCommon": "#F9FAF8"
+      },
+      "tabPane": {
+        "before": "#FFFFFF",
+        "after": "#FFFFFF",
+        "beforeMostCommon": "#FFFFFF",
+        "afterMostCommon": "#FFFFFF"
+      }
+    },
+    "referenceTheme": "QgsAppStyle",
+    "referenceRadius": {
+      "normal": 2.133,
+      "hover": 2.133,
+      "pressed": 2.133,
+      "disabled": 2.133,
+      "default": 2.133,
+      "focus": 2.133,
+      "menu": 2.133
+    }
+  }
+}

@@ -1,0 +1,7 @@
+A9: iman_brand.h gerado da develop 4a97fec449 (o build_brand.py e o brand.json da develop) contra o do build final 5fd95d905d
+
+33a34
+> #define IMAN_BUTTON_RADIUS_PX 4
+
+sha256 develop c4b8f57d8cc041eb8a2fe2df22d68eb6ed422bdf0e6932850cac7295191da661
+sha256 final   e3db183314ee2cc5fc454f51c8c651a5835be9bd55c59a30854e56beff430af7
