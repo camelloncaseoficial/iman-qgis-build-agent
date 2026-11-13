@@ -1,0 +1,20 @@
+{
+  "themeName": "IMAN Terra",
+  "styleSheetLength": 14518,
+  "qtStyle": "QStyleSheetStyle",
+  "qtStyleBase": null,
+  "qtStyleBaseName": null,
+  "qtStyleKeys": [
+    "windowsvista",
+    "Windows",
+    "Fusion"
+  ],
+  "uiThemes": [
+    "Blend of Gray",
+    "IMAN Terra",
+    "Night Mapping",
+    "default"
+  ],
+  "settingUITheme": "IMAN Terra",
+  "settingQgisStyle": "fusion"
+}

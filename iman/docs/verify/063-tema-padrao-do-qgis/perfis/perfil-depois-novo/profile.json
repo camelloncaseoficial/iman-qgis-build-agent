@@ -1,0 +1,19 @@
+{
+  "themeName": "default",
+  "styleSheetLength": 0,
+  "qtStyle": "QgsAppStyle",
+  "qtStyleBase": "QFusionStyle",
+  "qtStyleBaseName": "fusion",
+  "qtStyleKeys": [
+    "windowsvista",
+    "Windows",
+    "Fusion"
+  ],
+  "uiThemes": [
+    "Blend of Gray",
+    "Night Mapping",
+    "default"
+  ],
+  "settingUITheme": null,
+  "settingQgisStyle": "fusion"
+}
