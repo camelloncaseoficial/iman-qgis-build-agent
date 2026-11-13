@@ -181,6 +181,9 @@ if (-not $SkipInstall) {
       Write-Step "tema '$themeName' de um build anterior removido de resources\themes"
     }
   }
+  # avisos de terceiros (fatia 059): o "Sobre" do produto le o THIRD_PARTY_NOTICES.md dois niveis acima do prefixo,
+  # onde o instalador o poe ({app}); no build, a raiz do install (o New-RuntimeTree.ps1 so leva apps\qgis-ltr)
+  Copy-Item (Join-Path $RepoRoot 'iman\notices\THIRD_PARTY_NOTICES.md') (Join-Path $Paths.Install 'THIRD_PARTY_NOTICES.md') -Force
   # plugin IMAN REURB (fatia 051): a pasta do commit da trava, nunca a copia de trabalho do clone
   $plugin = Export-ImanPlugin (Join-Path $inst 'python\plugins')
   Write-Step "plugin $($plugin.id) $($plugin.version) da tag $($plugin.tag) ($($plugin.commit.Substring(0, 10)))"

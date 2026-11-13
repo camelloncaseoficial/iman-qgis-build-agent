@@ -205,6 +205,8 @@
 #include "qgscrashhandler.h"
 
 #include "iman_brand.h" // IMAN: marca da fonte unica, gerado no build a partir de iman/brand
+#include "iman/imanaboutdialog.h" // IMAN: Sobre do produto (fatia 059)
+#include "iman/imanhomepage.h"    // IMAN: pagina inicial do produto (fatia 059)
 #include "qgisapp.h"
 #include "moc_qgisapp.cpp"
 #include "qgisappinterface.h"
@@ -1147,7 +1149,9 @@ QgisApp::QgisApp( QSplashScreen *splash, AppOptions options, const QString &root
 
   mCentralContainer = new QStackedWidget;
   mCentralContainer->insertWidget( 0, mMapCanvas );
-  mCentralContainer->insertWidget( 1, mWelcomePage );
+  // IMAN: a pagina inicial do produto no lugar da QgsWelcomePage (fatia 059, P1); a pagina nativa segue criada, fora
+  // da tela, dona do modelo de recentes que a do produto mostra
+  mCentralContainer->insertWidget( 1, new ImanHomePage( mWelcomePage ) );
 
   centralLayout->addWidget( mCentralContainer, 0, 0, 2, 1 );
   mInfoBar->raise();
@@ -3193,6 +3197,8 @@ void QgisApp::createActions()
   mActionCheckQgisVersion->setVisible( QgsSettings().value( QStringLiteral( "/qgis/allowVersionCheck" ), true ).toBool() );
   connect( mActionAbout, &QAction::triggered, this, &QgisApp::about );
   connect( mActionSponsors, &QAction::triggered, this, &QgisApp::sponsors );
+  // IMAN: a "Pagina do IMAN Terra" sai do menu Ajuda, o unico lugar da interface em que o item aparece (fatia 059, P3)
+  mHelpMenu->removeAction( mActionQgisHomePage );
 
   connect( mActionShowPinnedLabels, &QAction::toggled, this, &QgisApp::showPinnedLabels );
   connect( mActionShowUnplacedLabels, &QAction::toggled, this, [=]( bool active ) {
@@ -5473,15 +5479,27 @@ void QgisApp::sponsors()
 
 void QgisApp::about()
 {
-  static QgsAbout *sAbt = nullptr;
-  if ( !sAbt )
+  // IMAN: o item Sobre abre o "Sobre o IMAN Terra"; o QgsAbout abaixo, intacto, abre pelo botao "Sobre o QGIS" dele
+  // (fatia 059, P2)
+  static ImanAboutDialog *sImanAbout = nullptr;
+  if ( !sImanAbout )
   {
-    sAbt = new QgsAbout( this );
+    sImanAbout = new ImanAboutDialog( this );
+    connect( sImanAbout, &ImanAboutDialog::aboutQgisRequested, this, [this] {
+      static QgsAbout *sAbt = nullptr;
+      if ( !sAbt )
+      {
+        sAbt = new QgsAbout( this );
+      }
+      sAbt->setVersion( QgisApp::getVersionString() );
+      sAbt->show();
+      sAbt->raise();
+      sAbt->activateWindow();
+    } );
   }
-  sAbt->setVersion( QgisApp::getVersionString() );
-  sAbt->show();
-  sAbt->raise();
-  sAbt->activateWindow();
+  sImanAbout->show();
+  sImanAbout->raise();
+  sImanAbout->activateWindow();
 }
 
 QString QgisApp::getVersionString()
