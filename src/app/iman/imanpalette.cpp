@@ -1,7 +1,7 @@
 /***************************************************************************
     imanpalette.cpp
     ---------------------
-    IMAN Terra: cores da marca pela paleta do Qt (fatias 064 e 065). Ver
+    IMAN Terra: cores da marca pela paleta do Qt (fatias 064, 065 e 066). Ver
     imanpalette.h.
  ***************************************************************************
  *                                                                         *
@@ -36,6 +36,7 @@ bool ImanPalette::apply( const QString &uiTheme )
   const QColor highlight( IMAN_COLOR_BRAND_2 );
   const QColor highlightedText( IMAN_COLOR_PANEL );
   const QColor window( IMAN_COLOR_BG );
+  const QColor button( IMAN_COLOR_PANEL_2 );
   QPalette palette = QApplication::palette();
   // fatia 064: o destaque, so nos grupos Active e Inactive
   for ( const QPalette::ColorGroup group : { QPalette::Active, QPalette::Inactive } )
@@ -44,8 +45,13 @@ bool ImanPalette::apply( const QString &uiTheme )
     palette.setColor( group, QPalette::HighlightedText, highlightedText );
   }
   // fatia 065: o fundo das janelas, nos tres grupos (um painel desabilitado nao vira remendo de outra cor)
+  // fatia 066: botoes e abas, nos tres grupos (a cor de fundo do botao nao indica estado; o desabilitado segue
+  // indicado pelo texto)
   for ( const QPalette::ColorGroup group : { QPalette::Active, QPalette::Inactive, QPalette::Disabled } )
+  {
     palette.setColor( group, QPalette::Window, window );
+    palette.setColor( group, QPalette::Button, button );
+  }
   QApplication::setPalette( palette );
   return true;
 }

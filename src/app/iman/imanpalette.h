@@ -4,9 +4,10 @@
     IMAN Terra: as cores da marca pela paleta do Qt, sem folha de estilo
     (emendas de 2026-11-12 e de 2026-11-13 ao D-IMAN-040), uma mudanca por
     fatia: o destaque (item e texto selecionados) em verde IMAN (fatia 064,
-    Highlight e HighlightedText, grupos Active e Inactive) e o fundo das
-    janelas no cinza esverdeado IMAN (fatia 065, Window, grupos Active,
-    Inactive e Disabled). Cores so da paleta da marca (IMAN_COLOR_*, do
+    Highlight e HighlightedText, grupos Active e Inactive), o fundo das
+    janelas no cinza esverdeado IMAN (fatia 065, Window) e os botoes e abas
+    no panel-2 IMAN (fatia 066, Button), esses dois nos grupos Active,
+    Inactive e Disabled. Cores so da paleta da marca (IMAN_COLOR_*, do
     brand.json), e so quando o tema em uso e o default do QGIS.
  ***************************************************************************
  *                                                                         *
@@ -36,9 +37,9 @@ class APP_EXPORT ImanPalette
     /**
      * Aplica as cores IMAN na paleta da aplicacao se \a uiTheme da o tema default, num unico setPalette: o destaque
      * (Highlight = brand-2, HighlightedText = panel; grupos Active e Inactive; o Disabled fica como o estilo o
-     * entrega) e o fundo das janelas (Window = bg; grupos Active, Inactive e Disabled, porque fundo nao indica
-     * estado). Os demais papeis ficam como o estilo os entrega. Chamar depois do QApplication::setStyle do arranque,
-     * que repoe a paleta do estilo. Devolve se aplicou.
+     * entrega), o fundo das janelas (Window = bg) e os botoes e abas (Button = panel-2), esses dois nos grupos
+     * Active, Inactive e Disabled, porque fundo nao indica estado. Os demais papeis ficam como o estilo os entrega.
+     * Chamar depois do QApplication::setStyle do arranque, que repoe a paleta do estilo. Devolve se aplicou.
      */
     static bool apply( const QString &uiTheme );
 };

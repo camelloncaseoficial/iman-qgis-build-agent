@@ -1493,7 +1493,7 @@ int main( int argc, char *argv[] )
     // based on the default style (or we miss custom style tweaks)
     QApplication::setStyle( new QgsAppStyle( activeStyleName ) );
   }
-  // IMAN Terra (fatias 064 e 065): destaque e fundo IMAN pela paleta do Qt, depois do setStyle, so com o tema default
+  // IMAN Terra (fatias 064 a 066): destaque, fundo e botoes pela paleta do Qt, depois do setStyle, so com o tema default
   ImanPalette::apply( theme );
 
   // set authentication database directory
