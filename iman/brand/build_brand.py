@@ -11,10 +11,11 @@ Saidas (fora do repo, em --out):
   - iman_<locale>.ts: a traducao sobreposta (D-IMAN-041, regra 2), so com as mensagens das classes aplicativo e
     versao da curadoria e as superficies do Bloco D ('extra'); o Build-Qgis.ps1 compila com o lrelease fixado;
   - qgis_global_settings.ini: o do QGIS com a checagem de versao desligada e o SRC padrao de projeto novo (trocados
-    no lugar), mais o idioma padrao, o feed de noticias desligado, os enderecos do menu Ajuda, o tema de interface
-    padrao e o SRC de camada sem SRC (fatia 049) e o plugin embarcado ligado por padrao (fatia 051);
+    no lugar), mais o idioma padrao, o feed de noticias desligado, os enderecos do menu Ajuda, o SRC de camada sem
+    SRC (fatia 049) e o plugin embarcado ligado por padrao (fatia 051); sem tema de interface desde a fatia 063;
   - --header: iman_brand.h, os textos de marca para o C++ (Bloco D), a versao do produto e, desde a fatia 059, a
-    paleta do cabecalho do style.qss do tema padrao. So e regravado se o conteudo mudou, para nao recompilar a toa.
+    paleta do cabecalho do style.qss de iman/brand/theme (que, desde a 063, fica fora do build: so a paleta dele e
+    lida aqui). So e regravado se o conteudo mudou, para nao recompilar a toa.
 
 Marcadores dos textos da curadoria: {product}, {PRODUCT}, {engine}, {org}, {url}.
 """
@@ -110,8 +111,11 @@ def write_global_settings(path, brand, plugin_id):
         ("app", "projections\\defaultProjectCrs"): brand["default_project_crs"],
         ("app", "projections\\newProjectCrsBehavior"): brand["new_project_crs_behavior"],
     }
-    # chaves que o ini do QGIS nao tem e que vao no fim, em secao propria: se ele passar a te-las, duplicaria
-    appended = {("UI", "UITheme"), ("Projections", "layerDefaultCrs"), ("PythonPlugins", plugin_id)}
+    # chaves que o ini do QGIS nao tem e que vao no fim, em secao propria: se ele passar a te-las, duplicaria.
+    # Sem UI/UITheme desde a fatia 063 (emenda de 2026-11-12 ao D-IMAN-040): o tema e o do QGIS. A chave fica ausente,
+    # como no QGIS oficial, e nao "default": o main.cpp le UI/UITheme sem valor padrao e, com o valor vazio, usa o
+    # estilo fusion, o mesmo do oficial; com "default", ficaria o estilo da plataforma, outra cara
+    appended = {("Projections", "layerDefaultCrs"), ("PythonPlugins", plugin_id)}
     replaced = []
     present = []
     group = None
@@ -146,10 +150,6 @@ def write_global_settings(path, brand, plugin_id):
         "",
         "[qgis]",
     ] + ["%s=%s" % (k, urls[k]) for k in sorted(urls)] + [
-        "",
-        "# tema de interface padrao (pasta em resources/themes, copiada pelo Build-Qgis.ps1 de iman/brand/theme)",
-        "[UI]",
-        "UITheme=%s" % brand["ui_theme"],
         "",
         "# SRC de camada sem SRC: lida sem a secao app (Projections/layerDefaultCrs em qgsproject.cpp e qgisapp.cpp)",
         "[Projections]",
@@ -187,10 +187,16 @@ def splash_text_color(brand):
 
 
 def theme_palette(brand):
-    """Paleta D-IMAN-026 lida do cabecalho do style.qss do tema padrao (as linhas 'nome #RRGGBB | ...' depois de
+    """Paleta D-IMAN-026 lida do cabecalho do style.qss de iman/brand/theme (as linhas 'nome #RRGGBB | ...' depois de
     'Paleta ATIVA'), a mesma que o Test-ThemeQss.ps1 usa como fonte: a pagina inicial e o Sobre da marca (fatia 059)
-    pintam com estes tokens, sem hex proprio no C++."""
-    qss = os.path.join(HERE, "theme", brand["ui_theme"], "style.qss")
+    pintam com estes tokens, sem hex proprio no C++. Desde a fatia 063 o brand.json nao tem ui_theme e o tema fica
+    fora do build: o arquivo e o da unica pasta de iman/brand/theme com style.qss, como no Test-ThemeQss.ps1."""
+    root = os.path.join(HERE, "theme")
+    found = [os.path.join(root, d, "style.qss") for d in sorted(os.listdir(root))
+             if os.path.isfile(os.path.join(root, d, "style.qss"))]
+    if len(found) != 1:
+        raise SystemExit("esperado um style.qss em %s, achados %d" % (root, len(found)))
+    qss = found[0]
     with io.open(qss, "r", encoding="utf-8") as fh:
         text = fh.read()
     start = text.find("Paleta ATIVA")

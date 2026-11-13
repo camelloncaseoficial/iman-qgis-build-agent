@@ -65,6 +65,12 @@ def ink(widget):
     return {"ink": count, "pixels": image.width() * image.height()}
 
 
+def _base_style():
+    style = QApplication.style()
+    base = style.baseStyle() if hasattr(style, "baseStyle") else None
+    return base.metaObject().className() if base is not None else None
+
+
 def step_theme():
     settings = QgsSettings()
     themes = QgsApplication.uiThemes()
@@ -72,6 +78,9 @@ def step_theme():
         "themeName": QgsApplication.themeName(),
         "styleSheetLength": len(QApplication.instance().styleSheet()),
         "qtStyle": QApplication.style().metaObject().className(),
+        # fatia 063 (A1): o estilo de base do proxy do QGIS (QgsAppStyle) e a chave qgis/style do perfil
+        "qtStyleBase": _base_style(),
+        "settingQgisStyle": settings.value("qgis/style", None),
         "uiThemes": sorted(themes.keys()),
         "themePaths": {k: v for k, v in themes.items() if v},
         "defaultThemesFolder": QgsApplication.defaultThemesFolder(),

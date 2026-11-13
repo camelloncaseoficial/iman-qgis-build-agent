@@ -1,0 +1,383 @@
+{
+  "captures": {
+    "01-janela.png": [
+      1920,
+      1111
+    ],
+    "02-botao-com-menu.png": [
+      176,
+      176
+    ],
+    "03-painel-camadas.png": [
+      368,
+      898
+    ],
+    "03b-setas-da-arvore.png": [
+      660,
+      264
+    ],
+    "04-barra-de-rolagem.png": [
+      42,
+      2415
+    ],
+    "04b-caixa-de-ferramentas.png": [
+      373,
+      898
+    ],
+    "07-abas-do-processamento.png": [
+      328,
+      78
+    ],
+    "07b-abas-do-processamento-registro.png": [
+      328,
+      78
+    ],
+    "07c-dialogo-do-processamento.png": [
+      1125,
+      900
+    ],
+    "05-caixa-de-lista.png": [
+      3552,
+      90
+    ],
+    "06-caixa-de-numero.png": [
+      4244,
+      120
+    ],
+    "05b-propriedades-da-camada.png": [
+      1375,
+      950
+    ]
+  },
+  "controls": {
+    "toolButtonMenu": {
+      "candidates": [
+        [
+          "mSelectionToolBar",
+          "mActionSelectFeatures"
+        ],
+        [
+          "mDigitizeToolBar",
+          "mActionDigitizeWithSegment"
+        ],
+        [
+          "mDigitizeToolBar",
+          "mActionVertexToolActiveLayer"
+        ],
+        [
+          "mAttributesToolBar",
+          "mActionFeatureAction"
+        ],
+        [
+          "mAttributesToolBar",
+          "mActionOpenTable"
+        ],
+        [
+          "mAttributesToolBar",
+          "mActionMeasure"
+        ],
+        [
+          "mSelectionToolBar",
+          "mActionSelectByForm"
+        ],
+        [
+          "mSelectionToolBar",
+          "mActionDeselectAll"
+        ],
+        [
+          "mSelectionToolBar",
+          "mProcessingAlg_native:selectbylocation"
+        ],
+        [
+          "",
+          ""
+        ]
+      ],
+      "class": "QToolButton",
+      "objectName": "",
+      "size": [
+        31,
+        31
+      ],
+      "visible": true,
+      "toolbar": "mSelectionToolBar",
+      "action": "mActionSelectFeatures",
+      "toolTip": "<b>Selecionar Feições por Área ou Clique Simples</b>",
+      "arrow": {
+        "rect": [
+          21,
+          2,
+          8,
+          27
+        ],
+        "scale": 1.25,
+        "ink": 90,
+        "pixels": 340,
+        "background": "#f5f7f2"
+      }
+    },
+    "layerTreeBranches": {
+      "view": {
+        "class": "QgsLayerTreeView",
+        "objectName": "theLayerTreeView",
+        "size": [
+          294,
+          660
+        ],
+        "visible": true
+      },
+      "indentation": 20,
+      "rows": [
+        {
+          "text": "Grupo de teste 063",
+          "expanded": true,
+          "rect": [
+            0,
+            0,
+            20,
+            22
+          ],
+          "scale": 1.25,
+          "ink": 33,
+          "pixels": 700,
+          "background": "#ffffff"
+        },
+        {
+          "text": "Grupo fechado 063",
+          "expanded": false,
+          "rect": [
+            0,
+            44,
+            20,
+            22
+          ],
+          "scale": 1.25,
+          "ink": 30,
+          "pixels": 700,
+          "background": "#ffffff"
+        }
+      ]
+    },
+    "scrollBar": {
+      "found": true,
+      "class": "QScrollBar",
+      "objectName": "",
+      "size": [
+        10,
+        642
+      ],
+      "visible": true,
+      "range": [
+        0,
+        36
+      ],
+      "up": {
+        "rect": null,
+        "ink": 0,
+        "pixels": 0
+      },
+      "down": {
+        "rect": null,
+        "ink": 0,
+        "pixels": 0
+      },
+      "toolboxBranches": [
+        {
+          "text": "Análise de dados Raster ",
+          "expanded": false,
+          "rect": [
+            0,
+            0,
+            20,
+            22
+          ],
+          "scale": 1.25,
+          "ink": 30,
+          "pixels": 700,
+          "background": "#ffffff"
+        },
+        {
+          "text": "Análise de rede",
+          "expanded": false,
+          "rect": [
+            0,
+            22,
+            20,
+            22
+          ],
+          "scale": 1.25,
+          "ink": 30,
+          "pixels": 700,
+          "background": "#ffffff"
+        },
+        {
+          "text": "Análise vetorial",
+          "expanded": false,
+          "rect": [
+            0,
+            44,
+            20,
+            22
+          ],
+          "scale": 1.25,
+          "ink": 30,
+          "pixels": 700,
+          "background": "#ffffff"
+        },
+        {
+          "text": "Cartografia",
+          "expanded": false,
+          "rect": [
+            0,
+            66,
+            20,
+            22
+          ],
+          "scale": 1.25,
+          "ink": 30,
+          "pixels": 700,
+          "background": "#ffffff"
+        },
+        {
+          "text": "Análise de dados Raster ",
+          "expanded": true,
+          "rect": [
+            0,
+            0,
+            20,
+            22
+          ],
+          "scale": 1.25,
+          "ink": 33,
+          "pixels": 700,
+          "background": "#ffffff"
+        }
+      ]
+    },
+    "processingTabs": {
+      "found": true,
+      "title": "Geometria do vetor - Buffer",
+      "tabs": [
+        {
+          "text": "Parâmetros",
+          "selected": true,
+          "tabWidth": 81,
+          "tabHeight": 27,
+          "textWidth": 50,
+          "visible": true
+        },
+        {
+          "text": "Log",
+          "selected": false,
+          "tabWidth": 46,
+          "tabHeight": 27,
+          "textWidth": 16,
+          "visible": true
+        }
+      ],
+      "ink": {
+        "rect": [
+          0,
+          0,
+          127,
+          27
+        ],
+        "scale": 1.25,
+        "ink": 1032,
+        "pixels": 5406,
+        "background": "#ffffff"
+      },
+      "tabsSecond": [
+        {
+          "text": "Parâmetros",
+          "selected": false,
+          "tabWidth": 81,
+          "tabHeight": 27,
+          "textWidth": 50,
+          "visible": true
+        },
+        {
+          "text": "Log",
+          "selected": true,
+          "tabWidth": 46,
+          "tabHeight": 27,
+          "textWidth": 16,
+          "visible": true
+        }
+      ]
+    },
+    "comboBox": {
+      "found": true,
+      "class": "QComboBox",
+      "objectName": "cboRenderers",
+      "size": [
+        943,
+        20
+      ],
+      "visible": true,
+      "text": "Símbolo Simples",
+      "arrow": {
+        "rect": [
+          928,
+          3,
+          12,
+          14
+        ],
+        "scale": 1.25,
+        "ink": 30,
+        "pixels": 270,
+        "background": "#ffffff"
+      }
+    },
+    "spinBox": {
+      "found": true,
+      "candidates": 3,
+      "class": "QgsDoubleSpinBox",
+      "objectName": "spinAngle",
+      "size": [
+        845,
+        20
+      ],
+      "visible": true,
+      "text": "0,00 °",
+      "up": {
+        "rect": [
+          831,
+          4,
+          12,
+          5
+        ],
+        "scale": 1.25,
+        "ink": 0,
+        "pixels": 90,
+        "background": "#ffffff"
+      },
+      "down": {
+        "rect": [
+          831,
+          11,
+          12,
+          5
+        ],
+        "scale": 1.25,
+        "ink": 0,
+        "pixels": 90,
+        "background": "#ffffff"
+      }
+    }
+  },
+  "theme": {
+    "themeName": "IMAN Terra",
+    "styleSheetLength": 14518,
+    "qtStyle": "QStyleSheetStyle",
+    "qtStyleBase": null,
+    "settingUITheme": "IMAN Terra",
+    "settingQgisStyle": "fusion"
+  },
+  "projectRead": true,
+  "window": [
+    1536,
+    889,
+    true
+  ]
+}

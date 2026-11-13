@@ -13,8 +13,9 @@
 
   Marca (BL-4): antes do configure, iman/brand/build_brand.py gera da fonte unica o iman_brand.h (na raiz do build,
   que o QGIS ja poe no include path), a traducao sobreposta iman_<idioma>.ts (compilada pelo lrelease fixado) e o
-  qgis_global_settings.ini; depois do install, o .qm e o .ini vao para i18n e resources da instalacao, e o tema
-  padrao (iman/brand/theme/<ui_theme>, fatia 049) para resources\themes.
+  qgis_global_settings.ini; depois do install, o .qm e o .ini vao para i18n e resources da instalacao. Desde a fatia
+  063 (emenda de 2026-11-12 ao D-IMAN-040) o tema do produto (iman/brand/theme, fatia 049) fica fora do build: o
+  produto usa o tema default do QGIS, e a pasta que um build anterior deixou em resources\themes sai.
 
   Plugin IMAN REURB (fatia 051): depois do install, a pasta do plugin sai do commit da trava
   (iman/plugin/plugin.lock.json) do clone -PluginRepo (padrao ..\iman-qgis-plugin-agent) para
@@ -171,14 +172,15 @@ if (-not $SkipInstall) {
   # o install repoe o .ini do QGIS: a marca vai por cima a cada install
   Copy-Item $brandQm (Join-Path $inst 'i18n') -Force
   Copy-Item (Join-Path $brandOut 'qgis_global_settings.ini') (Join-Path $inst 'resources\qgis_global_settings.ini') -Force
-  # tema padrao (fatia 049): a pasta de iman/brand/theme com o nome do ui_theme do brand.json, refeita do zero em
-  # resources\themes, ao lado dos temas do QGIS (que o install poe la e esta copia nao toca)
-  $themeName = (Get-Content (Join-Path $RepoRoot 'iman\brand\brand.json') -Raw -Encoding utf8 | ConvertFrom-Json).ui_theme
-  $themeSrc = Join-Path $RepoRoot "iman\brand\theme\$themeName"
-  if (-not (Test-Path (Join-Path $themeSrc 'style.qss'))) { throw "tema '$themeName' do brand.json sem style.qss em $themeSrc" }
-  $themeDst = Join-Path $inst "resources\themes\$themeName"
-  if (Test-Path $themeDst) { Remove-Item -Recurse -Force $themeDst }
-  Copy-Item -Recurse $themeSrc $themeDst
+  # tema do produto fora do build (fatia 063): o install do QGIS nao apaga o que ele nao instala, e a pasta que um
+  # build anterior copiou de iman/brand/theme para resources\themes (fatia 049) sai; os temas do QGIS ficam
+  foreach ($themeName in @(Get-ChildItem (Join-Path $RepoRoot 'iman\brand\theme') -Directory | ForEach-Object Name)) {
+    $themeDst = Join-Path $inst "resources\themes\$themeName"
+    if (Test-Path -LiteralPath $themeDst) {
+      Remove-Item -LiteralPath $themeDst -Recurse -Force
+      Write-Step "tema '$themeName' de um build anterior removido de resources\themes"
+    }
+  }
   # avisos de terceiros (fatia 059): o "Sobre" do produto le o THIRD_PARTY_NOTICES.md dois niveis acima do prefixo,
   # onde o instalador o poe ({app}); no build, a raiz do install (o New-RuntimeTree.ps1 so leva apps\qgis-ltr)
   Copy-Item (Join-Path $RepoRoot 'iman\notices\THIRD_PARTY_NOTICES.md') (Join-Path $Paths.Install 'THIRD_PARTY_NOTICES.md') -Force

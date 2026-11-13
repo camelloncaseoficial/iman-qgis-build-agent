@@ -7,13 +7,15 @@
    sairam so as seis regras da camada de marca (#qa, #qatile, #rec, #ImanHomeVersao,
    #ImanSobreCreditos, #ImanTerraMenuBtn), que estilizavam widgets do plugin de marca
    da distro, que o fork nao tem.
-   COMO CHEGA AO PRODUTO: e um tema nativo do QGIS. O iman/build/Build-Qgis.ps1 copia
-   esta pasta para <pkgDataPath>/resources/themes/IMAN Terra/ da instalacao (o
-   New-RuntimeTree.ps1 a leva junto para o instalador), e o qgis_global_settings.ini
-   gerado pelo iman/brand/build_brand.py traz UI/UITheme=IMAN Terra, valor de
-   iman/brand/brand.json (ui_theme). No arranque o QGIS aplica o tema ao aplicativo
-   inteiro (QgsApplication::setUITheme) e troca o estilo do Qt para fusion. A escolha
-   do usuario em Opcoes > Geral vence a global.
+   FORA DO BUILD DESDE A FATIA 063 (emenda de 2026-11-12 ao D-IMAN-040): o produto
+   usa o tema default do QGIS. Este arquivo fica no repositorio como referencia, com
+   a paleta do cabecalho, e nao vai para a instalacao nem para o instalador: o
+   iman/build/Build-Qgis.ps1 nao o copia (e remove a pasta que um build anterior
+   deixou em resources/themes), e o qgis_global_settings.ini gerado pelo
+   iman/brand/build_brand.py nao escolhe tema. Regra de aparencia nova volta uma por
+   vez, por briefing. O iman/build/Test-ThemeQss.ps1 segue guardando este arquivo, e
+   o build_brand.py segue lendo a paleta abaixo para o iman_brand.h (IMAN_COLOR_*,
+   usadas pela pagina inicial e pelo Sobre do produto, fatia 059).
    Recolore a chrome da UI Qt (menus, toolbars, headers, selecao, abas, botoes,
    campos, scrollbars) na linguagem do comp (docs/TerraWindow.dc.html da distro),
    MANTENDO areas de conteudo (arvore, tabelas) claras p/ legibilidade.

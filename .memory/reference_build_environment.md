@@ -106,6 +106,9 @@ Medido no patch 049p (2026-11-04), laudo `iman/docs/verify/049-tema-e-padroes/RE
   desinstalacao) e o cache do alvo Build tambem: o proximo `Test-Installed` precisa de novo do `-ResetProductData`.
 - **O gate pelo pwsh desta ferramenta caiu no titulo do console** (0xE9, rodada 1 da fatia 049): o build aninhado nao
   tem console. A rodada do gate vai para o sponsor, num terminal com janela propria.
+  **Vencida pela fatia 061** (briefing 063, correcao de 2026-11-13): a 061 rodou o gate por esta ferramenta
+  (`pass_e0c555b4f2`, 2026-11-11 15:26, 268 s). A Crew roda o gate depois do PR aberto; se cair, a rodada conta e o
+  `/deliver` cola a saida do erro.
 - **Captura da tabela de atributos** saiu na escala 1,25 numa rodada (961x441 contra 769x353): comparar por regra, nao
   por tamanho.
 - **`gh` sem `--repo` resolve para o upstream `qgis/QGIS`** (o remoto `upstream`): o `/deliver` da 049 leu "sem PR" assim, com o PR #5 aberto. Todo `gh` leva `--repo camelloncaseoficial/iman-qgis-build-agent`.
@@ -180,3 +183,21 @@ Medido na fatia 059 (2026-11-12), laudo `iman/docs/verify/059-prototipo-pagina-i
 - **Nada instalado** nesta fatia; o IMAN Terra da 061 segue instalado para o smoke do sponsor.
 - **Tempos:** configure + build 289 s, install 372 s; incremental so com o commit 100 s + install 378 s; capturas da
   059 cerca de 70 s; smoke 30 s. D: com 33 GB livres.
+
+Medido na fatia 063 (2026-11-13), laudo `iman/docs/verify/063-tema-padrao-do-qgis/README.md`:
+
+- **Tema do produto fora do build:** sem `ui_theme` no `brand.json` e sem `[UI]` na global; o `Build-Qgis.ps1` remove a
+  pasta `resources\themes\IMAN Terra` que um build anterior deixou (o `cmake --install` nao apaga o que nao instala).
+- **`UI/UITheme` ausente e nao `default`:** o `main.cpp:1459` le a chave sem valor padrao; vazia, o QGIS usa `fusion`
+  (`QgsAppStyle` sobre `QFusionStyle`), como o oficial; `default` daria o estilo do Windows. Todo perfil (o do oficial
+  tambem) termina com `qgis/style=fusion`, gravado pelo `main.cpp:1487`.
+- **Captura em pixels fisicos:** o `grab()` sai na escala da tela (1,25); retangulo de `subControlRect` e logico e
+  precisa ser multiplicado pelo `devicePixelRatio` da imagem antes de medir.
+- **Botao com menu do QGIS** monta a lista com `addAction`, sem `setMenu`: `menu()` volta `None`; achar por
+  `popupMode() == MenuButtonPopup` e `actions()`.
+- **Commit no meio do build:** o `qgsversion.h` sai do HEAD do comeco do build; um commit depois disso faz o
+  `version` do smoke cair (revisao diferente do HEAD). Commitar antes do build, ou refazer o incremental (7 min).
+- **Perfil da develop** para reabrir com outro build: `D:\iman-terra-build\verify\063-perfil-da-develop`.
+- **Disco:** D: com 35 GB livres no comeco. **Tempos:** build com a volta da 059 393 s + install 355 s; incremental so
+  com a marca 95 a 101 s + install 303 a 390 s; setas 40 s; perfis 12 a 20 s; `Test-ThemeDefaults` 40 s.
+- Nada instalado; o IMAN Terra da 061 segue instalado (com o tema) para o smoke do sponsor.

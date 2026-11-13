@@ -1,0 +1,121 @@
+{
+  "captures": {},
+  "theme": {
+    "themeName": "default",
+    "styleSheetLength": 0,
+    "qtStyle": "QgsAppStyle",
+    "qtStyleBase": "QFusionStyle",
+    "settingQgisStyle": "fusion",
+    "uiThemes": [
+      "Blend of Gray",
+      "Night Mapping",
+      "default"
+    ],
+    "themePaths": {
+      "Night Mapping": "C:/PROGRA~1/QGIS34~1.13/apps/qgis-ltr/resources/themes/Night Mapping",
+      "Blend of Gray": "C:/PROGRA~1/QGIS34~1.13/apps/qgis-ltr/resources/themes/Blend of Gray"
+    },
+    "defaultThemesFolder": "C:/PROGRA~1/QGIS34~1.13/apps/qgis-ltr/./resources/themes",
+    "userThemesFolder": "D:\\iman-terra-build\\smoke\\theme-official-new-20261113-063713\\profiles\\profiles\\iman-smoke//themes",
+    "settingUITheme": null
+  },
+  "crs": {
+    "atStart": "EPSG:4326",
+    "defaultProjectCrs": "EPSG:4326",
+    "newProjectCrsBehavior": "UseCrsOfFirstLayerAdded",
+    "layerDefaultCrs": null,
+    "unknownCrsBehavior": "NoAction",
+    "defaultCrsForNewLayers": "EPSG:4326",
+    "afterNewProject": "EPSG:4326",
+    "afterNewProjectDescription": "WGS 84"
+  },
+  "distroLayerKey": {
+    "probe": "EPSG:5880",
+    "before": "EPSG:4326",
+    "withDistroKey_app_projections_layerDefaultCrs": "EPSG:4326",
+    "withKey_Projections_layerDefaultCrs": "EPSG:5880",
+    "after": "EPSG:4326"
+  },
+  "options": {
+    "found": true,
+    "projectGlobalCrs": "EPSG:4326",
+    "layerGlobalCrs": "EPSG:4326",
+    "radProjectUseCrsOfFirstLayer": {
+      "checked": true,
+      "text": "Usar SRC de la primera capa añadida"
+    },
+    "radProjectUseDefaultCrs": {
+      "checked": false,
+      "text": "&Usar un SRC predeterminado"
+    },
+    "cmbUITheme": {
+      "current": "default",
+      "items": [
+        "default",
+        "Night Mapping",
+        "Blend of Gray"
+      ]
+    },
+    "scrollBarWidth": 14
+  },
+  "projectRead": true,
+  "dock": {
+    "title": "Capas",
+    "buttons": {
+      "qt_dockwidget_floatbutton": {
+        "visible": true,
+        "size": [
+          13,
+          15
+        ],
+        "iconNull": false,
+        "ink": 101,
+        "pixels": 304
+      },
+      "qt_dockwidget_closebutton": {
+        "visible": true,
+        "size": [
+          13,
+          15
+        ],
+        "iconNull": false,
+        "ink": 117,
+        "pixels": 304
+      }
+    },
+    "titleBarHeight": 19,
+    "titleFontHeight": 12,
+    "titleTextWidth": 26,
+    "dockWidth": 294
+  },
+  "dockCloseReopen": {
+    "closedByButton": true,
+    "reopened": true
+  },
+  "coordinateField": {
+    "found": true,
+    "text": "555519,90000  9585490,50000",
+    "width": 167,
+    "minimumWidth": 167,
+    "maximumWidth": 167,
+    "contentsWidth": 165,
+    "available": 161,
+    "needed": 152,
+    "fits": true
+  },
+  "statusBarCrs": null,
+  "switchThemes": {
+    "Blend of Gray": {
+      "themeName": "Blend of Gray",
+      "styleSheetLength": 35416
+    },
+    "Night Mapping": {
+      "themeName": "Night Mapping",
+      "styleSheetLength": 37327
+    },
+    "default": {
+      "themeName": "default",
+      "styleSheetLength": 0
+    }
+  }
+}
