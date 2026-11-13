@@ -12,7 +12,9 @@
                         setas de expandir da arvore dela;
     comboBox            caixa de lista do tipo de simbologia, em Propriedades da camada;
     spinBox             caixa de numero com setas, em Propriedades da camada (a rotacao do simbolo, se houver);
-    processingTabs      abas do dialogo do Processamento (native:buffer): visiveis e com o texto inteiro.
+    processingTabs      abas do dialogo do Processamento (native:buffer): visiveis e com o texto inteiro;
+    pushButtonMenu      desde a fatia 066, a seta do botao com menu "Estilo" (QPushButton) em Propriedades da camada,
+                        na faixa do indicador de menu (fora de result.controls, que segue com os 7 controles da 063).
   Seta visivel: ao menos -MinInk pixels de tinta no retangulo da seta que o proprio estilo informa (pixels que diferem
   da cor mais comum do retangulo). O laudo le as capturas ao lado do numero.
   Medicao, nao gate: sai com 1 se alguma seta nao aparece, e o laudo diz qual. A guarda do QGIS oficial roda no fim, e
@@ -102,6 +104,10 @@ if ($f) {
   Add-Control 'spinBox' ((Test-Ink $sp.up) -and (Test-Ink $sp.down)) ([ordered]@{ objectName = $sp.objectName; class = $sp.class; text = $sp.text; size = $sp.size; up = $sp.up; down = $sp.down })
   $tabs = @($c.processingTabs.tabs) + @($c.processingTabs.tabsSecond)
   Add-Control 'processingTabs' ($tabs.Count -ge 4 -and @($tabs | Where-Object { -not $_.visible -or $_.tabWidth -lt $_.textWidth }).Count -eq 0) ([ordered]@{ tabs = $tabs })
+  # fatia 066 (A3, acrescimo): a seta do botao com menu "Estilo", um QPushButton, cujo painel ganha o raio da 066
+  $pm = $c.pushButtonMenu
+  $result.pushButtonMenu = [ordered]@{ visible = (Test-Ink $pm.arrow); detail = [ordered]@{ text = $pm.text; size = $pm.size; candidates = $pm.candidates; arrow = $pm.arrow } }
+  Write-Step ("{0,-20} {1}  {2}" -f 'pushButtonMenu', $(if ($result.pushButtonMenu.visible) { 'seta visivel' } else { 'SETA AUSENTE' }), ($result.pushButtonMenu.detail | ConvertTo-Json -Compress -Depth 5))
 }
 
 $restored = Restore-ProductData $productData
@@ -109,7 +115,7 @@ if ($restored) { $result.productData = $restored }
 $guard = & $pwshExe -NoProfile -File (Join-Path $PSScriptRoot 'Test-OfficialQgisUntouched.ps1') -WorkRoot $WorkRoot 2>&1 | Out-String
 $result.guard = [ordered]@{ ok = ($LASTEXITCODE -eq 0); last = ($guard.Trim() -split "`r?`n" | Select-Object -Last 1) }
 $result.ok = $null -ne $f -and -not $f.errors -and @($result.controls.Values | Where-Object { -not $_.visible }).Count -eq 0 -and
-  $result.controls.Count -eq 7 -and $result.guard.ok -and (-not $restored -or $restored.ok)
+  $result.controls.Count -eq 7 -and $result.guard.ok -and (-not $restored -or $restored.ok) -and $result.pushButtonMenu.visible
 $result | ConvertTo-Json -Depth 8 | Set-Content -Encoding utf8 (Join-Path $run 'result.json')
 Write-Step ("setas {0}: {1} (guarda {2}): {3}" -f $Target, $(if ($result.ok) { 'todas visiveis' } else { 'FALHOU' }), $(if ($result.guard.ok) { 'OK' } else { 'FALHOU' }), $run)
 if (-not $result.ok) { exit 1 }

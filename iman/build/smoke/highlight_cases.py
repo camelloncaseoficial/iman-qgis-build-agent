@@ -7,6 +7,9 @@
 # Cada medida: tema, folha, estilo do Qt, as chaves do perfil, a paleta (Highlight e HighlightedText) e a cor
 # desenhada de verdade: o item selecionado de uma lista de teste, medido na imagem.
 # Desde a fatia 065 (A5), tambem o fundo das janelas: o papel Window por grupo e o fundo desenhado num dialogo de teste.
+# Desde a fatia 066 (A6), tambem os botoes: o papel Button por grupo e um QPushButton de teste desenhado pelo estilo em
+# vigor (com a folha, se houver): a cor mais comum e o raio das quinas, pela area que falta em cada quina do desenho
+# sobre fundo transparente (A = r^2 (1 - pi/4), menos meia caneta; o mesmo estimador do smokeutton_facts.py).
 import json
 import os
 from collections import Counter
@@ -60,6 +63,43 @@ def drawn_window():
     return QColor(Counter(pixels).most_common(1)[0][0]).name().upper()
 
 
+def drawn_button():
+    """Fatia 066 (A6): um QPushButton de teste, a cor mais comum da captura dele e o raio estimado das quinas."""
+    import math
+
+    from qgis.PyQt.QtCore import Qt
+    from qgis.PyQt.QtGui import QImage, QPainter
+    from qgis.PyQt.QtWidgets import QPushButton, QStyle, QStyleOptionButton
+
+    holder = QDialog()
+    button = QPushButton("Executar", holder)
+    button.resize(120, 32)
+    holder.show()
+    QApplication.processEvents()
+    grab = button.grab().toImage()
+    pixels = [grab.pixel(x, y) for x in range(0, grab.width(), 2) for y in range(0, grab.height(), 2)]
+    color = QColor(Counter(pixels).most_common(1)[0][0]).name().upper() if pixels else None
+    opt = QStyleOptionButton()
+    button.initStyleOption(opt)
+    dpr = QApplication.instance().devicePixelRatio()
+    image = QImage(int(round(120 * dpr)), int(round(32 * dpr)), QImage.Format_ARGB32_Premultiplied)
+    image.setDevicePixelRatio(dpr)
+    image.fill(Qt.transparent)
+    painter = QPainter(image)
+    button.style().drawControl(QStyle.CE_PushButton, opt, painter, button)
+    painter.end()
+    k = int(math.ceil(8 * dpr))
+    w, h = image.width(), image.height()
+    radii = []
+    for xs, ys in ((range(k), range(k)), (range(w - k, w), range(k)), (range(k), range(h - k, h)), (range(w - k, w), range(h - k, h))):
+        missing = sum(255 - QColor.fromRgba(image.pixel(x, y)).alpha() for x in xs for y in ys) / 255.0 / (dpr * dpr)
+        radii.append(math.sqrt(missing / (1.0 - math.pi / 4.0)) - 0.5)
+    holder.close()
+    holder.deleteLater()
+    return {"color": color, "radius": round(sum(radii) / 4, 3), "corners": [round(r, 3) for r in radii],
+            "style": button.style().metaObject().className()}
+
+
 def measure(label):
     settings = QgsSettings()
     palette = QApplication.palette()
@@ -84,6 +124,10 @@ def measure(label):
         "window": {name: palette.color(group, QPalette.Window).name().upper()
                    for name, group in (("Active", QPalette.Active), ("Inactive", QPalette.Inactive), ("Disabled", QPalette.Disabled))},
         "drawnWindow": drawn_window(),
+        # fatia 066 (A6): botoes e abas, na paleta (Button por grupo) e um botao desenhado (cor e raio das quinas)
+        "button": {name: palette.color(group, QPalette.Button).name().upper()
+                   for name, group in (("Active", QPalette.Active), ("Inactive", QPalette.Inactive), ("Disabled", QPalette.Disabled))},
+        "drawnButton": drawn_button(),
     })
 
 

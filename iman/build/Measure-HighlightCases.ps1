@@ -90,6 +90,9 @@ foreach ($stepsOfOpening in $openings) {
     Write-Step ("caso {0}, abertura {1}, {2}: tema '{3}', folha {4}, estilo {5} ({6}), Highlight {7}/{8}, desenhado {9}; Window {10}/{11}/{12}, desenhado {13}" -f $Case, $n,
       $m.label, $m.themeName, $m.styleSheetLength, $m.qtStyle, $m.qtStyleBase, $m.palette.Active[0], $m.palette.Inactive[0], $m.drawnHighlight,
       $m.window.Active, $m.window.Inactive, $m.window.Disabled, $m.drawnWindow)
+    # fatia 066 (A6, acrescimo): o Button por grupo e o botao de teste desenhado (cor mais comum e raio das quinas)
+    Write-Step ("caso {0}, abertura {1}, {2}: Button {3}/{4}/{5}; botao desenhado {6}, raio {7} (quinas {8}), estilo do botao {9}" -f $Case, $n,
+      $m.label, $m.button.Active, $m.button.Inactive, $m.button.Disabled, $m.drawnButton.color, $m.drawnButton.radius, ($m.drawnButton.corners -join '/'), $m.drawnButton.style)
   }
   foreach ($a in @($f.actions)) { Write-Step ("caso {0}, abertura {1}: {2} {3} -> {4} (itens {5})" -f $Case, $n, $a.kind, $a.before, $a.after, ($a.items -join ', ')) }
 }
