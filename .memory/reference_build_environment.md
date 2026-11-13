@@ -237,3 +237,30 @@ Medido na fatia 065 (2026-11-13), laudo `iman/docs/verify/065-fundo-das-janelas-
   rodada no caminho e o selo leva o commit.
 - **Tempos:** build incremental 210 s a 255 s; regioes 30 s; casos 10 a 25 s.
 - Nada instalado; o IMAN Terra da 061 segue instalado para o smoke do sponsor.
+
+Medido na fatia 066 (2026-11-13), laudo `iman/docs/verify/066-botoes-e-abas-pela-paleta/README.md`:
+
+- **Botoes pela paleta:** `Button` = `panel-2` no mesmo laco do `Window` em `ImanPalette::apply`. O Fusion nunca pinta
+  o `Button` puro: parte de `buttonColor` (`qfusionstyle_p_p.h:132-138`) e o painel das abas e `tabFrameColor`
+  (`:126-130`), que com o `#F5F7F2` da `#FFFFFF`.
+- **Fonte do Qt na bancada:** so os cabecalhos privados, em
+  `D:\iman-terra-build\osgeo4w\apps\Qt5\include\QtWidgets\5.15.13\QtWidgets\private\` (`qfusionstyle_p_p.h` com as
+  cores do Fusion, `qstyle_p.h` com o cache de pixmap dos estilos). O `qfusionstyle.cpp` nao esta: o que vier dele e
+  relatado e conferido por medicao.
+- **Estilo da aplicacao:** desde a 066 e o `ImanAppStyle` (`src/app/iman/`), que herda do `QgsAppStyle`. O
+  `objectName` tem de seguir `QgsAppStyle` (o `QgsProxyStyle` procura esse nome); o `QgsAppStyle::clone()` nao e
+  virtual. No Python, `QApplication.style().metaObject().className()` da `ImanAppStyle`.
+- **Caminho do desenho:** um `QProxyStyle` de gravacao em Python, posto so no widget (`setStyle`), anota as chamadas
+  e o widget de cada uma (`smoke/button_facts.py`). O `PE_PanelButtonCommand` e usado pelo `QPushButton`, pelo
+  `QToolButton` e pelo `QgsColorButton`, cada um com o proprio widget; a caixa de selecao nao passa por ele.
+- **Raio por alfa:** desenhar o botao com `style.drawControl(CE_PushButton, ...)` numa `QImage` transparente na escala
+  do `qApp` (1,25; em outra escala o cache do Fusion reamostra) e medir a area que falta em cada quina; calibrar com
+  referencias de raio conhecido (2 da 2,133; 4 da 4,152). Ao compor sobre um fundo, zerar o `devicePixelRatio` da
+  imagem, senao o desenho sai encolhido. O `initStyleOption` protegido funciona em widget criado no Python.
+- **Comparacao entre builds:** capturas de componentes de tamanho fixo, sem foco, num dialogo de teste; duas rodadas
+  do mesmo build dao zero pixel diferente (controle de ruido).
+- **Tinta de seta e fundo:** a regra da tinta (mais de 60 da cor mais comum) perde pixels de borda quase brancos
+  quando o fundo do botao muda; analisar pixel a pixel antes de chamar de seta que mudou. Na 066 o sponsor decidiu,
+  por pergunta, tratar como achado.
+- **Tempos:** build com o `iman_brand.h` regravado 628 s; so a cor 306 s; botoes 40 s; setas 25 s; casos 20 a 60 s.
+- Nada instalado; o IMAN Terra da 061 segue instalado para o smoke do sponsor.
