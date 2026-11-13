@@ -77,6 +77,7 @@ set(QGIS_APP_SRCS
   qgswelcomepage.cpp
   iman/imanaboutdialog.cpp
   iman/imanhomepage.cpp
+  iman/imanpalette.cpp
 
   qgsmaptooladdfeature.cpp
   qgsmaptooladdpart.cpp

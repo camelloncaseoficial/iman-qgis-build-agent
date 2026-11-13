@@ -22,6 +22,9 @@ A conferencia automatica e `iman/build/Test-Patchset.ps1`, que falha se um arqui
 - **Configuracao** (idioma padrao, feed de noticias, checagem de versao, enderecos do menu Ajuda) vai pelo
   `qgis_global_settings.ini` gerado, que o build copia por cima do instalado. O `resources/qgis_global_settings.ini`
   do QGIS nao muda.
+- **Cores** vem da paleta da marca (`palette` no `iman/brand/brand.json`, desde a 064), pelas `IMAN_COLOR_*` do
+  `iman_brand.h`. Em controle nativo do QGIS, so pela paleta do Qt (`QPalette`), nunca por folha de estilo (emenda de
+  2026-11-13 ao D-IMAN-040).
 - **Imagens** sao os derivados de `iman/brand/derived/`, copiados por `iman/brand/derive_assets.py` sobre os arquivos
   do QGIS de mesmo nome; o smoke confere byte a byte que o recurso compilado e o derivado.
 
@@ -42,8 +45,11 @@ A conferencia automatica e `iman/build/Test-Patchset.ps1`, que falha se um arqui
 | `images/splash/splash.png` | Splash aprovado no lugar do splash do QGIS: copia de `iman/brand/derived/splash.png` (`splash-iman-terra.png`). | D-IMAN-041 (regra 6) | 044 |
 | `images/themes/default/providerQgis.svg` | Simbolo do produto nos provedores e grupos da caixa de Processamento e em Opcoes > Processamento > Provedores: copia de `iman/brand/derived/providerQgis.svg`. | D-IMAN-039 (regra 2), D-IMAN-041 (regra 6) | 044 |
 | `src/process/main.cpp` | O `qgis_process` usa o nome interno do produto (as constantes do `QgsApplication`, que vem do `iman_brand.h`) no lugar dos literais `QGIS`/`qgis.org`/`QGIS3`: le os perfis da pasta do produto, nunca a do QGIS oficial. | D-IMAN-043 | 047 |
-| `src/app/CMakeLists.txt` | Compila os dois arquivos do IMAN em `src/app/iman/` no `qgis_app`. | D-IMAN-040 (emenda de 2026-11-11, itens 3 a 5) | 059 |
+| `src/app/CMakeLists.txt` | Compila os arquivos do IMAN em `src/app/iman/` no `qgis_app`: a pagina inicial e o Sobre (059) e, desde a 064, o destaque pela paleta (`imanpalette.cpp`). | D-IMAN-040 (emenda de 2026-11-11, itens 3 a 5; emenda de 2026-11-13) | 059, 064 |
 | `src/app/iman/imanhomepage.h` | Arquivo novo do IMAN: pagina inicial do produto (cabecalho, selos de versao e de SRC, quatro cartoes com as acoes do QGIS, projetos recentes do modelo da `QgsWelcomePage` com o menu de contexto dela, modelos de projeto, creditos do QGIS). Desenho da distro congelada (`dashboard.py`, `59ac0ce`); cores da paleta do tema pelo `iman_brand.h`; textos pela traducao sobreposta. | D-IMAN-040 (emenda de 2026-10-29, item 3; emenda de 2026-11-11), D-IMAN-025, D-IMAN-026 | 059 |
 | `src/app/iman/imanhomepage.cpp` | Idem. | D-IMAN-040 (emenda de 2026-10-29, item 3; emenda de 2026-11-11), D-IMAN-025, D-IMAN-026 | 059 |
 | `src/app/iman/imanaboutdialog.h` | Arquivo novo do IMAN: "Sobre o IMAN Terra" (simbolo, nome, versao e commit, motor QGIS, Instituto, creditos do QGIS, `THIRD_PARTY_NOTICES.md` da instalacao) com o botao "Sobre o QGIS" para o `QgsAbout`. Desenho da distro congelada (`sobre.py`, `59ac0ce`), sem o botao do site. | D-IMAN-040 (emenda de 2026-11-11, itens 4 e 5), D-IMAN-039, D-IMAN-025 | 059 |
 | `src/app/iman/imanaboutdialog.cpp` | Idem. | D-IMAN-040 (emenda de 2026-11-11, itens 4 e 5), D-IMAN-039, D-IMAN-025 | 059 |
+| `src/app/main.cpp` | Uma chamada ao `ImanPalette::applyHighlight( theme )` logo depois do `QApplication::setStyle` do arranque (que repoe a paleta do estilo), com o include. Sem tema escolhido (o `default` do QGIS), o destaque (`Highlight` e `HighlightedText`, grupos `Active` e `Inactive`) vai para as cores `brand-2` e `panel` da paleta da marca, pela paleta do Qt; com tema de fabrica escolhido pelo usuario, nada muda. Nenhuma folha de estilo. | D-IMAN-040 (emenda de 2026-11-13), D-IMAN-026 | 064 |
+| `src/app/iman/imanpalette.h` | Arquivo novo do IMAN: `ImanPalette` (`isDefaultTheme`, com a mesma regra do `QgsApplication::setUITheme`, e `applyHighlight`), exportada do `qgis_app` (`APP_EXPORT`) para o `main.cpp`. Cores so das `IMAN_COLOR_*` do `iman_brand.h`, sem hex no C++. | D-IMAN-040 (emenda de 2026-11-13), D-IMAN-026, D-IMAN-025 | 064 |
+| `src/app/iman/imanpalette.cpp` | Idem. | D-IMAN-040 (emenda de 2026-11-13), D-IMAN-026, D-IMAN-025 | 064 |

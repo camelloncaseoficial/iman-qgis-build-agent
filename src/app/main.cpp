@@ -107,6 +107,7 @@ typedef SInt32 SRefCon;
 #include "qgsuserprofile.h"
 #include "layers/qgsapplayerhandling.h"
 #include "options/qgsuserprofileselectiondialog.h"
+#include "iman/imanpalette.h"
 
 #ifdef HAVE_OPENCL
 #include "qgsopenclutils.h"
@@ -1492,6 +1493,8 @@ int main( int argc, char *argv[] )
     // based on the default style (or we miss custom style tweaks)
     QApplication::setStyle( new QgsAppStyle( activeStyleName ) );
   }
+  // IMAN Terra (fatia 064): destaque IMAN pela paleta do Qt, depois do setStyle, so com o tema default
+  ImanPalette::applyHighlight( theme );
 
   // set authentication database directory
   if ( !authdbdirectory.isEmpty() )
