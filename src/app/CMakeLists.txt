@@ -76,6 +76,7 @@ set(QGIS_APP_SRCS
   qgsvectorlayerdigitizingproperties.cpp
   qgswelcomepage.cpp
   iman/imanaboutdialog.cpp
+  iman/imanappstyle.cpp
   iman/imanhomepage.cpp
   iman/imanpalette.cpp
 
