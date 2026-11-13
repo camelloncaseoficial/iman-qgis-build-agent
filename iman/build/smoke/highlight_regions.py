@@ -53,6 +53,10 @@ def palette_colors():
     }
 
 
+def _distance(a, b):
+    return abs(a.red() - b.red()) + abs(a.green() - b.green()) + abs(a.blue() - b.blue())
+
+
 def measure(widget, rect, capture=None, zoom=3):
     """Cor do destaque no retangulo (coordenadas logicas do widget), medida na imagem da tela."""
     image = window_crop(widget).toImage()
@@ -69,6 +73,14 @@ def measure(widget, rect, capture=None, zoom=3):
     background = QColor(counts.most_common(1)[0][0])
     info["background"] = background.name().upper()
     info["backgroundShare"] = round(counts.most_common(1)[0][1] / len(pixels), 3)
+    # o Fusion pinta a selecao das arvores com um degrade vertical em torno da cor da paleta: a media da faixa (os
+    # pixels a ate 30 da cor mais comum) e a cor do destaque; a mais comum e so uma linha do degrade
+    band = [QColor(p) for p in pixels if _distance(QColor(p), background) <= 30]
+    if band:
+        mean = QColor(round(sum(c.red() for c in band) / len(band)), round(sum(c.green() for c in band) / len(band)),
+                      round(sum(c.blue() for c in band) / len(band)))
+        info["backgroundMean"] = mean.name().upper()
+        info["backgroundBand"] = [min(c.name().upper() for c in band), max(c.name().upper() for c in band)]
     # pixels perto das duas cores de texto selecionado da paleta (Active e Inactive): o texto desenhado
     texts = {QColor(c).name().upper() for c in (palette_colors()["Active"][1], palette_colors()["Inactive"][1])}
     near = 0

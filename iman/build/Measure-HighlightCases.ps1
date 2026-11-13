@@ -9,7 +9,8 @@
     b  o usuario escolhe Night Mapping em Opcoes e reabre: na primeira abertura, Opcoes > Geral > tema Night Mapping
        e aceita; na segunda, com o mesmo perfil, mede;
     c  o usuario troca de default para Night Mapping e volta para default, sem reabrir: mede, troca, mede, volta,
-       mede, tudo na mesma abertura;
+       mede, tudo na mesma abertura (no QGIS 3.44 a troca de tema so vale ao reabrir: o que muda na hora e a chave
+       UI/UITheme do perfil, que a medida registra);
     d  o usuario troca o estilo do Qt em Opcoes (o primeiro estilo da caixa diferente do atual) e reabre (o QGIS so
        aplica o estilo no arranque): troca na primeira abertura; na segunda, mede.
   A GUI abre com smoke\highlight_cases.py (via --code). Cada medida: tema, folha, estilo do Qt, UI/UITheme e

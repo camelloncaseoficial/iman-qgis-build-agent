@@ -12,9 +12,11 @@
     menu            menu Projeto aberto, com o primeiro item habilitado ativo (o que o mouse marcaria);
     comboPopup      caixa de lista aberta do dialogo do native:buffer, com o segundo item corrente;
     textSelection   texto selecionado no campo da distancia do native:buffer.
-  Em cada uma: a cor mais comum do retangulo do item selecionado, na imagem da tela (o fundo do destaque), e os pixels
-  perto da cor de texto selecionado da paleta (o texto). Veredito por regiao: fundo = -Expected (padrao: o token
-  brand-2 da paleta do brand.json) e texto legivel (ao menos -MinTextPixels pixels de texto sobre ele).
+  Em cada uma: a cor do destaque no retangulo do item selecionado, na imagem da tela, e os pixels perto da cor de
+  texto selecionado da paleta (o texto). A cor e a media da faixa em torno da cor mais comum: o Fusion pinta a
+  selecao das arvores com um degrade vertical em torno da cor da paleta (medido na 064: de #1D784C a #1E7E4F para
+  #1E7A4D). Veredito por regiao: cor a ate -Tolerance niveis por canal de -Expected (padrao: o token brand-2 da paleta
+  do brand.json) e texto legivel (ao menos -MinTextPixels pixels de texto sobre ele).
   Medicao, nao gate: sai com 1 se alguma regiao nao fica com o destaque esperado, e o laudo diz qual e por que. A
   guarda do QGIS oficial roda no fim, e o alvo Build remove o que a rodada deixar na pasta do produto (Common.ps1).
   Saida: $WorkRoot\smoke\highlight-<alvo>-<data>\ (highlight.json, result.json, PNGs).
@@ -28,6 +30,7 @@ param(
   [string] $Lang = 'pt_BR',
   [string] $Expected,
   [int] $MinTextPixels = 5,
+  [int] $Tolerance = 4,
   [int] $GuiTimeoutSeconds = 240
 )
 . "$PSScriptRoot\Common.ps1"
@@ -85,14 +88,25 @@ $json = Join-Path $run 'highlight.json'
 $f = if (Test-Path $json) { Get-Content $json -Raw -Encoding utf8 | ConvertFrom-Json } else { $null }
 $result = [ordered]@{ target = $Target; run = $run; expected = $Expected; seconds = [int]((Get-Date) - $t0).TotalSeconds
   exitedClean = $exited; theme = $f.theme; errors = $f.errors; regions = [ordered]@{} }
+# maior diferenca por canal entre duas cores #RRGGBB
+function Get-ChannelDiff([string] $a, [string] $b) {
+  if (-not $a -or -not $b) { return 999 }
+  $d = 0
+  foreach ($i in 1, 3, 5) { $d = [math]::Max($d, [math]::Abs([Convert]::ToInt32($a.Substring($i, 2), 16) - [Convert]::ToInt32($b.Substring($i, 2), 16))) }
+  $d
+}
 foreach ($id in 'layers', 'toolbox', 'attributeTable', 'menu', 'comboPopup', 'textSelection') {
   $r = if ($f) { $f.regions.$id } else { $null }
-  $green = [bool]($r -and $r.background -eq $Expected)
+  # a cor do destaque e a media da faixa (o Fusion pinta as arvores em degrade em torno da cor da paleta)
+  $color = if ($r.backgroundMean) { $r.backgroundMean } else { $r.background }
+  $diff = Get-ChannelDiff $color $Expected
+  $green = [bool]($r -and $diff -le $Tolerance)
   $legible = [bool]($r -and $r.textPixels -ge $MinTextPixels)
-  $result.regions[$id] = [ordered]@{ ok = ($green -and $legible); background = $r.background; expected = $Expected
-    textPixels = $r.textPixels; legible = $legible; item = $(if ($r.item) { $r.item } else { $r.text }); detail = $r }
-  Write-Step ("{0,-15} {1}  fundo {2} (esperado {3}), texto {4} px" -f $id, $(if ($green -and $legible) { 'OK' } else { 'DIFERENTE' }),
-    $r.background, $Expected, $r.textPixels)
+  $result.regions[$id] = [ordered]@{ ok = ($green -and $legible); color = $color; mostCommon = $r.background; band = $r.backgroundBand
+    expected = $Expected; channelDiff = $diff; textPixels = $r.textPixels; legible = $legible
+    item = $(if ($r.item) { $r.item } else { $r.text }); detail = $r }
+  Write-Step ("{0,-15} {1}  destaque {2} (mais comum {3}; esperado {4}, diferenca {5}), texto {6} px" -f $id,
+    $(if ($green -and $legible) { 'OK' } else { 'DIFERENTE' }), $color, $r.background, $Expected, $diff, $r.textPixels)
 }
 
 $restored = Restore-ProductData $productData

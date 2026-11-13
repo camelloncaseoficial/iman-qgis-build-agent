@@ -1,7 +1,9 @@
 # Destaque com a escolha do usuario e a troca em tempo de execucao (fatia 064, A4), rodado pelo proprio QGIS via
 # --code (Measure-HighlightCases.ps1), com perfil descartavel. Executa uma lista de passos (IMAN_CASES_STEPS, separados
 # por ';'): 'measure' mede; 'theme=<nome>' e 'style=<nome>' abrem Opcoes > Geral, trocam a caixa do tema ou do estilo
-# do Qt como o usuario faria e aceitam o dialogo ('style=OTHER' escolhe o primeiro estilo diferente do atual).
+# do Qt como o usuario faria e clicam OK ('style=OTHER' escolhe o primeiro estilo diferente do atual). No QGIS 3.44 a
+# troca de tema e de estilo so vale ao reabrir (o rotulo de Opcoes diz "reinicio necessario"; o slot
+# QgsOptions::uiThemeChanged nao esta ligado a nada): o que muda na hora e so a chave do perfil.
 # Cada medida: tema, folha, estilo do Qt, as chaves do perfil, a paleta (Highlight e HighlightedText) e a cor
 # desenhada de verdade: o item selecionado de uma lista de teste, medido na imagem.
 import json
@@ -11,7 +13,7 @@ from collections import Counter
 from qgis.core import QgsApplication, QgsSettings
 from qgis.PyQt.QtCore import QTimer
 from qgis.PyQt.QtGui import QColor, QPalette
-from qgis.PyQt.QtWidgets import QApplication, QComboBox, QListWidget
+from qgis.PyQt.QtWidgets import QApplication, QComboBox, QDialogButtonBox, QListWidget
 from qgis.utils import iface
 
 out_dir = os.environ["IMAN_CASES_OUT"]
@@ -82,7 +84,14 @@ def set_in_options(kind, value):
             combo.setCurrentIndex(combo.findText(value))
             QApplication.processEvents()
             action["after"] = combo.currentText()
-        dialog.accept()
+        # o QgsOptions so salva pelo OK da caixa de botoes (qgsoptions.cpp:186, saveOptions), nao pelo accept()
+        boxes = [b for b in dialog.findChildren(QDialogButtonBox) if b.button(QDialogButtonBox.Ok) is not None]
+        ok = boxes[0].button(QDialogButtonBox.Ok) if boxes else None
+        action["clickedOk"] = ok is not None
+        if ok is not None:
+            ok.click()
+        else:
+            dialog.accept()
     facts["actions"].append(action)
 
 
