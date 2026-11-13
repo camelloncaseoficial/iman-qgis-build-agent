@@ -6,6 +6,7 @@
 # QgsOptions::uiThemeChanged nao esta ligado a nada): o que muda na hora e so a chave do perfil.
 # Cada medida: tema, folha, estilo do Qt, as chaves do perfil, a paleta (Highlight e HighlightedText) e a cor
 # desenhada de verdade: o item selecionado de uma lista de teste, medido na imagem.
+# Desde a fatia 065 (A5), tambem o fundo das janelas: o papel Window por grupo e o fundo desenhado num dialogo de teste.
 import json
 import os
 from collections import Counter
@@ -13,7 +14,7 @@ from collections import Counter
 from qgis.core import QgsApplication, QgsSettings
 from qgis.PyQt.QtCore import QTimer
 from qgis.PyQt.QtGui import QColor, QPalette
-from qgis.PyQt.QtWidgets import QApplication, QComboBox, QDialogButtonBox, QListWidget
+from qgis.PyQt.QtWidgets import QApplication, QComboBox, QDialog, QDialogButtonBox, QListWidget
 from qgis.utils import iface
 
 out_dir = os.environ["IMAN_CASES_OUT"]
@@ -44,6 +45,21 @@ def drawn_highlight():
     return QColor(Counter(pixels).most_common(1)[0][0]).name().upper()
 
 
+def drawn_window():
+    """O fundo de um QDialog de teste, com a paleta e a folha da aplicacao em vigor (fatia 065, A5)."""
+    dialog = QDialog()
+    dialog.resize(240, 120)
+    dialog.show()
+    QApplication.processEvents()
+    image = dialog.grab().toImage()
+    pixels = [image.pixel(x, y) for x in range(0, image.width(), 2) for y in range(0, image.height(), 2)]
+    dialog.close()
+    dialog.deleteLater()
+    if not pixels:
+        return None
+    return QColor(Counter(pixels).most_common(1)[0][0]).name().upper()
+
+
 def measure(label):
     settings = QgsSettings()
     palette = QApplication.palette()
@@ -64,6 +80,10 @@ def measure(label):
                          palette.color(QPalette.Inactive, QPalette.HighlightedText).name().upper()],
         },
         "drawnHighlight": drawn_highlight(),
+        # fatia 065 (A5): o fundo das janelas, na paleta (Window por grupo) e desenhado num dialogo
+        "window": {name: palette.color(group, QPalette.Window).name().upper()
+                   for name, group in (("Active", QPalette.Active), ("Inactive", QPalette.Inactive), ("Disabled", QPalette.Disabled))},
+        "drawnWindow": drawn_window(),
     })
 
 

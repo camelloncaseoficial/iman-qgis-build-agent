@@ -20,7 +20,8 @@
       sem SRC no layer_default_crs; Opcoes > SRC com o SRC e "usar SRC predefinido"; os temas de fabrica na lista e
       escolhiveis, e Opcoes > Geral no default (T9); botao de fechar da dock com icone e funcionando (D1), coordenada
       inteira no campo da barra de status (D2), titulo da dock sem corte (D4); desde a fatia 064, o destaque IMAN na
-      paleta do Qt (Highlight brand-2 e HighlightedText panel do brand.json, grupos Active e Inactive; A7).
+      paleta do Qt (Highlight brand-2 e HighlightedText panel do brand.json, grupos Active e Inactive; A7); desde a
+      fatia 065, o fundo das janelas na paleta do Qt (Window = bg do brand.json, grupos Active, Inactive e Disabled).
     UserTheme: o tema e o do usuario (default: sem folha de estilo), nao o da global.
     Official (controle): tema default, projeto novo em EPSG:4326 e o tema do produto ausente da lista. O visto falhando
       do tema, desde a 063, e o build ou o instalado de antes dela (com o tema).
@@ -154,6 +155,14 @@ if ($f) {
         $pal.$_.Highlight -ne $wantHighlight -or $pal.$_.HighlightedText -ne $wantHighlightedText }).Count -eq 0
     Add-Check 'A7:destaque-iman' $a7 ([ordered]@{
         expected = [ordered]@{ Highlight = $wantHighlight; HighlightedText = $wantHighlightedText }; palette = $pal })
+    # fatia 065 (A7, acrescimo): o fundo das janelas (papel Window) no token bg da paleta do brand.json, opaco, nos
+    # grupos Active, Inactive e Disabled (o despejo da paleta inteira vem do theme_facts.py, #AARRGGBB)
+    $wantWindow = '#FF' + ([string]$brand.palette.bg).Substring(1).ToUpperInvariant()
+    $all = $th.paletteAll
+    $fundo = $all -and ([string]$brand.palette.bg) -match '^#[0-9A-Fa-f]{6}$' -and @('Active', 'Inactive', 'Disabled' | Where-Object {
+        $all.$_.Window -ne $wantWindow }).Count -eq 0
+    Add-Check 'A7:fundo-iman' $fundo ([ordered]@{
+        expected = $wantWindow; Window = [ordered]@{ Active = $all.Active.Window; Inactive = $all.Inactive.Window; Disabled = $all.Disabled.Window } })
   } else {
     # Official: o que o produto muda nao pode estar la (visto falhando da mesma medicao)
     Add-Check 'controle:tema-default' ($th.themeName -eq 'default' -and $th.styleSheetLength -eq 0 -and $product -notin $th.uiThemes) ([ordered]@{

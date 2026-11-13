@@ -88,6 +88,23 @@ def step_theme():
         "settingUITheme": settings.value("UI/UITheme", None),
         # fatia 064 (A1, A4): o destaque da paleta da aplicacao, por grupo
         "palette": _highlight_palette(),
+        # fatia 065 (A1, A7): a paleta inteira da aplicacao, todos os papeis dos tres grupos
+        "paletteAll": _full_palette(),
+    }
+
+
+# fatia 065: os papeis de cor do QPalette do Qt 5.15 (sem o NoRole), na ordem do enum
+PALETTE_ROLES = ("WindowText", "Button", "Light", "Midlight", "Dark", "Mid", "Text", "BrightText", "ButtonText", "Base",
+                 "Window", "Shadow", "Highlight", "HighlightedText", "Link", "LinkVisited", "AlternateBase",
+                 "ToolTipBase", "ToolTipText", "PlaceholderText")
+
+
+def _full_palette():
+    palette = QApplication.palette()
+    groups = (("Active", QPalette.Active), ("Inactive", QPalette.Inactive), ("Disabled", QPalette.Disabled))
+    return {
+        name: {role: palette.color(group, getattr(QPalette, role)).name(QColor.HexArgb).upper() for role in PALETTE_ROLES}
+        for name, group in groups
     }
 
 

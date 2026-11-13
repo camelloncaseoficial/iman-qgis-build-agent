@@ -16,6 +16,8 @@
   A GUI abre com smoke\highlight_cases.py (via --code). Cada medida: tema, folha, estilo do Qt, UI/UITheme e
   qgis/style do perfil, a paleta (Highlight e HighlightedText, Active e Inactive) e a cor desenhada no item
   selecionado de uma lista de teste, medida na imagem.
+  Desde a fatia 065 (A5: casos a, b e d), tambem o fundo das janelas: o papel Window (Active, Inactive, Disabled) e
+  o fundo desenhado num dialogo de teste.
   Medicao, nao gate: sai com 0 se as aberturas coletaram os fatos e a guarda do QGIS oficial passou.
   Saida: $WorkRoot\smoke\cases-<alvo>-<caso>-<data>\ (abertura-N\cases.json, result.json).
 #>
@@ -85,8 +87,9 @@ foreach ($stepsOfOpening in $openings) {
   $f = if (Test-Path $json) { Get-Content $json -Raw -Encoding utf8 | ConvertFrom-Json } else { $null }
   $result.openings += [ordered]@{ opening = $n; steps = ($stepsOfOpening -join ';'); exitedClean = $exited; facts = $f }
   foreach ($m in @($f.measures)) {
-    Write-Step ("caso {0}, abertura {1}, {2}: tema '{3}', folha {4}, estilo {5} ({6}), Highlight {7}/{8}, desenhado {9}" -f $Case, $n,
-      $m.label, $m.themeName, $m.styleSheetLength, $m.qtStyle, $m.qtStyleBase, $m.palette.Active[0], $m.palette.Inactive[0], $m.drawnHighlight)
+    Write-Step ("caso {0}, abertura {1}, {2}: tema '{3}', folha {4}, estilo {5} ({6}), Highlight {7}/{8}, desenhado {9}; Window {10}/{11}/{12}, desenhado {13}" -f $Case, $n,
+      $m.label, $m.themeName, $m.styleSheetLength, $m.qtStyle, $m.qtStyleBase, $m.palette.Active[0], $m.palette.Inactive[0], $m.drawnHighlight,
+      $m.window.Active, $m.window.Inactive, $m.window.Disabled, $m.drawnWindow)
   }
   foreach ($a in @($f.actions)) { Write-Step ("caso {0}, abertura {1}: {2} {3} -> {4} (itens {5})" -f $Case, $n, $a.kind, $a.before, $a.after, ($a.items -join ', ')) }
 }
