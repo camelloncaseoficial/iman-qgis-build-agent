@@ -168,3 +168,21 @@ Medido na fatia 061 (2026-11-11), laudo `iman/docs/verify/061-plugin-0-4-0/READM
   `.qgz` nao migra. A copia `<gpkg>.bak` nao e byte a byte o arquivo: o GDAL tira o modo WAL ao abrir (bytes 18, 19,
   27 e 95 do cabecalho).
 - **Tempos:** build incremental + install 4 a 5 min; arvore 59 s; ISCC 770 s; instalar 159 s.
+
+Medido na fatia 063 (2026-11-13), laudo `iman/docs/verify/063-tema-padrao-do-qgis/README.md`:
+
+- **Tema do produto fora do build:** sem `ui_theme` no `brand.json` e sem `[UI]` na global; o `Build-Qgis.ps1` remove a
+  pasta `resources\themes\IMAN Terra` que um build anterior deixou (o `cmake --install` nao apaga o que nao instala).
+- **`UI/UITheme` ausente e nao `default`:** o `main.cpp:1459` le a chave sem valor padrao; vazia, o QGIS usa `fusion`
+  (`QgsAppStyle` sobre `QFusionStyle`), como o oficial; `default` daria o estilo do Windows. Todo perfil (o do oficial
+  tambem) termina com `qgis/style=fusion`, gravado pelo `main.cpp:1487`.
+- **Captura em pixels fisicos:** o `grab()` sai na escala da tela (1,25); retangulo de `subControlRect` e logico e
+  precisa ser multiplicado pelo `devicePixelRatio` da imagem antes de medir.
+- **Botao com menu do QGIS** monta a lista com `addAction`, sem `setMenu`: `menu()` volta `None`; achar por
+  `popupMode() == MenuButtonPopup` e `actions()`.
+- **Commit no meio do build:** o `qgsversion.h` sai do HEAD do comeco do build; um commit depois disso faz o
+  `version` do smoke cair (revisao diferente do HEAD). Commitar antes do build, ou refazer o incremental (7 min).
+- **Perfil da develop** para reabrir com outro build: `D:\iman-terra-build\verify\063-perfil-da-develop`.
+- **Disco:** D: com 35 GB livres no comeco. **Tempos:** build com a volta da 059 393 s + install 355 s; incremental so
+  com a marca 95 a 101 s + install 303 a 390 s; setas 40 s; perfis 12 a 20 s; `Test-ThemeDefaults` 40 s.
+- Nada instalado; o IMAN Terra da 061 segue instalado (com o tema) para o smoke do sponsor.
