@@ -1,0 +1,25 @@
+A6: telas da 059, Invoke-HomeCaptures.ps1, ANTES 7531597800 contra DEPOIS 269aa0f2cd
+
+captura inteira (janela principal em volta inclusa):
+01-inicio-sem-recentes.png: 101986 de 533760 pixels diferentes (amostra de 1 em 4)
+02-inicio-com-recentes.png: 102139 de 533760 pixels diferentes (amostra de 1 em 4)
+03-inicio-1366x768.png: 90286 de 393233 pixels diferentes (amostra de 1 em 4)
+05-sobre-iman-terra.png: 78025 de 225625 pixels diferentes (amostra de 1 em 4)
+06-sobre-o-qgis.png: 70218 de 157070 pixels diferentes (amostra de 1 em 4)
+
+so a area da pagina inicial (o retangulo dos pixels #EBEEE8 do ANTES):
+01-inicio-sem-recentes.png: area da pagina (pixels #EBEEE8 no ANTES) x 375-1919, y 173-1075; pixels diferentes dentro: 1608 de 1395135; fora: 401467; pixels #EBEEE8 do ANTES que mudaram: 0 de 1116734
+   mudancas dentro: caixa x 1666-1862, y 208-243
+02-inicio-com-recentes.png: area da pagina (pixels #EBEEE8 no ANTES) x 375-1919, y 173-1075; pixels diferentes dentro: 2295 de 1395135; fora: 401401; pixels #EBEEE8 do ANTES que mudaram: 186 de 1106898
+   mudancas dentro: caixa x 767-1862, y 208-740
+03-inicio-1366x768.png: area da pagina (pixels #EBEEE8 no ANTES) x 375-1687, y 173-885; pixels diferentes dentro: 2272 de 936169; fora: 354745; pixels #EBEEE8 do ANTES que mudaram: 186 de 698396
+   mudancas dentro: caixa x 767-1630, y 208-740
+   (x 1666-1862, y 208-243: o selo de versao com o commit; x 767-797 nos recentes: o carimbo de hora da pasta da rodada no caminho do projeto)
+
+Sobre, cores mais comuns entre os pixels que mudaram:
+05-sobre-iman-terra.png: caixa x 0-960, y 0-960 (281 celulas)
+   antes: #F0F0F0 301379, #E5E8E2 888, #C4C4C4 841, #B9B9B9 580
+   depois: #EBEEE8 301393, #E4E8E0 888, #C1C3C0 841, #B5B8B3 578
+06-sobre-o-qgis.png: caixa x 0-1160, y 0-560 (255 celulas)
+   antes: #F0F0F0 170724, #5D5D5D 95691, #ABABAB 2098, #B9B9B9 1863
+   depois: #EBEEE8 170724, #5C5D5C 95691, #A8AAA6 2098, #B5B8B3 1863

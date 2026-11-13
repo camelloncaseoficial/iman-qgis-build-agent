@@ -1,0 +1,15 @@
+  [1] border-radius 2px (12)             OK  {"declarations":12}
+  [2] QMenuBar::item padding 3px 4px     OK  {"padding":"3px 4px"}
+  [3] QStatusBar sem padding (D2)        OK  {"blocks":0}
+  [4] QDockWidget::title sem padding vert. OK  {"blocks":0}
+  [5] cantos da aba 2px (2)              OK  {"declarations":2}
+  [6] sem titlebar-close-icon (D1)       OK  {"found":0}
+  [7] zero hex orfao (V.5)               OK  {"palette":18,"usedDistinct":12,"used":["#155F3D","#1A231D","#1E7A4D","#5E6A61","#95A093","#CFE0D2","#D0D5C9","#E2E5DE","#E4F0E8","#EFF2EC","#F5F7F2","#FFFFFF"],"orphans":0}
+  [8] sem regras da camada de marca      OK  {"found":0}
+  [9] QStatusBar QLineEdit padding-h 0 (D2) OK  {"padding-left":"0","padding-right":"0"}
+  [10] campos sem padding (B1)            OK  {"fieldTypes":["QLineEdit","QComboBox","QSpinBox","QDoubleSpinBox","QAbstractSpinBox","QPlainTextEdit","QTextEdit"],"offending":0}
+  [11] aba selecionada sem negrito (B2)   OK  {"blocks":1}
+  [12] QToolButton fora da barra c/ borda (B3) OK  {"toolButton":"1px solid #D0D5C9","toolBarToolButton":"1px solid transparent"}
+  [13] borda dos campos #D0D5C9 (B4)      OK  {"border":"1px solid #D0D5C9","blocks":1}
+  [14] barras como no oficial (B5)        OK  {"spacing":[],"toolBarPadding":"4px","toolBarToolButtonPadding":"1px"}
+TEMA QSS OK (14 de 14)

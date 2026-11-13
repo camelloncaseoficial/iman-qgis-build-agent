@@ -1,0 +1,714 @@
+{
+  "target": "Build",
+  "run": "D:\\iman-terra-build\\smoke\\window-build-20261113-134354",
+  "expected": "#EBEEE8",
+  "expectedBase": "#FFFFFF",
+  "seconds": 23,
+  "exitedClean": true,
+  "theme": {
+    "themeName": "default",
+    "styleSheetLength": 0,
+    "qtStyle": "QgsAppStyle",
+    "palette": {
+      "Active": {
+        "Window": "#F0F0F0",
+        "WindowText": "#000000",
+        "Base": "#FFFFFF",
+        "Button": "#F0F0F0",
+        "Highlight": "#1E7A4D"
+      },
+      "Inactive": {
+        "Window": "#F0F0F0",
+        "WindowText": "#000000",
+        "Base": "#FFFFFF",
+        "Button": "#F0F0F0",
+        "Highlight": "#1E7A4D"
+      },
+      "Disabled": {
+        "Window": "#F0F0F0",
+        "WindowText": "#787878",
+        "Base": "#F0F0F0",
+        "Button": "#F0F0F0",
+        "Highlight": "#0078D7"
+      }
+    }
+  },
+  "errors": null,
+  "regions": {
+    "menuBar": {
+      "ok": false,
+      "role": "Window",
+      "color": "#F0F0F0",
+      "mostCommon": "#F0F0F0",
+      "share": 0.834,
+      "band": [
+        "#F0F0F0",
+        "#F0F0F0"
+      ],
+      "expected": "#EBEEE8",
+      "channelDiff": 8,
+      "field": null,
+      "frame": null,
+      "detail": {
+        "size": [
+          1536,
+          21
+        ],
+        "pixels": 49920,
+        "excluded": 0,
+        "background": "#F0F0F0",
+        "backgroundShare": 0.834,
+        "backgroundMean": "#F0F0F0",
+        "backgroundBand": [
+          "#F0F0F0",
+          "#F0F0F0"
+        ],
+        "bandShare": 0.834,
+        "field": null,
+        "frame": null
+      }
+    },
+    "toolBar": {
+      "ok": false,
+      "role": "Window",
+      "color": "#F6F6F6",
+      "mostCommon": "#F8F8F8",
+      "share": 0.104,
+      "band": [
+        "#EDEEEF",
+        "#FFFFFF"
+      ],
+      "expected": "#EBEEE8",
+      "channelDiff": 14,
+      "field": null,
+      "frame": null,
+      "detail": {
+        "size": [
+          214,
+          39
+        ],
+        "pixels": 13132,
+        "excluded": 0,
+        "background": "#F8F8F8",
+        "backgroundShare": 0.104,
+        "backgroundMean": "#F6F6F6",
+        "backgroundBand": [
+          "#EDEEEF",
+          "#FFFFFF"
+        ],
+        "bandShare": 0.764,
+        "field": null,
+        "frame": null
+      }
+    },
+    "statusBar": {
+      "ok": false,
+      "role": "Window",
+      "color": "#F0F0F0",
+      "mostCommon": "#F0F0F0",
+      "share": 0.888,
+      "band": [
+        "#E6E6E6",
+        "#F8F8F8"
+      ],
+      "expected": "#EBEEE8",
+      "channelDiff": 8,
+      "field": "#ABABAB",
+      "frame": null,
+      "detail": {
+        "size": [
+          1536,
+          28
+        ],
+        "pixels": 27405,
+        "excluded": 9,
+        "background": "#F0F0F0",
+        "backgroundShare": 0.888,
+        "backgroundMean": "#F0F0F0",
+        "backgroundBand": [
+          "#E6E6E6",
+          "#F8F8F8"
+        ],
+        "bandShare": 0.892,
+        "field": {
+          "class": "QLineEdit",
+          "name": "",
+          "color": "#ABABAB"
+        },
+        "frame": null
+      }
+    },
+    "layersTitle": {
+      "ok": false,
+      "role": "Window",
+      "color": "#F0F0F0",
+      "mostCommon": "#F0F0F0",
+      "share": 0.935,
+      "band": null,
+      "expected": "#EBEEE8",
+      "channelDiff": 8,
+      "field": null,
+      "frame": null,
+      "detail": {
+        "background": "#F0F0F0",
+        "backgroundShare": 0.935,
+        "backgroundMean": "#F0F0F0",
+        "bandShare": 0.935,
+        "titleBarHeight": 19
+      }
+    },
+    "layersPanel": {
+      "ok": false,
+      "role": "Window",
+      "color": "#F0F0F0",
+      "mostCommon": "#F0F0F0",
+      "share": 0.901,
+      "band": [
+        "#E5E7E8",
+        "#F2EFD8"
+      ],
+      "expected": "#EBEEE8",
+      "channelDiff": 8,
+      "field": null,
+      "frame": "#B9B9B9",
+      "detail": {
+        "size": [
+          294,
+          704
+        ],
+        "pixels": 18496,
+        "excluded": 1,
+        "background": "#F0F0F0",
+        "backgroundShare": 0.901,
+        "backgroundMean": "#F0F0F0",
+        "backgroundBand": [
+          "#E5E7E8",
+          "#F2EFD8"
+        ],
+        "bandShare": 0.919,
+        "field": null,
+        "frame": {
+          "class": "QgsLayerTreeView",
+          "name": "theLayerTreeView",
+          "color": "#B9B9B9"
+        }
+      }
+    },
+    "layerPropertiesSymbology": {
+      "ok": false,
+      "role": "Window",
+      "color": "#F0F0F0",
+      "mostCommon": "#F0F0F0",
+      "share": 0.818,
+      "band": [
+        "#E4E6E8",
+        "#FAFAFA"
+      ],
+      "expected": "#EBEEE8",
+      "channelDiff": 8,
+      "field": "#ABABAB",
+      "frame": "#B9B9B9",
+      "detail": {
+        "size": [
+          943,
+          727
+        ],
+        "pixels": 313246,
+        "excluded": 12,
+        "background": "#F0F0F0",
+        "backgroundShare": 0.818,
+        "backgroundMean": "#F0F0F0",
+        "backgroundBand": [
+          "#E4E6E8",
+          "#FAFAFA"
+        ],
+        "bandShare": 0.847,
+        "field": {
+          "class": "QgsDoubleSpinBox",
+          "name": "spinAngle",
+          "color": "#ABABAB"
+        },
+        "frame": {
+          "class": "QTreeView",
+          "name": "layersTree",
+          "color": "#B9B9B9"
+        },
+        "page": "mOptsPage_Style"
+      }
+    },
+    "layerPropertiesDialog": {
+      "ok": false,
+      "role": "Window",
+      "color": "#F0F0F0",
+      "mostCommon": "#F0F0F0",
+      "share": 0.805,
+      "band": [
+        "#E3E9E6",
+        "#FAFAFA"
+      ],
+      "expected": "#EBEEE8",
+      "channelDiff": 8,
+      "field": null,
+      "frame": null,
+      "detail": {
+        "size": [
+          1100,
+          760
+        ],
+        "pixels": 373004,
+        "excluded": 14,
+        "background": "#F0F0F0",
+        "backgroundShare": 0.805,
+        "backgroundMean": "#F0F0F0",
+        "backgroundBand": [
+          "#E3E9E6",
+          "#FAFAFA"
+        ],
+        "bandShare": 0.852,
+        "field": null,
+        "frame": null,
+        "title": "Layer Properties - points — Simbologia"
+      }
+    },
+    "optionsGeneral": {
+      "ok": false,
+      "role": "Window",
+      "color": "#EDEDED",
+      "mostCommon": "#EDEDED",
+      "share": 0.81,
+      "band": [
+        "#E3E3E3",
+        "#F7F7F7"
+      ],
+      "expected": "#EBEEE8",
+      "channelDiff": 5,
+      "field": "#ABABAB",
+      "frame": "#D8D8D8",
+      "detail": {
+        "size": [
+          943,
+          727
+        ],
+        "pixels": 942176,
+        "excluded": 16,
+        "background": "#EDEDED",
+        "backgroundShare": 0.81,
+        "backgroundMean": "#EDEDED",
+        "backgroundBand": [
+          "#E3E3E3",
+          "#F7F7F7"
+        ],
+        "bandShare": 0.931,
+        "field": {
+          "class": "QLineEdit",
+          "name": "mProjectOnLaunchLineEdit",
+          "color": "#ABABAB"
+        },
+        "frame": {
+          "class": "QgsCollapsibleGroupBox",
+          "name": "grpLocale",
+          "color": "#D8D8D8"
+        },
+        "page": "mOptionsPageGeneral"
+      }
+    },
+    "algorithmParameters": {
+      "ok": false,
+      "role": "Window",
+      "color": "#F0F0F0",
+      "mostCommon": "#F0F0F0",
+      "share": 0.956,
+      "band": [
+        "#DDF0F0",
+        "#FAFAFA"
+      ],
+      "expected": "#EBEEE8",
+      "channelDiff": 8,
+      "field": "#ABABAB",
+      "frame": null,
+      "detail": {
+        "size": [
+          602,
+          600
+        ],
+        "pixels": 425344,
+        "excluded": 10,
+        "background": "#F0F0F0",
+        "backgroundShare": 0.956,
+        "backgroundMean": "#F0F0F0",
+        "backgroundBand": [
+          "#DDF0F0",
+          "#FAFAFA"
+        ],
+        "bandShare": 0.959,
+        "field": {
+          "class": "QgsHighlightableLineEdit",
+          "name": "leText",
+          "color": "#ABABAB"
+        },
+        "frame": null,
+        "tab": "Parâmetros"
+      }
+    },
+    "algorithmLog": {
+      "ok": false,
+      "role": "Window",
+      "color": "#FCFCFC",
+      "mostCommon": "#FCFCFC",
+      "share": 0.941,
+      "band": [
+        "#F2F2F2",
+        "#FFFFFF"
+      ],
+      "expected": "#EBEEE8",
+      "channelDiff": 20,
+      "field": null,
+      "frame": "#B9B9B9",
+      "detail": {
+        "size": [
+          602,
+          600
+        ],
+        "pixels": 24814,
+        "excluded": 1,
+        "background": "#FCFCFC",
+        "backgroundShare": 0.941,
+        "backgroundMean": "#FCFCFC",
+        "backgroundBand": [
+          "#F2F2F2",
+          "#FFFFFF"
+        ],
+        "bandShare": 0.943,
+        "field": null,
+        "frame": {
+          "class": "QTextBrowser",
+          "name": "txtLog",
+          "color": "#B9B9B9"
+        },
+        "tab": "Log"
+      }
+    },
+    "algorithmDialog": {
+      "ok": false,
+      "role": "Window",
+      "color": "#F0F0F0",
+      "mostCommon": "#F0F0F0",
+      "share": 0.886,
+      "band": [
+        "#DDF0F0",
+        "#FAFAFA"
+      ],
+      "expected": "#EBEEE8",
+      "channelDiff": 8,
+      "field": null,
+      "frame": null,
+      "detail": {
+        "size": [
+          900,
+          720
+        ],
+        "pixels": 621792,
+        "excluded": 11,
+        "background": "#F0F0F0",
+        "backgroundShare": 0.886,
+        "backgroundMean": "#F0F0F0",
+        "backgroundBand": [
+          "#DDF0F0",
+          "#FAFAFA"
+        ],
+        "bandShare": 0.908,
+        "field": null,
+        "frame": null,
+        "title": "Geometria do vetor - Buffer"
+      }
+    },
+    "attributeTableDialog": {
+      "ok": false,
+      "role": "Window",
+      "color": "#F0F0F0",
+      "mostCommon": "#F0F0F0",
+      "share": 0.791,
+      "band": [
+        "#DDE9F3",
+        "#FAFAFA"
+      ],
+      "expected": "#EBEEE8",
+      "channelDiff": 8,
+      "field": null,
+      "frame": null,
+      "detail": {
+        "size": [
+          617,
+          329
+        ],
+        "pixels": 37020,
+        "excluded": 3,
+        "background": "#F0F0F0",
+        "backgroundShare": 0.791,
+        "backgroundMean": "#F0F0F0",
+        "backgroundBand": [
+          "#DDE9F3",
+          "#FAFAFA"
+        ],
+        "bandShare": 0.847,
+        "field": null,
+        "frame": null
+      }
+    },
+    "menu": {
+      "ok": true,
+      "role": "Base",
+      "color": "#FFFFFF",
+      "mostCommon": "#FFFFFF",
+      "share": 0.93,
+      "band": [
+        "#E9FFFF",
+        "#FFFFFF"
+      ],
+      "expected": "#FFFFFF",
+      "channelDiff": 0,
+      "field": null,
+      "frame": null,
+      "detail": {
+        "size": [
+          342,
+          470
+        ],
+        "pixels": 251664,
+        "excluded": 0,
+        "background": "#FFFFFF",
+        "backgroundShare": 0.93,
+        "backgroundMean": "#FFFFFF",
+        "backgroundBand": [
+          "#E9FFFF",
+          "#FFFFFF"
+        ],
+        "bandShare": 0.931,
+        "field": null,
+        "frame": null,
+        "menu": "Pro&jeto"
+      }
+    },
+    "comboPopup": {
+      "ok": false,
+      "role": "Base",
+      "color": "#F0F0F0",
+      "mostCommon": "#F0F0F0",
+      "share": 0.984,
+      "band": [
+        "#F0F0F0",
+        "#F0F0F0"
+      ],
+      "expected": "#FFFFFF",
+      "channelDiff": 15,
+      "field": null,
+      "frame": null,
+      "detail": {
+        "size": [
+          592,
+          60
+        ],
+        "pixels": 55500,
+        "excluded": 0,
+        "background": "#F0F0F0",
+        "backgroundShare": 0.984,
+        "backgroundMean": "#F0F0F0",
+        "backgroundBand": [
+          "#F0F0F0",
+          "#F0F0F0"
+        ],
+        "bandShare": 0.984,
+        "field": null,
+        "frame": null,
+        "combo": ""
+      }
+    },
+    "lineEdit": {
+      "ok": true,
+      "role": "Base",
+      "color": "#FFFFFF",
+      "mostCommon": "#FFFFFF",
+      "share": 0.778,
+      "band": [
+        "#EBFFFF",
+        "#FFFFFF"
+      ],
+      "expected": "#FFFFFF",
+      "channelDiff": 0,
+      "field": "#ABABAB",
+      "frame": null,
+      "detail": {
+        "size": [
+          565,
+          22
+        ],
+        "pixels": 19768,
+        "excluded": 0,
+        "background": "#FFFFFF",
+        "backgroundShare": 0.778,
+        "backgroundMean": "#FFFFFF",
+        "backgroundBand": [
+          "#EBFFFF",
+          "#FFFFFF"
+        ],
+        "bandShare": 0.817,
+        "field": {
+          "class": "QgsHighlightableLineEdit",
+          "name": "leText",
+          "color": "#ABABAB"
+        },
+        "frame": null,
+        "class": "QgsHighlightableLineEdit"
+      }
+    },
+    "attributeTable": {
+      "ok": true,
+      "role": "Base",
+      "color": "#FFFFFF",
+      "mostCommon": "#FFFFFF",
+      "share": 0.937,
+      "band": [
+        "#FFFFFF",
+        "#FFFFFF"
+      ],
+      "expected": "#FFFFFF",
+      "channelDiff": 0,
+      "field": null,
+      "frame": null,
+      "detail": {
+        "size": [
+          604,
+          247
+        ],
+        "pixels": 149188,
+        "excluded": 0,
+        "background": "#FFFFFF",
+        "backgroundShare": 0.937,
+        "backgroundMean": "#FFFFFF",
+        "backgroundBand": [
+          "#FFFFFF",
+          "#FFFFFF"
+        ],
+        "bandShare": 0.937,
+        "field": null,
+        "frame": null,
+        "view": "QgsAttributeTableView"
+      }
+    },
+    "algorithmLogText": {
+      "ok": true,
+      "role": "Base",
+      "color": "#FFFFFF",
+      "mostCommon": "#FFFFFF",
+      "share": 1.0,
+      "band": [
+        "#FFFFFF",
+        "#FFFFFF"
+      ],
+      "expected": "#FFFFFF",
+      "channelDiff": 0,
+      "field": null,
+      "frame": null,
+      "detail": {
+        "size": [
+          600,
+          573
+        ],
+        "pixels": 537000,
+        "excluded": 0,
+        "background": "#FFFFFF",
+        "backgroundShare": 1.0,
+        "backgroundMean": "#FFFFFF",
+        "backgroundBand": [
+          "#FFFFFF",
+          "#FFFFFF"
+        ],
+        "bandShare": 1.0,
+        "field": null,
+        "frame": null,
+        "what": "txtLog (Base)"
+      }
+    },
+    "layerPropertiesList": {
+      "ok": true,
+      "role": "propria",
+      "color": "#5D5D5D",
+      "mostCommon": "#5D5D5D",
+      "share": 0.742,
+      "band": [
+        "#4B5560",
+        "#7B5D5D"
+      ],
+      "expected": null,
+      "channelDiff": 999,
+      "field": null,
+      "frame": null,
+      "detail": {
+        "size": [
+          150,
+          732
+        ],
+        "pixels": 172020,
+        "excluded": 0,
+        "background": "#5D5D5D",
+        "backgroundShare": 0.742,
+        "backgroundMean": "#5D5D5D",
+        "backgroundBand": [
+          "#4B5560",
+          "#7B5D5D"
+        ],
+        "bandShare": 0.754,
+        "field": null,
+        "frame": null,
+        "name": "mOptionsListWidget"
+      }
+    },
+    "optionsList": {
+      "ok": true,
+      "role": "propria",
+      "color": "#5D5D5D",
+      "mostCommon": "#5D5D5D",
+      "share": 0.771,
+      "band": [
+        "#4C535A",
+        "#7B5D5D"
+      ],
+      "expected": null,
+      "channelDiff": 999,
+      "field": null,
+      "frame": null,
+      "detail": {
+        "size": [
+          150,
+          732
+        ],
+        "pixels": 172020,
+        "excluded": 0,
+        "background": "#5D5D5D",
+        "backgroundShare": 0.771,
+        "backgroundMean": "#5D5D5D",
+        "backgroundBand": [
+          "#4C535A",
+          "#7B5D5D"
+        ],
+        "bandShare": 0.783,
+        "field": null,
+        "frame": null,
+        "name": "mOptionsTreeView"
+      }
+    }
+  },
+  "productData": {
+    "ok": true,
+    "directory": "%USERPROFILE%\\AppData\\Local\\InstitutoIMAN\\IMANTerra",
+    "existedBefore": true,
+    "created": [],
+    "removed": [],
+    "files": []
+  },
+  "guard": {
+    "ok": true,
+    "last": "GUARD OK: QGIS oficial, %USERPROFILE%\\AppData\\Roaming\\QGIS, %USERPROFILE%\\AppData\\Local\\QGIS, %USERPROFILE%\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\QGIS3.lnk, C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\QGIS 3.44.13, registro, associacoes e notificacoes do QGIS identicos ao retrato de 2026-11-13T13:37:01 (37625 itens)"
+  },
+  "ok": false
+}
