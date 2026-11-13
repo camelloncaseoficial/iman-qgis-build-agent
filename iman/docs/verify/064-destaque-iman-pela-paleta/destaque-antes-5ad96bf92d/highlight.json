@@ -1,0 +1,172 @@
+{
+  "captures": {
+    "a2-0-janela.png": [
+      1920,
+      1111
+    ],
+    "a2-1-camadas-item.png": [
+      1050,
+      81
+    ],
+    "a2-1-painel-camadas.png": [
+      368,
+      904
+    ],
+    "a2-2-processamento-item.png": [
+      939,
+      96
+    ],
+    "a2-2-caixa-de-ferramentas.png": [
+      373,
+      904
+    ],
+    "a2-3-tabela-linha.png": [
+      429,
+      123
+    ],
+    "a2-3-tabela-de-atributos.png": [
+      771,
+      411
+    ],
+    "a2-4-menu-item.png": [
+      1284,
+      105
+    ],
+    "a2-4-menu-aberto.png": [
+      428,
+      588
+    ],
+    "a2-5-lista-aberta-item.png": [
+      2220,
+      105
+    ],
+    "a2-5-lista-aberta.png": [
+      743,
+      78
+    ],
+    "a2-6-texto-selecionado.png": [
+      276,
+      80
+    ],
+    "a2-6-campo.png": [
+      1884,
+      114
+    ]
+  },
+  "regions": {
+    "layers": {
+      "item": "points",
+      "rect": [
+        20,
+        0,
+        272,
+        18
+      ],
+      "pixels": 7480,
+      "focus": true,
+      "windowActive": true,
+      "background": "#0078D7",
+      "backgroundShare": 0.093,
+      "textPixels": 613
+    },
+    "toolbox": {
+      "found": true,
+      "item": "Amostrar valores do raster",
+      "rect": [
+        40,
+        18,
+        242,
+        18
+      ],
+      "pixels": 6644,
+      "focus": true,
+      "windowActive": true,
+      "background": "#0B80DC",
+      "backgroundShare": 0.082,
+      "textPixels": 605
+    },
+    "attributeTable": {
+      "found": true,
+      "view": "QgsAttributeTableView",
+      "cell": "a",
+      "rect": [
+        100,
+        0,
+        99,
+        29
+      ],
+      "pixels": 4428,
+      "focus": true,
+      "windowActive": true,
+      "background": "#0078D7",
+      "backgroundShare": 0.99,
+      "textPixels": 17
+    },
+    "menu": {
+      "menu": "Pro&jeto",
+      "item": "&Novo",
+      "rect": [
+        0,
+        0,
+        342,
+        24
+      ],
+      "pixels": 12810,
+      "focus": false,
+      "windowActive": true,
+      "background": "#0078D7",
+      "backgroundShare": 0.872,
+      "textPixels": 335
+    },
+    "comboPopup": {
+      "found": true,
+      "combo": "",
+      "item": "Plano",
+      "rect": [
+        0,
+        20,
+        705,
+        20
+      ],
+      "pixels": 18500,
+      "focus": true,
+      "windowActive": true,
+      "background": "#0078D7",
+      "backgroundShare": 0.908,
+      "textPixels": 65
+    },
+    "textSelection": {
+      "found": true,
+      "text": "10,000000",
+      "selected": "10,000000",
+      "rect": [
+        3,
+        4,
+        45,
+        8
+      ],
+      "pixels": 560,
+      "focus": true,
+      "windowActive": true,
+      "background": "#0078D7",
+      "backgroundShare": 0.388,
+      "textPixels": 116
+    }
+  },
+  "projectRead": true,
+  "theme": {
+    "themeName": "default",
+    "styleSheetLength": 0,
+    "qtStyle": "QgsAppStyle",
+    "palette": {
+      "Active": [
+        "#0078D7",
+        "#FFFFFF"
+      ],
+      "Inactive": [
+        "#F0F0F0",
+        "#000000"
+      ]
+    }
+  }
+}

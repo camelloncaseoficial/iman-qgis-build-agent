@@ -8,7 +8,7 @@ import os
 from qgis.core import QgsApplication, QgsPointXY, QgsProject, QgsSettings
 from qgis.PyQt import sip
 from qgis.PyQt.QtCore import QPoint, Qt, QTimer
-from qgis.PyQt.QtGui import QColor, QFontMetrics
+from qgis.PyQt.QtGui import QColor, QFontMetrics, QPalette
 from qgis.PyQt.QtWidgets import (
     QAbstractButton,
     QApplication,
@@ -86,6 +86,20 @@ def step_theme():
         "defaultThemesFolder": QgsApplication.defaultThemesFolder(),
         "userThemesFolder": QgsApplication.userThemesFolder(),
         "settingUITheme": settings.value("UI/UITheme", None),
+        # fatia 064 (A1, A4): o destaque da paleta da aplicacao, por grupo
+        "palette": _highlight_palette(),
+    }
+
+
+def _highlight_palette():
+    palette = QApplication.palette()
+    groups = (("Active", QPalette.Active), ("Inactive", QPalette.Inactive), ("Disabled", QPalette.Disabled))
+    return {
+        name: {
+            "Highlight": palette.color(group, QPalette.Highlight).name().upper(),
+            "HighlightedText": palette.color(group, QPalette.HighlightedText).name().upper(),
+        }
+        for name, group in groups
     }
 
 
@@ -333,7 +347,9 @@ def step_switch_themes():
     for name in ("Blend of Gray", "Night Mapping", start):
         QgsApplication.setUITheme(name)
         QApplication.processEvents()
-        result[name] = {"themeName": QgsApplication.themeName(), "styleSheetLength": len(QApplication.instance().styleSheet())}
+        result[name] = {"themeName": QgsApplication.themeName(), "styleSheetLength": len(QApplication.instance().styleSheet()),
+                        # fatia 064 (A4c): o destaque depois da troca em tempo de execucao
+                        "palette": _highlight_palette()}
         if name != start:
             save(iface.mainWindow(), "13-tema-%s.png" % name.lower().replace(" ", "-"))
     facts["switchThemes"] = result

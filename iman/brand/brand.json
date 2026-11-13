@@ -19,5 +19,25 @@
   "splash_text_color": "#FFFFFF",
   "default_project_crs": "EPSG:31984",
   "new_project_crs_behavior": "UsePresetCrs",
-  "layer_default_crs": "EPSG:31984"
+  "layer_default_crs": "EPSG:31984",
+  "palette": {
+    "brand": "#103D29",
+    "brand-2": "#1E7A4D",
+    "accent": "#2B8FD6",
+    "moss": "#6E9160",
+    "earth": "#8A7A55",
+    "bg": "#EBEEE8",
+    "panel": "#FFFFFF",
+    "panel-2": "#F5F7F2",
+    "border": "#E2E5DE",
+    "text": "#1A231D",
+    "text-muted": "#5E6A61",
+    "text-faint": "#95A093",
+    "hover": "#EFF2EC",
+    "active-bg": "#E4F0E8",
+    "active-fg": "#155F3D",
+    "border-strong": "#D0D5C9",
+    "border-accent": "#CFE0D2",
+    "ink": "#0E1A14"
+  }
 }

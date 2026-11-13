@@ -19,7 +19,8 @@
       resources\themes e da lista de temas; projeto novo no default_project_crs, com o new_project_crs_behavior; camada
       sem SRC no layer_default_crs; Opcoes > SRC com o SRC e "usar SRC predefinido"; os temas de fabrica na lista e
       escolhiveis, e Opcoes > Geral no default (T9); botao de fechar da dock com icone e funcionando (D1), coordenada
-      inteira no campo da barra de status (D2), titulo da dock sem corte (D4).
+      inteira no campo da barra de status (D2), titulo da dock sem corte (D4); desde a fatia 064, o destaque IMAN na
+      paleta do Qt (Highlight brand-2 e HighlightedText panel do brand.json, grupos Active e Inactive; A7).
     UserTheme: o tema e o do usuario (default: sem folha de estilo), nao o da global.
     Official (controle): tema default, projeto novo em EPSG:4326 e o tema do produto ausente da lista. O visto falhando
       do tema, desde a 063, e o build ou o instalado de antes dela (com o tema).
@@ -144,6 +145,15 @@ if ($f) {
     Add-Check 'T3:D2-coordenada' ($f.coordinateField.found -and $f.coordinateField.text -and $f.coordinateField.fits) $f.coordinateField
     Add-Check 'T3:D4-titulo-dock' ($f.dock.titleBarHeight -ge $f.dock.titleFontHeight) ([ordered]@{
         title = $f.dock.title; titleBarHeight = $f.dock.titleBarHeight; titleFontHeight = $f.dock.titleFontHeight })
+    # fatia 064 (A7, acrescimo): o destaque IMAN pela paleta do Qt, nos grupos Active e Inactive, com as cores da
+    # paleta do brand.json (brand-2 e panel); o tema segue default e sem folha (T1)
+    $wantHighlight = ([string]$brand.palette.'brand-2').ToUpperInvariant()
+    $wantHighlightedText = ([string]$brand.palette.panel).ToUpperInvariant()
+    $pal = $th.palette
+    $a7 = $wantHighlight -and $wantHighlightedText -and @('Active', 'Inactive' | Where-Object {
+        $pal.$_.Highlight -ne $wantHighlight -or $pal.$_.HighlightedText -ne $wantHighlightedText }).Count -eq 0
+    Add-Check 'A7:destaque-iman' $a7 ([ordered]@{
+        expected = [ordered]@{ Highlight = $wantHighlight; HighlightedText = $wantHighlightedText }; palette = $pal })
   } else {
     # Official: o que o produto muda nao pode estar la (visto falhando da mesma medicao)
     Add-Check 'controle:tema-default' ($th.themeName -eq 'default' -and $th.styleSheetLength -eq 0 -and $product -notin $th.uiThemes) ([ordered]@{

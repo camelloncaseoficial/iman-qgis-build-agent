@@ -13,9 +13,11 @@
    iman/build/Build-Qgis.ps1 nao o copia (e remove a pasta que um build anterior
    deixou em resources/themes), e o qgis_global_settings.ini gerado pelo
    iman/brand/build_brand.py nao escolhe tema. Regra de aparencia nova volta uma por
-   vez, por briefing. O iman/build/Test-ThemeQss.ps1 segue guardando este arquivo, e
-   o build_brand.py segue lendo a paleta abaixo para o iman_brand.h (IMAN_COLOR_*,
-   usadas pela pagina inicial e pelo Sobre do produto, fatia 059).
+   vez, por briefing, e pela paleta do Qt no C++, nunca por QSS (emenda de 2026-11-13).
+   O iman/build/Test-ThemeQss.ps1 segue guardando este arquivo. Desde a fatia 064 a
+   fonte da paleta e o iman/brand/brand.json (chave palette): o build_brand.py le de
+   la as IMAN_COLOR_* do iman_brand.h, e este arquivo deixou de ser lido pelo build.
+   A paleta abaixo fica como referencia, com os mesmos tokens e valores.
    Recolore a chrome da UI Qt (menus, toolbars, headers, selecao, abas, botoes,
    campos, scrollbars) na linguagem do comp (docs/TerraWindow.dc.html da distro),
    MANTENDO areas de conteudo (arvore, tabelas) claras p/ legibilidade.

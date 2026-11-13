@@ -201,3 +201,21 @@ Medido na fatia 063 (2026-11-13), laudo `iman/docs/verify/063-tema-padrao-do-qgi
 - **Disco:** D: com 35 GB livres no comeco. **Tempos:** build com a volta da 059 393 s + install 355 s; incremental so
   com a marca 95 a 101 s + install 303 a 390 s; setas 40 s; perfis 12 a 20 s; `Test-ThemeDefaults` 40 s.
 - Nada instalado; o IMAN Terra da 061 segue instalado (com o tema) para o smoke do sponsor.
+
+Medido na fatia 064 (2026-11-13), laudo `iman/docs/verify/064-destaque-iman-pela-paleta/README.md`:
+
+- **Paleta da marca no `brand.json`** (`palette`, 18 tokens); o `build_brand.py` valida e falha se faltar token que
+  o C++ usa (varre as `IMAN_COLOR_*` de `src/app/iman`). O `style.qss` nao e mais lido pelo build.
+- **Destaque pela paleta:** `ImanPalette::applyHighlight` no `main.cpp`, depois do `setStyle`; precisa de `APP_EXPORT`
+  porque o `main.cpp` vai no executavel e o `imanpalette.cpp` no `qgis_app`. O `QgisAppStyleSheet` monta a cor de
+  selecao da `QTableView` com a paleta do momento: a tabela pega o verde sem QSS novo.
+- **Fusion pinta a selecao das arvores em degrade** em torno da cor da paleta (`#1D784C` a `#1E7E4F` para
+  `#1E7A4D`): medir pela media da faixa, nao pela cor mais comum.
+- **Tabela de atributos:** a linha selecionada segue a selecao de feicoes (`QgsFeatureSelectionModel`); `selectRow`
+  nao seleciona; usar `selectByIds` na camada.
+- **Opcoes do QGIS 3.44:** o `QgsOptions` so salva pelo OK da caixa de botoes (o `accept()` nao salva); o widget se
+  chama `buttonBox` (o `mOptButtonBox` e so a referencia). Tema e estilo so valem ao reabrir (`uiThemeChanged` nao
+  esta ligado). Depois de um OK, `UI/UITheme=default` fica gravado e o `qgis/style` escolhido passa a valer.
+- **Estilo `windowsvista`** desenha a selecao com a cor do Windows (`#CCE8FF`) e ignora o `Highlight` da paleta.
+- **Tempos:** build desta branch 147 s + install 319 s; destaque 30 s; casos 10 a 30 s; capturas da 059 50 s.
+- Nada instalado; o IMAN Terra da 061 segue instalado (com o tema antigo) para o smoke do sponsor.
