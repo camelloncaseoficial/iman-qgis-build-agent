@@ -110,8 +110,11 @@ def write_global_settings(path, brand, plugin_id):
         ("app", "projections\\defaultProjectCrs"): brand["default_project_crs"],
         ("app", "projections\\newProjectCrsBehavior"): brand["new_project_crs_behavior"],
     }
-    # chaves que o ini do QGIS nao tem e que vao no fim, em secao propria: se ele passar a te-las, duplicaria
-    appended = {("UI", "UITheme"), ("Projections", "layerDefaultCrs"), ("PythonPlugins", plugin_id)}
+    # chaves que o ini do QGIS nao tem e que vao no fim, em secao propria: se ele passar a te-las, duplicaria.
+    # Sem UI/UITheme desde a fatia 063 (emenda de 2026-11-12 ao D-IMAN-040): o tema e o do QGIS. A chave fica ausente,
+    # como no QGIS oficial, e nao "default": o main.cpp le UI/UITheme sem valor padrao e, com o valor vazio, usa o
+    # estilo fusion, o mesmo do oficial; com "default", ficaria o estilo da plataforma, outra cara
+    appended = {("Projections", "layerDefaultCrs"), ("PythonPlugins", plugin_id)}
     replaced = []
     present = []
     group = None
@@ -146,10 +149,6 @@ def write_global_settings(path, brand, plugin_id):
         "",
         "[qgis]",
     ] + ["%s=%s" % (k, urls[k]) for k in sorted(urls)] + [
-        "",
-        "# tema de interface padrao (pasta em resources/themes, copiada pelo Build-Qgis.ps1 de iman/brand/theme)",
-        "[UI]",
-        "UITheme=%s" % brand["ui_theme"],
         "",
         "# SRC de camada sem SRC: lida sem a secao app (Projections/layerDefaultCrs em qgsproject.cpp e qgisapp.cpp)",
         "[Projections]",
