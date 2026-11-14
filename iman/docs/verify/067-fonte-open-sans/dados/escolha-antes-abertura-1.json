@@ -1,0 +1,70 @@
+{
+  "steps": [
+    "measure",
+    "options",
+    "font=Arial"
+  ],
+  "measures": [
+    {
+      "label": "passo 0",
+      "app": {
+        "family": "MS Shell Dlg 2",
+        "pointSizeF": 7.8,
+        "resolvedFamily": "MS Shell Dlg 2",
+        "file": {
+          "family": "Tahoma",
+          "version": "Version 7.05"
+        }
+      },
+      "menu": {
+        "family": "Segoe UI",
+        "pointSizeF": 9.0,
+        "resolvedFamily": "Segoe UI",
+        "file": {
+          "family": "Segoe UI",
+          "version": "Version 5.72"
+        }
+      },
+      "statusBar": {
+        "family": "Segoe UI",
+        "pointSizeF": 9.0,
+        "resolvedFamily": "Segoe UI",
+        "file": {
+          "family": "Segoe UI",
+          "version": "Version 5.72"
+        }
+      },
+      "appFontFamily": null,
+      "appFontPointSize": null,
+      "uiTheme": null,
+      "styleSheetLength": 0
+    }
+  ],
+  "actions": [
+    {
+      "kind": "font",
+      "requested": "Arial",
+      "found": true,
+      "after": {
+        "qtDefaultChecked": false,
+        "combo": "Arial"
+      },
+      "clickedOk": true,
+      "saved": {
+        "appFontFamily": "Arial",
+        "uiTheme": "default"
+      }
+    }
+  ],
+  "options": [
+    {
+      "found": true,
+      "qtDefaultChecked": true,
+      "customChecked": false,
+      "combo": "MS Shell Dlg 2",
+      "comboEnabled": false,
+      "size": "7,8",
+      "capture": "opcoes-geral-1.png"
+    }
+  ]
+}

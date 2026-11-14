@@ -1,0 +1,56 @@
+{
+  "steps": [
+    "measure",
+    "theme=Night Mapping"
+  ],
+  "measures": [
+    {
+      "label": "passo 0",
+      "app": {
+        "family": "Open Sans",
+        "pointSizeF": 7.8,
+        "resolvedFamily": "Open Sans",
+        "file": {
+          "family": "Open Sans",
+          "version": "Version 3.003; ttfautohint (v1.8.4)"
+        }
+      },
+      "menu": {
+        "family": "Open Sans",
+        "pointSizeF": 9.0,
+        "resolvedFamily": "Open Sans",
+        "file": {
+          "family": "Open Sans",
+          "version": "Version 3.003; ttfautohint (v1.8.4)"
+        }
+      },
+      "statusBar": {
+        "family": "Open Sans",
+        "pointSizeF": 9.0,
+        "resolvedFamily": "Open Sans",
+        "file": {
+          "family": "Open Sans",
+          "version": "Version 3.003; ttfautohint (v1.8.4)"
+        }
+      },
+      "appFontFamily": null,
+      "appFontPointSize": null,
+      "uiTheme": null,
+      "styleSheetLength": 0
+    }
+  ],
+  "actions": [
+    {
+      "kind": "theme",
+      "requested": "Night Mapping",
+      "found": true,
+      "after": "Night Mapping",
+      "clickedOk": true,
+      "saved": {
+        "appFontFamily": null,
+        "uiTheme": "Night Mapping"
+      }
+    }
+  ],
+  "options": []
+}

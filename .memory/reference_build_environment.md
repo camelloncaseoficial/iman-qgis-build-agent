@@ -264,3 +264,31 @@ Medido na fatia 066 (2026-11-13), laudo `iman/docs/verify/066-botoes-e-abas-pela
   por pergunta, tratar como achado.
 - **Tempos:** build com o `iman_brand.h` regravado 628 s; so a cor 306 s; botoes 40 s; setas 25 s; casos 20 a 60 s.
 - Nada instalado; o IMAN Terra da 061 segue instalado para o smoke do sponsor.
+
+Medido na fatia 067 (2026-11-14), laudo `iman/docs/verify/067-fonte-open-sans/README.md`:
+
+- **A Open Sans 1.10 esta instalada no Windows desta bancada** (`C:\Windows\Fonts\OpenSans-*.ttf`, 13 arquivos de
+  2019, Semibold e Condensed inclusos), nao pela Crew. A familia "Open Sans" resolve mesmo sem a embarcada: a prova de
+  qual arquivo desenha e o `QRawFont.fromFont(font).fontTable("name")`, nome 5 (a embarcada e `Version 3.003`).
+  O `QFontDatabase().styles("Open Sans")` mistura as duas.
+- **Fonte da aplicacao no Windows:** "MS Shell Dlg 2" 7,8 pt, desenhada pela Tahoma; menus, barra de menus, barra de
+  status, titulos de painel, dicas e mensagens vem do tema da plataforma em Segoe UI 9 pt. O `QApplication::setFont`
+  sem classe apaga essas fontes por classe (o QGIS tambem, quando o usuario escolhe fonte em Opcoes); o `ImanFont`
+  as guarda e devolve com a familia trocada (decisao do sponsor na 067).
+- **QSS `font-weight: 600` no Qt 5 e peso 75 (Bold)**: o numero do CSS e dividido por 8. O `QFont::DemiBold` (63)
+  pega a face SemiBold real, que o arquivo estatico declara como familia GDI "Open Sans SemiBold" (nome 1).
+- **"Qt padrao" das Opcoes nao restaura** a fonte escolhida antes (o `QgisAppStyleSheet` toma a fonte ja aplicada como
+  padrao): medir o Night Mapping num perfil novo proprio.
+- **Escala de 100% sem mexer no Windows:** `QT_ENABLE_HIGHDPI_SCALING=0` e `QT_FONT_DPI=96` no processo da rodada dao
+  escala 1 e DPI 96 (o `Invoke-FontCaptures.ps1 -Dpi96`).
+- **PyQt e crash:** `QModelIndex.internalPointer()` num indice de modelo proxy corrompe o proxy e derruba o QGIS; o
+  `mapTo` para um widget que nao e ancestral tambem; e `w.window() is top` pode falhar para o mesmo widget (dois
+  objetos Python): comparar pelo `sip.unwrapinstance`. Um crash do alvo Build deixa o relatorio em
+  `%LOCALAPPDATA%\InstitutoIMAN\IMANTerra\crashes` (o `dados-do-produto` acusa) e o dialogo do crash handler aberto.
+- **Copia do build da develop** para medir ANTES enquanto a branch compila: `D:\iman-terra-builderify7-install-develop`
+  (410 MB; `-AppRoot <copia>pps\qgis-ltr`).
+- **O sponsor usa o QGIS oficial durante a sessao** (perfil e o feed `?lang=es` no cache, 08:56 e 09:56): a guarda
+  falha; o retrato e tirado de novo antes de cada rodada (R1) e a origem e conferida pela URL do cache.
+- **Tempos:** build com o `iman_brand.h` regravado 7 min 22 s (build + install); so o `imanfont.cpp` cerca de 6 min;
+  capturas da fonte 50 a 60 s por rodada; escolha 60 s; `Test-ThemeDefaults` 20 s. D: com 37 GB livres no comeco.
+- Nada instalado; o IMAN Terra da 061 segue instalado para o smoke do sponsor.

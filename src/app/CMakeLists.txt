@@ -79,6 +79,8 @@ set(QGIS_APP_SRCS
   iman/imanappstyle.cpp
   iman/imanhomepage.cpp
   iman/imanpalette.cpp
+  iman/imanfont.cpp
+  iman/imanfonts.qrc
 
   qgsmaptooladdfeature.cpp
   qgsmaptooladdpart.cpp
