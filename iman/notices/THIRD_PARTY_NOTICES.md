@@ -47,7 +47,7 @@ SDK. Sem ele, o IMAN Terra não abre arquivos ECW; o JPEG 2000 segue pelo driver
 
 <!-- gerado: patchset (iman/notices/Update-Notices.ps1) -->
 - `src/core/qgsapplication.cpp` (D-IMAN-041 (regra 2), D-IMAN-043; fatia 044, 047)
-- `src/app/qgisapp.cpp` (D-IMAN-039 (regra 4), D-IMAN-040 (emenda de 2026-11-11); fatia 044, 058)
+- `src/app/qgisapp.cpp` (D-IMAN-039 (regra 4), D-IMAN-040 (emendas de 2026-11-11); fatia 044, 058, 059)
 - `src/core/layout/qgslayoutexporter.cpp` (D-IMAN-041 (regra 3); fatia 044)
 - `src/crashhandler/main.cpp` (D-IMAN-041 (regra 3), D-IMAN-043; fatia 044, 047)
 - `src/crashhandler/qgscrashreport.cpp` (D-IMAN-041 (regra 3); fatia 044)
@@ -59,6 +59,19 @@ SDK. Sem ele, o IMAN Terra não abre arquivos ECW; o JPEG 2000 segue pelo driver
 - `images/splash/splash.png` (D-IMAN-041 (regra 6); fatia 044)
 - `images/themes/default/providerQgis.svg` (D-IMAN-039 (regra 2), D-IMAN-041 (regra 6); fatia 044)
 - `src/process/main.cpp` (D-IMAN-043; fatia 047)
+- `src/app/CMakeLists.txt` (D-IMAN-040 (emenda de 2026-11-11, itens 3 a 5; emendas de 2026-11-13; adendo de 2026-11-14 da fonte); fatia 059, 064, 066, 067)
+- `src/app/iman/imanhomepage.h` (D-IMAN-040 (emenda de 2026-10-29, item 3; emenda de 2026-11-11), D-IMAN-025, D-IMAN-026; fatia 059)
+- `src/app/iman/imanhomepage.cpp` (D-IMAN-040 (emenda de 2026-10-29, item 3; emenda de 2026-11-11), D-IMAN-025, D-IMAN-026; fatia 059)
+- `src/app/iman/imanaboutdialog.h` (D-IMAN-040 (emenda de 2026-11-11, itens 4 e 5), D-IMAN-039, D-IMAN-025; fatia 059)
+- `src/app/iman/imanaboutdialog.cpp` (D-IMAN-040 (emenda de 2026-11-11, itens 4 e 5), D-IMAN-039, D-IMAN-025; fatia 059)
+- `src/app/main.cpp` (D-IMAN-040 (emendas de 2026-11-13; adendo de 2026-11-14 da fonte), D-IMAN-026 (emenda de 2026-11-14); fatia 064, 065, 066, 067)
+- `src/app/iman/imanpalette.h` (D-IMAN-040 (emendas de 2026-11-13), D-IMAN-026, D-IMAN-025; fatia 064, 065, 066)
+- `src/app/iman/imanpalette.cpp` (D-IMAN-040 (emendas de 2026-11-13), D-IMAN-026, D-IMAN-025; fatia 064, 065, 066)
+- `src/app/iman/imanappstyle.h` (D-IMAN-040 (emendas de 2026-11-13, adendo da terceira mudanca), D-IMAN-025; fatia 066)
+- `src/app/iman/imanappstyle.cpp` (D-IMAN-040 (emendas de 2026-11-13, adendo da terceira mudanca), D-IMAN-025; fatia 066)
+- `src/app/iman/imanfont.h` (D-IMAN-040 (adendo de 2026-11-14 da fonte), D-IMAN-026 (emenda de 2026-11-14), D-IMAN-025; fatia 067)
+- `src/app/iman/imanfont.cpp` (D-IMAN-040 (adendo de 2026-11-14 da fonte), D-IMAN-026 (emenda de 2026-11-14), D-IMAN-025; fatia 067)
+- `src/app/iman/imanfonts.qrc` (D-IMAN-040 (adendo de 2026-11-14 da fonte), D-IMAN-025; fatia 067)
 <!-- gerado: fim -->
 
 O que é novo e do Instituto IMAN (scripts de build, instalador, lançador, marca) vive na pasta `iman/` do fork
