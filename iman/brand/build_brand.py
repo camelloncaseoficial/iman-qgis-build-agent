@@ -14,7 +14,8 @@ Saidas (fora do repo, em --out):
     no lugar), mais o idioma padrao, o feed de noticias desligado, os enderecos do menu Ajuda, o SRC de camada sem
     SRC (fatia 049) e o plugin embarcado ligado por padrao (fatia 051); sem tema de interface desde a fatia 063;
   - --header: iman_brand.h, os textos de marca para o C++ (Bloco D), a versao do produto e, desde a fatia 059, a
-    paleta da marca (IMAN_COLOR_*; do brand.json desde a fatia 064, que deixou de ler o style.qss). So e regravado
+    paleta da marca (IMAN_COLOR_*; do brand.json desde a fatia 064, que deixou de ler o style.qss) e, desde a fatia
+    066, o raio das quinas do QPushButton (IMAN_BUTTON_RADIUS_PX, um numero, nao texto). So e regravado
     se o conteudo mudou, para nao recompilar a toa.
 
 Marcadores dos textos da curadoria: {product}, {PRODUCT}, {engine}, {org}, {url}.
@@ -186,6 +187,15 @@ def splash_text_color(brand):
     return value.upper()
 
 
+def button_radius(brand):
+    """Raio das quinas do QPushButton em pixels logicos (fatia 066: o dobro do raio 2 do Fusion, medido na Fase A do
+    laudo 066); inteiro de 1 a 16, ou o build falha alto em vez de desenhar um raio sem sentido."""
+    value = brand.get("button_radius_px")
+    if isinstance(value, bool) or not isinstance(value, int) or not 1 <= value <= 16:
+        raise SystemExit("button_radius_px tem de ser um inteiro de 1 a 16: %r" % (value,))
+    return value
+
+
 def color_macro(token):
     """Nome da macro do iman_brand.h para um token da paleta: brand-2 -> IMAN_COLOR_BRAND_2."""
     return "IMAN_COLOR_" + token.upper().replace("-", "_")
@@ -250,6 +260,8 @@ def write_header(path, brand):
          "#ifndef IMAN_BRAND_H",
          "#define IMAN_BRAND_H"]
         + ["#define %s %s" % (k, c_string(v)) for k, v in defs]
+        # numero, nao texto: o raio das quinas do QPushButton (fatia 066, src/app/iman/imanappstyle.cpp)
+        + ["#define IMAN_BUTTON_RADIUS_PX %d" % button_radius(brand)]
         + ["#endif", ""])
     if os.path.exists(path):
         with io.open(path, "r", encoding="ascii", newline="") as fh:

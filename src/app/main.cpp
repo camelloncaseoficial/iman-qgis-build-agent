@@ -107,6 +107,7 @@ typedef SInt32 SRefCon;
 #include "qgsuserprofile.h"
 #include "layers/qgsapplayerhandling.h"
 #include "options/qgsuserprofileselectiondialog.h"
+#include "iman/imanappstyle.h"
 #include "iman/imanpalette.h"
 
 #ifdef HAVE_OPENCL
@@ -1482,7 +1483,8 @@ int main( int argc, char *argv[] )
   }
   if ( !desiredStyle.isEmpty() )
   {
-    QApplication::setStyle( new QgsAppStyle( desiredStyle ) );
+    // IMAN Terra (fatia 066): o QgsAppStyle com o raio da marca so no QPushButton, so com o tema default
+    QApplication::setStyle( new ImanAppStyle( desiredStyle, theme ) );
 
     if ( activeStyleName != desiredStyle )
       settings.setValue( QStringLiteral( "qgis/style" ), desiredStyle );
@@ -1491,9 +1493,10 @@ int main( int argc, char *argv[] )
   {
     // even if user has not set a style, we need to override the application style with the QgsAppStyle proxy
     // based on the default style (or we miss custom style tweaks)
-    QApplication::setStyle( new QgsAppStyle( activeStyleName ) );
+    // IMAN Terra (fatia 066): idem
+    QApplication::setStyle( new ImanAppStyle( activeStyleName, theme ) );
   }
-  // IMAN Terra (fatias 064 e 065): destaque e fundo IMAN pela paleta do Qt, depois do setStyle, so com o tema default
+  // IMAN Terra (fatias 064 a 066): destaque, fundo e botoes pela paleta do Qt, depois do setStyle, so com o tema default
   ImanPalette::apply( theme );
 
   // set authentication database directory

@@ -17,8 +17,10 @@ from qgis.PyQt.QtWidgets import (
     QApplication,
     QComboBox,
     QDockWidget,
+    QPushButton,
     QScrollBar,
     QStyle,
+    QStyleOptionButton,
     QStyleOptionComboBox,
     QStyleOptionSlider,
     QStyleOptionSpinBox,
@@ -149,6 +151,19 @@ def scroll_arrows(bar):
     style = bar.style()
     return (style.subControlRect(QStyle.CC_ScrollBar, opt, QStyle.SC_ScrollBarSubLine, bar),
             style.subControlRect(QStyle.CC_ScrollBar, opt, QStyle.SC_ScrollBarAddLine, bar))
+
+
+def push_button_arrow(button):
+    """Fatia 066 (A3): a faixa da seta do botao com menu (QPushButton com setMenu, o "Estilo" das Propriedades da
+    camada). O estilo nao informa um subControlRect para ela: a faixa e a largura do PM_MenuButtonIndicator a partir da
+    borda direita, longe das quinas (4 px de cada borda), onde a seta e desenhada."""
+    opt = QStyleOptionButton()
+    opt.initFrom(button)
+    opt.rect = button.rect()
+    opt.features = QStyleOptionButton.HasMenu
+    mbi = button.style().pixelMetric(QStyle.PM_MenuButtonIndicator, opt, button)
+    r = button.rect()
+    return QRect(r.right() - mbi - 4, r.top() + 4, mbi + 1, r.height() - 8)
 
 
 def branch_arrow(tree, index):
@@ -343,6 +358,17 @@ def read_layer_properties():
             sinfo["down"] = ink(spin, down, 1)
             save(window_crop(spin, 2), "06-caixa-de-numero.png", 4)
         facts["controls"]["spinBox"] = sinfo
+        # fatia 066 (A3, acrescimo): a seta do botao com menu "Estilo" (QPushButton), cujo painel ganha o raio
+        with_menu = [b for b in dialog.findChildren(QPushButton) if b.isVisible() and b.menu() is not None]
+        named = [b for b in with_menu if b.text().replace("&", "") in ("Estilo", "Style")]
+        push = (named or [None])[0]
+        pinfo = {"found": push is not None, "candidates": [b.text() for b in with_menu]}
+        if push is not None:
+            pinfo.update(describe(push))
+            pinfo["text"] = push.text()
+            pinfo["arrow"] = ink(push, push_button_arrow(push), 0)
+            save(window_crop(push, 2), "06b-botao-estilo-com-menu.png", 4)
+        facts["controls"]["pushButtonMenu"] = pinfo
         save(dialog.grab(), "05b-propriedades-da-camada.png")
     except Exception as err:
         facts.setdefault("errors", {})["read_layer_properties"] = repr(err)

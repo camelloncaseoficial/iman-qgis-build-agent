@@ -1,0 +1,12 @@
+A4: contraste WCAG, develop 4a97fec449 (ANTES) contra o build final 5fd95d905d (DEPOIS), perfil novo
+
+par: ButtonText sobre Button
+normal        ANTES #FF000000 sobre #FFF0F0F0: 18,43:1   DEPOIS #FF000000 sobre #FFF5F7F2: 19,47:1   variacao 5,6%
+desabilitado  ANTES #FF787878 sobre #FFF0F0F0: 3,87:1   DEPOIS #FF787878 sobre #FFF5F7F2: 4,09:1   variacao 5,7%
+veredito: nenhuma queda maior que 10%
+
+(controle: o par da 065, que esta fatia nao muda)
+par: WindowText sobre Window
+normal        ANTES #FF000000 sobre #FFEBEEE8: 17,93:1   DEPOIS #FF000000 sobre #FFEBEEE8: 17,93:1   variacao 0%
+desabilitado  ANTES #FF787878 sobre #FFEBEEE8: 3,77:1   DEPOIS #FF787878 sobre #FFEBEEE8: 3,77:1   variacao 0%
+veredito: nenhuma queda maior que 10%

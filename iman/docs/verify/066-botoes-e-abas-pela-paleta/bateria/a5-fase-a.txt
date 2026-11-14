@@ -1,0 +1,58 @@
+Fase A (briefing 066, item 2), no build da develop 4a97fec449 (botoes-antes-4a97fec449/buttons.json):
+
+Caminho do desenho: um QProxyStyle de gravacao (sobre um fusion novo) posto so no componente; cada chamada de
+desenho com o widget passado nela. PE_PanelButtonCommand e o painel do botao do Fusion.
+
+pushButton               QPushButton            painel do botao: SIM, com o widget QPushButton
+    chamadas: control CE_PushButton(QPushButton), control CE_PushButtonBevel(QPushButton), primitive PE_PanelButtonCommand(QPushButton), control CE_PushButtonLabel(QPushButton)
+pushButtonMenu           QPushButton            painel do botao: SIM, com o widget QPushButton
+    chamadas: control CE_PushButton(QPushButton), control CE_PushButtonBevel(QPushButton), primitive PE_PanelButtonCommand(QPushButton), primitive PE_IndicatorArrowDown(QPushButton), control CE_PushButtonLabel(QPushButton)
+comboBox                 QComboBox              painel do botao: nao
+    chamadas: complex CC_ComboBox(QComboBox), control CE_ComboBoxLabel(QComboBox)
+comboBoxEditable         QComboBox              painel do botao: nao
+    chamadas: complex CC_ComboBox(QComboBox), control CE_ComboBoxLabel(QComboBox), primitive PE_PanelLineEdit(QLineEdit)
+toolButton               QToolButton            painel do botao: SIM, com o widget QToolButton
+    chamadas: complex CC_ToolButton(QToolButton), primitive PE_PanelButtonTool(QToolButton), primitive PE_PanelButtonCommand(QToolButton), control CE_ToolButtonLabel(QToolButton)
+toolButtonAutoRaise      QToolButton            painel do botao: nao
+    chamadas: complex CC_ToolButton(QToolButton), control CE_ToolButtonLabel(QToolButton)
+toolButtonMenuPopup      QToolButton            painel do botao: SIM, com o widget QToolButton
+    chamadas: complex CC_ToolButton(QToolButton), primitive PE_PanelButtonTool(QToolButton), primitive PE_PanelButtonCommand(QToolButton), control CE_ToolButtonLabel(QToolButton), primitive PE_IndicatorButtonDropDown(QToolButton), primitive PE_IndicatorArrowDown(QToolButton)
+toolButtonInstantPopup   QToolButton            painel do botao: SIM, com o widget QToolButton
+    chamadas: complex CC_ToolButton(QToolButton), primitive PE_PanelButtonTool(QToolButton), primitive PE_PanelButtonCommand(QToolButton), control CE_ToolButtonLabel(QToolButton), primitive PE_IndicatorArrowDown(QToolButton)
+colorButton              QgsColorButton         painel do botao: SIM, com o widget QgsColorButton
+    chamadas: complex CC_ToolButton(QgsColorButton), primitive PE_PanelButtonTool(QgsColorButton), primitive PE_PanelButtonCommand(QgsColorButton), control CE_ToolButtonLabel(QgsColorButton), primitive PE_IndicatorButtonDropDown(QgsColorButton), primitive PE_IndicatorArrowDown(QgsColorButton)
+spinBox                  QSpinBox               painel do botao: nao
+    chamadas: complex CC_SpinBox(QSpinBox), primitive PE_PanelLineEdit(QLineEdit)
+lineEdit                 QLineEdit              painel do botao: nao
+    chamadas: primitive PE_PanelLineEdit(QLineEdit), primitive PE_FrameLineEdit(QLineEdit)
+tabBar                   QTabBar                painel do botao: nao
+    chamadas: primitive PE_FrameTabBarBase(QTabBar), control CE_TabBarTab(QTabBar), control CE_TabBarTabShape(QTabBar), control CE_TabBarTabLabel(QTabBar)
+tabWidget                QTabWidget             painel do botao: nao
+    chamadas: primitive PE_FrameTabWidget(QTabWidget), control CE_ShapedFrame(QStackedWidget), control CE_ShapedFrame(QLabel), control CE_TabBarTab(QTabBar), control CE_TabBarTabShape(QTabBar), control CE_TabBarTabLabel(QTabBar)
+header                   QTableWidget           painel do botao: nao
+    chamadas: control CE_HeaderSection(QHeaderView), control CE_HeaderLabel(QHeaderView), control CE_HeaderEmptyArea(QHeaderView)
+groupBox                 QGroupBox              painel do botao: nao
+    chamadas: primitive PE_FrameGroupBox(QGroupBox), control CE_ShapedFrame(QLabel)
+collapsibleGroupBox      QgsCollapsibleGroupBox painel do botao: nao
+    chamadas: primitive PE_FrameGroupBox(QgsCollapsibleGroupBox), control CE_ToolButtonLabel(QgsGroupBoxCollapseButton), control CE_ShapedFrame(QLabel)
+scrollBar                QScrollBar             painel do botao: nao
+    chamadas: complex CC_ScrollBar(QScrollBar)
+progressBar              QProgressBar           painel do botao: nao
+    chamadas: control CE_ProgressBarGroove(QProgressBar), control CE_ProgressBarContents(QProgressBar), control CE_ProgressBarLabel(QProgressBar)
+checkBox                 QCheckBox              painel do botao: nao
+    chamadas: control CE_CheckBox(QCheckBox), primitive PE_IndicatorCheckBox(QCheckBox), control CE_CheckBoxLabel(QCheckBox)
+radioButton              QRadioButton           painel do botao: nao
+    chamadas: control CE_RadioButton(QRadioButton), primitive PE_IndicatorRadioButton(QRadioButton), control CE_RadioButtonLabel(QRadioButton)
+
+Raio das quinas do QPushButton desenhado pelo estilo da aplicacao (escala 1.25, quina de 10 px fisicos):
+  calibracao do estimador (raio conhecido -> estimado): 1.0 -> 1.021, 2.0 -> 2.133, 3.0 -> 3.178, 4.0 -> 4.152, 5.0 -> 5.171, 6.0 -> 6.112
+  normal    estimado 2.133; referencia mais parecida 2.0; diferente do fusion puro: fora das quinas 0 px, nas quinas 0 px
+  hover     estimado 2.133; referencia mais parecida 2.0; diferente do fusion puro: fora das quinas 0 px, nas quinas 0 px
+  pressed   estimado 2.133; referencia mais parecida 2.0; diferente do fusion puro: fora das quinas 0 px, nas quinas 0 px
+  disabled  estimado 2.133; referencia mais parecida 2.0; diferente do fusion puro: fora das quinas 0 px, nas quinas 0 px
+  default   estimado 2.133; referencia mais parecida 2.0; diferente do fusion puro: fora das quinas 0 px, nas quinas 0 px
+  focus     estimado 2.133; referencia mais parecida 2.0; diferente do fusion puro: fora das quinas 0 px, nas quinas 0 px
+  menu      estimado 2.133; referencia mais parecida 2.0; diferente do fusion puro: fora das quinas 0 px, nas quinas 0 px
+
+Raio medido do Fusion: 2 (estimado 2,133 em todos os estados, o mesmo da referencia de raio 2).
+Raio alvo: o dobro, 4 (brand.json, button_radius_px).

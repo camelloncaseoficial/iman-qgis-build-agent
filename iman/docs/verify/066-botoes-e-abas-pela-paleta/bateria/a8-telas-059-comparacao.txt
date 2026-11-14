@@ -1,0 +1,32 @@
+A8: telas da 059, Invoke-HomeCaptures.ps1, ANTES 4a97fec449 contra DEPOIS 5fd95d905d
+
+area da pagina inicial (o retangulo dos pixels #EBEEE8 do ANTES; desde a 065 o fundo da janela em volta tambem e #EBEEE8 e entra no retangulo):
+01-inicio-sem-recentes.png: area da pagina (pixels #EBEEE8 no ANTES) x 367-1919, y 0-1110; pixels diferentes dentro: 2839 de 1725383; fora: 938; pixels #EBEEE8 do ANTES que mudaram: 73 de 1249665
+   mudancas dentro: caixa x 1274-1862, y 208-1106
+02-inicio-com-recentes.png: area da pagina (pixels #EBEEE8 no ANTES) x 367-1919, y 0-1110; pixels diferentes dentro: 3703 de 1725383; fora: 938; pixels #EBEEE8 do ANTES que mudaram: 448 de 1239541
+   mudancas dentro: caixa x 759-1862, y 208-1106
+03-inicio-1366x768.png: area da pagina (pixels #EBEEE8 no ANTES) x 367-1687, y 0-920; pixels diferentes dentro: 3727 de 1216641; fora: 13054; pixels #EBEEE8 do ANTES que mudaram: 482 de 815935
+   mudancas dentro: caixa x 759-1629, y 208-916
+
+onde mudou (celulas de 40 px agrupadas; as cores mais comuns dos pixels que mudaram, antes e depois):
+01-inicio-sem-recentes.png: 3777 pixels diferentes de 2133120; 5 caixas
+   caixa x 280-359, y 0-79: 938 pixels; antes #DCDCDC 571, #D3D4D3 94, #DEDEDE 94; depois #E1E2E0 571, #D7D8D6 96, #E3E4E2 94
+   caixa x 1640-1879, y 200-279: 1527 pixels; antes #FFFFFF 495, #5E6A61 121, #EBEEE8 73; depois #FFFFFF 514, #5E6A61 112, #5E85B3 70
+   caixa x 1240-1319, y 1080-1110: 600 pixels; antes #EFEFEF 70, #FAFAFA 49, #FCFCFC 48; depois #F6F7F5 48, #F7F8F6 47, #F4F5F2 45
+   caixa x 1440-1479, y 1080-1110: 356 pixels; antes #F0F0F0 45, #FCFCFC 35, #F6F6F6 33; depois #F5F6F4 30, #FDFDFC 18, #F9FAF8 18
+   caixa x 1600-1679, y 1080-1110: 356 pixels; antes #F0F0F0 45, #FCFCFC 35, #F6F6F6 33; depois #F5F6F4 30, #FDFDFC 18, #F9FAF8 18
+02-inicio-com-recentes.png: 4641 pixels diferentes de 2133120; 7 caixas
+   caixa x 280-359, y 0-79: 938 pixels; antes #DCDCDC 571, #D3D4D3 94, #DEDEDE 94; depois #E1E2E0 571, #D7D8D6 96, #E3E4E2 94
+   caixa x 1640-1879, y 200-279: 1527 pixels; antes #FFFFFF 495, #5E6A61 121, #EBEEE8 73; depois #FFFFFF 514, #5E6A61 112, #5E85B3 70
+   caixa x 720-799, y 600-679: 576 pixels; antes #EBEEE8 250, #95A093 38, #CFBB93 34; depois #EBEEE8 156, #95A093 62, #C1E1E8 34
+   caixa x 720-799, y 720-759: 288 pixels; antes #EBEEE8 125, #95A093 19, #CFBB93 17; depois #EBEEE8 78, #95A093 31, #C1E1E8 17
+   caixa x 1240-1319, y 1080-1110: 600 pixels; antes #EFEFEF 70, #FAFAFA 49, #FCFCFC 48; depois #F6F7F5 48, #F7F8F6 47, #F4F5F2 45
+   caixa x 1440-1479, y 1080-1110: 356 pixels; antes #F0F0F0 45, #FCFCFC 35, #F6F6F6 33; depois #F5F6F4 30, #FDFDFC 18, #F9FAF8 18
+   caixa x 1600-1679, y 1080-1110: 356 pixels; antes #F0F0F0 45, #FCFCFC 35, #F6F6F6 33; depois #F5F6F4 30, #FDFDFC 18, #F9FAF8 18
+05-sobre-iman-terra.png: 30894 pixels diferentes de 902500; 2 caixas
+   caixa x 240-479, y 80-119: 1705 pixels; antes #EBEEE8 591, #5E6A61 131, #EBEEBD 69; depois #EBEEE8 512, #5E6A61 124, #5E98BD 73
+   caixa x 0-949, y 320-949: 29189 pixels; antes #E6E6E6 6123, #F4F4F4 2931, #FCFCFC 1899; depois #ECEDEA 6113, #F9FAF7 1971, #FBFCFA 1757
+06-sobre-o-qgis.png: 51603 pixels diferentes de 626595; 3 caixas
+   caixa x 680-799, y 80-159: 481 pixels; antes #FFFFFF 172, #0000FF 65, #8FDBFF 31; depois #FFFFFF 129, #0000FF 69, #398FFF 30
+   caixa x 160-1128, y 80-439: 27316 pixels; antes #E6E6E6 1248, #DCE4E1 929, #F7F9F8 928; depois #E0E9E3 1844, #ECEDEA 1157, #FBFCFB 939
+   caixa x 160-1128, y 480-554: 24287 pixels; antes #EFEFEF 4030, #FBFBFB 2030, #F9F9F9 2006; depois #F4F5F3 2002, #F4F5F2 1984, #F6F7F5 1781

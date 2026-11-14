@@ -7,6 +7,8 @@
   smoke\theme_facts.py, desde a 065, com as cores em #AARRGGBB) e calcula, em cada uma, o contraste de:
     normal       WindowText do grupo Active sobre o Window do grupo Active;
     desabilitado WindowText do grupo Disabled sobre o Window do grupo Disabled.
+  Desde a fatia 066 (A4), -TextRole e -BackgroundRole escolhem o par (padrao WindowText sobre Window, o da 065; a 066
+  mede ButtonText sobre Button).
   Cor de texto com alfa abaixo de 255 e composta sobre o fundo antes da conta (como o Qt a desenharia).
   Contraste WCAG: (L1 + 0,05) / (L2 + 0,05), L a luminancia relativa do sRGB. Saida: os quatro numeros e a variacao de
   cada um; sai com 1 se algum cair mais que -MaxDropPercent (padrao 10, o limite do briefing 065).
@@ -15,7 +17,9 @@
 param(
   [Parameter(Mandatory)] [string] $Before,
   [Parameter(Mandatory)] [string] $After,
-  [double] $MaxDropPercent = 10
+  [double] $MaxDropPercent = 10,
+  [string] $TextRole = 'WindowText',
+  [string] $BackgroundRole = 'Window'
 )
 
 function Get-Rgb([string] $argb, [double[]] $over) {
@@ -40,12 +44,13 @@ function Read-Pairs([string] $path) {
   $p = (Get-Content $path -Raw -Encoding utf8 | ConvertFrom-Json).theme.paletteAll
   if (-not $p) { throw "sem theme.paletteAll em $path (theme_facts.py de antes da 065?)" }
   [ordered]@{
-    normal = [ordered]@{ text = $p.Active.WindowText; window = $p.Active.Window; contrast = Get-Contrast $p.Active.WindowText $p.Active.Window }
-    desabilitado = [ordered]@{ text = $p.Disabled.WindowText; window = $p.Disabled.Window; contrast = Get-Contrast $p.Disabled.WindowText $p.Disabled.Window }
+    normal = [ordered]@{ text = $p.Active.$TextRole; window = $p.Active.$BackgroundRole; contrast = Get-Contrast $p.Active.$TextRole $p.Active.$BackgroundRole }
+    desabilitado = [ordered]@{ text = $p.Disabled.$TextRole; window = $p.Disabled.$BackgroundRole; contrast = Get-Contrast $p.Disabled.$TextRole $p.Disabled.$BackgroundRole }
   }
 }
 
 $b = Read-Pairs $Before; $a = Read-Pairs $After
+"par: $TextRole sobre $BackgroundRole"
 $fail = $false
 foreach ($k in 'normal', 'desabilitado') {
   $change = [math]::Round(100 * ($a[$k].contrast - $b[$k].contrast) / $b[$k].contrast, 1)

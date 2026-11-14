@@ -1,0 +1,55 @@
+A3: setas, Invoke-ArrowCaptures.ps1 (com a seta do botao com menu "Estilo", acrescimo da 066), tres builds
+
+setas: build 4a97fec449 (antes) contra ed5468fa16 (depois); rect logico e tinta por seta, e o fundo em volta
+/comboBox/arrow                               iguais    rect [924, 2, 15, 20] tinta 35 -> rect [924, 2, 15, 20] tinta 35; fundo #fcfcfc -> #fdfdfd
+/layerTreeBranches/rows[0]                    iguais   Grupo de teste 063 rect [0, 0, 20, 18] tinta 34 -> rect [0, 0, 20, 18] tinta 34; fundo #ffffff -> #ffffff
+/layerTreeBranches/rows[1]                    iguais   Grupo fechado 063 rect [0, 36, 20, 18] tinta 30 -> rect [0, 36, 20, 18] tinta 30; fundo #ffffff -> #ffffff
+/processingTabs/ink                           MUDOU     rect [0, 0, 115, 24] tinta 893 -> rect [0, 0, 115, 24] tinta 855; fundo #fcfcfc -> #ffffff
+/pushButtonMenu/arrow                         MUDOU     rect [63, 4, 13, 13] tinta 19 -> rect [63, 4, 13, 13] tinta 13; fundo #f9f9f9 -> #f7f8f6
+/scrollBar/down                               MUDOU     rect [2, 629, 10, 10] tinta 32 -> rect [2, 629, 10, 10] tinta 27; fundo #fbfbfb -> #fafbf9
+/scrollBar/toolboxBranches[0]                 iguais   An�lise de dados Raster  rect [0, 0, 20, 18] tinta 30 -> rect [0, 0, 20, 18] tinta 30; fundo #ffffff -> #ffffff
+/scrollBar/toolboxBranches[1]                 iguais   An�lise de rede rect [0, 18, 20, 18] tinta 30 -> rect [0, 18, 20, 18] tinta 30; fundo #ffffff -> #ffffff
+/scrollBar/toolboxBranches[2]                 iguais   An�lise vetorial rect [0, 36, 20, 18] tinta 30 -> rect [0, 36, 20, 18] tinta 30; fundo #ffffff -> #ffffff
+/scrollBar/toolboxBranches[3]                 iguais   Cartografia rect [0, 54, 20, 18] tinta 30 -> rect [0, 54, 20, 18] tinta 30; fundo #ffffff -> #ffffff
+/scrollBar/toolboxBranches[4]                 iguais   An�lise de dados Raster  rect [0, 0, 20, 18] tinta 34 -> rect [0, 0, 20, 18] tinta 34; fundo #ffffff -> #ffffff
+/scrollBar/up                                 MUDOU     rect [2, 2, 10, 10] tinta 32 -> rect [2, 2, 10, 10] tinta 27; fundo #fbfbfb -> #fafbf9
+/spinBox/down                                 iguais    rect [831, 12, 12, 6] tinta 35 -> rect [831, 12, 12, 6] tinta 35; fundo #f0f0f0 -> #f8f9f7
+/spinBox/up                                   iguais    rect [831, 4, 12, 6] tinta 39 -> rect [831, 4, 12, 6] tinta 39; fundo #fcfcfc -> #fdfdfd
+/toolButtonMenu/arrow                         iguais    rect [34, 2, 8, 27] tinta 25 -> rect [34, 2, 8, 27] tinta 25; fundo #eef1eb -> #eef1eb
+RESULTADO: HA SETA QUE MUDOU (15 setas)
+
+setas: build ed5468fa16 (antes) contra 5fd95d905d (depois); rect logico e tinta por seta, e o fundo em volta
+/comboBox/arrow                               iguais    rect [924, 2, 15, 20] tinta 35 -> rect [924, 2, 15, 20] tinta 35; fundo #fdfdfd -> #fdfdfd
+/layerTreeBranches/rows[0]                    iguais   Grupo de teste 063 rect [0, 0, 20, 18] tinta 34 -> rect [0, 0, 20, 18] tinta 34; fundo #ffffff -> #ffffff
+/layerTreeBranches/rows[1]                    iguais   Grupo fechado 063 rect [0, 36, 20, 18] tinta 30 -> rect [0, 36, 20, 18] tinta 30; fundo #ffffff -> #ffffff
+/processingTabs/ink                           iguais    rect [0, 0, 115, 24] tinta 855 -> rect [0, 0, 115, 24] tinta 855; fundo #ffffff -> #ffffff
+/pushButtonMenu/arrow                         iguais    rect [63, 4, 13, 13] tinta 13 -> rect [63, 4, 13, 13] tinta 13; fundo #f7f8f6 -> #f7f8f6
+/scrollBar/down                               iguais    rect [2, 629, 10, 10] tinta 27 -> rect [2, 629, 10, 10] tinta 27; fundo #fafbf9 -> #fafbf9
+/scrollBar/toolboxBranches[0]                 iguais   An�lise de dados Raster  rect [0, 0, 20, 18] tinta 30 -> rect [0, 0, 20, 18] tinta 30; fundo #ffffff -> #ffffff
+/scrollBar/toolboxBranches[1]                 iguais   An�lise de rede rect [0, 18, 20, 18] tinta 30 -> rect [0, 18, 20, 18] tinta 30; fundo #ffffff -> #ffffff
+/scrollBar/toolboxBranches[2]                 iguais   An�lise vetorial rect [0, 36, 20, 18] tinta 30 -> rect [0, 36, 20, 18] tinta 30; fundo #ffffff -> #ffffff
+/scrollBar/toolboxBranches[3]                 iguais   Cartografia rect [0, 54, 20, 18] tinta 30 -> rect [0, 54, 20, 18] tinta 30; fundo #ffffff -> #ffffff
+/scrollBar/toolboxBranches[4]                 iguais   An�lise de dados Raster  rect [0, 0, 20, 18] tinta 34 -> rect [0, 0, 20, 18] tinta 34; fundo #ffffff -> #ffffff
+/scrollBar/up                                 iguais    rect [2, 2, 10, 10] tinta 27 -> rect [2, 2, 10, 10] tinta 27; fundo #fafbf9 -> #fafbf9
+/spinBox/down                                 iguais    rect [831, 12, 12, 6] tinta 35 -> rect [831, 12, 12, 6] tinta 35; fundo #f8f9f7 -> #f8f9f7
+/spinBox/up                                   iguais    rect [831, 4, 12, 6] tinta 39 -> rect [831, 4, 12, 6] tinta 39; fundo #fdfdfd -> #fdfdfd
+/toolButtonMenu/arrow                         iguais    rect [34, 2, 8, 27] tinta 25 -> rect [34, 2, 8, 27] tinta 25; fundo #eef1eb -> #eef1eb
+RESULTADO: todas as medidas iguais (15 setas)
+
+setas: build 4a97fec449 (antes) contra 5fd95d905d (depois); rect logico e tinta por seta, e o fundo em volta
+/comboBox/arrow                               iguais    rect [924, 2, 15, 20] tinta 35 -> rect [924, 2, 15, 20] tinta 35; fundo #fcfcfc -> #fdfdfd
+/layerTreeBranches/rows[0]                    iguais   Grupo de teste 063 rect [0, 0, 20, 18] tinta 34 -> rect [0, 0, 20, 18] tinta 34; fundo #ffffff -> #ffffff
+/layerTreeBranches/rows[1]                    iguais   Grupo fechado 063 rect [0, 36, 20, 18] tinta 30 -> rect [0, 36, 20, 18] tinta 30; fundo #ffffff -> #ffffff
+/processingTabs/ink                           MUDOU     rect [0, 0, 115, 24] tinta 893 -> rect [0, 0, 115, 24] tinta 855; fundo #fcfcfc -> #ffffff
+/pushButtonMenu/arrow                         MUDOU     rect [63, 4, 13, 13] tinta 19 -> rect [63, 4, 13, 13] tinta 13; fundo #f9f9f9 -> #f7f8f6
+/scrollBar/down                               MUDOU     rect [2, 629, 10, 10] tinta 32 -> rect [2, 629, 10, 10] tinta 27; fundo #fbfbfb -> #fafbf9
+/scrollBar/toolboxBranches[0]                 iguais   An�lise de dados Raster  rect [0, 0, 20, 18] tinta 30 -> rect [0, 0, 20, 18] tinta 30; fundo #ffffff -> #ffffff
+/scrollBar/toolboxBranches[1]                 iguais   An�lise de rede rect [0, 18, 20, 18] tinta 30 -> rect [0, 18, 20, 18] tinta 30; fundo #ffffff -> #ffffff
+/scrollBar/toolboxBranches[2]                 iguais   An�lise vetorial rect [0, 36, 20, 18] tinta 30 -> rect [0, 36, 20, 18] tinta 30; fundo #ffffff -> #ffffff
+/scrollBar/toolboxBranches[3]                 iguais   Cartografia rect [0, 54, 20, 18] tinta 30 -> rect [0, 54, 20, 18] tinta 30; fundo #ffffff -> #ffffff
+/scrollBar/toolboxBranches[4]                 iguais   An�lise de dados Raster  rect [0, 0, 20, 18] tinta 34 -> rect [0, 0, 20, 18] tinta 34; fundo #ffffff -> #ffffff
+/scrollBar/up                                 MUDOU     rect [2, 2, 10, 10] tinta 32 -> rect [2, 2, 10, 10] tinta 27; fundo #fbfbfb -> #fafbf9
+/spinBox/down                                 iguais    rect [831, 12, 12, 6] tinta 35 -> rect [831, 12, 12, 6] tinta 35; fundo #f0f0f0 -> #f8f9f7
+/spinBox/up                                   iguais    rect [831, 4, 12, 6] tinta 39 -> rect [831, 4, 12, 6] tinta 39; fundo #fcfcfc -> #fdfdfd
+/toolButtonMenu/arrow                         iguais    rect [34, 2, 8, 27] tinta 25 -> rect [34, 2, 8, 27] tinta 25; fundo #eef1eb -> #eef1eb
+RESULTADO: HA SETA QUE MUDOU (15 setas)
