@@ -21,6 +21,7 @@
   "new_project_crs_behavior": "UsePresetCrs",
   "layer_default_crs": "EPSG:31984",
   "button_radius_px": 4,
+  "font_family": "Open Sans",
   "palette": {
     "brand": "#103D29",
     "brand-2": "#1E7A4D",

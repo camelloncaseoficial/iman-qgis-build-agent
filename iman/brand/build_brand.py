@@ -15,7 +15,8 @@ Saidas (fora do repo, em --out):
     SRC (fatia 049) e o plugin embarcado ligado por padrao (fatia 051); sem tema de interface desde a fatia 063;
   - --header: iman_brand.h, os textos de marca para o C++ (Bloco D), a versao do produto e, desde a fatia 059, a
     paleta da marca (IMAN_COLOR_*; do brand.json desde a fatia 064, que deixou de ler o style.qss) e, desde a fatia
-    066, o raio das quinas do QPushButton (IMAN_BUTTON_RADIUS_PX, um numero, nao texto). So e regravado
+    066, o raio das quinas do QPushButton (IMAN_BUTTON_RADIUS_PX, um numero, nao texto) e, desde a 067, a familia da
+    fonte da interface (IMAN_FONT_FAMILY). So e regravado
     se o conteudo mudou, para nao recompilar a toa.
 
 Marcadores dos textos da curadoria: {product}, {PRODUCT}, {engine}, {org}, {url}.
@@ -196,6 +197,15 @@ def button_radius(brand):
     return value
 
 
+def font_family(brand):
+    """Familia da fonte da interface (fatia 067), o nome que os TTF de iman/brand/fonts declaram; texto nao vazio e sem
+    espacos nas pontas, ou o build falha alto em vez de pedir ao Qt uma familia que nao existe."""
+    value = brand.get("font_family")
+    if not isinstance(value, str) or not value.strip() or value != value.strip():
+        raise SystemExit("font_family tem de ser o nome de uma familia, sem espacos nas pontas: %r" % (value,))
+    return value
+
+
 def color_macro(token):
     """Nome da macro do iman_brand.h para um token da paleta: brand-2 -> IMAN_COLOR_BRAND_2."""
     return "IMAN_COLOR_" + token.upper().replace("-", "_")
@@ -251,6 +261,8 @@ def write_header(path, brand):
         ("IMAN_INTERNAL_APPLICATION_NAME", brand["internal_application_name"]),
         # cor do texto de carregamento do splash (fatia 058, C1); o qgisapp.cpp a usa no lugar do Qt::black
         ("IMAN_SPLASH_TEXT_COLOR", splash_text_color(brand)),
+        # familia da fonte da interface (fatia 067), registrada dos TTF de iman/brand/fonts por src/app/iman/imanfont.cpp
+        ("IMAN_FONT_FAMILY", font_family(brand)),
     ]
     # paleta da marca (fatia 059; do brand.json desde a 064): IMAN_COLOR_BRAND_2, IMAN_COLOR_TEXT_MUTED, ...
     defs += [(color_macro(k), v) for k, v in sorted(brand_palette(brand).items())]
