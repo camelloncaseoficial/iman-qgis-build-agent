@@ -10,7 +10,8 @@
 O instalador do IMAN Terra carrega uma árvore completa de programas: o QGIS 3.44.13 **compilado pelo Instituto IMAN
 a partir de um fork público do código-fonte do QGIS, com modificações** (seção 2), e o conjunto de pacotes OSGeo4W
 que o QGIS 3.44.13 oficial instala no Windows, na mesma versão de cada pacote (seção 3), mais dois arquivos das
-Debugging Tools for Windows da Microsoft (seção 5). O Instituto IMAN é **redistribuidor** desses componentes: eles
+Debugging Tools for Windows da Microsoft e a fonte Open Sans, compilada no programa (seção 5). O Instituto IMAN é
+**redistribuidor** desses componentes: eles
 não são obra do Instituto IMAN, pertencem aos seus autores e permanecem sob as suas próprias licenças. O
 instalador leva também o plugin IMAN REURB, do Instituto IMAN, instalado e ligado (seção 6).
 
@@ -311,6 +312,18 @@ desses termos, como publicadas, estão na pasta `licencas\` da instalação.
   (https://learn.microsoft.com/legal/windows-sdk/redist), que na seção "Debugging Tools for Windows" diz "You may
   distribute these files as part of your program." e nomeia `Dbghelp.dll` e `Symsrv.dll`. Os dois vão sem
   modificação, como parte do IMAN Terra, e seguem sob o termo da Microsoft.
+
+### Fonte Open Sans (a fonte da interface)
+
+- **Arquivos:** os TTF estáticos da Open Sans, versão 3.003 (Regular, Italic, SemiBold, SemiBold Italic, Bold e Bold
+  Italic), sem modificação, do repositório oficial https://github.com/googlefonts/opensans (pasta `fonts/ttf`, commit
+  `6cbc400d4855abee59d85c4ed871d510399bce7b`). Vão compilados dentro do programa (recurso do `qgis_app.dll`) e são
+  registrados só para o IMAN Terra enquanto ele roda: nada é instalado no Windows. No fork, ficam em
+  `iman/brand/fonts/`, com o `OFL.txt`.
+- **Autores:** Copyright 2020 The Open Sans Project Authors (https://github.com/googlefonts/opensans).
+- **Termo:** SIL Open Font License, versão 1.1 (`licencas\open-sans-OFL.txt`). A fonte segue sob a OFL, que permite
+  embarcá-la e redistribuí-la com um programa, desde que vá com o aviso de copyright e a licença e não seja vendida
+  sozinha.
 
 ### SZIP (`szip`)
 
