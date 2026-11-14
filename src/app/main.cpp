@@ -108,6 +108,7 @@ typedef SInt32 SRefCon;
 #include "layers/qgsapplayerhandling.h"
 #include "options/qgsuserprofileselectiondialog.h"
 #include "iman/imanappstyle.h"
+#include "iman/imanfont.h"
 #include "iman/imanpalette.h"
 
 #ifdef HAVE_OPENCL
@@ -1498,6 +1499,9 @@ int main( int argc, char *argv[] )
   }
   // IMAN Terra (fatias 064 a 066): destaque, fundo e botoes pela paleta do Qt, depois do setStyle, so com o tema default
   ImanPalette::apply( theme );
+  // IMAN Terra (fatia 067): a fonte da marca (font_family do brand.json) na aplicacao, com o tamanho atual, so com
+  // o tema default; antes do bloco da fonte escolhida em Opcoes, que continua mandando
+  ImanFont::apply( theme );
 
   // set authentication database directory
   if ( !authdbdirectory.isEmpty() )

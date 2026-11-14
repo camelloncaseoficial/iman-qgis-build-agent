@@ -1,0 +1,12 @@
+<!-- IMAN Terra (fatia 067): os TTF estaticos da fonte da marca, de iman/brand/fonts, compilados no qgis_app.
+     O ImanFont (imanfont.cpp) registra todo .ttf deste prefixo. -->
+<RCC>
+  <qresource prefix="/iman/fonts">
+    <file alias="OpenSans-Regular.ttf">../../../iman/brand/fonts/OpenSans-Regular.ttf</file>
+    <file alias="OpenSans-Italic.ttf">../../../iman/brand/fonts/OpenSans-Italic.ttf</file>
+    <file alias="OpenSans-SemiBold.ttf">../../../iman/brand/fonts/OpenSans-SemiBold.ttf</file>
+    <file alias="OpenSans-SemiBoldItalic.ttf">../../../iman/brand/fonts/OpenSans-SemiBoldItalic.ttf</file>
+    <file alias="OpenSans-Bold.ttf">../../../iman/brand/fonts/OpenSans-Bold.ttf</file>
+    <file alias="OpenSans-BoldItalic.ttf">../../../iman/brand/fonts/OpenSans-BoldItalic.ttf</file>
+  </qresource>
+</RCC>
