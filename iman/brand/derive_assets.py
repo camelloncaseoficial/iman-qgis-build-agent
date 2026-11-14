@@ -29,11 +29,16 @@ DERIVED = os.path.join(HERE, "derived")
 
 # Enquadramento do simbolo no master, em unidades do master: o medido pela distro (derive-theme-icons.py):
 # caixa da tinta x 2859,8..6269,6 e y 3740,0..7230,0, quadrado de lado 3560 centrado nela.
-CENTER_X = (2859.82 + 6269.61) / 2
-CENTER_Y = (3740.0 + 7230.0) / 2
+# Desde a fatia 069, o master novo (export do Corel de 2026-11-14) perdeu 10 unidades de borda em cada lado: o
+# simbolo e o mesmo, path a path, deslocado -10 em x e em y, e o enquadramento desce junto (FRAME_SHIFT).
+FRAME_SHIFT = -10.0
+CENTER_X = (2859.82 + 6269.61) / 2 + FRAME_SHIFT
+CENTER_Y = (3740.0 + 7230.0) / 2 + FRAME_SHIFT
 SIDE = 3560.0
 VIEWBOX = "%.2f %.2f %.0f %.0f" % (CENTER_X - SIDE / 2, CENTER_Y - SIDE / 2, SIDE, SIDE)
-SYMBOL_MARKER_CLASS = "fil28"  # o degrade da folha: so o simbolo usa
+# o degrade da folha (o path "M3643.7 5495.25"): so o simbolo usa. Era fil28 no master de antes da 069; no novo,
+# fil28 e um azul usado em mais de um lugar.
+SYMBOL_MARKER_CLASS = "fil30"
 
 # derivado em iman/brand/derived -> (operacao, asset de origem, parametro, arquivo do QGIS que ele substitui)
 # Sem arquivo do QGIS (None): o derivado vai so para o instalador (iman/installer), nao para a arvore do QGIS.
