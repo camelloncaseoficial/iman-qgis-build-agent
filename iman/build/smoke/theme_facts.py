@@ -9,6 +9,7 @@ from qgis.core import QgsApplication, QgsPointXY, QgsProject, QgsSettings
 from qgis.PyQt import sip
 from qgis.PyQt.QtCore import QPoint, Qt, QTimer
 from qgis.PyQt.QtGui import QColor, QFontMetrics, QPalette
+from qgis.PyQt.QtGui import QFontDatabase, QFontInfo
 from qgis.PyQt.QtWidgets import (
     QAbstractButton,
     QApplication,
@@ -90,7 +91,42 @@ def step_theme():
         "palette": _highlight_palette(),
         # fatia 065 (A1, A7): a paleta inteira da aplicacao, todos os papeis dos tres grupos
         "paletteAll": _full_palette(),
+        # fatia 067 (A1, A8): a fonte da aplicacao depois do QgisApp no ar e os estilos que o QFontDatabase da para ela
+        "font": _app_font(),
     }
+
+
+def _app_font():
+    font = QApplication.font()
+    info = QFontInfo(font)
+    return {
+        "family": font.family(),
+        "pointSizeF": font.pointSizeF(),
+        "pixelSize": font.pixelSize(),
+        "resolvedFamily": info.family(),
+        "resolvedStyle": info.styleName(),
+        "resolvedWeight": info.weight(),
+        "resolvedPixelSize": info.pixelSize(),
+        "styles": QFontDatabase().styles(font.family()),
+        "fileVersion": _font_file_version(font),
+    }
+
+
+def _font_file_version(font):
+    # nome 5 (versao) da tabela name do arquivo que o Qt usa para desenhar (QRawFont); separa a fonte embarcada de uma
+    # instalada no Windows com o mesmo nome de familia
+    try:
+        from qgis.PyQt.QtGui import QRawFont
+
+        data = bytes(QRawFont.fromFont(font).fontTable("name"))
+        count, storage = int.from_bytes(data[2:4], "big"), int.from_bytes(data[4:6], "big")
+        for i in range(count):
+            rec = [int.from_bytes(data[6 + 12 * i + j: 8 + 12 * i + j], "big") for j in range(0, 12, 2)]
+            if rec[0] == 3 and rec[2] == 0x409 and rec[3] == 5:
+                return data[storage + rec[5]: storage + rec[5] + rec[4]].decode("utf-16-be", "replace")
+    except Exception as err:
+        return repr(err)
+    return None
 
 
 # fatia 065: os papeis de cor do QPalette do Qt 5.15 (sem o NoRole), na ordem do enum

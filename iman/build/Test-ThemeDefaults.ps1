@@ -23,6 +23,7 @@
       paleta do Qt (Highlight brand-2 e HighlightedText panel do brand.json, grupos Active e Inactive; A7); desde a
       fatia 065, o fundo das janelas na paleta do Qt (Window = bg do brand.json, grupos Active, Inactive e Disabled);
       desde a fatia 066, botoes e abas (Button = panel-2, tres grupos) e o estilo ImanAppStyle sobre o fusion.
+      Desde a fatia 067, a familia da fonte da aplicacao (pedida e resolvida) na font_family do brand.json.
     UserTheme: o tema e o do usuario (default: sem folha de estilo), nao o da global.
     Official (controle): tema default, projeto novo em EPSG:4326 e o tema do produto ausente da lista. O visto falhando
       do tema, desde a 063, e o build ou o instalado de antes dela (com o tema).
@@ -174,6 +175,12 @@ if ($f) {
         expected = $wantButton; Button = [ordered]@{ Active = $all.Active.Button; Inactive = $all.Inactive.Button; Disabled = $all.Disabled.Button } })
     Add-Check 'A7:estilo-iman' ($th.qtStyle -eq 'ImanAppStyle' -and $th.qtStyleBase -eq 'QFusionStyle') ([ordered]@{
         expected = 'ImanAppStyle'; qtStyle = $th.qtStyle; qtStyleBase = $th.qtStyleBase })
+    # fatia 067 (A8, acrescimo): com o tema default, a familia da fonte da aplicacao (a pedida e a que o Qt resolveu,
+    # QFontInfo) e a font_family do brand.json; o tamanho segue o do sistema e vai no detalhe
+    $wantFont = [string]$brand.font_family
+    Add-Check 'A8:fonte-iman' ([bool]$wantFont -and $th.font.family -eq $wantFont -and $th.font.resolvedFamily -eq $wantFont) ([ordered]@{
+        expected = $wantFont; family = $th.font.family; resolvedFamily = $th.font.resolvedFamily; resolvedStyle = $th.font.resolvedStyle
+        pointSizeF = $th.font.pointSizeF; fileVersion = $th.font.fileVersion; styles = $th.font.styles })
   } else {
     # Official: o que o produto muda nao pode estar la (visto falhando da mesma medicao)
     Add-Check 'controle:tema-default' ($th.themeName -eq 'default' -and $th.styleSheetLength -eq 0 -and $product -notin $th.uiThemes) ([ordered]@{
