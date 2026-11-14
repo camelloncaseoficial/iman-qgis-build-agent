@@ -42,7 +42,8 @@ Rodado com o `python3` da raiz OSGeo4W (3.12.13, Pillow 12.3.0), `python3 iman/b
   `xml:space="preserve"` do Corel.
 - **Fontes:** as três famílias que o master pede, por `@font-face` com os TTF de `iman/brand/fonts/` (Open Sans 3.003
   do `#067`) embutidos em `data:` ("Open Sans" normal = `OpenSans-Regular.ttf`, "Open Sans" bold = `OpenSans-Bold.ttf`,
-  "Open Sans Semibold" 600 = `OpenSans-SemiBold.ttf`). Fonte por `file://` cai no CORS do navegador; `data:` não. As
+  "Open Sans Semibold" 600 = `OpenSans-SemiBold.ttf`). O `data:` evita a regra de origem que o navegador aplica a fontes carregadas por `file://` (escolha prévia, não
+  medida aqui). As
   `@font-face` do próprio master apontam para as fontes SVG que o Corel embute (`format(svg)`): o Edge as descarta
   (não aparecem no `document.fonts`). Antes da captura, uma rodada `--dump-dom` confere que as três faces da página
   carregaram: `Open Sans|normal|loaded;Open Sans|bold|loaded;Open Sans Semibold|600|loaded`.
