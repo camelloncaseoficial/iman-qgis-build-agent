@@ -23,6 +23,7 @@
 #include <QFont>
 #include <QFontDatabase>
 #include <QList>
+#include <QPair>
 #include <QStringList>
 
 bool ImanFont::apply( const QString &uiTheme )
@@ -67,8 +68,26 @@ bool ImanFont::apply( const QString &uiTheme )
     return false;
   }
 
+  // as fontes por classe que o tema da plataforma deu (no Windows, menus, barra de status, titulos de painel, dicas e
+  // caixas de mensagem em outra familia e outro tamanho): o QApplication::setFont sem classe as apaga, entao sao
+  // guardadas antes e devolvidas depois so com a familia trocada, cada uma no tamanho dela (decisao do sponsor na
+  // fatia 067). A lista e a do QApplicationPrivate::initializeWidgetFontHash do Qt 5.15.
+  static const char *const PLATFORM_FONT_CLASSES[] = {
+    "QMenu", "QMenuBar", "QMenuItem", "QMessageBox", "QLabel", "QTipLabel", "QStatusBar", "QMdiSubWindowTitleBar",
+    "QDockWidgetTitle", "QPushButton", "QCheckBox", "QRadioButton", "QToolButton", "QAbstractItemView", "QListView",
+    "QHeaderView", "QListBox", "QComboMenuItem", "QComboLineEdit", "QSmallFont", "QMiniFont"
+  };
+  const QFont appFont = QApplication::font();
+  QList<QPair<const char *, QFont>> classFonts;
+  for ( const char *className : PLATFORM_FONT_CLASSES )
+  {
+    const QFont classFont = QApplication::font( className );
+    if ( classFont != appFont )
+      classFonts << qMakePair( className, classFont );
+  }
+
   // so a familia muda: o tamanho e o que a aplicacao ja tem (o do sistema), em pontos ou em pixels
-  QFont font = QApplication::font();
+  QFont font = appFont;
   const qreal pointSize = font.pointSizeF();
   const int pixelSize = font.pixelSize();
   font.setFamily( family );
@@ -77,5 +96,11 @@ bool ImanFont::apply( const QString &uiTheme )
   else if ( pixelSize > 0 )
     font.setPixelSize( pixelSize );
   QApplication::setFont( font );
+  for ( const QPair<const char *, QFont> &entry : std::as_const( classFonts ) )
+  {
+    QFont classFont = entry.second;
+    classFont.setFamily( family );
+    QApplication::setFont( classFont, entry.first );
+  }
   return true;
 }

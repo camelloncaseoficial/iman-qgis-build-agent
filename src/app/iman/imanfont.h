@@ -31,7 +31,8 @@ class APP_EXPORT ImanFont
      * Se \a uiTheme (o valor de UI/UITheme) da o tema default do QGIS (a regra de ImanPalette::isDefaultTheme),
      * registra os TTF da marca do recurso compilado (:/iman/fonts) e, se todos registrarem e a familia da marca
      * aparecer entre as registradas, poe essa familia na fonte da aplicacao mantendo o tamanho atual
-     * (QApplication::setFont). Se algum registro falhar, desfaz os registros feitos, deixa a fonte do sistema e
+     * (QApplication::setFont) e nas fontes por classe que o tema da plataforma deu (menus, barra de status, titulos
+     * de painel, dicas, caixas de mensagem), cada uma no tamanho que ja tinha. Se algum registro falhar, desfaz os registros feitos, deixa a fonte do sistema e
      * uma mensagem no log; nunca derruba o programa. Chamar antes do bloco do main.cpp que aplica a fonte escolhida
      * pelo usuario em Opcoes (/app/fontFamily e /app/fontPointSize), para que a escolha dele continue mandando.
      * Devolve se a fonte da marca foi aplicada.
