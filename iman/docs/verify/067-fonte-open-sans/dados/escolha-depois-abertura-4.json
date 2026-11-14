@@ -1,0 +1,54 @@
+{
+  "steps": [
+    "measure",
+    "options"
+  ],
+  "measures": [
+    {
+      "label": "passo 0",
+      "app": {
+        "family": "Arial",
+        "pointSizeF": 7.8,
+        "resolvedFamily": "Arial",
+        "file": {
+          "family": "Arial",
+          "version": "Version 7.07"
+        }
+      },
+      "menu": {
+        "family": "Segoe UI",
+        "pointSizeF": 9.0,
+        "resolvedFamily": "Segoe UI",
+        "file": {
+          "family": "Segoe UI",
+          "version": "Version 5.72"
+        }
+      },
+      "statusBar": {
+        "family": "Segoe UI",
+        "pointSizeF": 9.0,
+        "resolvedFamily": "Segoe UI",
+        "file": {
+          "family": "Segoe UI",
+          "version": "Version 5.72"
+        }
+      },
+      "appFontFamily": "Arial",
+      "appFontPointSize": null,
+      "uiTheme": "Night Mapping",
+      "styleSheetLength": 37487
+    }
+  ],
+  "actions": [],
+  "options": [
+    {
+      "found": true,
+      "qtDefaultChecked": true,
+      "customChecked": false,
+      "combo": "Arial",
+      "comboEnabled": false,
+      "size": "7,8",
+      "capture": "opcoes-geral-1.png"
+    }
+  ]
+}

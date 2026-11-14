@@ -1,0 +1,70 @@
+{
+  "steps": [
+    "measure",
+    "options",
+    "font=Arial"
+  ],
+  "measures": [
+    {
+      "label": "passo 0",
+      "app": {
+        "family": "Open Sans",
+        "pointSizeF": 7.8,
+        "resolvedFamily": "Open Sans",
+        "file": {
+          "family": "Open Sans",
+          "version": "Version 3.003; ttfautohint (v1.8.4)"
+        }
+      },
+      "menu": {
+        "family": "Open Sans",
+        "pointSizeF": 9.0,
+        "resolvedFamily": "Open Sans",
+        "file": {
+          "family": "Open Sans",
+          "version": "Version 3.003; ttfautohint (v1.8.4)"
+        }
+      },
+      "statusBar": {
+        "family": "Open Sans",
+        "pointSizeF": 9.0,
+        "resolvedFamily": "Open Sans",
+        "file": {
+          "family": "Open Sans",
+          "version": "Version 3.003; ttfautohint (v1.8.4)"
+        }
+      },
+      "appFontFamily": null,
+      "appFontPointSize": null,
+      "uiTheme": null,
+      "styleSheetLength": 0
+    }
+  ],
+  "actions": [
+    {
+      "kind": "font",
+      "requested": "Arial",
+      "found": true,
+      "after": {
+        "qtDefaultChecked": false,
+        "combo": "Arial"
+      },
+      "clickedOk": true,
+      "saved": {
+        "appFontFamily": "Arial",
+        "uiTheme": "default"
+      }
+    }
+  ],
+  "options": [
+    {
+      "found": true,
+      "qtDefaultChecked": true,
+      "customChecked": false,
+      "combo": "Open Sans",
+      "comboEnabled": false,
+      "size": "7,8",
+      "capture": "opcoes-geral-1.png"
+    }
+  ]
+}

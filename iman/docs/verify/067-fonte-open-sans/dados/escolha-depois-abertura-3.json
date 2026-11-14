@@ -1,0 +1,67 @@
+{
+  "steps": [
+    "measure",
+    "options",
+    "theme=Night Mapping"
+  ],
+  "measures": [
+    {
+      "label": "passo 0",
+      "app": {
+        "family": "Arial",
+        "pointSizeF": 7.8,
+        "resolvedFamily": "Arial",
+        "file": {
+          "family": "Arial",
+          "version": "Version 7.07"
+        }
+      },
+      "menu": {
+        "family": "Arial",
+        "pointSizeF": 7.8,
+        "resolvedFamily": "Arial",
+        "file": {
+          "family": "Arial",
+          "version": "Version 7.07"
+        }
+      },
+      "statusBar": {
+        "family": "Arial",
+        "pointSizeF": 7.8,
+        "resolvedFamily": "Arial",
+        "file": {
+          "family": "Arial",
+          "version": "Version 7.07"
+        }
+      },
+      "appFontFamily": "Arial",
+      "appFontPointSize": null,
+      "uiTheme": "default",
+      "styleSheetLength": 0
+    }
+  ],
+  "actions": [
+    {
+      "kind": "theme",
+      "requested": "Night Mapping",
+      "found": true,
+      "after": "Night Mapping",
+      "clickedOk": true,
+      "saved": {
+        "appFontFamily": "Arial",
+        "uiTheme": "Night Mapping"
+      }
+    }
+  ],
+  "options": [
+    {
+      "found": true,
+      "qtDefaultChecked": true,
+      "customChecked": false,
+      "combo": "Arial",
+      "comboEnabled": false,
+      "size": "7,8",
+      "capture": "opcoes-geral-1.png"
+    }
+  ]
+}
