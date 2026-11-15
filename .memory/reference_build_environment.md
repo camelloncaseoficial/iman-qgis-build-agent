@@ -285,10 +285,28 @@ Medido na fatia 067 (2026-11-14), laudo `iman/docs/verify/067-fonte-open-sans/RE
   `mapTo` para um widget que nao e ancestral tambem; e `w.window() is top` pode falhar para o mesmo widget (dois
   objetos Python): comparar pelo `sip.unwrapinstance`. Um crash do alvo Build deixa o relatorio em
   `%LOCALAPPDATA%\InstitutoIMAN\IMANTerra\crashes` (o `dados-do-produto` acusa) e o dialogo do crash handler aberto.
-- **Copia do build da develop** para medir ANTES enquanto a branch compila: `D:\iman-terra-builderify7-install-develop`
-  (410 MB; `-AppRoot <copia>pps\qgis-ltr`).
+- **Copia do build da develop** para medir ANTES enquanto a branch compila: `D:\iman-terra-build\verify\067-install-develop`
+  (410 MB; `-AppRoot <copia>\apps\qgis-ltr`).
 - **O sponsor usa o QGIS oficial durante a sessao** (perfil e o feed `?lang=es` no cache, 08:56 e 09:56): a guarda
   falha; o retrato e tirado de novo antes de cada rodada (R1) e a origem e conferida pela URL do cache.
 - **Tempos:** build com o `iman_brand.h` regravado 7 min 22 s (build + install); so o `imanfont.cpp` cerca de 6 min;
   capturas da fonte 50 a 60 s por rodada; escolha 60 s; `Test-ThemeDefaults` 20 s. D: com 37 GB livres no comeco.
+- Nada instalado; o IMAN Terra da 061 segue instalado para o smoke do sponsor.
+
+Medido na fatia 069 (2026-11-14), laudo `iman/docs/verify/069-splash-em-open-sans/README.md`:
+
+- **Navegador da bancada:** so o Edge 157.0.4341.46 (`C:\Program Files (x86)\Microsoft\Edge\Application`), sem Chrome.
+  Sem cabeca, com `--user-data-dir` proprio, abre uma instancia separada da do usuario. O `render_splash.py` embute os TTF em
+  `data:` (evita a regra de origem de fonte por `file://`; escolha previa, nao medida). O Edge descarta `@font-face` com
+  `format(svg)` (as fontes SVG que o Corel embute no export).
+- **Export SVG do Corel:** o fundo do splash e translucido (degrade com `stop-opacity` 0,847, nada embaixo); o raster
+  de antes era o SVG sobre a pagina branca (diferenca mediana 1). Cada letra e um `<text>` com `x` absoluto.
+- **`--code` roda antes do `splash->finish`** (`main.cpp:1686` e `:1827`): um script acha o `QSplashScreen` vivo em
+  `QApplication.topLevelWidgets()` (`smoke/splash_font.py`). A mensagem do splash ja sai em Open Sans 3.003 desde a 067.
+- **No `o4w_env` o `git` nao esta no PATH** (o `measure_splash.py` usa o do Git for Windows); o PyQt5 com QtSvg roda
+  com `QT_QPA_PLATFORM=offscreen`.
+- **Shell desta ferramenta:** heredoc do Bash com `\\` ou crases pode chegar alterado ao arquivo (`'\\'` virou `'\'`
+  num `.ps1`); texto com barra invertida vai pelo Write ou Edit, ou por um `.py` escrito pelo Write.
+- **Tempos:** `render_splash.py` cerca de 3 s; `measure_splash.py` 12 s; build incremental so com imagens + smoke
+  5 min 44 s; splash, capturas e regioes 103 s. D: com 35 GB livres no comeco.
 - Nada instalado; o IMAN Terra da 061 segue instalado para o smoke do sponsor.

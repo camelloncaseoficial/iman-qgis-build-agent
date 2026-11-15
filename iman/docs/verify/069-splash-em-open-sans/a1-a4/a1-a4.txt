@@ -1,0 +1,16 @@
+## A1: SHA-256 do master contra o docs/IMAN Terra.svg do arquiteto
+f15bca9db1277ce9c57f262ecd9baf8f5e921caba0c505cdd66a356f6b4b48ee  iman/brand/assets/splash-iman-terra.svg
+f15bca9db1277ce9c57f262ecd9baf8f5e921caba0c505cdd66a356f6b4b48ee  ../iman-product-architect/docs/IMAN Terra.svg
+
+## A4: derive_assets.py --check na ponta (HEAD 23fd9892b3)
+ASSETS OK (9 derivados)
+exit 0
+
+## A4 visto falhando: derived/splash.png trocado pelo de antes (7fbb9a7b71), depois restaurado
+DIVERGE: splash.png nao e a derivacao de splash-iman-terra.png
+ASSETS FALHOU (9 derivados)
+exit 1
+
+## A4 depois de restaurar
+ASSETS OK (9 derivados)
+exit 0

@@ -1,0 +1,266 @@
+{
+  "A2": {
+    "render_log": [
+      "master:      splash-iman-terra.svg  sha256 f15bca9db1277ce9c57f262ecd9baf8f5e921caba0c505cdd66a356f6b4b48ee",
+      "renderizador: msedge.exe  versao 157.0.4341.46",
+      "fonte:       Open Sans           normal OpenSans-Regular.ttf  sha256 c53aceea2dcf5b4098099c0c4d0a061d17e178a049317b42a422b1a9f7f8eb59",
+      "fonte:       Open Sans           bold   OpenSans-Bold.ttf  sha256 27da758f4dcac9a65abe914c13b463b42982b9909bc65713424099f4810bd1e6",
+      "fonte:       Open Sans Semibold  600    OpenSans-SemiBold.ttf  sha256 4a413711684a9dd564ef0f1c10cb62b5d9f7eb6df2cff962f5341a6ecd5f64ae",
+      "escala:      4x, 4000x1920 sobre a pagina branca, reduzido com LANCZOS para 1000x480",
+      "faces na pagina: Open Sans|normal|loaded;Open Sans|bold|loaded;Open Sans Semibold|600|loaded",
+      "alfa da arte: 221 a 255 (antes da pagina)",
+      "saida:       iman\\docs\\verify\\069-splash-em-open-sans\\a2-a3\\a2-splash-fontes-do-repo.png  sha256 d2fc627608fb7e2d333ce54e86e6bd983018bbc4e16ac3ea8e03b426ad23b5dc"
+    ],
+    "regions_px": {
+      "ceara": [
+        62,
+        12,
+        270,
+        29
+      ],
+      "versao-institucional": [
+        742,
+        35,
+        957,
+        53
+      ],
+      "regularizacao": [
+        167,
+        294,
+        781,
+        316
+      ],
+      "powered-by": [
+        816,
+        430,
+        905,
+        446
+      ],
+      "qgis": [
+        907,
+        420,
+        978,
+        450
+      ],
+      "versao-v0-4-0": [
+        920,
+        457,
+        995,
+        474
+      ]
+    },
+    "ink_threshold": 16,
+    "asset_equals_reference": true,
+    "asset": {
+      "size": [
+        1000,
+        480
+      ],
+      "mode": "RGBA",
+      "alpha": [
+        255,
+        255
+      ]
+    },
+    "lines": {
+      "ceara": {
+        "text_changes_px": 836,
+        "sem-fontes-do-repo_vs_referencia_px": 599,
+        "sem-fontes-do-repo_vs_referencia_max": 102,
+        "sem-fontes-do-repo_vs_sem_texto_px": 878,
+        "fontes-instaladas_vs_referencia_px": 32,
+        "fontes-instaladas_vs_referencia_max": 48,
+        "fontes-instaladas_vs_sem_texto_px": 831,
+        "qtsvg_vs_referencia_px": 142,
+        "qtsvg_vs_referencia_max": 37,
+        "qtsvg_vs_sem_texto_px": 826
+      },
+      "versao-institucional": {
+        "text_changes_px": 783,
+        "sem-fontes-do-repo_vs_referencia_px": 616,
+        "sem-fontes-do-repo_vs_referencia_max": 125,
+        "sem-fontes-do-repo_vs_sem_texto_px": 886,
+        "fontes-instaladas_vs_referencia_px": 55,
+        "fontes-instaladas_vs_referencia_max": 39,
+        "fontes-instaladas_vs_sem_texto_px": 786,
+        "qtsvg_vs_referencia_px": 28,
+        "qtsvg_vs_referencia_max": 25,
+        "qtsvg_vs_sem_texto_px": 734
+      },
+      "regularizacao": {
+        "text_changes_px": 2876,
+        "sem-fontes-do-repo_vs_referencia_px": 2215,
+        "sem-fontes-do-repo_vs_referencia_max": 170,
+        "sem-fontes-do-repo_vs_sem_texto_px": 2710,
+        "fontes-instaladas_vs_referencia_px": 701,
+        "fontes-instaladas_vs_referencia_max": 77,
+        "fontes-instaladas_vs_sem_texto_px": 2910,
+        "qtsvg_vs_referencia_px": 2784,
+        "qtsvg_vs_referencia_max": 230,
+        "qtsvg_vs_sem_texto_px": 854
+      },
+      "powered-by": {
+        "text_changes_px": 336,
+        "sem-fontes-do-repo_vs_referencia_px": 0,
+        "sem-fontes-do-repo_vs_referencia_max": 14,
+        "sem-fontes-do-repo_vs_sem_texto_px": 330,
+        "fontes-instaladas_vs_referencia_px": 0,
+        "fontes-instaladas_vs_referencia_max": 14,
+        "fontes-instaladas_vs_sem_texto_px": 330,
+        "qtsvg_vs_referencia_px": 49,
+        "qtsvg_vs_referencia_max": 29,
+        "qtsvg_vs_sem_texto_px": 309
+      },
+      "qgis": {
+        "text_changes_px": 504,
+        "sem-fontes-do-repo_vs_referencia_px": 365,
+        "sem-fontes-do-repo_vs_referencia_max": 114,
+        "sem-fontes-do-repo_vs_sem_texto_px": 444,
+        "fontes-instaladas_vs_referencia_px": 0,
+        "fontes-instaladas_vs_referencia_max": 14,
+        "fontes-instaladas_vs_sem_texto_px": 505,
+        "qtsvg_vs_referencia_px": 500,
+        "qtsvg_vs_referencia_max": 110,
+        "qtsvg_vs_sem_texto_px": 0
+      },
+      "versao-v0-4-0": {
+        "text_changes_px": 267,
+        "sem-fontes-do-repo_vs_referencia_px": 184,
+        "sem-fontes-do-repo_vs_referencia_max": 71,
+        "sem-fontes-do-repo_vs_sem_texto_px": 289,
+        "fontes-instaladas_vs_referencia_px": 3,
+        "fontes-instaladas_vs_referencia_max": 21,
+        "fontes-instaladas_vs_sem_texto_px": 266,
+        "qtsvg_vs_referencia_px": 47,
+        "qtsvg_vs_referencia_max": 31,
+        "qtsvg_vs_sem_texto_px": 261
+      }
+    },
+    "text_changes_outside_regions_px": 0,
+    "ok": true,
+    "seen_failing": {
+      "sem-fontes-do-repo": true,
+      "qtsvg": true
+    }
+  },
+  "A3": {
+    "before": "7fbb9a7b71",
+    "renderer": "QtSvg (PyQt5, Qt do produto)",
+    "icons": {
+      "qgis_icon.svg": {
+        "16": {
+          "pixels_diferentes": 0,
+          "max_por_canal": 0,
+          "falhando_pixels_diferentes": 157,
+          "falhando_max_por_canal": 255,
+          "centroide_alfa_antes": [
+            7.746,
+            7.882
+          ],
+          "centroide_alfa_depois": [
+            7.746,
+            7.882
+          ],
+          "centroide_alfa_falhando": [
+            7.701,
+            7.834
+          ]
+        },
+        "32": {
+          "pixels_diferentes": 0,
+          "max_por_canal": 0,
+          "falhando_pixels_diferentes": 418,
+          "falhando_max_por_canal": 255,
+          "centroide_alfa_antes": [
+            15.993,
+            16.278
+          ],
+          "centroide_alfa_depois": [
+            15.993,
+            16.278
+          ],
+          "centroide_alfa_falhando": [
+            15.904,
+            16.187
+          ]
+        },
+        "256": {
+          "pixels_diferentes": 0,
+          "max_por_canal": 0,
+          "falhando_pixels_diferentes": 6244,
+          "falhando_max_por_canal": 255,
+          "centroide_alfa_antes": [
+            131.5,
+            133.815
+          ],
+          "centroide_alfa_depois": [
+            131.5,
+            133.815
+          ],
+          "centroide_alfa_falhando": [
+            130.78,
+            133.096
+          ]
+        }
+      },
+      "providerQgis.svg": {
+        "16": {
+          "pixels_diferentes": 0,
+          "max_por_canal": 0,
+          "falhando_pixels_diferentes": 157,
+          "falhando_max_por_canal": 255,
+          "centroide_alfa_antes": [
+            7.746,
+            7.882
+          ],
+          "centroide_alfa_depois": [
+            7.746,
+            7.882
+          ],
+          "centroide_alfa_falhando": [
+            7.701,
+            7.834
+          ]
+        },
+        "32": {
+          "pixels_diferentes": 0,
+          "max_por_canal": 0,
+          "falhando_pixels_diferentes": 418,
+          "falhando_max_por_canal": 255,
+          "centroide_alfa_antes": [
+            15.993,
+            16.278
+          ],
+          "centroide_alfa_depois": [
+            15.993,
+            16.278
+          ],
+          "centroide_alfa_falhando": [
+            15.904,
+            16.187
+          ]
+        },
+        "256": {
+          "pixels_diferentes": 0,
+          "max_por_canal": 0,
+          "falhando_pixels_diferentes": 6244,
+          "falhando_max_por_canal": 255,
+          "centroide_alfa_antes": [
+            131.5,
+            133.815
+          ],
+          "centroide_alfa_depois": [
+            131.5,
+            133.815
+          ],
+          "centroide_alfa_falhando": [
+            130.78,
+            133.096
+          ]
+        }
+      }
+    },
+    "ok": true,
+    "seen_failing_256": true
+  }
+}

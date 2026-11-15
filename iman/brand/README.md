@@ -13,11 +13,14 @@ produto escrito a mao. Mudar o nome e mudar `brand.json` e recompilar (A2 do bri
 | `assets/` | assets aprovados, copiados da distro congelada (abaixo) | `derive_assets.py` |
 | `derived/` | o que substitui o logo do QGIS no fonte, derivado dos assets | `derive_assets.py` copia para a arvore do QGIS; o smoke compara com o recurso compilado |
 | `derive_assets.py` | deriva `derived/` e copia para a arvore do QGIS; `--check` so confere | humano, ao trocar um asset |
+| `render_splash.py` | desde a 069, gera `assets/splash-iman-terra.png` do master `assets/splash-iman-terra.svg`, com as fontes de `fonts/` (origem do PNG, abaixo) | humano, ao trocar o master, antes do `derive_assets.py` |
+| `measure_splash.py` | desde a 069, mede o PNG gerado (cada linha de texto presente, com e sem as fontes do repo, contra o QtSvg) e os icones recortados (antes e depois, pelo QtSvg); o laudo 069 | humano, ao trocar o master |
 
 Comandos (com o `python3` da raiz OSGeo4W fixada, a mesma do build):
 
 ```
 python3 iman/brand/derive_assets.py --check
+python3 iman/brand/render_splash.py          # so ao trocar o master do splash; depois, o derive_assets.py
 python3 iman/brand/build_brand.py --measure <qgis_pt_BR.ts convertido do .qm pelo lconvert>
 ```
 
@@ -31,15 +34,41 @@ instalado, secao 7.)
 ## Assets aprovados (origem)
 
 Copiados de `../iman-qgis-distro-agent/app/assets/` (distro congelada, `HEAD` `59ac0ce`, ultimo commit dos quatro
-arquivos `c275590`, 2026-09-09: a arte oficial ingerida na fatia distro #021). So assets aprovados entram aqui
+arquivos `c275590`, 2026-09-09: a arte oficial ingerida na fatia distro #021). Desde a 069, o splash (o SVG e o PNG)
+vem de outra origem: a arte nova do sponsor (abaixo). So assets aprovados entram aqui
 (D-IMAN-040); nada do plugin de marca ou do launcher da distro. O QSS da distro veio depois, na fatia 049 (`theme/`, acima), pela emenda de 2026-10-29 ao D-IMAN-040.
 
 | Arquivo | SHA-256 | Nota |
 |---|---|---|
 | `assets/icon-iman-terra.ico` | `f9d2c6ed2ae68f6812fc865e6b8743913f3114d8029b0ae8d9632a7fb9d9b581` | ICO 16/24/32/48/64/128/256, transparente (`regenerate-icons.py` da distro) |
 | `assets/iman-symbol.png` | `f0a1b5c9a79dde659bdb82f5e1aa1bb86728fa84419c4e7c3263f0cf61a2df00` | simbolo oficial 512x512 (favicon set do Instituto IMAN) |
-| `assets/splash-iman-terra.png` | `aa403d13adf373a32aef83c4fb99c70a4bb41038d199fefdd428bf4dbe4ff877` | splash 1000x480, reduzido do master raster do Corel; traz "POWERED BY QGIS" |
-| `assets/splash-iman-terra.svg` | `6d15685775d9c3313b23f2a1af84e8e25394fe90f9e9f5bae97aced0ea0a7421` | master vetorial (export do Corel, MD5 `32a43bb2b8babae2d0868b89f27cfbe7`, o do README da distro). So o simbolo e recortado dele; o texto do SVG nao e rasterizado (o QtSvg apaga glifos, ver o README da distro) |
+| `assets/splash-iman-terra.png` | `d2fc627608fb7e2d333ce54e86e6bd983018bbc4e16ac3ea8e03b426ad23b5dc` | desde a 069, splash 1000x480 RGBA de 8 bits, todo opaco, gerado do master SVG por `render_splash.py` (origem abaixo); traz "POWERED BY QGIS" |
+| `assets/splash-iman-terra.svg` | `f15bca9db1277ce9c57f262ecd9baf8f5e921caba0c505cdd66a356f6b4b48ee` | desde a 069, master vetorial novo: export do Corel pelo sponsor em 2026-11-14 (`../iman-product-architect/docs/IMAN Terra.svg`, copia byte a byte, MD5 `69acaaca3defb7dcbf6dfe45adea4327`). E a origem do PNG (todo o desenho, com o texto) e dos recortes do simbolo |
+
+### O splash da fatia 069 (origem)
+
+Arte refeita pelo sponsor no Corel (adendo de 2026-11-14 ao D-IMAN-040 e emenda do mesmo dia ao item 1): o logotipo
+"IMAN Terra" e o simbolo ficam; os textos de apoio passam a Open Sans; sai o "Inicializando ambiente geoespacial..."
+gravado (a mensagem de carga e a do QGIS, na mesma faixa); a versao gravada passa a "v0.4.0 · LTR" e a faixa de cima a
+"VERSAO INSTITUCIONAL · LTR". O sponsor entregou so o SVG; o PNG e rasterizacao do master, sem mexer no desenho
+(derivacao por escala, D-IMAN-041, regra 6, pela emenda de 2026-11-14). Reexportar a arte a cada `product_version` e
+rotina do sponsor.
+
+O PNG sai de `python3 iman/brand/render_splash.py`, com o `python3` da raiz OSGeo4W (Pillow 12.3.0):
+
+- **Renderizador:** Microsoft Edge 157.0.4341.46 da bancada, sem cabeca, com perfil temporario proprio, so a pagina
+  local, sem rede. O SVG vai em linha numa pagina XHTML, sem o prologo XML nem o DOCTYPE. Nunca o QtSvg sozinho: no
+  laudo 069 ele apaga letras de "REGULARIZACAO..." e o "QGIS" inteiro.
+- **Fontes:** as tres familias que o master pede, por `@font-face` com os TTF desta pasta (`fonts/`, Open Sans 3.003)
+  embutidos em `data:`: "Open Sans" normal = `OpenSans-Regular.ttf`, "Open Sans" bold = `OpenSans-Bold.ttf`, "Open
+  Sans Semibold" 600 = `OpenSans-SemiBold.ttf`. As `@font-face` do proprio master apontam para as fontes SVG que o
+  Corel embute (`format(svg)`), que o navegador nao le e descarta; o script confere antes da captura que as tres faces
+  da pagina carregaram (`document.fonts`).
+- **Escala:** desenhado em 4000x1920 (4 vezes), composto sobre branco e reduzido para 1000x480 com LANCZOS.
+- **Fundo:** o degrade do fundo do master tem `stop-opacity` 0,847 e nada embaixo; o PNG de antes era o export raster
+  do Corel sobre a pagina branca (medido na 069: o PNG de antes e o SVG de antes renderizado aqui, sobre branco,
+  diferem 1 por canal na mediana; sobre preto, 16). O PNG novo e composto sobre o mesmo branco e sai todo opaco, como
+  o de antes (o `main.cpp` usa a mascara do pixmap).
 
 ## Fonte da interface (origem, fatia 067)
 
@@ -68,19 +97,22 @@ registrar a licenca nova em `iman/notices/`.
 ## Derivados
 
 Derivacao, nunca desenho (D-IMAN-041, regra 6): copia, escala LANCZOS sem margem ou recorte do grupo vetorial do
-simbolo, sem re-colorir. Enquadramento do recorte: o medido pela distro (`derive-theme-icons.py`, fatia distro #041).
+simbolo, sem re-colorir. Enquadramento do recorte: o medido pela distro (`derive-theme-icons.py`, fatia distro #041),
+deslocado -10 em x e em y desde a 069 (o master novo perdeu 10 unidades de borda em cada lado; o simbolo e o mesmo,
+path a path, deslocado igual). O grupo do simbolo e achado pelo degrade da folha, a classe `fil30` no master novo.
 
 | Derivado | Operacao | Origem | Substitui no QGIS | SHA-256 |
 |---|---|---|---|---|
 | `derived/qgis.ico` | copia | `icon-iman-terra.ico` | `src/app/qgis.ico` | `f9d2c6ed2ae68f6812fc865e6b8743913f3114d8029b0ae8d9632a7fb9d9b581` |
-| `derived/splash.png` | copia | `splash-iman-terra.png` | `images/splash/splash.png` | `aa403d13adf373a32aef83c4fb99c70a4bb41038d199fefdd428bf4dbe4ff877` |
+| `derived/splash.png` | copia | `splash-iman-terra.png` | `images/splash/splash.png` | `d2fc627608fb7e2d333ce54e86e6bd983018bbc4e16ac3ea8e03b426ad23b5dc` |
 | `derived/qgis-icon-16x16.png` | escala 16 | `iman-symbol.png` | `images/icons/qgis-icon-16x16.png` | `04b36b5089c15fc849043278f7f0d553a414b21d2961bc7f1542aef68ddd8eb1` |
 | `derived/qgis-icon-60x60.png` | escala 60 | `iman-symbol.png` | `images/icons/qgis-icon-60x60.png` | `0cf45f63bd510575332b9628ae69d3a6175bc3914a58c2099548708f49c0efb4` |
-| `derived/qgis_icon.svg` | recorte, 256 | `splash-iman-terra.svg` | `images/icons/qgis_icon.svg` | `0f2cc61f6890942a2c28f237c1f20c713a4247baf8e3a22e7a0a7c61383fb50e` |
-| `derived/providerQgis.svg` | recorte, 16 | `splash-iman-terra.svg` | `images/themes/default/providerQgis.svg` | `7e83e7ac912e7611a304453d6de54353f30bdbf40182cc53c0a81c14ce1bd9c9` |
+| `derived/qgis_icon.svg` | recorte, 256 | `splash-iman-terra.svg` | `images/icons/qgis_icon.svg` | `780a13eb3d9cdeced8c24aaeeccc0de796f9faa3e230c5dd6e28061ccc1a1c5d` |
+| `derived/providerQgis.svg` | recorte, 16 | `splash-iman-terra.svg` | `images/themes/default/providerQgis.svg` | `3366cf9b9fae4ef696db28a3d77143cc7499253a8f53e05c4dfdff2a1421aea0` |
 | `derived/iman-terra-qgs.ico`, `iman-terra-qgz.ico`, `iman-terra-qlr.ico` | copia | `icon-iman-terra.ico` | nada no QGIS: icones de tipo de arquivo do "Abrir com" do instalador (fatia 047) | `f9d2c6ed2ae68f6812fc865e6b8743913f3114d8029b0ae8d9632a7fb9d9b581` |
 
-Os SVG tem o mesmo `viewBox` e os mesmos `path` do `providerQgis.svg` do tema da distro; muda o tamanho nominal
+Ate a 068, os SVG tinham o mesmo `viewBox` e os mesmos `path` do `providerQgis.svg` do tema da distro; desde a 069, os
+dois estao deslocados -10 em x e em y (o mesmo desenho, laudo 069). Muda o tamanho nominal
 (o do arquivo do QGIS que cada um substitui).
 
 ## O que nao troca (D-IMAN-039, regra 2; BL-1)

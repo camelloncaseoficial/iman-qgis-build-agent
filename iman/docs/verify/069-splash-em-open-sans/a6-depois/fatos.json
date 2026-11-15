@@ -1,0 +1,61 @@
+{
+  "build": "23fd9892b3 (HEAD da branch)",
+  "splash_font": {
+    "errors": [],
+    "splashCount": 1,
+    "appFont": {
+      "family": "Open Sans",
+      "pointSizeF": 7.8,
+      "pixelSize": -1,
+      "weight": 50,
+      "resolvedFamily": "Open Sans",
+      "resolvedStyle": "",
+      "resolvedPixelSize": 10,
+      "fileFamily": "Open Sans",
+      "fileVersion": "Version 3.003; ttfautohint (v1.8.4)"
+    },
+    "visible": true,
+    "size": [
+      600,
+      288
+    ],
+    "devicePixelRatio": 1.25,
+    "message": "IMAN Terra pronto!",
+    "font": {
+      "family": "Open Sans",
+      "pointSizeF": 7.8,
+      "pixelSize": -1,
+      "weight": 50,
+      "resolvedFamily": "Open Sans",
+      "resolvedStyle": "",
+      "resolvedPixelSize": 10,
+      "fileFamily": "Open Sans",
+      "fileVersion": "Version 3.003; ttfautohint (v1.8.4)"
+    },
+    "testMessage": "Carregando complementos... Restaurando a interface. QGIS 0123456789 ÁÇÃÉÕ"
+  },
+  "C1_splash": {
+    "ok": true,
+    "detail": {
+      "expectedText": "Light",
+      "frames": [
+        "c1-splash-01.png",
+        "c1-splash-02.png",
+        "c1-splash-03.png",
+        "c1-splash-04.png"
+      ],
+      "best": {
+        "frame": "c1-splash-03.png",
+        "size": [
+          750,
+          360
+        ],
+        "band": "306..359",
+        "textPixels": 1056,
+        "meanLuminance": 181.6,
+        "medianLuminance": 198.5,
+        "isSplash": true
+      }
+    }
+  }
+}
